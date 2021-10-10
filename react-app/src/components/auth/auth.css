@@ -1,0 +1,54 @@
+.loginPage {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    background-image: url("cook.jpg");
+    background-size: contain;
+    width: 100vmax;
+    height: 100vmax;
+    background-color: white;
+    opacity: 0.95;
+}
+
+.loginformContainer {
+    display: flex;
+    height: 100vmax;
+    background-color: rgba(15, 15, 15, 0.199) ;
+    backdrop-filter: blur(5px);
+    margin-left: 50px;
+    width: 365px;
+    justify-content: center;
+    padding-top: 115px;
+}
+
+.loginInput {
+    padding: 9px 11px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px 1px grey;
+    width: 100%;
+    margin: 10px 10px 10px -10px;
+    border: none;
+    height: 20px;
+}
+
+.loginButton {
+    width: 109%;
+    margin: 10px 10px 10px -10px;
+    padding: 9px 11px;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    background-color: #faac18;
+    color: white;
+    font-size: 16px;
+
+}
+
+.loginSignupText {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.loginSignupText > a {
+    color: white;
+}
