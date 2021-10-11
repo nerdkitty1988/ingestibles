@@ -9,21 +9,21 @@ const CreateRecipe = () => {
     const sessionUser = useSelector(state => state.session.user);
     
     const [title, setTitle] = useState("");
+    // [this.tagName1, this.setTagName1] = useState("");
+    // [this.tagName2, this.setTagName2] = useState("");
+    const [tags, setTags] = useState({});
+    const [tagCounter, setTagCounter] = useState(0);
+    
     const [introduction, setIntroduction] = useState("");
     const [media1, setMedia1] = useState("");
     const [media2, setMedia2] = useState("");
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
-
-    // [this.tagName1, this.setTagName1] = useState("");
-    // [this.tagName2, this.setTagName2] = useState("");
-    const [tags, setTags] = useState({});
-    // let tags =[]
     
-    const [tagCounter, setTagCounter] = useState(0);
-
-    const [ingredient1, setIngredient1] = useState("");
+    const [ingredientPhoto, setIngredientPhoto] = useState("");
+    const [ingredients, setIngredients] = useState({});
+    const [ingredientCounter, setIngredientCounter] = useState(0);
     
     const [stepTitle1, setStepTitle1] = useState("");
     const [insturction1, setInsturction1] = useState("");
@@ -42,6 +42,7 @@ const CreateRecipe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(tags)
+        console.log(ingredients)
 
     }
     
@@ -52,11 +53,18 @@ const CreateRecipe = () => {
         console.log(tags)
     }
 
+    // count how many ingredients the user would like to have
+    const ingredientCounterClick = async (e) => {
+        e.preventDefault();
+        setIngredientCounter(ingredientCounter + 1)
+        console.log(ingredients)
+    }
+
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <div>
-                <NavLink to='/profile' exact={true}>Cancel</NavLink>
+            <div className='newRecipeButtonWrapper'>
+                <NavLink to='/profile' exact={true} style={{display:'block'}}>Cancel</NavLink>
                 <button>Create Recipe</button>
             </div>
             <div>
@@ -64,10 +72,10 @@ const CreateRecipe = () => {
                     <div key={ind}>{error}</div>
                 ))}
             </div>
-            <div>
-                <div>
-                    <h2>Recipe Basics</h2>
-                    <label>Project Title</label>
+            <div className='newRecipeBasics'>
+                <div className='newRecipeTitle'>
+                    <h4>Recipe Basics</h4>
+                    <label>Recipe Title</label>
                     <input
                         className='listingInput'
                         type="text"
@@ -78,37 +86,35 @@ const CreateRecipe = () => {
                     />
                 </div>
                 <div>
-                    <label>Tag #1</label>
+                    <label>Tag #1 </label>
                     <input
                         className='listingInput'
                         type="text"
                         key = 'tag1'
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
                         placeholder='Tag'
-                    // required
                     />
                     {/* per number of tags, render the tag input component */}
-                        {[...Array(tagCounter)].map((el, i) => (<div>
-                            <label>Tag #{i + 2}</label>
+                    {[...Array(tagCounter)].map((el, i) => (<div key={`tag${i + 2}`}>
+                            <label>Tag #{i + 2} </label>
                             <input
                                 className='listingInput'
-                                type="text"
-                                key={`tag${i+2}`}
+                                type="text"                               
                                 onChange={(e) => setTags(tags=>{
                                     tags[`tag${i+2}`] = e.target.value
                                     return tags
                                 })}
                                 placeholder='Tag'
-                            // required
                             />
                         </div>))}
-                    <button onClick={tagCounterClick}>Add more tag</button>
+                    <button onClick={tagCounterClick}>Add New Tag</button>
             
                 </div>
             </div>
-
-            <div>
-                <label>Introduction</label>
+            
+            <div className='newReceipeIntroWrapper'>
+              <div className='newReceipeIntro'>
+                <h4>Introduction</h4>
                 <textarea
                     className='listingInput'
                     value={introduction}
@@ -116,74 +122,103 @@ const CreateRecipe = () => {
                     placeholder='Briefly describe what you made.'
                     //required
                 />
-            </div>
-            <div>
-                <label>Photo/Video #1</label>
+              </div>
+             <div>
+              <div>
+                <label>Photo/Video #1 </label>
                     <input
                         className='listingInput'
                         type="text"
                         value={media1}
                         onChange={(e) => setMedia1(e.target.value)}
-                        placeholder='Include at most photo and/or video about your finished dish'
+                        placeholder='Include 1-5 photo and/or video about your finished dish'
                     // required  
                     />
-            </div>
-            <div>
-                <label>Photo/Video #2</label>
+              </div>
+              <div>
+                <label>Photo/Video #2 </label>
                 <input
                     className='listingInput'
                     type="text"
                     value={media2}
                     onChange={(e) => setMedia2(e.target.value)}
-                    placeholder='Include at most photo and/or video about your finished dish'
+                    placeholder='Include 1-5 photo and/or video about your finished dish'
                     // required  
                 />
-            </div>
-            <div>
-                <label>Photo/Video #3</label>
+              </div>
+              <div>
+                <label>Photo/Video #3 </label>
                 <input
                     className='listingInput'
                     type="text"
                     value={media3}
                     onChange={(e) => setMedia3(e.target.value)}
-                    placeholder='Include at most photo and/or video about your finished dish'
+                    placeholder='Include 1-5 photo and/or video about your finished dish'
                 // required  
                 />
-            </div>
+              </div>
 
-            <div>
-                <label>Photo/Video #4</label>
+             <div>
+                <label>Photo/Video #4 </label>
                 <input
                     className='listingInput'
                     type="text"
                     value={media4}
                     onChange={(e) => setMedia4(e.target.value)}
-                    placeholder='Include at most photo and/or video about your finished dish'
+                    placeholder='Include 1-5 photo and/or video about your finished dish'
                 
                 />
-            </div>
-            <div>
-                <label>Photo/Video #5</label>
+              </div>
+              <div>
+                <label>Photo/Video #5 </label>
                 <input
                     className='listingInput'
                     type="text"
                     value={media5}
                     onChange={(e) => setMedia5(e.target.value)}
-                    placeholder='Include at most photo and/or video about your finished dish'
+                    placeholder='Include 1-5 photo and/or video about your finished dish'
             
                 />
+              </div>
+             </div>
             </div>
 
-             <div>
-                <label>Ingredient</label>
+             <div className='newRecipeIngredientWrapper'>
+                <h4>Ingredients</h4>
+                <div>
+                <label>Ingredient Photo </label>
                 <input
                     className='listingInput'
                     type="text"
-                    value={ingredient1}
-                        onChange={(e) => setIngredient1(e.target.value)}
-                    placeholder='ingredients for your dish'
-              
+                    value={ingredientPhoto}
+                    onChange={(e) => setIngredientPhoto(e.target.value)}
+                    placeholder='ingredient photo for your dish'             
                 />
+                </div>
+                <div>
+                <label>Ingredient #1 </label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    key={`ingredient1`}
+                    onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
+                    placeholder='ingredients for your dish'             
+                />
+                </div>
+
+                {[...Array(ingredientCounter)].map((el, i) => (<div key={`ingredient${i + 2}`}>
+                    <label>Ingredient #{i + 2} </label>
+                    <input
+                        className='listingInput'
+                        type="text"
+                        onChange={(e) => setIngredients(ingredients => {
+                        ingredients[`ingredient${i + 2}`] = e.target.value
+                        return ingredients
+                        })}
+                        placeholder='ingredients for your dish'
+                    />
+                </div>))}
+                <button onClick={ingredientCounterClick}>Add New Ingredient</button>
             </div>
 
             <div>

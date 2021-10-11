@@ -1,0 +1,28 @@
+.newRecipeButtonWrapper{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.newRecipeBasics, .newReceipeIntroWrapper{
+    display: flex;
+    border:1px lightgray solid;
+    border-radius: 10px;
+    gap: 5%;
+    margin-top: 2%;
+}
+.newRecipeTitle,.newReceipeIntro{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+.newRecipeIngredientWrapper{
+    border:1px lightgray solid;
+    border-radius: 10px;
+    margin-top: 2%;
+}
+
+lable{
+    display: block;
+}
