@@ -5,3 +5,5 @@ from .instruction import Instruction
 from .ingredient import Ingredient
 from .recipe import Recipe
 from .tag import Tag
+from .like import Like
+from .media import Media
