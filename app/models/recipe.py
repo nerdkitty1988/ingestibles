@@ -13,6 +13,12 @@ class Recipe(db.Model):
     # one to many comments
     comments = db.relationship('Comment', back_populates='recipe',
                                cascade="all, delete")
+    # one to many instructions
+    instructions = db.relationship('Instruction', back_populates='recipe',
+                               cascade="all, delete")
+    # one to many ingredients
+    ingredients = db.relationship('Ingredient', back_populates='recipe',
+                               cascade="all, delete")
     # one to many tags
     tags = db.relationship('Tag', back_populates='recipe',
                            cascade="all, delete")
@@ -24,6 +30,8 @@ class Recipe(db.Model):
             'description': self.description,
             'authorId': self.authorId,
             "author": self.author.to_dict(),
+            "instructions": [instruction.to_dict() for instruction in self.instructions],
+            "ingredients": [ingredient.to_dict() for ingredient in self.ingredients],
             "comments": [comment.to_dict() for comment in self.comments],
             "tags": [tag.to_dict() for tag in self.tags]
         }

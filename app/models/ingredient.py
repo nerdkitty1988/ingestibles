@@ -8,8 +8,8 @@ class Ingredient(db.Model):
 
 
     # COMMENT THIS IN ONCE RECIPES IS CREATED
-    # recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    # recipe = db.relationship('Recipe', back_populates='ingredients')
+    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    recipe = db.relationship('Recipe', back_populates='ingredients')
 
     info = db.Column(db.Text, nullable=False)
 

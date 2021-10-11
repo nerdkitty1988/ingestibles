@@ -8,8 +8,8 @@ class Instruction(db.Model):
 
 
     # COMMENT THIS IN ONCE RECIPES IS CREATED
-    # recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    # recipe = db.relationship('Recipe', back_populates='instructions')
+    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    recipe = db.relationship('Recipe', back_populates='instructions')
 
     imageUrl = db.Column(db.String, nullable=True)
     stepTitle = db.Column(db.String, nullable=False)
