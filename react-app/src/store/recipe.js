@@ -15,7 +15,7 @@ export const retrieveRecipe = (recipe) => {
   }
 }
 
-const initialState = { recipe: null }
+const initialState = { }
 
 export default function recipeReducer(state = initialState, action) {
   switch (action.type) {

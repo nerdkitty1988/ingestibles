@@ -7,14 +7,22 @@ const SingleRecipePage = () => {
   const dispatch = useDispatch()
   const { recipeId } = useParams();
   const currentRecipe = useSelector(state => state.recipe)
-  console.log(currentRecipe)
+  console.log("CURRENT RECIPE ====>>>", currentRecipe)
   useEffect(() => {
     dispatch(recipeActions.retrieveRecipe(recipeId))
   }, [dispatch, recipeId])
   return (
+  <>
     <div id="recipe-info">
-    <h1></h1>
-  </div>
+      <h1>{currentRecipe?.title}</h1>
+      <p>By {currentRecipe?.author?.username} > insert tag name here</p>
+    </div>
+    <div id="recipe-image">
+      list of images{currentRecipe?.instructions?.map(instruction => {
+        <img src={instruction.imageUrl}/>
+      })}
+    </div>
+  </>
   )
 }
 
