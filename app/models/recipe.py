@@ -22,6 +22,11 @@ class Recipe(db.Model):
     # one to many tags
     tags = db.relationship('Tag', back_populates='recipe',
                            cascade="all, delete")
+    # one to many likes
+    likes = db.relationship('Like', back_populates='recipe', cascade="all, delete")
+
+    #one to many videos/media
+    medias = db.relationship('Media', back_populates='recipe', cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -33,5 +38,7 @@ class Recipe(db.Model):
             "instructions": [instruction.to_dict() for instruction in self.instructions],
             "ingredients": [ingredient.to_dict() for ingredient in self.ingredients],
             "comments": [comment.to_dict() for comment in self.comments],
-            "tags": [tag.to_dict() for tag in self.tags]
+            "tags": [tag.to_dict() for tag in self.tags],
+            "likes": [like.to_dict() for like in self.likes],
+            "medias": [media.to_dict() for media in self.medias]
         }
