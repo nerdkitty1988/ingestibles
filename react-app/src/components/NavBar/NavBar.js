@@ -13,7 +13,7 @@ const NavBar = () => {
             <ul className="category-nav-link">
               <li>
                 <a href='/'>
-                  <i class="fas fa-home"></i>
+                  <i className="fas fa-home"></i>
                 </a>
               </li>
               <li>
@@ -82,10 +82,10 @@ const NavBar = () => {
             </ul>
           </nav>
           <form id="header-search-form" className="site-search-form" title="Search Form" action="/recipes/" method="get">
-            <label className="sr-only" for="site-search-input">Enter search term</label>
+            <label className="sr-only">Enter search term</label>
             <input className="input-medium site-search-input" id="site-search-input" type="text" placeholder="Let's Make..."/>
             <button className="submit-btn" type="submit">
-              <i class="fas fa-search fa-sm fa-flip-horizontal"></i>
+              <i className="fas fa-search fa-sm fa-flip-horizontal"></i>
             </button>
           </form>
         </div>
