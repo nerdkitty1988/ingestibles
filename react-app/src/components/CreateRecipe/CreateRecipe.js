@@ -10,8 +10,10 @@ const CreateRecipe = () => {
     
     const [title, setTitle] = useState("");
     const [introduction, setIntroduction] = useState("");
-    [this.tagName1, this.setTagName1] = useState("");
-    [this.tagName2, this.setTagName2] = useState("");
+    // [this.tagName1, this.setTagName1] = useState("");
+    // [this.tagName2, this.setTagName2] = useState("");
+    const [tagName1, setTagName1] = useState("");
+    const [tagName2, setTagName2] = useState("");
     const [tagCounter, setTagCounter] = useState(0);
 
     const [errors, setErrors] = useState([]);
@@ -27,6 +29,7 @@ const CreateRecipe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(tagName1, tagName2)
+        console.log('2222:', tagName2)
     }
     
     // count how many tags the user would like to have
@@ -71,11 +74,23 @@ const CreateRecipe = () => {
                     // required
                     />
                     {/* per number of tags, render the tag input component */}
-                    {[...Array(tagCounter)].map((el, i) => <AddTag 
-                                                            key={i} count={i}
-                                                            value={this['tagName'+(i+2)]}
-                                                            onChange={(e) => this['tagName'+(i+2)](e.target.value)}
-                                                            />)}
+                        {[...Array(tagCounter)].map((el, i) => (<div>
+                            <label>Tag #{i + 2}</label>
+                            <input
+                                className='listingInput'
+                                type="text"
+                                value={tagName2}
+                                onChange={(e) => setTagName2(e.target.value)}
+                                placeholder='Tag'
+                            // required
+                            />
+                        </div>)
+                    // <AddTag 
+                    //                                         key={i} count={i}
+                    //                                         value={tagName2}
+                    //                                         onChange={(e) => setTagName2(e.target.value)}
+                    //                                         />
+                                                            )}
                     <button onClick={tagCounterClick}>Add more tag</button>
             
                 </div>
