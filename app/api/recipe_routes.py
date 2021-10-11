@@ -9,4 +9,7 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
-
+@recipe_routes.route('/<int:id>')
+def single_recipe(id):
+    recipe = Recipe.query.filter_by(id=id).first()
+    return {'recipe': [recipe.to_dict()]}
