@@ -8,8 +8,8 @@ class Comment(db.Model):
 
 
     # COMMENT THIS IN ONCE RECIPES IS CREATED
-    recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    recipe = db.relationship('Recipe', back_populates='comments')
+    # recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    # recipe = db.relationship('Recipe', back_populates='comments')
 
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='comments')

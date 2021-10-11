@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     biography = db.Column(db.Text, nullable=True)
     profilePic = db.Column(db.String(255), nullable=True)
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete")
-    recipes = db.relationship('Recipe', back_populates='author', cascade="all, delete")
+    # recipes = db.relationship('Recipe', back_populates='author', cascade="all, delete")
 
     @property
     def password(self):
