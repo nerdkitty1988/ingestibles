@@ -16,7 +16,7 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_recipes()
-    seed_tags
+    seed_tags()
     seed_comments()
     seed_instructions()
     seed_ingredients()

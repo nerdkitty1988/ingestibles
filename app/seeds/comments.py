@@ -4,16 +4,20 @@ from app.models import db, Comment
 # Adds comments
 def seed_comments():
     comment1 = Comment(
+        recipeId=2,
         userId=1, comment='Are these low sodium?')
     comment2 = Comment(
+        recipeId=2,
         userId=3, comment='You can substitute some of the ingredients for the lower sodium variety, but this recipe itself is not low sodium.')
     comment3 = Comment(
+        recipeId=2,
         userId=1, comment='Ok thank you!')
     comment4 = Comment(
+        recipeId=2,
         userId=2, comment='I use the low soium soy sauce as a replacement for the soy sauce.  It only makes a small difference in taste.')
     comment5 = Comment(
+        recipeId=2,
         userId=1, comment='Awesome!  I will try that!')
-
 
     db.session.add(comment1)
     db.session.add(comment2)
