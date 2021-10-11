@@ -25,24 +25,19 @@ const CreateRecipe = () => {
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
     
-    const [stepTitle1, setStepTitle1] = useState("");
-    const [insturction1, setInsturction1] = useState("");
-    const [stepMedia1, setStepMedia1] = useState("");
+    const [steps, setSteps] = useState({});
+    const [stepCounter, setStepCounter] = useState(0);
 
     const [errors, setErrors] = useState([]);
 
     // require login is handled by ProtectedRoute
-    // if (!sessionUser) {
-    //     return (<h3 style={{ color: '#f0a04b' }}>
-    //         Please login/signup to create a recipe.
-    //     </h3>)
-    // };
     
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(tags)
         console.log(ingredients)
+        console.log(steps)
 
     }
     
@@ -58,6 +53,13 @@ const CreateRecipe = () => {
         e.preventDefault();
         setIngredientCounter(ingredientCounter + 1)
         console.log(ingredients)
+    }
+
+    // count how many steps the user would like to have
+    const stepCounterClick = async (e) => {
+        e.preventDefault();
+        setStepCounter(stepCounter + 1)
+        console.log(steps)
     }
 
 
@@ -222,31 +224,84 @@ const CreateRecipe = () => {
             </div>
 
             <div>
-                <h2>Step #1</h2>
+                <label>Step #1</label>
                 <input
                     className='listingInput'
                     type="text"
-                    value={stepTitle1}
-                    onChange={(e) => setStepTitle1(e.target.value)}
+                    onChange={(e) => setSteps(steps=>{
+                        steps['step1'] ? steps['step1'].title = e.target.value : steps['step1'] ={}
+                        steps['step1'].title = e.target.value
+                        return steps
+
+                    })}
                     placeholder='Enter step title'
           
                 />
                 <textarea
                     className='listingInput'
-                    value={insturction1}
-                    onChange={(e) => setInsturction1(e.target.value)}
+                    onChange={(e) => setSteps(steps=>{
+                        steps['step1'] ? steps['step1'].direction = e.target.value : steps['step1'] ={}
+                        steps['step1'].direction = e.target.value
+                        return steps
+
+                    })}
                     placeholder='Write a detailed description of this step'
    
                 />
                 <input
                     className='listingInput'
                     type="text"
-                    value={stepMedia1}
-                    onChange={(e) => setStepMedia1(e.target.value)}
+                    onChange={(e) => setSteps(steps => {
+                    steps['step1'] ? steps['step1'].photo = e.target.value : steps['step1'] = {}
+                    steps['step1'].photo = e.target.value
+                    return steps
+
+                })}
                     placeholder='Photo for this step'
 
                 />
             </div>
+
+            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`}>
+                <label>Step #{i + 2} </label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    onChange={(e) => setSteps(steps => {
+                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].title = e.target.value : steps[`step${i + 2}`] = {}
+                        steps[`step${i + 2}`].title = e.target.value
+                        return steps
+
+                    })}
+                    placeholder='Enter step title'
+
+                />
+                <textarea
+                    className='listingInput'
+                    onChange={(e) => setSteps(steps => {
+                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].direction = e.target.value : steps[`step${i + 2}`] = {}
+                        steps[`step${i + 2}`].direction = e.target.value
+                        return steps
+
+                    })}
+                    placeholder='Write a detailed description of this step'
+
+                />
+                <input
+                    className='listingInput'
+                    type="text"
+                    onChange={(e) => setSteps(steps => {
+                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].photo = e.target.value : steps[`step${i + 2}`] = {}
+                        steps[`step${i + 2}`].photo = e.target.value
+                        return steps
+
+                    })}
+                    placeholder='Photo for this step'
+
+                />
+                
+            </div>))}
+            <button onClick={stepCounterClick}>Add New Step</button>
 
             
 
