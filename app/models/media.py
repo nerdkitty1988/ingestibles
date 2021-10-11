@@ -8,7 +8,7 @@ class Media(db.Model):
 
     #COMMENT THIS IN ONCE RECIPES IS CREATED
     recipeId = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    recipe = db.relationship('Recipe', back_populates='instructions')
+    recipe = db.relationship('Recipe', back_populates='medias')
     mediaUrl = db.Column(db.String, nullable=True)
 
     def to_dict(self):
