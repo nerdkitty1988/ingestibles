@@ -10,11 +10,24 @@ const CreateRecipe = () => {
     
     const [title, setTitle] = useState("");
     const [introduction, setIntroduction] = useState("");
+    const [media1, setMedia1] = useState("");
+    const [media2, setMedia2] = useState("");
+    const [media3, setMedia3] = useState("");
+    const [media4, setMedia4] = useState("");
+    const [media5, setMedia5] = useState("");
+
     // [this.tagName1, this.setTagName1] = useState("");
     // [this.tagName2, this.setTagName2] = useState("");
-    const [tagName1, setTagName1] = useState("");
-    const [tagName2, setTagName2] = useState("");
+    const [tags, setTags] = useState({});
+    // let tags =[]
+    
     const [tagCounter, setTagCounter] = useState(0);
+
+    const [ingredient1, setIngredient1] = useState("");
+    
+    const [stepTitle1, setStepTitle1] = useState("");
+    const [insturction1, setInsturction1] = useState("");
+    const [stepMedia1, setStepMedia1] = useState("");
 
     const [errors, setErrors] = useState([]);
 
@@ -28,14 +41,15 @@ const CreateRecipe = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(tagName1, tagName2)
-        console.log('2222:', tagName2)
+        console.log(tags)
+
     }
     
     // count how many tags the user would like to have
     const tagCounterClick = async (e) => {
         e.preventDefault();
         setTagCounter(tagCounter+1)
+        console.log(tags)
     }
 
 
@@ -68,8 +82,8 @@ const CreateRecipe = () => {
                     <input
                         className='listingInput'
                         type="text"
-                        value={tagName1}
-                        onChange={(e) => setTagName1(e.target.value)}
+                        key = 'tag1'
+                        onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
                         placeholder='Tag'
                     // required
                     />
@@ -79,18 +93,15 @@ const CreateRecipe = () => {
                             <input
                                 className='listingInput'
                                 type="text"
-                                value={tagName2}
-                                onChange={(e) => setTagName2(e.target.value)}
+                                key={`tag${i+2}`}
+                                onChange={(e) => setTags(tags=>{
+                                    tags[`tag${i+2}`] = e.target.value
+                                    return tags
+                                })}
                                 placeholder='Tag'
                             // required
                             />
-                        </div>)
-                    // <AddTag 
-                    //                                         key={i} count={i}
-                    //                                         value={tagName2}
-                    //                                         onChange={(e) => setTagName2(e.target.value)}
-                    //                                         />
-                                                            )}
+                        </div>))}
                     <button onClick={tagCounterClick}>Add more tag</button>
             
                 </div>
@@ -106,6 +117,104 @@ const CreateRecipe = () => {
                     //required
                 />
             </div>
+            <div>
+                <label>Photo/Video #1</label>
+                    <input
+                        className='listingInput'
+                        type="text"
+                        value={media1}
+                        onChange={(e) => setMedia1(e.target.value)}
+                        placeholder='Include at most photo and/or video about your finished dish'
+                    // required  
+                    />
+            </div>
+            <div>
+                <label>Photo/Video #2</label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={media2}
+                    onChange={(e) => setMedia2(e.target.value)}
+                    placeholder='Include at most photo and/or video about your finished dish'
+                    // required  
+                />
+            </div>
+            <div>
+                <label>Photo/Video #3</label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={media3}
+                    onChange={(e) => setMedia3(e.target.value)}
+                    placeholder='Include at most photo and/or video about your finished dish'
+                // required  
+                />
+            </div>
+
+            <div>
+                <label>Photo/Video #4</label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={media4}
+                    onChange={(e) => setMedia4(e.target.value)}
+                    placeholder='Include at most photo and/or video about your finished dish'
+                
+                />
+            </div>
+            <div>
+                <label>Photo/Video #5</label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={media5}
+                    onChange={(e) => setMedia5(e.target.value)}
+                    placeholder='Include at most photo and/or video about your finished dish'
+            
+                />
+            </div>
+
+             <div>
+                <label>Ingredient</label>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={ingredient1}
+                        onChange={(e) => setIngredient1(e.target.value)}
+                    placeholder='ingredients for your dish'
+              
+                />
+            </div>
+
+            <div>
+                <h2>Step #1</h2>
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={stepTitle1}
+                    onChange={(e) => setStepTitle1(e.target.value)}
+                    placeholder='Enter step title'
+          
+                />
+                <textarea
+                    className='listingInput'
+                    value={insturction1}
+                    onChange={(e) => setInsturction1(e.target.value)}
+                    placeholder='Write a detailed description of this step'
+   
+                />
+                <input
+                    className='listingInput'
+                    type="text"
+                    value={stepMedia1}
+                    onChange={(e) => setStepMedia1(e.target.value)}
+                    placeholder='Photo for this step'
+
+                />
+            </div>
+
+            
+
                
         </form>
 
