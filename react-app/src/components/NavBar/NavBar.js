@@ -17,31 +17,31 @@ const NavBar = () => {
                 </a>
               </li>
               <li>
-                <a href='/circuits'>Circuits</a>
+                <a href='/beef'>Beef</a>
               </li>
               <li>
-                <a href='/workshop'>Workshop</a>
+                <a href='/chicken'>Chicken</a>
               </li>
               <li>
-                <a href='/craft'>Craft</a>
+                <a className="category-nav-link" href='/desserts'>Desserts</a>
               </li>
               <li>
-                <a href='/cooking'>Cooking</a>
+                <a href='/fish'>Fish</a>
               </li>
               <li>
-                <a href='/living'>Living</a>
+                <a href='/pasta'>Pasta</a>
               </li>
               <li>
-                <a href='/outside'>Outside</a>
+                <a href='/pastries'>Pastries</a>
               </li>
               <li>
-                <a className="category-nav-link" href='/teachers'>Teachers</a>
+                <a href='/vegetarian'>Vegetarian</a>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to='/users' exact={true} activeClassName='active'>
                   Users
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <LogoutButton />
               </li>
@@ -67,11 +67,11 @@ const NavBar = () => {
         <div className="left-col">
           <a className="site-logo " href="/">
             <img className="ingestibles-logo" alt="Ingestibles" src="/logo.png"/>
-            <span className="site-header-category-brand">ingestibles</span>
+            <span id="site-header-category-brand">ingestibles</span>
             <span className="site-header-category category-"></span>
           </a>
-          <a href="/projects/" className="btn btn-category-header">Projects</a>
-          <a href="/contest/" className="btn btn-category-header">Contests</a>
+          <a href="/recipes/" className="btn btn-category-header">Recipes</a>
+          <a href="/myplate/" className="btn btn-category-header">My Plate</a>
         </div>
         <div className="right-col">
           <nav className="site-header-nav site-header-secondary-nav" aria-label="Contest and classes">

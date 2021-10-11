@@ -9,4 +9,7 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
-
+@recipe_routes.route('/<tag>')
+def recipes():
+    recipes = Recipe.query.all()
+    return {'recipes': [recipe.to_dict() for recipe in recipes]}
