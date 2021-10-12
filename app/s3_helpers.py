@@ -29,7 +29,8 @@ def upload_file_to_s3(file, acl="public-read"):
     try:
         s3.upload_fileobj(
             file,
-            BUCKET_NAME,
+            # BUCKET_NAME,
+            'ingestiblesapp',
             file.filename,
             ExtraArgs={
                 "ACL": acl,

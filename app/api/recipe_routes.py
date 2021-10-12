@@ -81,6 +81,8 @@ def create_recipe():
         ingredientPhoto.filename = get_unique_filename(ingredientPhoto.filename)
 
         upload_ingredientPhoto = upload_file_to_s3(ingredientPhoto)
+        print('upload_ingredientPhoto!!!', upload_ingredientPhoto)       
+        print('ingredientPhoto.content_type!!!!', ingredientPhoto.content_type)
 
         if "url" not in upload_ingredientPhoto:
             # if the dictionary doesn't have a url key
