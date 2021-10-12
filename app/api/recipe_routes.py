@@ -25,8 +25,8 @@ def user_recipes(id):
 #Fetch recipe by tagId
 @recipe_routes.route('/<tag>')
 def recipes_by_tag(tag):
-    tag = Tag.query.join(Recipe).filter(Tag.name == tag).all()
-    return {'taggedRecipes': [recipe.to_dict() for recipe in tag.recipes]}
+    tagged_recipes = Recipe.query.join(Tag).filter(Tag.name == tag).all()
+    return {'tagged': [tagged_recipe.to_dict() for tagged_recipe in tagged_recipes]}
 
 # create new recipe
 @recipe_routes.route('', methods=['POST'])
