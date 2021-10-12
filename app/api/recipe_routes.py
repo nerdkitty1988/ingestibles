@@ -17,4 +17,4 @@ def user_recipes(id):
     print(created_recipes)
     liked_recipes = Recipe.query.join(Like).filter(Like.userId == id).all()
     print(liked_recipes)
-    return {'liked': [created_recipe.to_dict() for created_recipe in created_recipes], 'created': [liked_recipe.to_dict() for liked_recipe in liked_recipes]}
+    return {'created': [created_recipe.to_dict() for created_recipe in created_recipes], 'liked': [liked_recipe.to_dict() for liked_recipe in liked_recipes]}
