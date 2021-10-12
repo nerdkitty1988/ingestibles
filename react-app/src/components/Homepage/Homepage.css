@@ -240,7 +240,7 @@ a:hover{cursor:pointer;}
 .lazyload{opacity:0;}
 .lazyloaded{background:none;}
 /*! CSS Used from: https://www.instructables.com/assets/scss/home.css?c=b9a42ca95a */
-.home-content h1,.home-content h2{font-family:"myriad-pro-condensed",Helvetica,Arial,sans-serif;margin-bottom:15px;}
+.home-content h1,.home-content h2{text-transform:uppercase;font-family:"myriad-pro-condensed",Helvetica,Arial,sans-serif;margin-bottom:15px;}
 .home-content h1{font-size:60px; font-weight: 700;}
 .home-content h2{font-size:34px;}
 .home-content p{font-size:18px;line-height:1.45;font-family:"myriad-pro",Helvetica,Arial,sans-serif;}
