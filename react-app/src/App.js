@@ -5,9 +5,10 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import Homepage from './components/Homepage/Homepage';
+import MyPlate from './components/MyPlate/MyPlate';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import User from './components/User';
+import CreateRecipe from './components/CreateRecipe/CreateRecipe';
 import { authenticate } from './store/session';
 
 function App() {
@@ -38,11 +39,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path='/api/recipes/my_plate' exact={true} >
+          <MyPlate />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes/new_recipe' exact={true} >
+          <CreateRecipe />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
