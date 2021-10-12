@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import AddTag from './AddTag';
 import './CreateRecipe.css';
 
 const CreateRecipe = () => {
