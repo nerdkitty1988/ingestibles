@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { createRecipeThunk } from '../../store/newRecipe';
 import './CreateRecipe.css';
 
 const CreateRecipe = () => {
@@ -64,10 +65,10 @@ const CreateRecipe = () => {
 
         console.log(newRecipe)
 
-        // const data = await dispatch(login(email, password));
-        // if (data) {
-        //     setErrors(data);
-        // }
+        const data = await dispatch(createRecipeThunk(newRecipe));
+        if (data) {
+            setErrors(data);
+        }
 
     }
     

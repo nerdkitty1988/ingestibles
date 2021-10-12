@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 from app.models import User
 
 
-class newRecipeForm(FlaskForm):
+class createRecipeForm(FlaskForm):
     authorId = IntegerField(
         'authorId', validators=[DataRequired()])
     title = StringField(

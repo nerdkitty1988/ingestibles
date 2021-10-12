@@ -22,10 +22,10 @@ export const createRecipeThunk = (newRecipe) => async (dispatch) => {
 
     if (responseRecipe.ok) {
         const data = await responseRecipe.json();
-        dispatch(setUser(data))
+        // dispatch(setUser(data))
         return null;
-    } else if (response.status < 500) {
-        const data = await response.json();
+    } else if (responseRecipe.status < 500) {
+        const data = await responseRecipe.json();
         if (data.errors) {
             return data.errors;
         }
@@ -39,10 +39,8 @@ export const createRecipeThunk = (newRecipe) => async (dispatch) => {
 const initialState = { newRecipe: null };
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case SET_USER:
+        case CREATE_RECIPE:
             return { user: action.payload }
-        case REMOVE_USER:
-            return { user: null }
         default:
             return state;
     }
