@@ -18,49 +18,20 @@ def single_recipe(id):
     recipe = Recipe.query.filter_by(id=id).first()
     return {'recipe': [recipe.to_dict()]}
 
+#Fetch user's like recipes
 @recipe_routes.route('/my_plate/<int:id>')
 @login_required
 def user_recipes(id):
     created_recipes = Recipe.query.join(User).filter(User.id == id).all()
-    print(created_recipes)
     liked_recipes = Recipe.query.join(Like).filter(Like.userId == id).all()
-    print(liked_recipes)
     return {'created': [created_recipe.to_dict() for created_recipe in created_recipes], 'liked': [liked_recipe.to_dict() for liked_recipe in liked_recipes]}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Fetch recipe by tagId
+@recipe_routes.route('/<tag>')
+def recipes_by_tag(tag):
+    tagged_recipes = Recipe.query.join(Tag).filter(Tag.name == tag).all()
+    return {'tagged': [tagged_recipe.to_dict() for tagged_recipe in tagged_recipes]}
 
 # create new recipe
 @recipe_routes.route('', methods=['POST'])

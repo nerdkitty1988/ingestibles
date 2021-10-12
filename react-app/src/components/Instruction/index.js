@@ -4,9 +4,10 @@ import "./Instruction.css"
 const Instruction = (instruction) => {
   return(
   <div id="step">
-    <p>**** Instruction Step Name **** <br/><br/> {instruction.instruction.stepTitle}</p>
+    <p><strong> Step {instruction.instruction.id}: {instruction.instruction.stepTitle}</strong></p>
     <img src={instruction.instruction.imageUrl} alt="step"/>
-    <p>**** Instruction Step Directions **** <br/><br/> {instruction.instruction.directions}</p>
+    <br/><br/>
+    <p>{instruction.instruction.directions}</p>
     <button>Comment</button>
   </div>
 )

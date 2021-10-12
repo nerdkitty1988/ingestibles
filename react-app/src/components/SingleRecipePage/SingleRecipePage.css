@@ -1,11 +1,9 @@
-img {
-  width: 100px;
-  height: 100px;
-}
 
 #main {
   padding: 10px 60px ;
-  font-family: myriad-pro,helvetica,arial,sans-serif;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  line-height: 1.65;
 }
 
 #recipe-info {
@@ -22,15 +20,23 @@ img {
 
 #recipe-images {
   display: flex;
+  width: 100%;
+  padding-bottom: 30px;
 }
 
 #author-info {
-  border: 1px solid black
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  background-color: #f6f6f6;
 }
 
 .profileCircle {
-  width: 130px;
-  height: 130px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 100%;
   margin-right: 10px;
