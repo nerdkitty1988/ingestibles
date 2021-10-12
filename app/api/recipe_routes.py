@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Recipe, User, Like, Tag, db
+from app.models import Recipe, User, Like, db
 from flask_login import login_required
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import createRecipeForm
@@ -13,12 +13,7 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
-@recipe_routes.route(f"/{Tag.name}")
-def tag_recipes(name):
-    tagged_recipes = Recipe.query.join(Tag).filter(Tag.name == name).all()
-    print(tagged_recipes)
-    return {'tagged': [tagged_recipe.to_dict() for tagged_recipe in tagged_recipes]}
-    
+
 @recipe_routes.route('/my_plate/<int:id>')
 @login_required
 def user_recipes(id):

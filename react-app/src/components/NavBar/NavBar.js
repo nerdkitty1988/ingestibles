@@ -17,25 +17,25 @@ const NavBar = () => {
                 </a>
               </li>
               <li>
-                <a href='/beef'>Beef</a>
+                <a href='/recipes/beef'>Beef</a>
               </li>
               <li>
-                <a href='/chicken'>Chicken</a>
+                <a href='/recipes/chicken'>Chicken</a>
               </li>
               <li>
-                <a className="category-nav-link" href='/desserts'>Desserts</a>
+                <a href='/recipes/desserts'>Desserts</a>
               </li>
               <li>
-                <a href='/fish'>Fish</a>
+                <a href='/recipes/fish'>Fish</a>
               </li>
               <li>
-                <a href='/pasta'>Pasta</a>
+                <a href='/recipes/pasta'>Pasta</a>
               </li>
               <li>
-                <a href='/pastries'>Pastries</a>
+                <a href='/recipes/pastries'>Pastries</a>
               </li>
               <li>
-                <a href='/vegetarian'>Vegetarian</a>
+                <a href='/recipes/vegetarian'>Vegetarian</a>
               </li>
               {/* <li>
                 <NavLink to='/users' exact={true} activeClassName='active'>
@@ -70,8 +70,8 @@ const NavBar = () => {
             <span id="site-header-category-brand">ingestibles</span>
             <span className="site-header-category category-"></span>
           </a>
-          <a href="/recipes/" className="btn btn-category-header">Recipes</a>
-          <a href="/myplate/" className="btn btn-category-header">My Plate</a>
+          <a href="/recipes" className="btn btn-category-header">Recipes</a>
+          <a href="/recipes/my_plate" className="btn btn-category-header">My Plate</a>
         </div>
         <div className="right-col">
           <nav className="site-header-nav site-header-secondary-nav" aria-label="Contest and classes">
