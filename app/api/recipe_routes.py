@@ -13,6 +13,7 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
+
 @recipe_routes.route('/my_plate/<int:id>')
 @login_required
 def user_recipes(id):
