@@ -22,7 +22,7 @@ const CreateRecipe = () => {
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
     
-    const [ingredientPhoto, setIngredientPhoto] = useState("");
+    const [ingredientPhoto, setIngredientPhoto] = useState(null);
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
     
@@ -36,9 +36,9 @@ const CreateRecipe = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(tags)
-        console.log(ingredients)
-        console.log(steps)
+        // console.log(tags)
+        // console.log(ingredients)
+        // console.log(steps)
 
         setErrors([]);
         // tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
@@ -69,7 +69,14 @@ const CreateRecipe = () => {
                 steps_notNull[key] = steps[key]
             }
         })
+        // prepare input data ready for AWS
+        const formData = new FormData();
+        formData.append("authorId", sessionUser.id);
+        formData.append("title", title);
+        formData.append("ingredientPhoto", ingredientPhoto);
+        formData.append("introduction", introduction);
 
+        console.log('formData!!!!', formData)
         const newRecipe = {
             recipe:{
                 authorId: sessionUser.id,
@@ -89,9 +96,10 @@ const CreateRecipe = () => {
 
         console.log(newRecipe)
 
-        const data = await dispatch(createRecipeThunk(newRecipe));
+        const data = await dispatch(createRecipeThunk(formData));
         if (data.errors) {
             setErrors(data.errors);
+            // console.log('!!!!', typeof errors)
         } else{
             history.push(`/recipes/${data.id}`)
         }
@@ -248,10 +256,11 @@ const CreateRecipe = () => {
                 <label>Ingredient Photo </label>
                 <input
                     className='listingInput'
-                    type="text"
-                    value={ingredientPhoto}
-                    onChange={(e) => setIngredientPhoto(e.target.value)}
-                    placeholder='at least 1 ingredient photo for your dish'             
+                    type="file"
+                    // value={ingredientPhoto}
+                    accept="image/*"
+                    onChange={(e) => setIngredientPhoto(e.target.files[0])}
+                    // placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
                 <div>
