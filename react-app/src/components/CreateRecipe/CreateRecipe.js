@@ -53,7 +53,7 @@ const CreateRecipe = () => {
         const media_notNull = {}
         const mediaArr = [media1, media2, media3, media4, media5]
         mediaArr.forEach((media,i) => {
-            if (media && media.replace(/\s/g, '').length) {
+            if (media) {
                 media_notNull[`media${i+1}`] = media
                 }
         })
@@ -83,6 +83,10 @@ const CreateRecipe = () => {
         // prepare ingredients input data ready for AWS
         Object.keys(ingredients_notNull).forEach(key => {
             formData.append(key, ingredients_notNull[key]);
+        })
+        // prepare mediainput data ready for AWS
+        Object.keys(media_notNull).forEach(key => {
+            formData.append(key, media_notNull[key]);
         })
     
         // formData.values() creates iterator and use for loop to print out values
@@ -208,32 +212,31 @@ const CreateRecipe = () => {
                 <label>Photo/Video #1 </label>
                     <input
                         className='listingInput'
-                        type="text"
-                        value={media1}
-                        onChange={(e) => setMedia1(e.target.value)}
-                        placeholder='Include 1-5 photo and/or video about your finished dish'
-                    // required  
+                        type="file"
+                        // value={media1}
+                        accept="image/*"
+                        onChange={(e) => setMedia1(e.target.files[0])}
+                        // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
               </div>
               <div>
                 <label>Photo/Video #2 </label>
                 <input
                     className='listingInput'
-                    type="text"
-                    value={media2}
-                    onChange={(e) => setMedia2(e.target.value)}
-                    placeholder='Include 1-5 photo and/or video about your finished dish'
-                    // required  
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setMedia2(e.target.files[0])}
+                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 />
               </div>
               <div>
                 <label>Photo/Video #3 </label>
                 <input
                     className='listingInput'
-                    type="text"
-                    value={media3}
-                    onChange={(e) => setMedia3(e.target.value)}
-                    placeholder='Include 1-5 photo and/or video about your finished dish'
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setMedia3(e.target.files[0])}
+                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 // required  
                 />
               </div>
@@ -242,10 +245,10 @@ const CreateRecipe = () => {
                 <label>Photo/Video #4 </label>
                 <input
                     className='listingInput'
-                    type="text"
-                    value={media4}
-                    onChange={(e) => setMedia4(e.target.value)}
-                    placeholder='Include 1-5 photo and/or video about your finished dish'
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setMedia4(e.target.files[0])}
+                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 
                 />
               </div>
@@ -253,10 +256,10 @@ const CreateRecipe = () => {
                 <label>Photo/Video #5 </label>
                 <input
                     className='listingInput'
-                    type="text"
-                    value={media5}
-                    onChange={(e) => setMedia5(e.target.value)}
-                    placeholder='Include 1-5 photo and/or video about your finished dish'
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setMedia5(e.target.files[0])}
+                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
             
                 />
               </div>

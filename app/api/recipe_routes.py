@@ -111,12 +111,30 @@ def create_recipe():
 
         # save ingredients; request.form is dictionary
         for (key, value) in request.form.items():
+            print('!!', key, value)
             if key[0:10] == 'ingredient':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
 
+        # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
+        for (key, value) in request.files.items():
+            if key[0:5] == 'media':
+                media = request.files[key]
+                if not allowed_file(media.filename):
+                    return {"errors": [f"{key} file type not permitted"]}, 400
+    
+                media.filename = get_unique_filename(media.filename)
 
-        # for (key, value) in formRecipe.data['media'].items():
-        #     db.session.add(Media(mediaUrl=value, recipeId=recipe.id))
+                upload_media = upload_file_to_s3(media)
+
+                if "url" not in upload_media:
+                    # if the dictionary doesn't have a url key
+                    # it means that there was an error when we tried to upload
+                    # so we send back that error message
+                    return {'errors': [upload_media['errors']]}, 400
+                    
+                media_url = upload_media["url"]
+                db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
+
 
         # for (key, value) in formRecipe.data['steps'].items():
         #     db.session.add(Instruction(imageUrl=value['photo'], stepTitle=value['title'], directions=value['direction'], recipeId=recipe.id))
