@@ -36,12 +36,7 @@ const CreateRecipe = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(tags)
-        // console.log(ingredients)
-        // console.log(steps)
-
         setErrors([]);
-        // tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
 
         // filter out null/empty/only spaces input
         const tags_notNull = {}
@@ -63,12 +58,20 @@ const CreateRecipe = () => {
                 ingredients_notNull[key] = ingredients[key]
             }
         })
+        // title and direction are required input, photo of steps is not required
         const steps_notNull = {}
         Object.keys(steps).forEach(key => {
-            if (steps[key] && steps[key].title && steps[key].direction && steps[key].photo && steps[key].title.replace(/\s/g, '').length && steps[key].direction.replace(/\s/g, '').length && steps[key].photo.replace(/\s/g, '').length) {
+            if (steps[key] && steps[key].title && steps[key].direction && steps[key].title.replace(/\s/g, '').length && steps[key].direction.replace(/\s/g, '').length) {
                 steps_notNull[key] = steps[key]
-            }
+            } 
+            // else if (!steps[key] && !steps[key].title && !steps[key].direction && !steps[key].title.replace(/\s/g, '').length && !steps[key].direction.replace(/\s/g, '').length){
+            // }
+            // else{
+            //     setErrors([`${key}: Both title and description for step are required`]);
+            //     return;
+            // }
         })
+
 
         // prepare recipe input data ready for AWS
         const formData = new FormData();
@@ -88,30 +91,37 @@ const CreateRecipe = () => {
         Object.keys(media_notNull).forEach(key => {
             formData.append(key, media_notNull[key]);
         })
+        // prepare steps data ready for AWS
+        Object.keys(steps_notNull).forEach(key => {
+            console.log('outside', key, steps_notNull[key])
+            Object.keys(steps_notNull[key]).forEach(k=>{
+                    console.log('inside', k, steps_notNull[key][k])
+                formData.append(key + '_' + k, steps_notNull[key][k]);
+            })
+            
+        })
     
         // formData.values() creates iterator and use for loop to print out values
         for (let value of formData.values()) {
+            console.log('formData.values Start');
             console.log(value);
+            console.log('formData.values End');
         }
         
+        // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
         const newRecipe = {
             recipe:{
                 authorId: sessionUser.id,
                 title,
                 introduction,
                 ingredientPhoto
-            },
-            
+            },            
             tags:tags_notNull,
-
             media:media_notNull,
-
             ingredients:ingredients_notNull,
-
             steps:steps_notNull,           
         }
-
-        console.log(newRecipe)
+        console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(createRecipeThunk(formData));
         if (data.errors) {
@@ -127,21 +137,21 @@ const CreateRecipe = () => {
     const tagCounterClick = async (e) => {
         e.preventDefault();
         setTagCounter(tagCounter+1)
-        console.log(tags)
+        // console.log(tags)
     }
 
     // count how many ingredients the user would like to have
     const ingredientCounterClick = async (e) => {
         e.preventDefault();
         setIngredientCounter(ingredientCounter + 1)
-        console.log(ingredients)
+        // console.log(ingredients)
     }
 
     // count how many steps the user would like to have
     const stepCounterClick = async (e) => {
         e.preventDefault();
         setStepCounter(stepCounter + 1)
-        console.log(steps)
+        // console.log(steps)
     }
 
 
@@ -165,7 +175,7 @@ const CreateRecipe = () => {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        placeholder='Title'
+                        placeholder='Recipe Title'
                         // required  
                     />
                 </div>
@@ -176,7 +186,7 @@ const CreateRecipe = () => {
                         type="text"
                         key = 'tag1'
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
-                        placeholder='Add at least 1 Tag'
+                        placeholder='At least 1 Tag'
                     />
                     {/* per number of tags, render the tag input component */}
                     {[...Array(tagCounter)].map((el, i) => (<div key={`tag${i + 2}`}>
@@ -188,7 +198,7 @@ const CreateRecipe = () => {
                                     tags[`tag${i+2}`] = e.target.value
                                     return tags
                                 })}
-                            placeholder='Add at least 1 Tag'
+                            placeholder='At least 1 Tag'
                             />
                         </div>))}
                     <button onClick={tagCounterClick}>Add Tag</button>
@@ -286,7 +296,7 @@ const CreateRecipe = () => {
                     type="text"
                     key={`ingredient1`}
                     onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
-                    placeholder='at least 1 ingredient for your dish'
+                    placeholder='At least 1 ingredient for your dish'
                 />
                 </div>
 
@@ -299,7 +309,7 @@ const CreateRecipe = () => {
                         ingredients[`ingredient${i + 2}`] = e.target.value
                         return ingredients
                         })}
-                        placeholder='at least 1 ingredient for your dish'
+                        placeholder='At least 1 ingredient for your dish'
                     />
                 </div>))}
                 <button onClick={ingredientCounterClick}>Add Ingredient</button>
@@ -317,7 +327,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Enter step title'
+                    placeholder='Enter step title - Required input'
           
                 />
                 <textarea
@@ -328,20 +338,19 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Write a detailed description of this step'
-   
+                    placeholder='Write a detailed description of this step - Required input'
+                        
                 />
                 <input
-                    className='listingInput'
-                    type="text"
+                    className = 'listingInput'
+                    type = "file"
+                    accept = "image/*"
                     onChange={(e) => setSteps(steps => {
-                    steps['step1'] ? steps['step1'].photo = e.target.value : steps['step1'] = {}
-                    steps['step1'].photo = e.target.value
+                    steps['step1'] ? steps['step1'].photo = e.target.files[0] : steps['step1'] = {}
+                    steps['step1'].photo = e.target.files[0]
                     return steps
 
                 })}
-                    placeholder='Photo for this step'
-
                 />
             </div>
 
@@ -356,7 +365,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Enter step title'
+                    placeholder='Enter step title - Required input'
 
                 />
                 <textarea
@@ -367,19 +376,18 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Write a detailed description of this step'
+                    placeholder='Write a detailed description of this step - Required input'
 
                 />
-                <input
-                    className='listingInput'
-                    type="text"
-                    onChange={(e) => setSteps(steps => {
-                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].photo = e.target.value : steps[`step${i + 2}`] = {}
-                        steps[`step${i + 2}`].photo = e.target.value
-                        return steps
-
+                <input   
+                    className = 'listingInput'
+                    type = "file"
+                    accept = "image/*"                       
+                    onChange = {(e) => setSteps(steps => {
+                    steps[`step${i + 2}`] ? steps[`step${i + 2}`].photo = e.target.files[0] : steps[`step${i + 2}`] = {}
+                    steps[`step${i + 2}`].photo = e.target.files[0]
+                    return steps
                     })}
-                    placeholder='Photo for this step'
 
                 />
                 

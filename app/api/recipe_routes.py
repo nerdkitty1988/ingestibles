@@ -68,8 +68,10 @@ def user_recipes(id):
 def create_recipe():
     formRecipe = createRecipeForm()
     formRecipe['csrf_token'].data = request.cookies['csrf_token']
+    # form.data has wts form class state variable; request.form has input excluding files/images; request.files has files/images
     print('!!!!!!!!', formRecipe.data)
     print('!!!!!!!!request.form', request.form)
+    print('!!!!!!!!request.files', request.files)
 
     if formRecipe.validate_on_submit():
         
@@ -84,8 +86,8 @@ def create_recipe():
         ingredientPhoto.filename = get_unique_filename(ingredientPhoto.filename)
 
         upload_ingredientPhoto = upload_file_to_s3(ingredientPhoto)
-        print('upload_ingredientPhoto!!!', upload_ingredientPhoto)       
-        print('ingredientPhoto.content_type!!!!', ingredientPhoto.content_type)
+        # print('upload_ingredientPhoto!!!', upload_ingredientPhoto)       
+        # print('ingredientPhoto.content_type!!!!', ingredientPhoto.content_type)
 
         if "url" not in upload_ingredientPhoto:
             # if the dictionary doesn't have a url key
@@ -111,7 +113,7 @@ def create_recipe():
 
         # save ingredients; request.form is dictionary
         for (key, value) in request.form.items():
-            print('!!', key, value)
+            # print('!!', key, value)
             if key[0:10] == 'ingredient':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
 
@@ -134,12 +136,42 @@ def create_recipe():
                     
                 media_url = upload_media["url"]
                 db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
+        
+        # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
+        # e.g. step1_title step1_direction step1_photo as keys
+        stepNumberVisited = []
+        for (key, value) in request.form.items():
+            if key[0:4] == 'step':
+                stepNumber = key[4]
+                # e.g. step1_
+                stepPrefix = key[0:6]
 
+                if(stepNumber not in stepNumberVisited):
+                    if(stepPrefix+'photo' in request.files.keys()):
+                        stepPhoto = request.files[stepPrefix+'photo']
+                        if not allowed_file(stepPhoto.filename):
+                            return {"errors": [f"{stepPrefix}photo file type not permitted"]}, 400
+    
+                        stepPhoto.filename = get_unique_filename(stepPhoto.filename)
 
-        # for (key, value) in formRecipe.data['steps'].items():
-        #     db.session.add(Instruction(imageUrl=value['photo'], stepTitle=value['title'], directions=value['direction'], recipeId=recipe.id))
+                        upload_stepPhoto = upload_file_to_s3(stepPhoto)
+
+                        if "url" not in upload_stepPhoto:
+                            # if the dictionary doesn't have a url key
+                            # it means that there was an error when we tried to upload
+                            # so we send back that error message 
+                            return {'errors': [upload_stepPhoto['errors']]}, 400
+                    
+                        stepPhoto_url = upload_stepPhoto["url"]
+                    else:
+                        stepPhoto_url = None
+
+                    db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
+                stepNumberVisited.append(stepNumber)
+
 
         db.session.commit()
         return recipe.to_dict()
+
     return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
 
