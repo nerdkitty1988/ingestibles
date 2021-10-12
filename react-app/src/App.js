@@ -39,7 +39,7 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/api/recipes/my_plate' exact={true} >
+        <ProtectedRoute path='/recipes/my_plate' exact={true} >
           <MyPlate />
         </ProtectedRoute>
         <Route path='/users/:userId' exact={true} >
