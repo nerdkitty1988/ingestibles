@@ -202,16 +202,16 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
     margin-left: 5px
 }
 
-.site-header-category-brand {
-    position: relative;
+#site-header-category-brand {
+    /* position: relative;
     color: #000;
-    text-decoration: none;
+    text-decoration: none; */
     font-family: 'Myriad Pro',Helvetica,Arial,sans-serif;
-    font-size: 22px;
+    /* font-size: 22px;
     font-weight: 700;
     min-width: 188px;
     line-height: 20px;
-    bottom: 35px;
+    bottom: 35px; */
 }
 
 .btn-category-header {
