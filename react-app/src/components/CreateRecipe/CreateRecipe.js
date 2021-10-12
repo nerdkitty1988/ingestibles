@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRecipeThunk } from '../../store/newRecipe';
 import './CreateRecipe.css';
 
 const CreateRecipe = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     
     const [title, setTitle] = useState("");
@@ -40,34 +41,59 @@ const CreateRecipe = () => {
         console.log(steps)
 
         setErrors([]);
+        // tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
+
+        // filter out null/empty input
+        const tags_notNull = {}
+        Object.keys(tags).forEach(key=>{
+        if (tags[key] && tags[key].replace(/\s/g, '').length){
+                tags_notNull[key] = tags[key]
+            }
+        })
+        const media_notNull = {}
+        const mediaArr = [media1, media2, media3, media4, media5]
+        mediaArr.forEach((media,i) => {
+            if (media && media.replace(/\s/g, '').length) {
+                media_notNull[`media${i+1}`] = media
+                }
+        })
+        const ingredients_notNull = {}
+        Object.keys(ingredients).forEach(key => {
+            if (ingredients[key] && ingredients[key].replace(/\s/g, '').length) {
+                ingredients_notNull[key] = ingredients[key]
+            }
+        })
+        const steps_notNull = {}
+        Object.keys(steps).forEach(key => {
+            if (steps[key] && steps[key].title && steps[key].direction && steps[key].photo && steps[key].title.replace(/\s/g, '').length && steps[key].direction.replace(/\s/g, '').length && steps[key].photo.replace(/\s/g, '').length) {
+                steps_notNull[key] = steps[key]
+            }
+        })
+
         const newRecipe = {
             recipe:{
                 authorId: sessionUser.id,
                 title,
-                description: introduction,
+                introduction,
                 ingredientPhoto
             },
             
-            tags,
+            tags:tags_notNull,
 
-            media:[
-                media1,
-                media2,
-                media3,
-                media4,
-                media5,
-            ],
+            media:media_notNull,
 
-            ingredients,
+            ingredients:ingredients_notNull,
 
-            instructions:steps,           
+            steps:steps_notNull,           
         }
 
         console.log(newRecipe)
 
         const data = await dispatch(createRecipeThunk(newRecipe));
-        if (data) {
-            setErrors(data);
+        if (data.errors) {
+            setErrors(data.errors);
+        } else{
+            history.push(`/recipes/${data.id}`)
         }
 
     }
@@ -100,7 +126,7 @@ const CreateRecipe = () => {
                 <NavLink to='/profile' exact={true} style={{display:'block'}}>Cancel</NavLink>
                 <button>Create Recipe</button>
             </div>
-            <div>
+            <div style={{ color:'#F27D21'}}>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
@@ -125,7 +151,7 @@ const CreateRecipe = () => {
                         type="text"
                         key = 'tag1'
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
-                        placeholder='Tag'
+                        placeholder='Add at least 1 Tag'
                     />
                     {/* per number of tags, render the tag input component */}
                     {[...Array(tagCounter)].map((el, i) => (<div key={`tag${i + 2}`}>
@@ -137,7 +163,7 @@ const CreateRecipe = () => {
                                     tags[`tag${i+2}`] = e.target.value
                                     return tags
                                 })}
-                                placeholder='Tag'
+                            placeholder='Add at least 1 Tag'
                             />
                         </div>))}
                     <button onClick={tagCounterClick}>More Tag</button>
@@ -225,7 +251,7 @@ const CreateRecipe = () => {
                     type="text"
                     value={ingredientPhoto}
                     onChange={(e) => setIngredientPhoto(e.target.value)}
-                    placeholder='ingredient photo for your dish'             
+                    placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
                 <div>
@@ -235,7 +261,7 @@ const CreateRecipe = () => {
                     type="text"
                     key={`ingredient1`}
                     onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
-                    placeholder='ingredients for your dish'             
+                    placeholder='at least 1 ingredient for your dish'
                 />
                 </div>
 
@@ -248,7 +274,7 @@ const CreateRecipe = () => {
                         ingredients[`ingredient${i + 2}`] = e.target.value
                         return ingredients
                         })}
-                        placeholder='ingredients for your dish'
+                        placeholder='at least 1 ingredient for your dish'
                     />
                 </div>))}
                 <button onClick={ingredientCounterClick}>More Ingredient</button>

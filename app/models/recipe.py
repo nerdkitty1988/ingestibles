@@ -7,7 +7,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    ingredientPhoto = db.Column(db.String)
+    ingredientPhoto = db.Column(db.String, nullable=False)
     # many to one user
     authorId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     author = db.relationship('User', back_populates='recipes')
