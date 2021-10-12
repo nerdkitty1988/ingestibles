@@ -39,6 +39,37 @@ const CreateRecipe = () => {
         console.log(ingredients)
         console.log(steps)
 
+        setErrors([]);
+        const newRecipe = {
+            recipe:{
+                authorId: sessionUser.id,
+                title,
+                description: introduction,
+                ingredientPhoto
+            },
+            
+            tags,
+
+            media:[
+                media1,
+                media2,
+                media3,
+                media4,
+                media5,
+            ],
+
+            ingredients,
+
+            instructions:steps,           
+        }
+
+        console.log(newRecipe)
+
+        // const data = await dispatch(login(email, password));
+        // if (data) {
+        //     setErrors(data);
+        // }
+
     }
     
     // count how many tags the user would like to have
@@ -109,7 +140,7 @@ const CreateRecipe = () => {
                                 placeholder='Tag'
                             />
                         </div>))}
-                    <button onClick={tagCounterClick}>Add New Tag</button>
+                    <button onClick={tagCounterClick}>More Tag</button>
             
                 </div>
             </div>
@@ -220,10 +251,11 @@ const CreateRecipe = () => {
                         placeholder='ingredients for your dish'
                     />
                 </div>))}
-                <button onClick={ingredientCounterClick}>Add New Ingredient</button>
+                <button onClick={ingredientCounterClick}>More Ingredient</button>
             </div>
-
+            
             <div>
+            <div className='newReceipeStep'>
                 <label>Step #1</label>
                 <input
                     className='listingInput'
@@ -262,8 +294,8 @@ const CreateRecipe = () => {
                 />
             </div>
 
-            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`}>
-                <label>Step #{i + 2} </label>
+            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='newReceipeStep'>
+                        <label>Step #{i + 2} </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -301,8 +333,8 @@ const CreateRecipe = () => {
                 />
                 
             </div>))}
-            <button onClick={stepCounterClick}>Add New Step</button>
-
+            <button onClick={stepCounterClick}>More Step</button>
+           </div>
             
 
                

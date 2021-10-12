@@ -11,7 +11,7 @@
     gap: 5%;
     margin-top: 2%;
 }
-.newRecipeTitle,.newReceipeIntro{
+.newRecipeTitle,.newReceipeIntro,.newReceipeStep{
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -23,6 +23,11 @@
     margin-top: 2%;
 }
 
+.newReceipeStep{
+    width: 80%;
+    margin: 2% auto;
+
+}
 lable{
     display: block;
 }
