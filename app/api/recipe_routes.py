@@ -36,20 +36,21 @@ def user_recipes(id):
 
 
 # create new recipe
-@recipe_routes.route('/', methods=['POST'])
+@recipe_routes.route('', methods=['POST'])
 @login_required
 def create_recipe():
     formRecipe = createRecipeForm()
     formRecipe['csrf_token'].data = request.cookies['csrf_token']
+    print('!!!!!!!!', formRecipe.data)
     if formRecipe.validate_on_submit():
         recipe = Recipe(
             authorId=formRecipe.data['authorId'],
             title=formRecipe.data['title'],
-            description=formRecipe.data['description'],
+            description=formRecipe.data['introduction'],
             ingredientPhoto=formRecipe.data['ingredientPhoto']
         )
         db.session.add(recipe)
         db.session.commit()
         return recipe.to_dict()
-    return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 401
-    
+    return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
+  

@@ -40,27 +40,50 @@ const CreateRecipe = () => {
         console.log(steps)
 
         setErrors([]);
+        // tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
+
+        // filter out null/empty input
+        const tags_notNull = {}
+        Object.keys(tags).forEach(key=>{
+        if (tags[key] && tags[key].replace(/\s/g, '').length){
+                tags_notNull[key] = tags[key]
+            }
+        })
+        const media_notNull = {}
+        const mediaArr = [media1, media2, media3, media4, media5]
+        mediaArr.forEach((media,i) => {
+            if (media && media.replace(/\s/g, '').length) {
+                media_notNull[`media${i+1}`] = media
+                }
+        })
+        const ingredients_notNull = {}
+        Object.keys(ingredients).forEach(key => {
+            if (ingredients[key] && ingredients[key].replace(/\s/g, '').length) {
+                ingredients_notNull[key] = ingredients[key]
+            }
+        })
+        const steps_notNull = {}
+        Object.keys(steps).forEach(key => {
+            if (steps[key] && steps[key].title && steps[key].direction && steps[key].photo && steps[key].title.replace(/\s/g, '').length && steps[key].direction.replace(/\s/g, '').length && steps[key].photo.replace(/\s/g, '').length) {
+                steps_notNull[key] = steps[key]
+            }
+        })
+
         const newRecipe = {
             recipe:{
                 authorId: sessionUser.id,
                 title,
-                description: introduction,
+                introduction,
                 ingredientPhoto
             },
             
-            tags,
+            tags:tags_notNull,
 
-            media:[
-                media1,
-                media2,
-                media3,
-                media4,
-                media5,
-            ],
+            media:media_notNull,
 
-            ingredients,
+            ingredients:ingredients_notNull,
 
-            instructions:steps,           
+            steps:steps_notNull,           
         }
 
         console.log(newRecipe)
@@ -100,7 +123,7 @@ const CreateRecipe = () => {
                 <NavLink to='/profile' exact={true} style={{display:'block'}}>Cancel</NavLink>
                 <button>Create Recipe</button>
             </div>
-            <div>
+            <div style={{ color:'#F27D21'}}>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}

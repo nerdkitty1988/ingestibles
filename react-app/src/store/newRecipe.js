@@ -17,8 +17,15 @@ export const createRecipeThunk = (newRecipe) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newRecipe.recipe),
+        body: JSON.stringify({ ...newRecipe.recipe,        
+                                tags:newRecipe.tags,
+                                media: newRecipe.media,
+                                ingredients: newRecipe.ingredients,
+                                steps: newRecipe.steps,
+
+        }),
     });
+
 
     if (responseRecipe.ok) {
         const data = await responseRecipe.json();
