@@ -148,7 +148,7 @@ const CreateRecipe = () => {
                         type="text"
                         key = 'tag1'
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
-                        placeholder='Tag'
+                        placeholder='Add at least 1 Tag'
                     />
                     {/* per number of tags, render the tag input component */}
                     {[...Array(tagCounter)].map((el, i) => (<div key={`tag${i + 2}`}>
@@ -160,7 +160,7 @@ const CreateRecipe = () => {
                                     tags[`tag${i+2}`] = e.target.value
                                     return tags
                                 })}
-                                placeholder='Tag'
+                            placeholder='Add at least 1 Tag'
                             />
                         </div>))}
                     <button onClick={tagCounterClick}>More Tag</button>
@@ -248,7 +248,7 @@ const CreateRecipe = () => {
                     type="text"
                     value={ingredientPhoto}
                     onChange={(e) => setIngredientPhoto(e.target.value)}
-                    placeholder='ingredient photo for your dish'             
+                    placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
                 <div>
@@ -258,7 +258,7 @@ const CreateRecipe = () => {
                     type="text"
                     key={`ingredient1`}
                     onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
-                    placeholder='ingredients for your dish'             
+                    placeholder='at least 1 ingredient for your dish'
                 />
                 </div>
 
@@ -271,7 +271,7 @@ const CreateRecipe = () => {
                         ingredients[`ingredient${i + 2}`] = e.target.value
                         return ingredients
                         })}
-                        placeholder='ingredients for your dish'
+                        placeholder='at least 1 ingredient for your dish'
                     />
                 </div>))}
                 <button onClick={ingredientCounterClick}>More Ingredient</button>
