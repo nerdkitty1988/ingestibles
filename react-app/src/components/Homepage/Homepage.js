@@ -18,7 +18,7 @@ const Homepage = () => {
 			recipesArr.forEach((recipe) => {
 				const tagsArr = recipe?.tags;
 				tagsArr.forEach((tag) => {
-					if (tag?.name == "CAKE") {
+					if (tag?.name === "CAKE") {
 						taggedRecipeIdArr.push(tag?.recipeId);
 					}
 				});
@@ -40,7 +40,7 @@ const Homepage = () => {
 			recipesArr.forEach((recipe) => {
 				const tagsArr = recipe?.tags;
 				tagsArr.forEach((tag) => {
-					if (tag?.name == "CANDY") {
+					if (tag?.name === "CANDY") {
 						taggedRecipeIdArr.push(tag?.recipeId);
 					}
 				});
@@ -62,7 +62,7 @@ const Homepage = () => {
 			recipesArr.forEach((recipe) => {
 				const tagsArr = recipe?.tags;
 				tagsArr.forEach((tag) => {
-					if (tag?.name == "PASTA") {
+					if (tag?.name === "PASTA") {
 						taggedRecipeIdArr.push(tag?.recipeId);
 					}
 				});
@@ -84,7 +84,7 @@ const Homepage = () => {
 			recipesArr.forEach((recipe) => {
 				const tagsArr = recipe?.tags;
 				tagsArr.forEach((tag) => {
-					if (tag?.name == "SALAD") {
+					if (tag?.name === "SALAD") {
 						taggedRecipeIdArr.push(tag?.recipeId);
 					}
 				});
