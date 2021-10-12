@@ -10,96 +10,30 @@ const Homepage = () => {
   const [pastaRecipes, setPastaRecipes] = useState([]);
   const [saladRecipes, setSaladRecipes] = useState([]);
 
-// recipe.tags.keys.dfkjhaskjdfhincludes()
-
   useEffect(() => {
 
     const cake = async () => {
-			const res = await fetch('/api/recipes');
+      const res = await fetch('/api/recipes/CAKE');
 			const resData = await res.json();
-      const recipesArr = resData.recipes;
-      const taggedRecipeIdArr = [];
-      const cakeRecipesArr = [];
-      recipesArr.forEach((recipe) => {
-        const tagsArr = recipe?.tags;
-        tagsArr.forEach((tag) => {
-          if (tag?.name == 'CAKE') {
-            taggedRecipeIdArr.push(tag?.recipeId)
-          }
-        })
-      })
-      recipesArr.forEach((recipe) => {
-        if (taggedRecipeIdArr.includes(recipe?.id)) {
-          cakeRecipesArr.push(recipe)
-        };
-      });
-      setCakeRecipes(cakeRecipesArr);
+      setCakeRecipes(resData?.tagged)
     }
 
     const candy = async () => {
-			const res = await fetch('/api/recipes');
+      const res = await fetch('/api/recipes/CANDY');
 			const resData = await res.json();
-      const recipesArr = resData.recipes;
-      const taggedRecipeIdArr = [];
-      const candyRecipesArr = [];
-      recipesArr.forEach((recipe) => {
-        const tagsArr = recipe?.tags;
-        tagsArr.forEach((tag) => {
-          if (tag?.name == 'CANDY') {
-            taggedRecipeIdArr.push(tag?.recipeId)
-          }
-        })
-      })
-      recipesArr.forEach((recipe) => {
-        if (taggedRecipeIdArr.includes(recipe?.id)) {
-          candyRecipesArr.push(recipe)
-        };
-      });
-      setCandyRecipes(candyRecipesArr);
+      setCandyRecipes(resData?.tagged)
     }
 
     const pasta = async () => {
-			const res = await fetch('/api/recipes');
+      const res = await fetch('/api/recipes/PASTA');
 			const resData = await res.json();
-      const recipesArr = resData.recipes;
-      const taggedRecipeIdArr = [];
-      const pastaRecipesArr = [];
-      recipesArr.forEach((recipe) => {
-        const tagsArr = recipe?.tags;
-        tagsArr.forEach((tag) => {
-          if (tag?.name == 'PASTA') {
-            taggedRecipeIdArr.push(tag?.recipeId)
-          }
-        })
-      })
-      recipesArr.forEach((recipe) => {
-        if (taggedRecipeIdArr.includes(recipe?.id)) {
-          pastaRecipesArr.push(recipe)
-        };
-      });
-      setPastaRecipes(pastaRecipesArr);
+      setPastaRecipes(resData?.tagged)
     }
 
     const salad = async () => {
-			const res = await fetch('/api/recipes');
+      const res = await fetch('/api/recipes/SALAD');
 			const resData = await res.json();
-      const recipesArr = resData.recipes;
-      const taggedRecipeIdArr = [];
-      const saladRecipesArr = [];
-      recipesArr.forEach((recipe) => {
-        const tagsArr = recipe?.tags;
-        tagsArr.forEach((tag) => {
-          if (tag?.name == 'SALAD') {
-            taggedRecipeIdArr.push(tag?.recipeId)
-          }
-        })
-      })
-      recipesArr.forEach((recipe) => {
-        if (taggedRecipeIdArr.includes(recipe?.id)) {
-          saladRecipesArr.push(recipe)
-        };
-      });
-      setSaladRecipes(saladRecipesArr);
+      setSaladRecipes(resData?.tagged)
     }
 
     cake();
@@ -107,8 +41,6 @@ const Homepage = () => {
     pasta();
     salad();
 	}, []);
-
-  console.log(cakeRecipes)
 
   return (
     <main>
