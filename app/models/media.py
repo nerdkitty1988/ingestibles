@@ -14,6 +14,6 @@ class Media(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'mediaUrl': self.imageUrl,
+            'mediaUrl': self.mediaUrl,
             'recipeId': self.recipeId
         }
