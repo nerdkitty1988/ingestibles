@@ -69,7 +69,10 @@ def create_recipe():
     formRecipe = createRecipeForm()
     formRecipe['csrf_token'].data = request.cookies['csrf_token']
     print('!!!!!!!!', formRecipe.data)
+    print('!!!!!!!!request.form', request.form)
+
     if formRecipe.validate_on_submit():
+        
         if "ingredientPhoto" not in request.files:
             return {"errors": ["ingredientPhoto required"]}, 400
 
@@ -89,32 +92,36 @@ def create_recipe():
             # it means that there was an error when we tried to upload
             # so we send back that error message
             return {'errors': [upload_ingredientPhoto['errors']]}, 400
-            # return {"errors": "something wrong with URL"}
 
         ingredientPhoto_url = upload_ingredientPhoto["url"]
 
         recipe = Recipe(
             authorId=formRecipe.data['authorId'],
-            title=formRecipe.data['title'],
+            title=formRecipe.data['recipeTitle'],
             description=formRecipe.data['introduction'],
             ingredientPhoto=ingredientPhoto_url
         )
         db.session.add(recipe)
         db.session.commit()
+        
+        # save tags; request.form is dictionary
+        for (key, value) in request.form.items():
+            if key[0:3] == 'tag':
+                db.session.add(Tag(name=value, recipeId=recipe.id))
 
-        # for (key, value) in formRecipe.data['tags'].items():
-        #     db.session.add(Tag(name=value, recipeId=recipe.id))
+        # save ingredients; request.form is dictionary
+        for (key, value) in request.form.items():
+            if key[0:10] == 'ingredient':
+                db.session.add(Ingredient(info=value, recipeId=recipe.id))
+
 
         # for (key, value) in formRecipe.data['media'].items():
         #     db.session.add(Media(mediaUrl=value, recipeId=recipe.id))
 
-        # for (key, value) in formRecipe.data['ingredients'].items():
-        #     db.session.add(Ingredient(info=value, recipeId=recipe.id))
-
         # for (key, value) in formRecipe.data['steps'].items():
         #     db.session.add(Instruction(imageUrl=value['photo'], stepTitle=value['title'], directions=value['direction'], recipeId=recipe.id))
 
-        # db.session.commit()
+        db.session.commit()
         return recipe.to_dict()
     return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
 

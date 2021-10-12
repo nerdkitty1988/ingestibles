@@ -7,19 +7,21 @@ from app.models import User
 def ingredientPhotoEmpty(form, field):
     # Checking if ingredientPhoto exists
     ingredientPhoto = field.data
-    if ingredientPhoto == 'undefined':
+    if ingredientPhoto == 'undefined' or ingredientPhoto == 'null':
         raise ValidationError('Ingredient Photo is required.')
 
 
 class createRecipeForm(FlaskForm):
     authorId = IntegerField(
         'authorId', validators=[DataRequired()])
-    title = StringField(
-        'title', validators=[DataRequired()])
+    recipeTitle = StringField(
+        'recipeTitle', validators=[DataRequired()])
     introduction = StringField('introduction', validators=[DataRequired()])
     ingredientPhoto = StringField('ingredientPhoto',
                                   validators=[DataRequired(), ingredientPhotoEmpty])
-    # tags = StringField('tags', validators=[DataRequired()])
+    # require at least first tag is input
+    tag1 = StringField('tag1', validators=[DataRequired()])
+    # require at least first ingredient is input
+    ingredient1 = StringField('ingredient1', validators=[DataRequired()])
     # media = StringField('media', validators=[DataRequired()])
-    # ingredients = StringField('ingredients', validators=[DataRequired()])
     # steps = StringField('steps', validators=[DataRequired()])

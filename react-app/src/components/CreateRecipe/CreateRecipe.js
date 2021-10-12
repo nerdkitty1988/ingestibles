@@ -43,7 +43,7 @@ const CreateRecipe = () => {
         setErrors([]);
         // tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
 
-        // filter out null/empty input
+        // filter out null/empty/only spaces input
         const tags_notNull = {}
         Object.keys(tags).forEach(key=>{
         if (tags[key] && tags[key].replace(/\s/g, '').length){
@@ -69,14 +69,27 @@ const CreateRecipe = () => {
                 steps_notNull[key] = steps[key]
             }
         })
-        // prepare input data ready for AWS
+
+        // prepare recipe input data ready for AWS
         const formData = new FormData();
         formData.append("authorId", sessionUser.id);
-        formData.append("title", title);
+        formData.append("recipeTitle", title);
         formData.append("ingredientPhoto", ingredientPhoto);
         formData.append("introduction", introduction);
-
-        console.log('formData!!!!', formData)
+        // prepare tags input data ready for AWS
+        Object.keys(tags_notNull).forEach(key => {
+            formData.append(key, tags_notNull[key]);       
+        })
+        // prepare ingredients input data ready for AWS
+        Object.keys(ingredients_notNull).forEach(key => {
+            formData.append(key, ingredients_notNull[key]);
+        })
+    
+        // formData.values() creates iterator and use for loop to print out values
+        for (let value of formData.values()) {
+            console.log(value);
+        }
+        
         const newRecipe = {
             recipe:{
                 authorId: sessionUser.id,
