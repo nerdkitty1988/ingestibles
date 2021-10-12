@@ -1,11 +1,11 @@
 // constants
-const CREATE_RECIPE = 'recipe/CREATE_RECIPE';
+// const CREATE_RECIPE = 'recipe/CREATE_RECIPE';
 
 //actions
-const createRecipeAction = (newRecipe) => ({
-    type: CREATE_RECIPE,
-    payload: newRecipe
-});
+// const createRecipeAction = (newRecipe) => ({
+//     type: CREATE_RECIPE,
+//     payload: newRecipe
+// });
 
 
 
@@ -29,12 +29,12 @@ export const createRecipeThunk = (newRecipe) => async (dispatch) => {
 
     if (responseRecipe.ok) {
         const data = await responseRecipe.json();
-        // dispatch(setUser(data))
-        return null;
+        // dispatch()
+        return data;
     } else if (responseRecipe.status < 500) {
         const data = await responseRecipe.json();
         if (data.errors) {
-            return data.errors;
+            return data;
         }
     } else {
         return ['An error occurred. Please try again.']
@@ -42,13 +42,14 @@ export const createRecipeThunk = (newRecipe) => async (dispatch) => {
 }
 
 
+// No need to store redux for newly create recipe
 
-const initialState = { newRecipe: null };
-export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case CREATE_RECIPE:
-            return { user: action.payload }
-        default:
-            return state;
-    }
-}
+// const initialState = { newRecipe: null };
+// export default function reducer(state = initialState, action) {
+//     switch (action.type) {
+//         case CREATE_RECIPE:
+//             return { user: action.payload }
+//         default:
+//             return state;
+//     }
+// }

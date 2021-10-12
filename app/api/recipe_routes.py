@@ -63,7 +63,7 @@ def user_recipes(id):
 def create_recipe():
     formRecipe = createRecipeForm()
     formRecipe['csrf_token'].data = request.cookies['csrf_token']
-    print('!!!!!!!!', formRecipe.data)
+    # print('!!!!!!!!', formRecipe.data)
     if formRecipe.validate_on_submit():
         recipe = Recipe(
             authorId=formRecipe.data['authorId'],

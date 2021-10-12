@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRecipeThunk } from '../../store/newRecipe';
 import './CreateRecipe.css';
 
 const CreateRecipe = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     
     const [title, setTitle] = useState("");
@@ -89,8 +90,10 @@ const CreateRecipe = () => {
         console.log(newRecipe)
 
         const data = await dispatch(createRecipeThunk(newRecipe));
-        if (data) {
-            setErrors(data);
+        if (data.errors) {
+            setErrors(data.errors);
+        } else{
+            history.push(`/recipes/${data.id}`)
         }
 
     }
