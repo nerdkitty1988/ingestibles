@@ -166,7 +166,7 @@ const CreateRecipe = () => {
                             placeholder='Add at least 1 Tag'
                             />
                         </div>))}
-                    <button onClick={tagCounterClick}>More Tag</button>
+                    <button onClick={tagCounterClick}>Add Tag</button>
             
                 </div>
             </div>
@@ -277,7 +277,7 @@ const CreateRecipe = () => {
                         placeholder='at least 1 ingredient for your dish'
                     />
                 </div>))}
-                <button onClick={ingredientCounterClick}>More Ingredient</button>
+                <button onClick={ingredientCounterClick}>Add Ingredient</button>
             </div>
             
             <div>
@@ -359,7 +359,7 @@ const CreateRecipe = () => {
                 />
                 
             </div>))}
-            <button onClick={stepCounterClick}>More Step</button>
+            <button onClick={stepCounterClick}>Add Step</button>
            </div>
             
 

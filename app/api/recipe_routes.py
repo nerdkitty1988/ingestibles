@@ -3,6 +3,10 @@ from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Med
 from flask_login import login_required
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import createRecipeForm
+# setup AWS
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -64,7 +68,7 @@ def user_recipes(id):
 def create_recipe():
     formRecipe = createRecipeForm()
     formRecipe['csrf_token'].data = request.cookies['csrf_token']
-    # print('!!!!!!!!', formRecipe.data)
+    print('!!!!!!!!', formRecipe.data)
     if formRecipe.validate_on_submit():
         recipe = Recipe(
             authorId=formRecipe.data['authorId'],
