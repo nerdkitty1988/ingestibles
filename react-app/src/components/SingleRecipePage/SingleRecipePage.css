@@ -1,0 +1,12 @@
+img {
+  width: 100px;
+  height: 100px;
+}
+
+#author-info {
+  border: 1px solid black
+}
+
+#main {
+  padding: 10px 60px ;
+}
