@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.sql import func
+from sqlalchemy import DateTime
 
 
 class User(db.Model, UserMixin):
@@ -12,6 +14,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     biography = db.Column(db.Text, nullable=True)
     profilePic = db.Column(db.String(255), nullable=True)
+    time_created = db.Column(DateTime(timezone=True), server_default=func.now())
+    time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete")
     likes = db.relationship('Like', back_populates='user', cascade="all, delete")
     recipes = db.relationship('Recipe', back_populates='author', cascade="all, delete")

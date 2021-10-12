@@ -1,4 +1,6 @@
 from .db import db
+from sqlalchemy.sql import func
+from sqlalchemy import DateTime
 
 
 class Recipe(db.Model):
@@ -10,6 +12,10 @@ class Recipe(db.Model):
     ingredientPhoto = db.Column(db.String, nullable=False)
     # many to one user
     authorId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    time_created = db.Column(DateTime(timezone=True), server_default=func.now())
+    time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
+
     author = db.relationship('User', back_populates='recipes')
     # one to many comments
     comments = db.relationship('Comment', back_populates='recipe',
