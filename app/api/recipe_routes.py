@@ -82,11 +82,10 @@ def create_recipe():
 
         for (key, value) in formRecipe.data['ingredients'].items():
             db.session.add(Ingredient(info=value, recipeId=recipe.id))
-        
+
         for (key, value) in formRecipe.data['steps'].items():
             db.session.add(Instruction(imageUrl=value['photo'], stepTitle=value['title'], directions=value['direction'], recipeId=recipe.id))
 
         db.session.commit()
         return recipe.to_dict()
     return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
-  
