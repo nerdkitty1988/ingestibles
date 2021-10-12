@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch} from "react-redux";
 import { useParams } from "react-router";
 import Instruction from "../Instruction"
+import SlideShow from "../SlideShow";
 import "./SingleRecipePage.css"
 
 const SingleRecipePage = () => {
@@ -22,14 +23,15 @@ const SingleRecipePage = () => {
     <div id="main">
     <div id="recipe-info">
       <h1>{currentRecipe.title}</h1>
-      <p>By {currentRecipe?.author?.username} > insert tag name here</p>
+      <p>By {currentRecipe?.author?.username} {">"} tag</p>
     </div>
     <div id="recipe-images">
       {recipeImages?.map(img => <img id="recipe-image" src={img} alt="instruction"/>
       )}
+      <SlideShow recipeImages={recipeImages} />
     </div>
     <div id="author-info">
-      <img src={currentRecipe?.author?.profilePic} alt="profile" />
+      <img className="profileCircle" src={currentRecipe?.author?.profilePic} alt="profile" />
       <p>{currentRecipe?.author?.biography}</p>
     </div>
     <div id="recipe-description">

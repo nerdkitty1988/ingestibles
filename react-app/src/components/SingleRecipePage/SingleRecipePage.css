@@ -3,11 +3,35 @@ img {
   height: 100px;
 }
 
+#main {
+  padding: 10px 60px ;
+  font-family: myriad-pro,helvetica,arial,sans-serif;
+}
+
+#recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#recipe-info > h1, p{
+  padding: 0px 10px 10px;
+}
+
+#recipe-images {
+  display: flex;
+}
+
 #author-info {
   border: 1px solid black
 }
 
-#main {
-  padding: 10px 60px ;
-  font-family: myriad-pro,helvetica,arial,sans-serif;
+.profileCircle {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-right: 10px;
 }

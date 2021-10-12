@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
+import Homepage from './components/Homepage/Homepage';
 import MyPlate from './components/MyPlate/MyPlate';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
+import CreateRecipe from './components/CreateRecipe/CreateRecipe';
 import { authenticate } from './store/session';
 import SingleRecipePage from './components/SingleRecipePage';
 
@@ -29,6 +31,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          <Homepage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -40,6 +45,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes/new_recipe' exact={true} >
+          <CreateRecipe />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
