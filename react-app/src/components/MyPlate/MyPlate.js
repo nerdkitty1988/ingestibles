@@ -9,6 +9,7 @@ function MyPlate() {
 
 	const sessionUser = useSelector((state) => state.session.user);
 	const userId = sessionUser.id;
+    const readDate = new Date(sessionUser.time_created).toDateString();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -51,12 +52,12 @@ function MyPlate() {
                 <div className="plateTopCard">
                     <img alt={sessionUser.username} src={sessionUser.profilePic} className="profileCircle"/>
                     <div className="profCard">
-                        <h2>{sessionUser.username}</h2>
+                        <h2 id="username">{sessionUser.username}</h2>
                         <div className="buttonDiv">
                             <NavLink to={`/${sessionUser.id}/profile`} className="profButton">View Profile</NavLink>
                             <NavLink to={`/${sessionUser.id}/profile/edit`} className="profButton">Edit Profile</NavLink>
                         </div>
-                        <h5>Joined {sessionUser.createdAt}</h5>
+                        <p className="joinDate"><i className="fas fa-carrot"></i>Joined {readDate}</p>
                     </div>
                 </div>
             </div>
