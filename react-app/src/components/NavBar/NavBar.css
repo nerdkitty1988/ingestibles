@@ -552,6 +552,8 @@ a.category-nav-link {
     font-size: 1.9rem;
     color: #A0C3FF;
     max-width:100%;
+    background-color: #4374E0;
+    border-radius: 50%;
 }
 
 .fa-user-circle:hover {
@@ -747,4 +749,3 @@ a:hover {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-

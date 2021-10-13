@@ -3,42 +3,99 @@ import { NavLink } from "react-router-dom";
 import "./Homepage.css";
 
 const Homepage = () => {
-	const [cakeRecipes, setCakeRecipes] = useState([]);
-	const [candyRecipes, setCandyRecipes] = useState([]);
-	const [pastaRecipes, setPastaRecipes] = useState([]);
-	const [saladRecipes, setSaladRecipes] = useState([]);
+
+	const [randomRecipes, setRandomRecipes] = useState([]);
+	const [tags1, setTags1] = useState([]);
+	const [tags2, setTags2] = useState([]);
+	const [tags3, setTags3] = useState([]);
+	const [tags4, setTags4] = useState([]);
+	const [tags5, setTags5] = useState([]);
+
+	const [tagName1, setTagName1] = useState([]);
+	const [tagName2, setTagName2] = useState([]);
+	const [tagName3, setTagName3] = useState([]);
+	const [tagName4, setTagName4] = useState([]);
+	const [tagName5, setTagName5] = useState([]);
 
 	useEffect(() => {
-		const cake = async () => {
-			const res = await fetch("/api/recipes/CAKE");
+		const random = async () => {
+			const res = await fetch("/api/tags");
 			const resData = await res.json();
-			setCakeRecipes(resData.tagged);
+			setRandomRecipes(resData?.tags);
 		};
-
-		const candy = async () => {
-			const res = await fetch("/api/recipes/CANDY");
-			const resData = await res.json();
-			setCandyRecipes(resData.tagged);
-		};
-
-		const pasta = async () => {
-			const res = await fetch("/api/recipes/PASTA");
-			const resData = await res.json();
-			setPastaRecipes(resData.tagged);
-		};
-
-		const salad = async () => {
-			const res = await fetch("/api/recipes/SALAD");
-			const resData = await res.json();
-			setSaladRecipes(resData.tagged);
-		};
-
-		cake();
-		candy();
-		pasta();
-		salad();
+		random();
 	}, []);
 
+
+	const randomArr1 = []
+	randomRecipes.forEach(recipe => {
+		randomArr1.push(recipe?.name)
+	})
+
+	const randomSet = new Set(randomArr1);
+	const randomArr2 = Array.from(randomSet);
+
+	function shuffle(arr) {
+		let currIdx = arr.length
+		let randIdx;
+		while (currIdx != 0) {
+			randIdx = Math.floor(Math.random() * currIdx);
+			currIdx--;
+			[arr[currIdx], arr[randIdx]] = [
+				arr[randIdx], arr[currIdx]];
+		}
+
+		return arr
+	}
+
+	shuffle(randomArr2)
+
+	const random5 = randomArr2.slice(0, 5);
+
+	useEffect(() => {
+		const one = async () => {
+			const res = await fetch(`/api/recipes/${random5[0]}`);
+			const resData = await res.json();
+			setTags1(resData?.tagged);
+			setTagName1(random5[0]?.toLowerCase())
+		};
+
+		const two = async () => {
+			const res = await fetch(`/api/recipes/${random5[1]}`);
+			const resData = await res.json();
+			setTags2(resData?.tagged);
+			setTagName2(random5[1]?.toLowerCase())
+		};
+
+		const three = async () => {
+			const res = await fetch(`/api/recipes/${random5[2]}`);
+			const resData = await res.json();
+			setTags3(resData?.tagged);
+			setTagName3(random5[2]?.toLowerCase())
+		};
+
+		const four = async () => {
+			const res = await fetch(`/api/recipes/${random5[3]}`);
+			const resData = await res.json();
+			setTags4(resData?.tagged);
+			setTagName4(random5[3]?.toLowerCase())
+		};
+
+		const five = async () => {
+			const res = await fetch(`/api/recipes/${random5[4]}`);
+			const resData = await res.json();
+			setTags5(resData?.tagged);
+			setTagName5(random5[4]?.toLowerCase())
+		};
+
+		one();
+		two();
+		three();
+		four();
+		five();
+	}, [randomRecipes]);
+
+	console.log(typeof(tagName1))
 
 	return (
 		<main>
@@ -267,40 +324,40 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
-						<div className="home-content-explore-category home-content-explore-category-cake clearfix">
+						<div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
 							<a
-								href="/recipes/cake"
+								href={`/recipes/${tagName1}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">Cake</span>
+									<span className="anchor-text">{`${tagName1}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
 							</a>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{cakeRecipes?.map((cakeRecipe) => (
+									{tags1?.map((tag1) => (
 										<div className="home-content-explore-ible">
 											<a
-												href={`/recipes/${cakeRecipe?.id}`}
+												href={`/recipes/${tag1?.id}`}
 											>
 												{/* ////////////after seeding media, copy data-src and paste into src below for each category!!!!//////////// */}
 												<img
 													className=" ls-is-cached lazyloaded"
 													data-src={
-														cakeRecipe?.medias[0]
+														tag1?.medias[0]
 													}
 													src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-													alt={cakeRecipe?.title}
+													alt={tag1?.title}
 												/>
 												<noscript>
 													<img
 														src={
-															cakeRecipe
+															tag1
 																?.medias[0]
 														}
-														alt={cakeRecipe?.title}
+														alt={tag1?.title}
 													/>
 												</noscript>
 											</a>
@@ -308,18 +365,18 @@ const Homepage = () => {
 												<strong>
 													<a
 														className="ible-title"
-														href={`/recipes/${cakeRecipe?.id}`}
+														href={`/recipes/${tag1?.id}`}
 													>
-														{cakeRecipe?.title}
+														{tag1?.title}
 													</a>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/users/${cakeRecipe?.author?.id}`}
+														href={`/users/${tag1?.author?.id}`}
 													>
 														{
-															cakeRecipe?.author
+															tag1?.author
 																?.username
 														}
 													</a>
@@ -327,9 +384,9 @@ const Homepage = () => {
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
 													<a
-														href={`/recipes/${cakeRecipe?.tags[0]?.name?.toLowerCase()}`}
+														href={`/recipes/${tag1?.tags[0]?.name?.toLowerCase()}`}
 													>
-														{cakeRecipe?.tags[0]?.name?.toLowerCase()}
+														{tag1?.tags[0]?.name?.toLowerCase()}
 													</a>
 												</span>
 											</div>
@@ -366,34 +423,34 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className="home-content-explore-category home-content-explore-category-candy clearfix">
+						<div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
 							<a
-								href="/recipes/candy"
+								href={`/recipes/${tagName2}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">Candy</span>
+									<span className="anchor-text">{`${tagName2}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
 							</a>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{candyRecipes?.map((candyRecipe) => (
+									{tags2?.map((tag2) => (
 										<div className="home-content-explore-ible">
 											<a
-												href={`/recipes/${candyRecipe?.id}`}
+												href={`/recipes/${tag2?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${candyRecipe?.medias[0]}`}
+													data-src={`/recipes/${tag2?.medias[0]}`}
 													src="https://images.unsplash.com/photo-1527275393322-8ddae8bd5de9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
-													alt={candyRecipe?.title}
+													alt={tag2?.title}
 												/>
 												<noscript>
 													<img
-														src={`/recipes/${candyRecipe?.medias[0]}`}
-														alt={candyRecipe?.title}
+														src={`/recipes/${tag2?.medias[0]}`}
+														alt={tag2?.title}
 													/>
 												</noscript>
 											</a>
@@ -401,18 +458,18 @@ const Homepage = () => {
 												<strong>
 													<a
 														className="ible-title"
-														href={`/recipes/${candyRecipe?.id}`}
+														href={`/recipes/${tag2?.id}`}
 													>
-														{candyRecipe?.title}
+														{tag2?.title}
 													</a>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/users/${candyRecipe?.author?.id}`}
+														href={`/users/${tag2?.author?.id}`}
 													>
 														{
-															candyRecipe?.author
+															tag2?.author
 																?.username
 														}
 													</a>
@@ -420,9 +477,9 @@ const Homepage = () => {
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
 													<a
-														href={`/recipes/${candyRecipe?.tags[0]?.name?.toLowerCase()}`}
+														href={`/recipes/${tag2?.tags[0]?.name?.toLowerCase()}`}
 													>
-														{candyRecipe?.tags[0]?.name?.toLowerCase()}
+														{tag2?.tags[0]?.name?.toLowerCase()}
 													</a>
 												</span>
 											</div>
@@ -459,34 +516,34 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className="home-content-explore-category home-content-explore-category-pasta clearfix">
+						<div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
 							<a
-								href="/recipes/pasta"
+								href={`/recipes/${tagName3}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">Pasta</span>
+									<span className="anchor-text">{`${tagName3}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
 							</a>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{pastaRecipes?.map((pastaRecipe) => (
+									{tags3?.map((tag3) => (
 										<div className="home-content-explore-ible">
 											<a
-												href={`/recipes/${pastaRecipe?.id}`}
+												href={`/recipes/${tag3?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${pastaRecipe?.medias[0]}`}
+													data-src={`/recipes/${tag3?.medias[0]}`}
 													src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
-													alt={pastaRecipe?.title}
+													alt={tag3?.title}
 												/>
 												<noscript>
 													<img
-														src={`/recipes/${pastaRecipe?.medias[0]}`}
-														alt={pastaRecipe?.title}
+														src={`/recipes/${tag3?.medias[0]}`}
+														alt={tag3?.title}
 													/>
 												</noscript>
 											</a>
@@ -494,18 +551,18 @@ const Homepage = () => {
 												<strong>
 													<a
 														className="ible-title"
-														href={`/recipes/${pastaRecipe?.id}`}
+														href={`/recipes/${tag3?.id}`}
 													>
-														{pastaRecipe?.title}
+														{tag3?.title}
 													</a>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/users/${pastaRecipe?.author?.id}`}
+														href={`/users/${tag3?.author?.id}`}
 													>
 														{
-															pastaRecipe?.author
+															tag3?.author
 																?.username
 														}
 													</a>
@@ -513,9 +570,9 @@ const Homepage = () => {
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
 													<a
-														href={`/recipes/${pastaRecipe?.tags[0]?.name?.toLowerCase()}`}
+														href={`/recipes/${tag3?.tags[0]?.name?.toLowerCase()}`}
 													>
-														{pastaRecipe?.tags[0]?.name?.toLowerCase()}
+														{tag3?.tags[0]?.name?.toLowerCase()}
 													</a>
 												</span>
 											</div>
@@ -552,34 +609,34 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className="home-content-explore-category home-content-explore-category-salad clearfix">
+						<div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
 							<a
-								href="/recipes/salad"
+								href={`/recipes/${tagName4}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">Salad</span>
+									<span className="anchor-text">{`${tagName4}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
 							</a>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{saladRecipes?.map((saladRecipe) => (
+									{tags4?.map((tag4) => (
 										<div className="home-content-explore-ible">
 											<a
-												href={`/recipes/${saladRecipe?.id}`}
+												href={`/recipes/${tag4?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${saladRecipe?.medias[0]}`}
+													data-src={`/recipes/${tag4?.medias[0]}`}
 													src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
-													alt={saladRecipe?.title}
+													alt={tag4?.title}
 												/>
 												<noscript>
 													<img
-														src={`/recipes/${saladRecipe?.medias[0]}`}
-														alt={saladRecipe?.title}
+														src={`/recipes/${tag4?.medias[0]}`}
+														alt={tag4?.title}
 													/>
 												</noscript>
 											</a>
@@ -587,18 +644,18 @@ const Homepage = () => {
 												<strong>
 													<a
 														className="ible-title"
-														href={`/recipes/${saladRecipe?.id}`}
+														href={`/recipes/${tag4?.id}`}
 													>
-														{saladRecipe?.title}
+														{tag4?.title}
 													</a>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/users/${saladRecipe?.author?.id}`}
+														href={`/users/${tag4?.author?.id}`}
 													>
 														{
-															saladRecipe?.author
+															tag4?.author
 																?.username
 														}
 													</a>
@@ -606,9 +663,9 @@ const Homepage = () => {
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
 													<a
-														href={`/recipes/${saladRecipe?.tags[0]?.name?.toLowerCase()}`}
+														href={`/recipes/${tag4?.tags[0]?.name?.toLowerCase()}`}
 													>
-														{saladRecipe?.tags[0]?.name?.toLowerCase()}
+														{tag4?.tags[0]?.name?.toLowerCase()}
 													</a>
 												</span>
 											</div>
@@ -644,6 +701,100 @@ const Homepage = () => {
 								</div>
 							</div>
 						</div>
+
+						<div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
+							<a
+								href={`/recipes/${tagName5}`}
+								className="home-content-explore-link"
+							>
+								<h3>
+									<span className="anchor-text">{`${tagName5}`}</span>
+									&nbsp;
+									<i className="fas fa-angle-right fa-2x"></i>
+								</h3>
+							</a>
+							<div className="home-content-explore-category-wrap ">
+								<div className="home-content-explore-ibles">
+									{tags5?.map((tag5) => (
+										<div className="home-content-explore-ible">
+											<a
+												href={`/recipes/${tag5?.id}`}
+											>
+												<img
+													className=" ls-is-cached lazyloaded"
+													data-src={`/recipes/${tag5?.medias[0]}`}
+													src="https://images.unsplash.com/photo-1561043433-9265f73e685f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80"
+													alt={tag5?.title}
+												/>
+												<noscript>
+													<img
+														src={`/recipes/${tag5?.medias[0]}`}
+														alt={tag5?.title}
+													/>
+												</noscript>
+											</a>
+											<div className="home-content-explore-ible-info">
+												<strong>
+													<a
+														className="ible-title"
+														href={`/recipes/${tag5?.id}`}
+													>
+														{tag5?.title}
+													</a>
+												</strong>
+												<span className="ible-author">
+													&nbsp;by&nbsp;
+													<a
+														href={`/users/${tag5?.author?.id}`}
+													>
+														{
+															tag5?.author
+																?.username
+														}
+													</a>
+												</span>
+												<span className="ible-channel">
+													&nbsp;in&nbsp;
+													<a
+														href={`/recipes/${tag5?.tags[0]?.name?.toLowerCase()}`}
+													>
+														{tag5?.tags[0]?.name?.toLowerCase()}
+													</a>
+												</span>
+											</div>
+											<div className="ible-stats">
+												<span className="ible-stats-left-col ible-featured">
+													<span>
+														<i
+															title="Featured Project"
+															className="icon icon-featured"
+														></i>
+														<span className="thumb-divider"></span>
+													</span>
+												</span>
+												<span className="ible-stats-right-col">
+													<span className="ible-favorites">
+														<i
+															title="Favorites Count"
+															className="icon icon-favorite"
+														></i>
+														&nbsp;1&nbsp;
+													</span>
+													<span className="ible-views">
+														<i
+															title="Views Count"
+															className="icon icon-views1"
+														></i>
+														&nbsp;253&nbsp;
+													</span>
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>

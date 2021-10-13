@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import Tag, db
+from app.models import Tag, Recipe, db
 from  sqlalchemy.sql.expression import func, select
 
 
@@ -8,7 +8,7 @@ tag_routes = Blueprint('tags', __name__)
 
 @tag_routes.route('/')
 def tags():
-    tags = Tag.query.all()
+    tags = Tag.query.join(Recipe).all()
     return {'tags': [tag.to_dict() for tag in tags]}
 
 @tag_routes.route('/random')
