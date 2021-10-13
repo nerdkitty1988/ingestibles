@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Homepage from "./components/Homepage/Homepage";
 import MyPlate from "./components/MyPlate/MyPlate";
 import Profile from "./components/Profile/profile";
+import EditRecipe from "./components/EditRecipe/EditRecipe"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
@@ -29,30 +30,35 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<NavBar />
-			<Switch>
-				<Route path="/" exact={true}>
-					<Homepage />
-				</Route>
-				<Route path="/login" exact={true}>
-					<LoginForm />
-				</Route>
-				<Route path="/sign-up" exact={true}>
-					<SignUpForm />
-				</Route>
-				<ProtectedRoute path="/recipes/my_plate" exact={true}>
-					<MyPlate />
-				</ProtectedRoute>
-				<ProtectedRoute path="/users/:userId" exact={true}>
-					<Profile />
-				</ProtectedRoute>
-				<ProtectedRoute path="/recipes/new_recipe" exact={true}>
-					<CreateRecipe />
-				</ProtectedRoute>
-				<ProtectedRoute path="/" exact={true}>
-					<h1>My Home Page</h1>
-				</ProtectedRoute>
-			</Switch>
+			<NavBar loaded={loaded} />
+			{loaded && (
+				<Switch>
+					<Route path="/" exact={true}>
+						<Homepage />
+					</Route>
+					<Route path="/login" exact={true}>
+						<LoginForm />
+					</Route>
+					<Route path="/sign-up" exact={true}>
+						<SignUpForm />
+					</Route>
+					<ProtectedRoute path="/recipes/my_plate" exact={true}>
+						<MyPlate />
+					</ProtectedRoute>
+					<Route path="/users/:userId" exact={true}>
+						<Profile />
+					</Route>
+					<ProtectedRoute path="/recipes/new_recipe" exact={true}>
+						<CreateRecipe />
+					</ProtectedRoute>
+					<ProtectedRoute path="/recipes/edit/:recipeId" exact={true}>
+						<EditRecipe />
+					</ProtectedRoute>
+					<ProtectedRoute path="/" exact={true}>
+						<h1>My Home Page</h1>
+					</ProtectedRoute>
+				</Switch>
+			)}
 		</BrowserRouter>
 	);
 }
