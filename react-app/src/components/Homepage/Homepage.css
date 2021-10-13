@@ -372,6 +372,11 @@ a:hover {
   background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0));
 }
 
+.home-content-rotator-slide-overlay:hover {
+  cursor: default;
+}
+
+
 .home-content-rotator-slide-wrap {
   height: 100%;
   max-width: 1634px;
@@ -425,6 +430,7 @@ a:hover {
   width: 95vw;
   height: 80px;
 }
+
 
 .home-content-adspot-wrap {
   width: 100%;
