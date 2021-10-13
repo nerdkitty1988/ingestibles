@@ -20,24 +20,23 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-
 @user_routes.route('/<int:id>', methods=["PATCH"])
 @login_required
 def updateUser(id):
     form = UpdateUserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
     if form.validate_on_submit():
-        print("!!!", form.data)
         user = User.query.get(id)
-        print(user.to_dict())
 
         user.username = form.data['username']
         user.email = form.data['email']
         user.biography = form.data['biography']
         user.profilePic = form.data['profilePic']
+        if form.data['password']:
+            user.password = form.data['password']
 
         db.session.commit()
+        
 
         return user.to_dict()
 
