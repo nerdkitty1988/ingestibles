@@ -50,7 +50,7 @@ def create_recipe():
             stepPrefix = key[0:6]
             # exclude not exit, '', all spaces
             if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
-                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required"]}, 400
+                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
         

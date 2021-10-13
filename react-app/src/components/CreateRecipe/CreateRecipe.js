@@ -144,6 +144,9 @@ const CreateRecipe = () => {
     // count how many steps the user would like to have
     const stepCounterClick = async (e) => {
         e.preventDefault();
+        // to save the place at dictionary to keep orders of steps, in case user add a bunch of steps and then start to fill at a random step, instead of by order, because dictionary/pojo will be ordered by the order.
+        steps[`step${stepCounter+1}`] = {}
+
         setStepCounter(stepCounter + 1)
         // console.log(steps)
     }
@@ -152,19 +155,25 @@ const CreateRecipe = () => {
     return ( 
         <form onSubmit={handleSubmit} >
             <div className='newRecipeButtonWrapper'>
+
                 <NavLink to='/profile' exact={true} 
                 className='btn-category-header' 
-                    style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB'}}>Cancel</NavLink>
+                    style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB', maxHeight:'20px'}}>Cancel</NavLink>
+
+                <div style={{ color:'#F27D21'}}>
+                    {errors.map((error, ind) => (
+                    <li style={{ marginLeft:'15%', textAlign:'start'}}
+                            key={ind}>{error}</li>
+                    ))}
+                </div>
 
                 <button className='btn-category-header'
-                style={{ display: 'block', marginTop: '1%', backgroundColor: '#FAD7BB' }}
+                style={{ display: 'block', marginTop: '1%', backgroundColor: '#FAD7BB', maxHeight:'35px' }}
                 >Create Recipe</button>
+                
+
             </div>
-            <div style={{ color:'#F27D21'}}>
-                {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))}
-            </div>
+            
             <div className='createRecipeWrapper'>
                 <h4 style={{textAlign:'center'}}>Recipe Basics</h4>
                 <div className='createRecipeEl'>                   
@@ -228,7 +237,7 @@ const CreateRecipe = () => {
                         className='listingInput'
                         type="file"
                         // value={media1}
-                        accept="image/*"
+                        accept="image/*,video/mp4,video/mov,video/wmv"
                         onChange={(e) => setMedia1(e.target.files[0])}
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
@@ -238,7 +247,7 @@ const CreateRecipe = () => {
                 <input
                     className='listingInput'
                     type="file"
-                    accept="image/*"
+                    accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia2(e.target.files[0])}
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 />
@@ -248,7 +257,7 @@ const CreateRecipe = () => {
                 <input
                     className='listingInput'
                     type="file"
-                    accept="image/*"
+                    accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia3(e.target.files[0])}
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 // required  
@@ -260,7 +269,7 @@ const CreateRecipe = () => {
                 <input
                     className='listingInput'
                     type="file"
-                    accept="image/*"
+                   accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia4(e.target.files[0])}
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 
@@ -271,7 +280,7 @@ const CreateRecipe = () => {
                 <input
                     className='listingInput'
                     type="file"
-                    accept="image/*"
+                    accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia5(e.target.files[0])}
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
             
@@ -325,7 +334,7 @@ const CreateRecipe = () => {
             <h4 style={{ textAlign: 'center' }}>Your Recipe Steps</h4>
             <div className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #1</h5>
-                <div class='createRecipeStep'>
+                <div className='createRecipeStep'>
                 <label>Title </label >
                 <input
                     className='listingInput'
@@ -341,7 +350,7 @@ const CreateRecipe = () => {
                 />
                </div>
 
-                <div class='createRecipeStep'>
+                <div className='createRecipeStep'>
                 <label>Instruction </label>
                 <textarea
                     className='listingInput'
@@ -355,7 +364,7 @@ const CreateRecipe = () => {
                         
                 />
                 </div>
-                <div class='createRecipeStep'>
+                <div className='createRecipeStep'>
                 <label>Photo </label>
                 <input
                     className = 'listingInput'
@@ -373,7 +382,7 @@ const CreateRecipe = () => {
 
             {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #{i + 2} </h5>
-                < div class='createRecipeStep' >
+                < div className='createRecipeStep' >
                 <label>Title </label>
                 <input
                     className='listingInput'
@@ -388,7 +397,7 @@ const CreateRecipe = () => {
 
                 />
                 </div>
-                <div class='createRecipeStep'>
+                <div className='createRecipeStep'>
                 <label>Instruction </label>
                 <textarea
                     className='listingInput'
@@ -402,8 +411,8 @@ const CreateRecipe = () => {
 
                 />
                 </div>
-                <div class='createRecipeStep'>
-                < label for= "file" > Photo </label>
+                <div className='createRecipeStep'>
+                < label > Photo </label>
                 <input   
                     className = 'listingInput'
                     type = "file"
