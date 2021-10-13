@@ -5,6 +5,7 @@ import { updateUser } from "../../store/session";
 
 function Profile() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const sessionUser = useSelector((state) => state.session.user);
 	const userId = sessionUser.id;
 
@@ -31,50 +32,54 @@ function Profile() {
 		fetchData();
 	}, []);
 
-	const handleSave = (updateData) => {
-		const data = dispatch(updateUser(updateData));
-		if (data.errors) {
-			setErrors(data.errors);
-		} else {
-			setUsernameShow(true);
-			setEmailShow(true);
-			setPasswordShow(true);
-			setBiographyShow(true);
-			setProfilePicShow(true);
+	const handleSave = async (e) => {
+        e.preventDefault();
+		if (password === repeatPassword) {
+			const updatedUser = {
+				id: sessionUser.id,
+				username: username,
+				email: email,
+				biography: biography,
+				profilePic: profilePic,
+			};
+			console.log(updatedUser);
+			const data = await dispatch(updateUser(updatedUser));
+			if (data.errors) {
+				return data.errors;
+			} else {
+				history.push(`/users/${data.id}`);
+			}
 		}
 	};
 
-	const updateUsername = (e) => {
-		setUsername(e.target.value);
-		handleSave({ id: userId, username: username });
-	};
 
 	const updateEmail = (e) => {
+        e.preventDefault();
 		setEmail(e.target.value);
-		handleSave({ id: userId, email: email });
+		handleSave();
 	};
 
 	const updatePassword = (e) => {
+        e.preventDefault();
 		setPassword(e.target.value);
-		handleSave({ id: userId, password: password });
-	};
-
-	const updateRepeatPassword = (e) => {
 		setRepeatPassword(e.target.value);
+		handleSave();
 	};
 
 	const updateBiography = (e) => {
+        e.preventDefault();
 		setBiography(e.target.value);
-		handleSave({ id: userId, biography: biography });
+		handleSave();
 	};
 
 	const updateProfilePic = (e) => {
+        e.preventDefault();
 		setProfilePic(e.target.value);
-		handleSave({ id: userId, profilePic: profilePic });
+		handleSave();
 	};
 
 	return (
-		<form onSubmit={handleSave}>
+		<form>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
@@ -93,13 +98,21 @@ function Profile() {
 				className="editProfInput"
 				type="text"
 				defaultValue={username}
+                onChange={(e) => setUsername(e.target.value)}
 			/>
 			<button
 				type="button"
-				onClick={(e) => updateUsername(e)}
+				onClick={(e) => handleSave(e)}
 				hidden={usernameShow}
 			>
 				Save
+			</button>
+			<button
+				type="button"
+				onClick={(e) => setUsernameShow(false)}
+				hidden={usernameShow}
+			>
+				Cancel
 			</button>
 			<p hidden={!emailShow}>{email}</p>
 			<button
@@ -114,7 +127,22 @@ function Profile() {
 				className="editProfInput"
 				type="email"
 				defaultValue={email}
+                onChange={(e) => setEmail(e.target.value)}
 			/>
+			<button
+				type="button"
+				onClick={(e) => handleSave(e)}
+				hidden={emailShow}
+			>
+				Save
+			</button>
+			<button
+				type="button"
+				onClick={(e) => setEmailShow(false)}
+				hidden={emailShow}
+			>
+				Cancel
+			</button>
 			<p hidden={!biographyShow}>{biography}</p>
 			<button
 				type="button"
@@ -128,7 +156,22 @@ function Profile() {
 				className="editProfInput"
 				type="text"
 				defaultValue={biography}
+                onChange={(e) => setBiography(e.target.value)}
 			/>
+			<button
+				type="button"
+				onClick={(e) => handleSave(e)}
+				hidden={biographyShow}
+			>
+				Save
+			</button>
+			<button
+				type="button"
+				onClick={(e) => setBiographyShow(false)}
+				hidden={biographyShow}
+			>
+				Cancel
+			</button>
 			<button
 				type="button"
 				onClick={(e) => setPasswordShow(false)}
@@ -141,13 +184,29 @@ function Profile() {
 				className="editProfInput"
 				type="password"
 				defaultValue={password}
+                onChange={(e) => setPassword(e.target.value)}
 			/>
 			<input
 				hidden={passwordShow}
 				className="editProfInput"
 				type="password"
 				defaultValue={repeatPassword}
+                onChange={(e) => setRepeatPassword(e.target.value)}
 			/>
+			<button
+				type="button"
+				onClick={(e) => updatePassword(e)}
+				hidden={passwordShow}
+			>
+				Save
+			</button>
+			<button
+				type="button"
+				onClick={(e) => handleSave(e)}
+				hidden={passwordShow}
+			>
+				Cancel
+			</button>
 		</form>
 	);
 }

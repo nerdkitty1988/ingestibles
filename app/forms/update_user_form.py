@@ -7,7 +7,8 @@ from app.models import User
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
-    user = User.query.filter(User.email == email).first()
+    username = form.data["username"]
+    user = User.query.filter(User.email == email and User.username != username).first()
     if user:
         raise ValidationError('Email address is already in use.')
 
@@ -22,8 +23,7 @@ def username_exists(form, field):
 
 class UpdateUserForm(FlaskForm):
     username = StringField(
-        'username', validators=[username_exists])
-    email = StringField('email', validators=[user_exists])
-    password = StringField('password')
+        'username')
+    email = StringField('email')
     biography = TextAreaField('biography')
     profilePic = StringField('profilePic')
