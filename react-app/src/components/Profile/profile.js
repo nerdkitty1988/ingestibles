@@ -7,7 +7,6 @@ function Profile() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const sessionUser = useSelector((state) => state.session.user);
-	const userId = sessionUser.id;
 
 	const [user, setUser] = useState(sessionUser);
 	const [username, setUsername] = useState(user?.username);
@@ -33,50 +32,36 @@ function Profile() {
 	}, []);
 
 	const handleSave = async (e) => {
-        e.preventDefault();
-		if (password === repeatPassword) {
-			const updatedUser = {
+		e.preventDefault();
+        let updatedUser;
+		if (password === repeatPassword && password) {
+			updatedUser = {
 				id: sessionUser.id,
 				username: username,
 				email: email,
 				biography: biography,
 				profilePic: profilePic,
+				password: password,
 			};
-			console.log(updatedUser);
-			const data = await dispatch(updateUser(updatedUser));
-			if (data.errors) {
-				return data.errors;
-			} else {
-				history.push(`/users/${data.id}`);
-			}
+		}else{
+            updatedUser = {
+                id: sessionUser.id,
+                username: username,
+                email: email,
+                biography: biography,
+                profilePic: profilePic,
+            };
+        }
+
+		const data = await dispatch(updateUser(updatedUser));
+		if (data.errors) {
+			return data.errors;
+		} else {
+			history.push(`/users/${data.id}`);
 		}
 	};
 
-
-	const updateEmail = (e) => {
-        e.preventDefault();
-		setEmail(e.target.value);
-		handleSave();
-	};
-
-	const updatePassword = (e) => {
-        e.preventDefault();
-		setPassword(e.target.value);
-		setRepeatPassword(e.target.value);
-		handleSave();
-	};
-
-	const updateBiography = (e) => {
-        e.preventDefault();
-		setBiography(e.target.value);
-		handleSave();
-	};
-
-	const updateProfilePic = (e) => {
-        e.preventDefault();
-		setProfilePic(e.target.value);
-		handleSave();
-	};
+	if (!sessionUser) return null;
 
 	return (
 		<form>
@@ -98,7 +83,7 @@ function Profile() {
 				className="editProfInput"
 				type="text"
 				defaultValue={username}
-                onChange={(e) => setUsername(e.target.value)}
+				onChange={(e) => setUsername(e.target.value)}
 			/>
 			<button
 				type="button"
@@ -127,7 +112,7 @@ function Profile() {
 				className="editProfInput"
 				type="email"
 				defaultValue={email}
-                onChange={(e) => setEmail(e.target.value)}
+				onChange={(e) => setEmail(e.target.value)}
 			/>
 			<button
 				type="button"
@@ -156,7 +141,7 @@ function Profile() {
 				className="editProfInput"
 				type="text"
 				defaultValue={biography}
-                onChange={(e) => setBiography(e.target.value)}
+				onChange={(e) => setBiography(e.target.value)}
 			/>
 			<button
 				type="button"
@@ -184,25 +169,25 @@ function Profile() {
 				className="editProfInput"
 				type="password"
 				defaultValue={password}
-                onChange={(e) => setPassword(e.target.value)}
+				onChange={(e) => setPassword(e.target.value)}
 			/>
 			<input
 				hidden={passwordShow}
 				className="editProfInput"
 				type="password"
 				defaultValue={repeatPassword}
-                onChange={(e) => setRepeatPassword(e.target.value)}
+				onChange={(e) => setRepeatPassword(e.target.value)}
 			/>
 			<button
 				type="button"
-				onClick={(e) => updatePassword(e)}
+				onClick={(e) => handleSave(e)}
 				hidden={passwordShow}
 			>
 				Save
 			</button>
 			<button
 				type="button"
-				onClick={(e) => handleSave(e)}
+				onClick={() => setPasswordShow(false)}
 				hidden={passwordShow}
 			>
 				Cancel
