@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createRecipeThunk } from '../../store/newRecipe';
+import { editRecipeThunk } from '../../store/editRecipe';
 import './EditRecipe.css';
 
 const EditRecipe = () => {
@@ -51,6 +51,10 @@ const EditRecipe = () => {
     }, [recipeId]);
 
 
+
+
+
+
     // require login is handled by ProtectedRoute
     
     
@@ -91,7 +95,8 @@ const EditRecipe = () => {
         const formData = new FormData();
         formData.append("authorId", sessionUser.id);
         formData.append("recipeTitle", title);
-        formData.append("ingredientPhoto", ingredientPhoto);
+        // ingredientPhoto is required; when there is one file to replace, then replace it, otherwise keep the old image url
+        formData.append("ingredientPhoto", ingredientPhoto ? ingredientPhoto : ingredientPhoto_Old);
         formData.append("introduction", introduction);
         
         // // prepare tags input data ready for AWS
@@ -127,6 +132,7 @@ const EditRecipe = () => {
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
         const newRecipe = {
             recipe:{
+                recipeId: +recipeId,
                 authorId: sessionUser.id,
                 title,
                 introduction,
@@ -139,13 +145,13 @@ const EditRecipe = () => {
         }
         console.log('dictionary-recipe:', newRecipe)
 
-        // const data = await dispatch(createRecipeThunk(formData));
-        // if (data.errors) {
-        //     setErrors(data.errors);
-        //     // console.log('!!!!', typeof errors)
-        // } else{
-        //     history.push(`/recipes/${data.id}`)
-        // }
+        const data = await dispatch(editRecipeThunk({formData,recipeId}));
+        if (data.errors) {
+            setErrors(data.errors);
+            // console.log('!!!!', typeof errors)
+        } else{
+            history.push(`/recipes/my_plate`)
+        }
 
     }
     
