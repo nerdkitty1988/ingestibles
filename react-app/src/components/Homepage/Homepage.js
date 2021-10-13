@@ -59,7 +59,6 @@ const Homepage = () => {
 					<div className="home-content-rotator-inner carousel-inner">
 						<div
 							className="home-content-rotator-slide item home-content-rotator-slide-align-middle"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2340&q=80)",
@@ -83,7 +82,6 @@ const Homepage = () => {
 
 						<div
 							className="home-content-rotator-slide item  home-content-rotator-slide-align-middle"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1605433247501-698725862cea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80)",
@@ -107,7 +105,6 @@ const Homepage = () => {
 
 						<div
 							className="home-content-rotator-slide item  home-content-rotator-slide-align-middle"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80)",
@@ -131,7 +128,6 @@ const Homepage = () => {
 
 						<div
 							className="home-content-rotator-slide item  home-content-rotator-slide-align-middle"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80)",
@@ -155,7 +151,6 @@ const Homepage = () => {
 
 						<div
 							className="home-content-rotator-slide item  home-content-rotator-slide-align-middle"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80)",
@@ -179,7 +174,6 @@ const Homepage = () => {
 
 						<div
 							className="home-content-rotator-slide item  home-content-rotator-slide-align-middle active"
-							data-link="https://www.instructables.com/halloween/"
 							style={{
 								backgroundImage:
 									"url(https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80",

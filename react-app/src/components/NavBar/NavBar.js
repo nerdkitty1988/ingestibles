@@ -1,10 +1,38 @@
 
 import React from 'react';
+import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import ProfileButton from './ProfileButton';
 import './NavBar.css';
 
-const NavBar = () => {
+
+
+
+const NavBar = ({ loaded }) => {
+
+  const sessionUser = useSelector((state) => state.session?.user);
+
+  let sessionLinks;
+  if (sessionUser) {
+    sessionLinks = (
+      <ProfileButton user={sessionUser} />
+    );
+  } else {
+    sessionLinks = (
+      <div id="you-menu-container" className="right-col">
+        <div id="login-menu">
+            <NavLink id="login" to='/login' exact={true} activeClassName='active'>
+              Log In
+            </NavLink>
+            <span className="pipe">|</span>
+            <NavLink id="sign-up" to='/sign-up' exact={true} activeClassName='active'>
+              Sign Up
+            </NavLink>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <header id="site-header" className="site-header">
       <div className="site-header-top">
@@ -37,32 +65,11 @@ const NavBar = () => {
               <li>
                 <a href='/recipes/vegetarian'>Vegetarian</a>
               </li>
-              {/* <li>
-                <NavLink to='/users' exact={true} activeClassName='active'>
-                  Users
-                </NavLink>
-              </li> */}
-              <li>
-                <LogoutButton />
-              </li>
             </ul>
           </nav>
         </div>
-        <div id="you-menu-container" className="right-col">
-            <div id="login-menu">
-                <NavLink id="login" to='/login' exact={true} activeClassName='active'>
-                  Log In
-                </NavLink>
-                <span className="pipe">|</span>
-                <NavLink id="sign-up" to='/sign-up' exact={true} activeClassName='active'>
-                  Sign Up
-                </NavLink>
-            </div>
-        </div>
+        {loaded && sessionLinks}
       </div>
-
-
-
       <div className="site-header-bottom">
         <div className="left-col">
           <a className="site-logo " href="/">
