@@ -150,10 +150,15 @@ const CreateRecipe = () => {
 
 
     return ( 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <div className='newRecipeButtonWrapper'>
-                <NavLink to='/profile' exact={true} style={{display:'block'}}>Cancel</NavLink>
-                <button>Create Recipe</button>
+                <NavLink to='/profile' exact={true} 
+                className='btn-category-header' 
+                    style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB'}}>Cancel</NavLink>
+
+                <button className='btn-category-header'
+                style={{ display: 'block', marginTop: '1%', backgroundColor: '#FAD7BB' }}
+                >Create Recipe</button>
             </div>
             <div style={{ color:'#F27D21'}}>
                 {errors.map((error, ind) => (

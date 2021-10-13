@@ -1,7 +1,8 @@
 .newRecipeButtonWrapper{
     display: flex;
     justify-content: space-between;
-
+    position: sticky;
+    top: 10%;
 }
 
 .newRecipeBasics, .newReceipeIntroWrapper{
@@ -9,7 +10,8 @@
     border:1px lightgray solid;
     border-radius: 10px;
     gap: 5%;
-    margin-top: 2%;
+    margin: 2% auto;
+    width:75%;
 }
 .newRecipeTitle,.newReceipeIntro,.newReceipeStep{
     display: flex;
@@ -20,11 +22,12 @@
 .newRecipeIngredientWrapper{
     border:1px lightgray solid;
     border-radius: 10px;
-    margin-top: 2%;
+    margin: 2% auto;
+    width:75%;
 }
 
 .newReceipeStep{
-    width: 80%;
+    width: 75%;
     margin: 2% auto;
 
 }
