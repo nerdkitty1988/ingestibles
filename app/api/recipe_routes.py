@@ -32,6 +32,13 @@ def recipes_by_tag(tag):
     tagged_recipes = Recipe.query.join(Tag).filter(Tag.name == tag).all()
     return {'tagged': [tagged_recipe.to_dict() for tagged_recipe in tagged_recipes]}
 
+
+#To edit recipe, Fetch recipe by recipeId
+@recipe_routes.route('/edit/<int:id>')
+def recipe_by_id_to_edit(id):
+    recipe = Recipe.query.get(id)
+    return recipe.to_dict()
+
 # create new recipe
 @recipe_routes.route('', methods=['POST'])
 @login_required

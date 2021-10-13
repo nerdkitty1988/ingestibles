@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRecipeThunk } from '../../store/newRecipe';
 import './EditRecipe.css';
@@ -8,28 +8,54 @@ const EditRecipe = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    
-    const [title, setTitle] = useState("");
-    // [this.tagName1, this.setTagName1] = useState("");
-    // [this.tagName2, this.setTagName2] = useState("");
+
+    const [title, setTitle] = useState('');
     const [tags, setTags] = useState({});
     const [tagCounter, setTagCounter] = useState(0);
-    
+
     const [introduction, setIntroduction] = useState("");
     const [media1, setMedia1] = useState("");
     const [media2, setMedia2] = useState("");
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
-    
+
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
-    
+
     const [steps, setSteps] = useState({});
     const [stepCounter, setStepCounter] = useState(0);
-
     const [errors, setErrors] = useState([]);
+
+    // fetch current recipe to pre-load data on edit form
+    const { recipeId } = useParams();
+    let recipe = {}
+    useEffect(() => {
+        if (!recipeId) {
+            return;
+        }
+        (async () => {
+            const response = await fetch(`/api/recipes/edit/${recipeId}`);
+            recipe = await response.json();
+            console.log(recipe, recipe.title)
+            // pre-load data on edit form
+            setTitle(recipe.title)
+            setIntroduction(recipe.description)
+            setIngredientPhoto(recipe.ingredientPhoto)
+            recipe.tags.forEach(tag=>{
+                setTagCounter(tagCounter + 1)
+            })
+        })();
+    }, [recipeId]);
+
+  
+
+    
+    
+    
+
+    
 
     // require login is handled by ProtectedRoute
     
