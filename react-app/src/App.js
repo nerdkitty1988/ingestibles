@@ -29,33 +29,35 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/' exact={true}>
-          <Homepage />
-        </Route>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/recipes/my_plate' exact={true} >
-          <MyPlate />
-        </ProtectedRoute>
-        <Route path='/users/:userId' exact={true} >
-          <User />
-        </Route>
-        <ProtectedRoute path='/recipes/new_recipe' exact={true} >
-          <CreateRecipe />
-        </ProtectedRoute>
-        <ProtectedRoute path='/recipes/edit/:recipeId' exact={true} >
-          <EditRecipe />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
+      <NavBar loaded={loaded} />
+      {loaded && (
+        <Switch>
+          <Route path='/' exact={true}>
+            <Homepage />
+          </Route>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/recipes/my_plate' exact={true} >
+            <MyPlate />
+          </ProtectedRoute>
+          <Route path='/users/:userId' exact={true} >
+            <User />
+          </Route>
+          <ProtectedRoute path='/recipes/new_recipe' exact={true} >
+            <CreateRecipe />
+          </ProtectedRoute>
+          <ProtectedRoute path='/recipes/edit/:recipeId' exact={true} >
+            <EditRecipe />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
+      )}
     </BrowserRouter>
   );
 }
