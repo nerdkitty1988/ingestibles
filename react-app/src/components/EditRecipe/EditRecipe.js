@@ -50,13 +50,6 @@ const EditRecipe = () => {
         })();
     }, [recipeId]);
 
-  
-
-    
-    
-    
-
-    
 
     // require login is handled by ProtectedRoute
     
@@ -100,57 +93,59 @@ const EditRecipe = () => {
         formData.append("recipeTitle", title);
         formData.append("ingredientPhoto", ingredientPhoto);
         formData.append("introduction", introduction);
-        // prepare tags input data ready for AWS
-        Object.keys(tags_notNull).forEach(key => {
-            formData.append(key, tags_notNull[key]);       
-        })
-        // prepare ingredients input data ready for AWS
-        Object.keys(ingredients_notNull).forEach(key => {
-            formData.append(key, ingredients_notNull[key]);
-        })
-        // prepare mediainput data ready for AWS
-        Object.keys(media_notNull).forEach(key => {
-            formData.append(key, media_notNull[key]);
-        })
-        // prepare steps data ready for AWS
-        Object.keys(steps_notNull).forEach(key => {
-            // console.log('outside', key, steps_notNull[key])
-            Object.keys(steps_notNull[key]).forEach(k=>{
-                // console.log('inside', k, steps_notNull[key][k])
-                formData.append(key + '_' + k, steps_notNull[key][k]);
-            })
+        
+        // // prepare tags input data ready for AWS
+        // Object.keys(tags_notNull).forEach(key => {
+        //     formData.append(key, tags_notNull[key]);       
+        // })
+        // // prepare ingredients input data ready for AWS
+        // Object.keys(ingredients_notNull).forEach(key => {
+        //     formData.append(key, ingredients_notNull[key]);
+        // })
+        // // prepare mediainput data ready for AWS
+        // Object.keys(media_notNull).forEach(key => {
+        //     formData.append(key, media_notNull[key]);
+        // })
+        // // prepare steps data ready for AWS
+        // Object.keys(steps_notNull).forEach(key => {
+        //     // console.log('outside', key, steps_notNull[key])
+        //     Object.keys(steps_notNull[key]).forEach(k=>{
+        //         // console.log('inside', k, steps_notNull[key][k])
+        //         formData.append(key + '_' + k, steps_notNull[key][k]);
+        //     })
             
-        })
+        // })
+        
     
         // formData.values() creates iterator and use for loop to print out values
-        // for (let value of formData.values()) {
-        //     console.log('formData.values Start');
-        //     console.log(value);
-        //     console.log('formData.values End');
-        // }
+        for (let value of formData.values()) {
+            console.log('formData.values Start');
+            console.log(value);
+            console.log('formData.values End');
+        }
         
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
-        // const newRecipe = {
-        //     recipe:{
-        //         authorId: sessionUser.id,
-        //         title,
-        //         introduction,
-        //         ingredientPhoto
-        //     },            
-        //     tags:tags_notNull,
-        //     media:media_notNull,
-        //     ingredients:ingredients_notNull,
-        //     steps: steps_notNull,
-        // }
-        // console.log('dictionary-recipe:', newRecipe)
-
-        const data = await dispatch(createRecipeThunk(formData));
-        if (data.errors) {
-            setErrors(data.errors);
-            // console.log('!!!!', typeof errors)
-        } else{
-            history.push(`/recipes/${data.id}`)
+        const newRecipe = {
+            recipe:{
+                authorId: sessionUser.id,
+                title,
+                introduction,
+                ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
+            },            
+            // tags:tags_notNull,
+            // media:media_notNull,
+            // ingredients:ingredients_notNull,
+            // steps: steps_notNull,
         }
+        console.log('dictionary-recipe:', newRecipe)
+
+        // const data = await dispatch(createRecipeThunk(formData));
+        // if (data.errors) {
+        //     setErrors(data.errors);
+        //     // console.log('!!!!', typeof errors)
+        // } else{
+        //     history.push(`/recipes/${data.id}`)
+        // }
 
     }
     
@@ -183,7 +178,7 @@ const EditRecipe = () => {
         <form onSubmit={handleSubmit} >
             <div className='newRecipeButtonWrapper'>
 
-                <NavLink to='/profile' exact={true} 
+                <NavLink to='/recipes/my_plate' exact={true}
                 className='btn-category-header' 
                     style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB', maxHeight:'20px'}}>Cancel</NavLink>
 
@@ -196,7 +191,7 @@ const EditRecipe = () => {
 
                 <button className='btn-category-header'
                 style={{ display: 'block', marginTop: '1%', backgroundColor: '#FAD7BB', maxHeight:'35px' }}
-                >Create Recipe</button>
+                >Edit Recipe</button>
                 
 
             </div>
@@ -318,9 +313,12 @@ const EditRecipe = () => {
 
              <div className='createRecipeWrapper'>
                 <h4 style={{ textAlign: 'center' }}>Ingredients</h4>
+                <img
+                    className='EditImg'
+                    src={ingredientPhoto_Old} alt='OriginalIngredientPhoto' />
                 <div className='createRecipeEl'>
-                <img src={ingredientPhoto_Old}/>
-                <label>Ingredient Photo </label>
+                <label>Replace photo by </label>
+                
                 <input
                     className='listingInput'
                     type="file"
