@@ -58,18 +58,12 @@ const CreateRecipe = () => {
                 ingredients_notNull[key] = ingredients[key]
             }
         })
-        // title and direction are required input, photo of steps is not required
-        const steps_notNull = {}
-        Object.keys(steps).forEach(key => {
-            if (steps[key] && steps[key].title && steps[key].direction && steps[key].title.replace(/\s/g, '').length && steps[key].direction.replace(/\s/g, '').length) {
-                steps_notNull[key] = steps[key]
+        // title and direction are required input, photo of steps is not required; thus delete the inputs that does not have title and does not have direction; backend will handle if one of those two are missing;
+        const steps_notNull = {...steps}
+        Object.keys(steps_notNull).forEach(key => {
+            if (!(steps_notNull[key].title?steps_notNull[key].title.replace(/\s/g, '') :steps_notNull[key].title) && !(steps_notNull[key].direction?steps_notNull[key].direction.replace(/\s/g, '').length:steps_notNull[key].direction)) {
+                delete steps_notNull[key]
             } 
-            // else if (!steps[key] && !steps[key].title && !steps[key].direction && !steps[key].title.replace(/\s/g, '').length && !steps[key].direction.replace(/\s/g, '').length){
-            // }
-            // else{
-            //     setErrors([`${key}: Both title and description for step are required`]);
-            //     return;
-            // }
         })
 
 
@@ -93,35 +87,35 @@ const CreateRecipe = () => {
         })
         // prepare steps data ready for AWS
         Object.keys(steps_notNull).forEach(key => {
-            console.log('outside', key, steps_notNull[key])
+            // console.log('outside', key, steps_notNull[key])
             Object.keys(steps_notNull[key]).forEach(k=>{
-                    console.log('inside', k, steps_notNull[key][k])
+                // console.log('inside', k, steps_notNull[key][k])
                 formData.append(key + '_' + k, steps_notNull[key][k]);
             })
             
         })
     
         // formData.values() creates iterator and use for loop to print out values
-        for (let value of formData.values()) {
-            console.log('formData.values Start');
-            console.log(value);
-            console.log('formData.values End');
-        }
+        // for (let value of formData.values()) {
+        //     console.log('formData.values Start');
+        //     console.log(value);
+        //     console.log('formData.values End');
+        // }
         
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
-        const newRecipe = {
-            recipe:{
-                authorId: sessionUser.id,
-                title,
-                introduction,
-                ingredientPhoto
-            },            
-            tags:tags_notNull,
-            media:media_notNull,
-            ingredients:ingredients_notNull,
-            steps:steps_notNull,           
-        }
-        console.log('dictionary-recipe:', newRecipe)
+        // const newRecipe = {
+        //     recipe:{
+        //         authorId: sessionUser.id,
+        //         title,
+        //         introduction,
+        //         ingredientPhoto
+        //     },            
+        //     tags:tags_notNull,
+        //     media:media_notNull,
+        //     ingredients:ingredients_notNull,
+        //     steps: steps_notNull,
+        // }
+        // console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(createRecipeThunk(formData));
         if (data.errors) {
