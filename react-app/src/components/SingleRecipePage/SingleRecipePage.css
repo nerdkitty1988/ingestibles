@@ -4,18 +4,45 @@
   font-family: Helvetica,Arial,sans-serif;
   font-size: 20px;
   line-height: 1.65;
+  color: #555;
 }
+
 
 #recipe-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding-top: 15px;
 }
 
 #recipe-info > h1, p{
   padding: 0px 10px 10px;
+}
+
+#like-license-buttons {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#like-button {
+  background-color: #f6f6f6;
+  border: .5px solid #dedede;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+}
+#like-button:hover {
+  background-color: #dedede;
+  cursor: pointer;
+}
+
+#like-button:hover .fas {
+  color: magenta;
 }
 
 #recipe-images {
@@ -26,18 +53,62 @@
 
 #author-info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  height: 160px;
+  height: 180px;
   border: 1px solid lightgrey;
   border-radius: 6px;
   background-color: #f6f6f6;
+  font-size: 14px;
 }
 
 .profileCircle {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
   border-radius: 100%;
   margin-right: 10px;
+  padding: 10px;
+}
+
+#recipe-description {
+  padding: 20px;
+}
+
+#comment-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#comment-button {
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  padding-bottom: 40px;
+}
+
+#comment-button-container:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "";
+  width: 12%;
+  padding-top: 20px;
+  border-bottom: .5px solid #dedede;
+}
+
+#comment-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#comment-button:hover .fas {
+  color: #a6c432;
+}
+
+.fas {
+  color: #dedede;
+  padding-right: 6px;
 }
