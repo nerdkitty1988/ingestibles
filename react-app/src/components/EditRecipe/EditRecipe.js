@@ -28,6 +28,8 @@ const EditRecipe = () => {
     const [steps, setSteps] = useState({});
     const [stepCounter, setStepCounter] = useState(0);
     const [errors, setErrors] = useState([]);
+    
+    const [hidden, setHidden] = useState(0);
 
     // fetch current recipe to pre-load data on edit form
     const { recipeId } = useParams();
@@ -39,18 +41,25 @@ const EditRecipe = () => {
         (async () => {
             const response = await fetch(`/api/recipes/edit/${recipeId}`);
             recipe = await response.json();
-            console.log(recipe, recipe.title)
-            // pre-load data on edit form
+            console.log(recipe, recipe.tags)
+            // pre-load data on edit form - recipe table 
             setTitle(recipe.title)
             setIntroduction(recipe.description)
             setIngredientPhoto_Old(recipe.ingredientPhoto)
-            recipe.tags.forEach(tag=>{
-                setTagCounter(tagCounter + 1)
+            // pre-load data on edit form - tag table 
+            recipe.tags.forEach((tag,i)=>{
+                setTags(tags => {
+                    tags[`tag${i+1}`] = tag.name
+                    return tags
+                })
+                setTagCounter(tagCounter=>tagCounter + 1)
             })
         })();
     }, [recipeId]);
 
-
+    // useEffect(() => { 
+    //     setHidden(hidden=>hidden+1)
+    // }, [tags])
 
 
 
@@ -99,19 +108,19 @@ const EditRecipe = () => {
         formData.append("ingredientPhoto", ingredientPhoto ? ingredientPhoto : ingredientPhoto_Old);
         formData.append("introduction", introduction);
         
-        // // prepare tags input data ready for AWS
-        // Object.keys(tags_notNull).forEach(key => {
-        //     formData.append(key, tags_notNull[key]);       
-        // })
-        // // prepare ingredients input data ready for AWS
+        // prepare tags input data ready for AWS
+        Object.keys(tags_notNull).forEach(key => {
+            formData.append(key, tags_notNull[key]);       
+        })
+        // prepare ingredients input data ready for AWS
         // Object.keys(ingredients_notNull).forEach(key => {
         //     formData.append(key, ingredients_notNull[key]);
         // })
-        // // prepare mediainput data ready for AWS
+        // prepare mediainput data ready for AWS
         // Object.keys(media_notNull).forEach(key => {
         //     formData.append(key, media_notNull[key]);
         // })
-        // // prepare steps data ready for AWS
+        // prepare steps data ready for AWS
         // Object.keys(steps_notNull).forEach(key => {
         //     // console.log('outside', key, steps_notNull[key])
         //     Object.keys(steps_notNull[key]).forEach(k=>{
@@ -138,7 +147,7 @@ const EditRecipe = () => {
                 introduction,
                 ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
             },            
-            // tags:tags_notNull,
+            tags:tags_notNull,
             // media:media_notNull,
             // ingredients:ingredients_notNull,
             // steps: steps_notNull,
@@ -182,6 +191,7 @@ const EditRecipe = () => {
 
     return ( 
         <form onSubmit={handleSubmit} >
+            {/* <div>{hidden}</div> */}
             <div className='newRecipeButtonWrapper'>
 
                 <NavLink to='/recipes/my_plate' exact={true}
@@ -215,29 +225,41 @@ const EditRecipe = () => {
                         // required  
                     />
                 </div>
-                <div className='createRecipeEl'>
+                {/* <div className='createRecipeEl'>
                     <label>Tag #1 </label>
                     <input
                         className='listingInput'
                         type="text"
                         key = 'tag1'
+                        value={tags[`tag1`]}
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
                         placeholder='At least 1 Tag'
                     />
-                </div>
+                </div> */}
                     {/* per number of tags, render the tag input component */}
-                    {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 2}`}>
-                            <label>Tag #{i + 2} </label>
-                            <input
-                                className='listingInput'
-                                type="text"                               
-                                onChange={(e) => setTags(tags=>{
-                                    tags[`tag${i+2}`] = e.target.value
-                                    return tags
-                                })}
-                            placeholder='At least 1 Tag'
+                {/* {[...Array(tagCounter)].map((el, i) => (<div
+                    className='createRecipeEl'
+                    style={{textAlign:'start', width:'60%'}}
+                    key={`old_tag_${i + 1}`}>
+                    Tag #{i + 1}:  {tags[`tag${i + 1}`]} 
+                    
+                </div>))} */}
+
+                {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 1}`}>
+                    <label>Tag #{i + 1} </label>
+                    <input
+                        className='listingInput'
+                        type="text" 
+                        defaultValue={tags[`tag${i+1}`]}
+                        onChange={(e) => {
+                            setTags(tags=>{                               
+                            tags[`tag${i+1}`] = e.target.value
+                            return tags
+                            })
+                        }}
+                        placeholder='At least 1 Tag'
                             />
-                        </div>))}
+                    </div>))}
                     <button onClick={tagCounterClick} 
                             style={{ marginRight: '12%' }}
                             className="btn-category-header"

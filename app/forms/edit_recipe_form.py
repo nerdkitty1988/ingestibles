@@ -19,7 +19,7 @@ class editRecipeForm(FlaskForm):
     ingredientPhoto = StringField('ingredientPhoto',
                                   validators=[DataRequired(), ingredientPhotoEmpty])
     # # require at least first tag is input
-    # tag1 = StringField('tag1', validators=[DataRequired()])
+    tag1 = StringField('tag1', validators=[DataRequired()])
     # # require at least first ingredient is input
     # ingredient1 = StringField('ingredient1', validators=[DataRequired()])
     # # require at least first media is input

@@ -239,12 +239,15 @@ def edit_recipe(id):
         db.session.add(recipe)
         db.session.commit()
 
-        """
-        # save tags; request.form is dictionary
+        
+        # delete all its associated tags and save new tags; request.form is dictionary
+        for tag in recipe.tags:
+            db.session.delete(tag)
+
         for (key, value) in request.form.items():
             if key[0:3] == 'tag':
                 db.session.add(Tag(name=value, recipeId=recipe.id))
-
+        """
         # save ingredients; request.form is dictionary
         for (key, value) in request.form.items():
             # print('!!', key, value)
@@ -310,8 +313,9 @@ def edit_recipe(id):
 
             db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
             # stepNumberVisited.append(stepNumber)
-        db.session.commit()
+        
         """
+        db.session.commit()
         return recipe.to_dict()
 
     return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
