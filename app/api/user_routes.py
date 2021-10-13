@@ -15,12 +15,17 @@ def users():
 
 @user_routes.route('/<int:id>', methods=["GET", "PATCH"])
 @login_required
-def user(id):
-    form = UpdateUserForm()
+def user(id, *updatedUser):
     user = User.query.get(id)
     if request.method == "PATCH":
-        if form.validate_on_submit():
-            for k, v in form.data:
+            for k, v in updatedUser:
                 user[k] = v
-            return
+            return ({
+                "id":user.id,
+                "username":user.username,
+                "email":user.email,
+                "biography":user.biography,
+                "profilePic":user.profilePic,
+                "time_created":user.time_created
+            })
     return user.to_dict()

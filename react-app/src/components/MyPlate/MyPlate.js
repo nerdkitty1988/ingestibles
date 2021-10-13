@@ -54,8 +54,7 @@ function MyPlate() {
                     <div className="profCard">
                         <h2 id="username">{sessionUser.username}</h2>
                         <div className="buttonDiv">
-                            <NavLink to={`/${sessionUser.id}/profile`} className="profButton">View Profile</NavLink>
-                            <NavLink to={`/${sessionUser.id}/profile/edit`} className="profButton">Edit Profile</NavLink>
+                            <NavLink to={`/users/${sessionUser.id}`} className="profButton">View Profile</NavLink>
                         </div>
                         <p className="joinDate"><i className="fas fa-carrot"></i>Joined {readDate}</p>
                     </div>

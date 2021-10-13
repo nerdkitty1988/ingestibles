@@ -12,6 +12,7 @@ function Profile() {
 	const [username, setUsername] = useState(user?.username);
 	const [email, setEmail] = useState(user?.email);
 	const [password, setPassword] = useState("");
+	const [repeatPassword, setRepeatPassword] = useState("");
 	const [biography, setBiography] = useState(user?.biography);
 	const [profilePic, setProfilePic] = useState(user?.profilePic);
 	const [errors, setErrors] = useState([]);
@@ -23,16 +24,15 @@ function Profile() {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await fetch(`/api/users/${userId}`);
+			const response = await fetch(`/api/users/${sessionUser.id}`);
 			const responseData = await response.json();
 			setUser(responseData);
 		}
 		fetchData();
-	}, [user]);
+	}, []);
 
 	const handleSave = (updateData) => {
-		e.preventDefault();
-		const data = await dispatch(updateUser(updatedata));
+		const data = dispatch(updateUser(updateData));
 		if (data.errors) {
 			setErrors(data.errors);
 		} else {
@@ -46,18 +46,17 @@ function Profile() {
 
 	const updateUsername = (e) => {
 		setUsername(e.target.value);
-        handleSave({"username":username});
-
+		handleSave({ id: userId, username: username });
 	};
 
 	const updateEmail = (e) => {
 		setEmail(e.target.value);
-        handleSave({"email":email});
+		handleSave({ id: userId, email: email });
 	};
 
 	const updatePassword = (e) => {
 		setPassword(e.target.value);
-        handleSave({"password":password});
+		handleSave({ id: userId, password: password });
 	};
 
 	const updateRepeatPassword = (e) => {
@@ -66,56 +65,91 @@ function Profile() {
 
 	const updateBiography = (e) => {
 		setBiography(e.target.value);
-        handleSave({"biography":biography});
+		handleSave({ id: userId, biography: biography });
 	};
 
 	const updateProfilePic = (e) => {
 		setProfilePic(e.target.value);
-        handleSave({"profilePic":profilePic});
+		handleSave({ id: userId, profilePic: profilePic });
 	};
 
 	return (
 		<form onSubmit={handleSave}>
-			<p>{username}</p>
+			<div>
+				{errors.map((error, ind) => (
+					<div key={ind}>{error}</div>
+				))}
+			</div>
+			<p hidden={!usernameShow}>{username}</p>
+			<button
+				type="button"
+				onClick={(e) => setUsernameShow(false)}
+				hidden={!usernameShow}
+			>
+				Edit Username
+			</button>
 			<input
-            hidden={usernameShow}
-            className="editProfInput"
-            type="text"
-            value={username}
-            onChange={(e) => updateUsername(e)}
-            />
-            <p>{email}</p>
+				hidden={usernameShow}
+				className="editProfInput"
+				type="text"
+				defaultValue={username}
+			/>
+			<button
+				type="button"
+				onClick={(e) => updateUsername(e)}
+				hidden={usernameShow}
+			>
+				Save
+			</button>
+			<p hidden={!emailShow}>{email}</p>
+			<button
+				type="button"
+				onClick={(e) => setEmailShow(false)}
+				hidden={!emailShow}
+			>
+				Edit Email
+			</button>
 			<input
-            hidden={emailShow}
-            className="editProfInput"
-            type="text"
-            value={email}
-            onChange={(e) => updateEmail(e)}
-            />
-            <p>{biography}</p>
+				hidden={emailShow}
+				className="editProfInput"
+				type="email"
+				defaultValue={email}
+			/>
+			<p hidden={!biographyShow}>{biography}</p>
+			<button
+				type="button"
+				onClick={(e) => setBiographyShow(false)}
+				hidden={!biographyShow}
+			>
+				Edit Biography
+			</button>
 			<input
-            hidden={biographyShow}
-            className="editProfInput"
-            type="text"
-            value={biography}
-            onChange={(e) => updateBiography(e)}
-            />
-
+				hidden={biographyShow}
+				className="editProfInput"
+				type="text"
+				defaultValue={biography}
+			/>
+			<button
+				type="button"
+				onClick={(e) => setPasswordShow(false)}
+				hidden={!passwordShow}
+			>
+				Edit Password
+			</button>
 			<input
-            hidden={passwordShow}
-            className="editProfInput"
-            type="password"
-            value={password}
-            onChange={(e) => updatePassword(e)}
-            />
-
+				hidden={passwordShow}
+				className="editProfInput"
+				type="password"
+				defaultValue={password}
+			/>
 			<input
-            hidden={passwordShow}
-            className="editProfInput"
-            type="password"
-            value={repeatPassword}
-            onChange={(e) => updateRepeatPassword(e)}
-            />
+				hidden={passwordShow}
+				className="editProfInput"
+				type="password"
+				defaultValue={repeatPassword}
+			/>
 		</form>
 	);
 }
+
+export default Profile;

@@ -103,11 +103,11 @@ export const updateUser = (updatedUser) => async (dispatch) => {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(updateUser),
+		body: JSON.stringify(updatedUser),
 	});
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(setUser(data.user));
+		dispatch(setUser(data));
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
