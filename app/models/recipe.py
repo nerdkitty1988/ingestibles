@@ -40,6 +40,7 @@ class Recipe(db.Model):
             'id': self.id,
             'title': self.title,
             'description': self.description,
+            'ingredientPhoto': self.ingredientPhoto,
             'authorId': self.authorId,
             "author": self.author.to_dict(),
             "instructions": [instruction.to_dict() for instruction in self.instructions],
