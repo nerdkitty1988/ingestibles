@@ -9,6 +9,7 @@ import MyPlate from './components/MyPlate/MyPlate';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
 import CreateRecipe from './components/CreateRecipe/CreateRecipe';
+import EditRecipe from './components/EditRecipe/EditRecipe';
 import { authenticate } from './store/session';
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/recipes/new_recipe' exact={true} >
           <CreateRecipe />
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes/edit/:recipeId' exact={true} >
+          <EditRecipe />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

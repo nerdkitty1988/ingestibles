@@ -1,0 +1,39 @@
+.newRecipeButtonWrapper{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #eee;
+
+}
+
+.createRecipeWrapper{
+    /* display: flex; */
+    border:1px lightgray solid;
+    border-radius: 10px;
+    gap: 5%;
+    margin: 2% auto;
+    width:75%;
+    text-align:end;
+}
+
+.listingInput{
+    padding:4%;
+    border:1px lightgray solid;
+    border-radius: 6px;
+    width:70%
+}
+
+
+
+.createRecipeEl{
+    width: 75%;
+    margin: 2% auto;
+
+}
+.createRecipeStep{
+    margin: 1% auto;
+
+}
+
