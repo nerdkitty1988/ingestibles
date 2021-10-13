@@ -247,13 +247,15 @@ def edit_recipe(id):
         for (key, value) in request.form.items():
             if key[0:3] == 'tag':
                 db.session.add(Tag(name=value, recipeId=recipe.id))
-        """
-        # save ingredients; request.form is dictionary
+        
+        # delete all its associated ingredients and save new ingredients; request.form is dictionary
+        for ingredient in recipe.ingredients:
+            db.session.delete(ingredient)
+
         for (key, value) in request.form.items():
-            # print('!!', key, value)
             if key[0:10] == 'ingredient':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
-       
+        """
         # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
         for (key, value) in request.files.items():
             if key[0:5] == 'media':

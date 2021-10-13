@@ -54,12 +54,19 @@ const EditRecipe = () => {
                 })
                 setTagCounter(tagCounter=>tagCounter + 1)
             })
+            // pre-load ingredients on edit form - ingredients table
+            recipe.ingredients.forEach((ingredient, i) => {
+                setIngredients(ingredients => {
+                    ingredients[`ingredient${i + 1}`] = ingredient.info
+                    return ingredients
+                })
+                setIngredientCounter(ingredientCounter => ingredientCounter + 1)
+            })
+
         })();
     }, [recipeId]);
 
-    // useEffect(() => { 
-    //     setHidden(hidden=>hidden+1)
-    // }, [tags])
+
 
 
 
@@ -113,9 +120,9 @@ const EditRecipe = () => {
             formData.append(key, tags_notNull[key]);       
         })
         // prepare ingredients input data ready for AWS
-        // Object.keys(ingredients_notNull).forEach(key => {
-        //     formData.append(key, ingredients_notNull[key]);
-        // })
+        Object.keys(ingredients_notNull).forEach(key => {
+            formData.append(key, ingredients_notNull[key]);
+        })
         // prepare mediainput data ready for AWS
         // Object.keys(media_notNull).forEach(key => {
         //     formData.append(key, media_notNull[key]);
@@ -149,7 +156,7 @@ const EditRecipe = () => {
             },            
             tags:tags_notNull,
             // media:media_notNull,
-            // ingredients:ingredients_notNull,
+            ingredients:ingredients_notNull,
             // steps: steps_notNull,
         }
         console.log('dictionary-recipe:', newRecipe)
@@ -191,7 +198,6 @@ const EditRecipe = () => {
 
     return ( 
         <form onSubmit={handleSubmit} >
-            {/* <div>{hidden}</div> */}
             <div className='newRecipeButtonWrapper'>
 
                 <NavLink to='/recipes/my_plate' exact={true}
@@ -225,26 +231,7 @@ const EditRecipe = () => {
                         // required  
                     />
                 </div>
-                {/* <div className='createRecipeEl'>
-                    <label>Tag #1 </label>
-                    <input
-                        className='listingInput'
-                        type="text"
-                        key = 'tag1'
-                        value={tags[`tag1`]}
-                        onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
-                        placeholder='At least 1 Tag'
-                    />
-                </div> */}
-                    {/* per number of tags, render the tag input component */}
-                {/* {[...Array(tagCounter)].map((el, i) => (<div
-                    className='createRecipeEl'
-                    style={{textAlign:'start', width:'60%'}}
-                    key={`old_tag_${i + 1}`}>
-                    Tag #{i + 1}:  {tags[`tag${i + 1}`]} 
-                    
-                </div>))} */}
-
+                
                 {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 1}`}>
                     <label>Tag #{i + 1} </label>
                     <input
@@ -356,7 +343,7 @@ const EditRecipe = () => {
                     // placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
-                <div className='createRecipeEl'>
+                {/* <div className='createRecipeEl'>
                 <label >Ingredient #1 </label>
                 <input
                     className='listingInput'
@@ -365,15 +352,16 @@ const EditRecipe = () => {
                     onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
                     placeholder='At least 1 ingredient for your dish'
                 />
-                </div>
+                </div> */}
 
-                {[...Array(ingredientCounter)].map((el, i) => (<div className='createRecipeEl' key={`ingredient${i + 2}`}>
-                    <label>Ingredient #{i + 2} </label>
+                {[...Array(ingredientCounter)].map((el, i) => (<div className='createRecipeEl' key={`ingredient${i + 1}`}>
+                    <label>Ingredient #{i + 1} </label>
                     <input
                         className='listingInput'
                         type="text"
+                        defaultValue={ingredients[`ingredient${i + 1}`]}
                         onChange={(e) => setIngredients(ingredients => {
-                        ingredients[`ingredient${i + 2}`] = e.target.value
+                        ingredients[`ingredient${i + 1}`] = e.target.value
                         return ingredients
                         })}
                         placeholder='At least 1 ingredient for your dish'
