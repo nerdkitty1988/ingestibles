@@ -11,6 +11,12 @@ const Homepage = () => {
 	const [tags4, setTags4] = useState([]);
 	const [tags5, setTags5] = useState([]);
 
+	const [tagName1, setTagName1] = useState([]);
+	const [tagName2, setTagName2] = useState([]);
+	const [tagName3, setTagName3] = useState([]);
+	const [tagName4, setTagName4] = useState([]);
+	const [tagName5, setTagName5] = useState([]);
+
 	useEffect(() => {
 		const random = async () => {
 			const res = await fetch("/api/tags");
@@ -46,37 +52,40 @@ const Homepage = () => {
 
 	const random5 = randomArr2.slice(0, 5);
 
-	console.log(random5)
-
 	useEffect(() => {
 		const one = async () => {
 			const res = await fetch(`/api/recipes/${random5[0]}`);
 			const resData = await res.json();
 			setTags1(resData?.tagged);
+			setTagName1(random5[0]?.toLowerCase())
 		};
 
 		const two = async () => {
 			const res = await fetch(`/api/recipes/${random5[1]}`);
 			const resData = await res.json();
 			setTags2(resData?.tagged);
+			setTagName2(random5[1]?.toLowerCase())
 		};
 
 		const three = async () => {
 			const res = await fetch(`/api/recipes/${random5[2]}`);
 			const resData = await res.json();
 			setTags3(resData?.tagged);
+			setTagName3(random5[2]?.toLowerCase())
 		};
 
 		const four = async () => {
 			const res = await fetch(`/api/recipes/${random5[3]}`);
 			const resData = await res.json();
 			setTags4(resData?.tagged);
+			setTagName4(random5[3]?.toLowerCase())
 		};
 
 		const five = async () => {
 			const res = await fetch(`/api/recipes/${random5[4]}`);
 			const resData = await res.json();
 			setTags5(resData?.tagged);
+			setTagName5(random5[4]?.toLowerCase())
 		};
 
 		one();
@@ -85,6 +94,8 @@ const Homepage = () => {
 		four();
 		five();
 	}, [randomRecipes]);
+
+	console.log(typeof(tagName1))
 
 	return (
 		<main>
@@ -313,13 +324,13 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
-						<div className={`home-content-explore-category home-content-explore-category-${random5[0]?.toLowerCase()} clearfix`}>
+						<div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
 							<a
-								href={`/recipes/${random5[0]?.toLowerCase()}`}
+								href={`/recipes/${tagName1}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">{`${random5[0]?.toLowerCase()}`}</span>
+									<span className="anchor-text">{`${tagName1}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
@@ -362,7 +373,7 @@ const Homepage = () => {
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/profile/${tag1?.author?.id}`}
+														href={`/users/${tag1?.author?.id}`}
 													>
 														{
 															tag1?.author
@@ -412,13 +423,13 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className={`home-content-explore-category home-content-explore-category-${random5[1]?.toLowerCase()} clearfix`}>
+						<div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
 							<a
-								href={`/recipes/${random5[1]?.toLowerCase()}`}
+								href={`/recipes/${tagName2}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">{`${random5[1]?.toLowerCase()}`}</span>
+									<span className="anchor-text">{`${tagName2}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
@@ -455,7 +466,7 @@ const Homepage = () => {
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/profile/${tag2?.author?.id}`}
+														href={`/users/${tag2?.author?.id}`}
 													>
 														{
 															tag2?.author
@@ -505,13 +516,13 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className={`home-content-explore-category home-content-explore-category-${random5[2]?.toLowerCase()} clearfix`}>
+						<div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
 							<a
-								href={`/recipes/${random5[2]?.toLowerCase()}`}
+								href={`/recipes/${tagName3}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">{`${random5[2]?.toLowerCase()}`}</span>
+									<span className="anchor-text">{`${tagName3}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
@@ -548,7 +559,7 @@ const Homepage = () => {
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/profile/${tag3?.author?.id}`}
+														href={`/users/${tag3?.author?.id}`}
 													>
 														{
 															tag3?.author
@@ -598,13 +609,13 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className={`home-content-explore-category home-content-explore-category-${random5[3]?.toLowerCase()} clearfix`}>
+						<div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
 							<a
-								href={`/recipes/${random5[3]?.toLowerCase()}`}
+								href={`/recipes/${tagName4}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">{`${random5[3]?.toLowerCase()}`}</span>
+									<span className="anchor-text">{`${tagName4}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
@@ -641,7 +652,7 @@ const Homepage = () => {
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/profile/${tag4?.author?.id}`}
+														href={`/users/${tag4?.author?.id}`}
 													>
 														{
 															tag4?.author
@@ -691,13 +702,13 @@ const Homepage = () => {
 							</div>
 						</div>
 
-						<div className={`home-content-explore-category home-content-explore-category-${random5[4]?.toLowerCase()} clearfix`}>
+						<div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
 							<a
-								href={`/recipes/${random5[4]?.toLowerCase()}`}
+								href={`/recipes/${tagName5}`}
 								className="home-content-explore-link"
 							>
 								<h3>
-									<span className="anchor-text">{`${random5[4]?.toLowerCase()}`}</span>
+									<span className="anchor-text">{`${tagName5}`}</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
@@ -734,7 +745,7 @@ const Homepage = () => {
 												<span className="ible-author">
 													&nbsp;by&nbsp;
 													<a
-														href={`/profile/${tag5?.author?.id}`}
+														href={`/users/${tag5?.author?.id}`}
 													>
 														{
 															tag5?.author
