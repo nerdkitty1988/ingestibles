@@ -144,8 +144,8 @@ const CreateRecipe = () => {
     // count how many steps the user would like to have
     const stepCounterClick = async (e) => {
         e.preventDefault();
-        // to save the place at dictionary to keep orders of steps, in case user add a bunch of steps and then start to fill at a random step, instead of by order, because dictionary/pojo will be ordered by the order.
-        steps[`step${stepCounter+1}`] = {}
+        // Do Not Use the following(do it at backend api route): to save the place at dictionary to keep orders of steps, in case user add a bunch of steps and then start to fill at a random step, instead of by order, because dictionary/pojo will be ordered by the order.
+        // steps[`step${stepCounter+1}`] = {}
 
         setStepCounter(stepCounter + 1)
         // console.log(steps)
@@ -156,7 +156,7 @@ const CreateRecipe = () => {
         <form onSubmit={handleSubmit} >
             <div className='newRecipeButtonWrapper'>
 
-                <NavLink to='/profile' exact={true} 
+                <NavLink to='/recipes/my_plate' exact={true}
                 className='btn-category-header' 
                     style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB', maxHeight:'20px'}}>Cancel</NavLink>
 
