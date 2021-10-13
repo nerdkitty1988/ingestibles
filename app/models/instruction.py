@@ -13,7 +13,7 @@ class Instruction(db.Model):
 
     imageUrl = db.Column(db.String, nullable=True)
     stepTitle = db.Column(db.String, nullable=False)
-    directions = db.Column(db.Text, nullable=True)
+    directions = db.Column(db.Text, nullable=False)
 
     def to_dict(self):
         return {

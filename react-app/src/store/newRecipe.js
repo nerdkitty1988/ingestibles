@@ -14,16 +14,17 @@
 export const createRecipeThunk = (newRecipe) => async (dispatch) => {
     const responseRecipe = await fetch('/api/recipes', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...newRecipe.recipe,        
-                                tags:newRecipe.tags,
-                                media: newRecipe.media,
-                                ingredients: newRecipe.ingredients,
-                                steps: newRecipe.steps,
+        // headers: {
+        //     'Content-Type': 'multipart/form-data',
+        // },
+        body: newRecipe
+        // body: JSON.stringify({ ...newRecipe.recipe,        
+        //                         tags:newRecipe.tags,
+        //                         media: newRecipe.media,
+        //                         ingredients: newRecipe.ingredients,
+        //                         steps: newRecipe.steps,
 
-        }),
+        // }),
     });
 
 
