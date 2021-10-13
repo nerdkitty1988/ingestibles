@@ -36,6 +36,7 @@ def updateUser(id):
             user.password = form.data['password']
 
         db.session.commit()
+        
 
         return user.to_dict()
 
