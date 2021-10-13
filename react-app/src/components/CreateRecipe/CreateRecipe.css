@@ -3,34 +3,35 @@
     justify-content: space-between;
     position: sticky;
     top: 10%;
+
 }
 
-.newRecipeBasics, .newReceipeIntroWrapper{
-    display: flex;
+.createRecipeWrapper{
+    /* display: flex; */
     border:1px lightgray solid;
     border-radius: 10px;
     gap: 5%;
     margin: 2% auto;
     width:75%;
+    text-align:end;
 }
-.newRecipeTitle,.newReceipeIntro,.newReceipeStep{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
 
-}
-.newRecipeIngredientWrapper{
+.listingInput{
+    padding:4%;
     border:1px lightgray solid;
-    border-radius: 10px;
-    margin: 2% auto;
-    width:75%;
+    border-radius: 6px;
+    width:70%
 }
 
-.newReceipeStep{
+
+
+.createRecipeEl{
     width: 75%;
     margin: 2% auto;
 
 }
-lable{
-    display: block;
+.createRecipeStep{
+    margin: 1% auto;
+
 }
+

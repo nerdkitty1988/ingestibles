@@ -165,10 +165,10 @@ const CreateRecipe = () => {
                     <div key={ind}>{error}</div>
                 ))}
             </div>
-            <div className='newRecipeBasics'>
-                <div className='newRecipeTitle'>
-                    <h4>Recipe Basics</h4>
-                    <label>Recipe Title</label>
+            <div className='createRecipeWrapper'>
+                <h4 style={{textAlign:'center'}}>Recipe Basics</h4>
+                <div className='createRecipeEl'>                   
+                    <label>Recipe Title </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -178,7 +178,7 @@ const CreateRecipe = () => {
                         // required  
                     />
                 </div>
-                <div>
+                <div className='createRecipeEl'>
                     <label>Tag #1 </label>
                     <input
                         className='listingInput'
@@ -187,8 +187,9 @@ const CreateRecipe = () => {
                         onChange={(e) => setTags({...tags, 'tag1': e.target.value})}
                         placeholder='At least 1 Tag'
                     />
+                </div>
                     {/* per number of tags, render the tag input component */}
-                    {[...Array(tagCounter)].map((el, i) => (<div key={`tag${i + 2}`}>
+                    {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 2}`}>
                             <label>Tag #{i + 2} </label>
                             <input
                                 className='listingInput'
@@ -200,14 +201,18 @@ const CreateRecipe = () => {
                             placeholder='At least 1 Tag'
                             />
                         </div>))}
-                    <button onClick={tagCounterClick}>Add Tag</button>
-            
-                </div>
+                    <button onClick={tagCounterClick} 
+                            style={{ marginRight: '12%' }}
+                            className="btn-category-header"
+                            >Add Tag</button>
+                           
             </div>
             
-            <div className='newReceipeIntroWrapper'>
-              <div className='newReceipeIntro'>
-                <h4>Introduction</h4>
+            <div className='createRecipeWrapper'>
+             <h4 style={{ textAlign: 'center' }}>Introduction</h4>
+             <div className='createRecipeEl'>
+                
+                <label>Recipe Introduction </label>
                 <textarea
                     className='listingInput'
                     value={introduction}
@@ -217,7 +222,7 @@ const CreateRecipe = () => {
                 />
               </div>
              <div>
-              <div>
+                    <div className='createRecipeEl'>
                 <label>Photo/Video #1 </label>
                     <input
                         className='listingInput'
@@ -228,7 +233,7 @@ const CreateRecipe = () => {
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
               </div>
-              <div>
+                <div className='createRecipeEl'>
                 <label>Photo/Video #2 </label>
                 <input
                     className='listingInput'
@@ -238,7 +243,7 @@ const CreateRecipe = () => {
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 />
               </div>
-              <div>
+              <div className='createRecipeEl'>
                 <label>Photo/Video #3 </label>
                 <input
                     className='listingInput'
@@ -250,7 +255,7 @@ const CreateRecipe = () => {
                 />
               </div>
 
-             <div>
+                <div className='createRecipeEl'>
                 <label>Photo/Video #4 </label>
                 <input
                     className='listingInput'
@@ -261,7 +266,7 @@ const CreateRecipe = () => {
                 
                 />
               </div>
-              <div>
+                <div className='createRecipeEl'>
                 <label>Photo/Video #5 </label>
                 <input
                     className='listingInput'
@@ -275,9 +280,9 @@ const CreateRecipe = () => {
              </div>
             </div>
 
-             <div className='newRecipeIngredientWrapper'>
-                <h4>Ingredients</h4>
-                <div>
+             <div className='createRecipeWrapper'>
+                <h4 style={{ textAlign: 'center' }}>Ingredients</h4>
+                <div className='createRecipeEl'>
                 <label>Ingredient Photo </label>
                 <input
                     className='listingInput'
@@ -288,8 +293,8 @@ const CreateRecipe = () => {
                     // placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
-                <div>
-                <label>Ingredient #1 </label>
+                <div className='createRecipeEl'>
+                <label >Ingredient #1 </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -299,7 +304,7 @@ const CreateRecipe = () => {
                 />
                 </div>
 
-                {[...Array(ingredientCounter)].map((el, i) => (<div key={`ingredient${i + 2}`}>
+                {[...Array(ingredientCounter)].map((el, i) => (<div className='createRecipeEl' key={`ingredient${i + 2}`}>
                     <label>Ingredient #{i + 2} </label>
                     <input
                         className='listingInput'
@@ -311,12 +316,17 @@ const CreateRecipe = () => {
                         placeholder='At least 1 ingredient for your dish'
                     />
                 </div>))}
-                <button onClick={ingredientCounterClick}>Add Ingredient</button>
+                <button onClick={ingredientCounterClick}
+                        style={{ marginRight: '12%' }}
+                        className="btn-category-header">Add Ingredient</button>
             </div>
             
-            <div>
-            <div className='newReceipeStep'>
-                <label>Step #1</label>
+            <div className='createRecipeWrapper'>
+            <h4 style={{ textAlign: 'center' }}>Your Recipe Steps</h4>
+            <div className='createRecipeEl'>
+                <h5 style={{ textAlign: 'center' }}>Step #1</h5>
+                <div class='createRecipeStep'>
+                <label>Title </label >
                 <input
                     className='listingInput'
                     type="text"
@@ -329,6 +339,10 @@ const CreateRecipe = () => {
                     placeholder='Enter step title - Required input'
           
                 />
+               </div>
+
+                <div class='createRecipeStep'>
+                <label>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps=>{
@@ -340,6 +354,9 @@ const CreateRecipe = () => {
                     placeholder='Write a detailed description of this step - Required input'
                         
                 />
+                </div>
+                <div class='createRecipeStep'>
+                <label>Photo </label>
                 <input
                     className = 'listingInput'
                     type = "file"
@@ -351,10 +368,13 @@ const CreateRecipe = () => {
 
                 })}
                 />
+                </div>
             </div>
 
-            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='newReceipeStep'>
-                        <label>Step #{i + 2} </label>
+            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='createRecipeEl'>
+                <h5 style={{ textAlign: 'center' }}>Step #{i + 2} </h5>
+                < div class='createRecipeStep' >
+                <label>Title </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -367,6 +387,9 @@ const CreateRecipe = () => {
                     placeholder='Enter step title - Required input'
 
                 />
+                </div>
+                <div class='createRecipeStep'>
+                <label>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps => {
@@ -378,6 +401,9 @@ const CreateRecipe = () => {
                     placeholder='Write a detailed description of this step - Required input'
 
                 />
+                </div>
+                <div class='createRecipeStep'>
+                < label for= "file" > Photo </label>
                 <input   
                     className = 'listingInput'
                     type = "file"
@@ -389,9 +415,12 @@ const CreateRecipe = () => {
                     })}
 
                 />
+                </div>
                 
             </div>))}
-            <button onClick={stepCounterClick}>Add Step</button>
+            <button onClick={stepCounterClick}
+                    style={{ marginRight: '12%' }}
+                    className="btn-category-header">Add Step</button>
            </div>
             
 
