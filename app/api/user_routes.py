@@ -20,6 +20,7 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+
 @user_routes.route('/<int:id>', methods=["PATCH"])
 @login_required
 def updateUser(id):
@@ -36,9 +37,18 @@ def updateUser(id):
             user.password = form.data['password']
 
         db.session.commit()
-        
 
         return user.to_dict()
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@user_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def deleteUser(id):
+    user = User.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+
+    return user.to_dict()
