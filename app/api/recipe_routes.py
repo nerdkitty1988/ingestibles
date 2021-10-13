@@ -125,37 +125,43 @@ def create_recipe():
         
         # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
         # e.g. step1_title step1_direction step1_photo as keys
-        stepNumberVisited = []
+
+        # to order steps by stepNumber
+        stepToVisit = []
         for (key, value) in request.form.items():
             if key[0:4] == 'step':
                 stepNumber = key[4]
-                # e.g. step1_
-                stepPrefix = key[0:6]
+                if stepNumber not in stepToVisit:               
+                    stepToVisit.append(stepNumber)
+        stepToVisit.sort()
 
-                if(stepNumber not in stepNumberVisited):
-                    if(stepPrefix+'photo' in request.files.keys()):
-                        stepPhoto = request.files[stepPrefix+'photo']
-                        if not allowed_file(stepPhoto.filename):
-                            return {"errors": [f"{stepPrefix}photo file type not permitted"]}, 400
-    
-                        stepPhoto.filename = get_unique_filename(stepPhoto.filename)
+        # stepNumberVisited = []
+        for stepN in stepToVisit:
+            # for (key, value) in request.form.items():
+            #     if key[0:4] == 'step':
+            #         stepNumber = key[4]
+            # e.g. step1_
+            stepPrefix = 'step'+stepN + '_'
 
-                        upload_stepPhoto = upload_file_to_s3(stepPhoto)
+            # if(stepNumber not in stepNumberVisited):
+            if(stepPrefix+'photo' in request.files.keys()):
+                stepPhoto = request.files[stepPrefix+'photo']
+                if not allowed_file(stepPhoto.filename):
+                    return {"errors": [f"{stepPrefix}photo file type not permitted"]}, 400
+                stepPhoto.filename = get_unique_filename(stepPhoto.filename)
+                upload_stepPhoto = upload_file_to_s3(stepPhoto)
+                if "url" not in upload_stepPhoto:
+                    # if the dictionary doesn't have a url key
+                    # it means that there was an error when we tried to upload
+                    # so we send back that error message 
+                    return {'errors': [upload_stepPhoto['errors']]}, 400
+            
+                stepPhoto_url = upload_stepPhoto["url"]
+            else:
+                stepPhoto_url = None
 
-                        if "url" not in upload_stepPhoto:
-                            # if the dictionary doesn't have a url key
-                            # it means that there was an error when we tried to upload
-                            # so we send back that error message 
-                            return {'errors': [upload_stepPhoto['errors']]}, 400
-                    
-                        stepPhoto_url = upload_stepPhoto["url"]
-                    else:
-                        stepPhoto_url = None
-
-                    db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
-                stepNumberVisited.append(stepNumber)
-
-
+            db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
+            # stepNumberVisited.append(stepNumber)
         db.session.commit()
         return recipe.to_dict()
 

@@ -19,7 +19,8 @@ const EditRecipe = () => {
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
-
+    
+    const [ingredientPhoto_Old, setIngredientPhoto_Old] = useState(null);
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
@@ -42,7 +43,7 @@ const EditRecipe = () => {
             // pre-load data on edit form
             setTitle(recipe.title)
             setIntroduction(recipe.description)
-            setIngredientPhoto(recipe.ingredientPhoto)
+            setIngredientPhoto_Old(recipe.ingredientPhoto)
             recipe.tags.forEach(tag=>{
                 setTagCounter(tagCounter + 1)
             })
@@ -318,6 +319,7 @@ const EditRecipe = () => {
              <div className='createRecipeWrapper'>
                 <h4 style={{ textAlign: 'center' }}>Ingredients</h4>
                 <div className='createRecipeEl'>
+                <img src={ingredientPhoto_Old}/>
                 <label>Ingredient Photo </label>
                 <input
                     className='listingInput'
