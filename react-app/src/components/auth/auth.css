@@ -3,9 +3,12 @@
     position: fixed;
     flex-direction: row;
     background-image: url("cook.jpg");
-    background-size: contain;
-    width: 100vmax;
-    height: 100vmax;
+    /* background-size: contain; */
+    background-size: cover;
+    /* width: 100vmax; */
+    width: 100%;
+    /* height: 100vmax; */
+    height: 100%;
     background-color: white;
     opacity: 0.95;
 }
@@ -31,6 +34,10 @@
     height: 20px;
 }
 
+.loginInput:hover {
+    box-shadow: 0px 0px 2px 1px rgba(255, 166, 0, 0.397);
+}
+
 .loginButton {
     width: 109%;
     margin: 10px 10px 10px -10px;
@@ -42,6 +49,11 @@
     color: white;
     font-size: 16px;
 
+}
+
+.loginButton:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 1px rgba(255, 166, 0, 0.397);
 }
 
 .loginSignupText {
