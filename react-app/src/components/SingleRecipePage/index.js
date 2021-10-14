@@ -47,6 +47,29 @@ const SingleRecipePage = () => {
   const whatIWant = otherRecipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)
   console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
+  const authorsIds = otherRecipes.map(recipe => recipe.author.id)
+  console.log("authorsIds ===>>>",authorsIds)
+  const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
+  console.log("authorsImages ===>>>",authorsImages)
+
+  const authorIdsArr = [...new Set(authorsIds)]
+  console.log("authorsIdsArr ===>>>",authorIdsArr)
+  const authorImagesArr = [...new Set(authorsImages)]
+  console.log("authorImagesArr ====>>>", authorImagesArr)
+
+
+  const authorsObject = {}
+  for(let i = 0; i < authorIdsArr.length; i++){
+    let image = authorImagesArr[i];
+    let id = authorIdsArr[i];
+    authorsObject[id] = image;
+  }
+
+  console.log(authorsObject);
+
+  const today  = new Date();
+
+  console.log(today.toLocaleDateString("en-US"));
   return (
     <div id="main">
     <div id="recipe-info">
@@ -62,17 +85,24 @@ const SingleRecipePage = () => {
       <img src={recipeImages && recipeImages[recipeImages.length - 1]} alt="meat" />
     </div>
     <div id="author-info">
-      <div id="author-image">
-        <img className="profileCircle" src={currentRecipe?.author?.profilePic} alt="profile" />
+      <div id="top-author-info">
+        <div id="author-image">
+          <img className="profileCircle" src={currentRecipe?.author?.profilePic} alt="profile" />
+        </div>
+        <div id="more-by-author">
+          <p id="more-by-author-text">More by <br/>
+                                      the author:</p>
+          <div id="other-recipes-by-author">
+            {whatIWant && whatIWant.map(recipe => {
+              return (<><a href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br/></>)
+            })}
+          </div>
+        </div>
       </div>
-      <div id="more-by-author">
-        <p id="more-by-author-text">More by the author:</p>
-        {whatIWant && whatIWant.map(recipe => {
-          return (<><a href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br/></>)
-        })}
-      </div>
-      <div id="author-bio">
-        <p>About: {currentRecipe?.author?.biography}</p>
+      <div id="author-bio-container">
+        <div id="author-bio">
+          <p>About: {currentRecipe?.author?.biography}</p>
+        </div>
       </div>
     </div>
     <div id="recipe-description">
@@ -90,12 +120,17 @@ const SingleRecipePage = () => {
       )
     })}
     <div id="comments-section">
-      <h2>{currentRecipe?.comments?.length} comments </h2>
+      <h1>{currentRecipe?.comments?.length} comments </h1>
       {currentRecipe?.comments?.map((comment) => {
         return (
-        <div id="comment">
-          <p>{comment.comment}</p>
-          <p>{comment.time_created}</p>
+          <div id="comment">
+            <div id="comment-image-username-date">
+              <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
+              <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>
+              <p id="comment-date">{today.toLocaleDateString("en-US")}</p>
+            </div>
+
+            <p id="comment-text">{comment.comment}</p>
         </div>
         )
       })}

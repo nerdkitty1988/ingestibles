@@ -16,7 +16,7 @@
   padding-top: 15px;
 }
 
-#recipe-info > h1, p{
+#recipe-info > h1 {
   padding: 0px 10px 10px;
 }
 
@@ -52,11 +52,8 @@
 }
 
 #author-info {
-  display: grid;
-  grid-template-areas:
-            "a . ."
-            ". c c"
-            "b b .";
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   height: 180px;
   border: 1px solid lightgrey;
@@ -65,22 +62,37 @@
   font-size: 14px;
 }
 
+#top-author-info {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#author-image {
+  width: 90px;
+  height: 90px;
+}
+
 .profileCircle {
-  grid-area: "a";
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 100%;
-  margin-right: 10px;
-  padding: 10px;
+  padding: 0px 15px;
 }
 
 #more-by-author {
-  grid-area: "b";
+  display: flex;
+}
+
+#other-recipes-by-author {
+  padding-left: 10px;
 }
 
 #author-bio {
-  grid-area: "c";
+  display: block;
+  padding-left: 15px;
 }
 
 #recipe-description {
@@ -129,4 +141,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#comments-section > h1 {
+  padding: 20px;
+  border-bottom: .5px solid #dedede;
+  width: 100%;
+  text-align: center;
+}
+
+#comment {
+  display: flex;
+  flex-direction: column;
+  border-bottom: .5px solid #dedede;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+#comment-image-username-date {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+#comment-date {
+  margin: 0;
+  padding-left: 5px;
 }
