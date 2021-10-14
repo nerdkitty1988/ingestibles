@@ -62,7 +62,7 @@ const LoginForm = () => {
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
                     <div className="loginSignupText">
-                        New to Ingestibles? <a href="/signup">Sign Up >></a>
+                        New to Ingestibles? <a href="/sign-up">Sign Up >></a>
                     </div>
 				</form>
 			</div>
