@@ -18,6 +18,16 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
+@recipe_routes.route('/recent')
+def recent_recipes():
+    recipes = Recipe.query.order_by(Recipe.id.desc()).limit(5)
+    return {"recent": [recipe.to_dict() for recipe in recipes]}
+
+@recipe_routes.route('/previous')
+def previous_recipes():
+    recipes = Recipe.query.order_by(Recipe.id.desc())
+    return {"previous": [recipe.to_dict() for recipe in recipes]}
+
 @recipe_routes.route('/<int:id>')
 def single_recipe(id):
     recipe = Recipe.query.filter_by(id=id).first()
