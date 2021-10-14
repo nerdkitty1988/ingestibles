@@ -20,8 +20,8 @@ const Homepage = () => {
 	const [tagName5, setTagName5] = useState([]);
 
 	useEffect(() => {
-		const random = async () => {
-			const res = await fetch("/api/tags");
+		async function random() {
+			const res = await fetch("/api/tags/");
 			const resData = await res.json();
 			setRandomRecipes(resData?.tags);
 		};
