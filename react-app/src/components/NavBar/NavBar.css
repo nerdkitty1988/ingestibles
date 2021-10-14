@@ -750,3 +750,15 @@ a:hover {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
+.searchedRecipes{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.searchTerm {
+    margin-left: 50px;
+    color: orange;
+}
