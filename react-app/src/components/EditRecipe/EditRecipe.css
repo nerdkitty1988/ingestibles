@@ -3,7 +3,7 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 100;
+    /* z-index: 100; */
     background-color: #eee;
 
 }
@@ -37,3 +37,15 @@
 
 }
 
+.EditImg{
+    width:20%;
+    height:20%;
+    margin-Right: 40%;
+}
+
+.editRecipeLabel{
+    text-align: start;
+    display: block;
+    margin-Left: 22%;
+    margin-bottom: 1%;
+}
