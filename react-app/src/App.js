@@ -59,8 +59,8 @@ function App() {
 						<h1>My Home Page</h1>
 					</ProtectedRoute>
 					<Route path='/recipes/:recipeId' exact={true}>
-          <SingleRecipePage />
-        </Route>
+          	<SingleRecipePage />
+        	</Route>
 				</Switch>
 			)}
 		</BrowserRouter>
