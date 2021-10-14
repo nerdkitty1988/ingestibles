@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { deleteRecipe } from "../../store/deleteRecipe";
+import DeleteRecipeFormModal from "../DeleteRecipeFormModal"
 import "./MyPlate.css";
 
 function MyPlate() {
@@ -22,19 +22,17 @@ function MyPlate() {
 		fetchData();
 	}, [userId]);
     
-	const dispatch = useDispatch();
 	const deleteRecipe = async (e) => {
 		e.preventDefault();
 		const recipeIdToDelete = e.target.value
-		console.log('recipeId!!!!!!!!!:', recipeIdToDelete)		
+		// console.log('recipeId!!!!!!!!!:', recipeIdToDelete)		
 		const deleteResponse = await fetch(`/api/recipes/delete/${recipeIdToDelete}`,{
 			method: 'DELETE'
 		})
+		// re-set all created_recipes to dynamically shown on page when recipe is deleted
 		const response = await fetch(`/api/recipes/my_plate/${userId}`);
 		const responseData = await response.json();
 		setCreatedRecipes(responseData.created);
-
-
 	}
 
 	const likedRecipeBlock = likedRecipes.map((recipe) => {
@@ -72,6 +70,7 @@ function MyPlate() {
 					value={recipe.id}
 					onClick={deleteRecipe}
 					>Delete</button>	
+			{/* <DeleteRecipeFormModal id={recipe.id}/> */}
 			</div>
 			</div>
 		);

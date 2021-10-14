@@ -197,10 +197,20 @@ def edit_recipe(id):
 
     for (key, value) in request.form.items():
         if key[0:4] == 'step':
-            # e.g. step1_
+            # e.g. step1_ ( step10_, key[0:7] )
             stepPrefix = key[0:6]
             # exclude not exit, '', all spaces
-            if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
+            if((stepPrefix+'title' not in request.form.keys() and key[0:7]+'title' not in request.form.keys()) or
+                    (stepPrefix+'direction' not in request.form.keys() and key[0:7]+'direction' not in request.form.keys()) or
+                    (not request.form[stepPrefix+'title'] and not request.form[key[0:7]+'title']) or
+                    (not request.form[stepPrefix+'direction'] and not request.form[key[0:7]+'direction']) or
+                    (request.form[stepPrefix+'title'].isspace() and request.form[key[0:7]+'title'].isspace()) or
+                    (request.form[stepPrefix+'direction'].isspace()
+                     and request.form[key[0:7]+'direction'].isspace())
+                    ):
+                print('!!!!!eroor', key, value, stepPrefix +
+                      'title', request.form.keys(), stepPrefix +
+                      'title' not in request.form.keys(), key[0:7]+'title' not in request.form.keys())
                 return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
