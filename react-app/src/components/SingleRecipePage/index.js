@@ -70,6 +70,69 @@ const SingleRecipePage = () => {
   const today  = new Date();
 
   console.log(today.toLocaleDateString("en-US"));
+
+
+// Codes about Likes start here:
+  const likeRecipe = async (e) => {
+    e.preventDefault();
+    const deleteResponse = await fetch(`/api/likes/${recipeId}`, {
+      method: 'POST'
+    })
+    // re-set all created_recipes to dynamically shown on page when recipe is deleted
+    // const response = await fetch(`/api/recipes/my_plate/${userId}`);
+    // const responseData = await response.json();
+    // setCreatedRecipes(responseData.created);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Code about Likes end here
   return (
     <div id="main">
     <div id="recipe-info">
@@ -78,7 +141,7 @@ const SingleRecipePage = () => {
     </div>
     <div id="like-license-buttons">
       <button id="like-button">
-        <i className="fas fa-heart" id="likeButton"></i>Like
+        <i className="fas fa-heart" id="likeButton" onclick={likeRecipe}></i>Like
       </button>
     </div>
     <div id="recipe-images">

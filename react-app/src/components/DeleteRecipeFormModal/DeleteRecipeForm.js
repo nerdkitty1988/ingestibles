@@ -1,36 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 
-
-function DeleteRecipeForm({ id }) {
-  
+function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, setOpen }) {
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const deleteResponse = await fetch(`/api/recipes/delete/${id}`, {
             method: 'DELETE'
         })
-
+        // re-set all created_recipes to dynamically shown on page when recipe is deleted
+        const response = await fetch(`/api/recipes/my_plate/${userId}`);
+        const responseData = await response.json();
+        setCreatedRecipes(responseData.created);
     };
 
+    const cancelSubmit = async (e) => {
+        e.preventDefault();
+        setOpen(false)
+        setShowDelete(true)
+        // re-set all created_recipes to dynamically shown on page when recipe is deleted
+        // const response = await fetch(`/api/recipes/my_plate/${userId}`);
+        // const responseData = await response.json();
+        // setCreatedRecipes(responseData.created);
+    };
 
     return (
-
-        <form onSubmit={handleSubmit}>
+        open && (<div>
             {/* <ul className='error'>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}
             </ul> */}
-            <div>
-                Are you sure to delete this recipe?
-            </div>
+
+            Are you sure to delete this recipe?
 
             <div >
-                <button  type="submit">Delete</button>
-            </div>
+                <button
+                    className='btn-category-header'
+                    onClick={handleSubmit}
+                >Confirm</button>
+                <button
+                    className='btn-category-header'
+                    onClick={cancelSubmit}
+                >Cancel</button>
 
-        </form>
+            </div>
+        </div>)
 
 
     );

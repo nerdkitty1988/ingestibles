@@ -21,19 +21,6 @@ function MyPlate() {
 		}
 		fetchData();
 	}, [userId]);
-    
-	const deleteRecipe = async (e) => {
-		e.preventDefault();
-		const recipeIdToDelete = e.target.value
-		// console.log('recipeId!!!!!!!!!:', recipeIdToDelete)		
-		const deleteResponse = await fetch(`/api/recipes/delete/${recipeIdToDelete}`,{
-			method: 'DELETE'
-		})
-		// re-set all created_recipes to dynamically shown on page when recipe is deleted
-		const response = await fetch(`/api/recipes/my_plate/${userId}`);
-		const responseData = await response.json();
-		setCreatedRecipes(responseData.created);
-	}
 
 	const likedRecipeBlock = likedRecipes.map((recipe) => {
 		return (
@@ -64,13 +51,11 @@ function MyPlate() {
 				to={`/recipes/edit/${recipe.id}`} className='btn-category-header'
 				style={{ marginTop: '1%' }}
 			>Edit</NavLink>		
-			<button 
-					className='btn-category-header'
-					style={{marginTop:'1%'}}
-					value={recipe.id}
-					onClick={deleteRecipe}
-					>Delete</button>	
-			{/* <DeleteRecipeFormModal id={recipe.id}/> */}
+			<DeleteRecipeFormModal
+				className='btn-category-header'
+			    id={recipe.id} 
+				userId={userId} 
+				setCreatedRecipes={setCreatedRecipes}/>
 			</div>
 			</div>
 		);
