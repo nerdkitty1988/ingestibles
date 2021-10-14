@@ -40,30 +40,30 @@ const NavBar = ({ loaded }) => {
           <nav className="site-header-nav site-header-primary-nav" aria-label="Categories menu">
             <ul className="category-nav-link">
               <li>
-                <a href='/'>
+                <NavLink to='/'>
                   <i className="fas fa-home"></i>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href='/recipes/beef'>Beef</a>
+                <NavLink to='/recipes/beef'>Beef</NavLink>
               </li>
               <li>
-                <a href='/recipes/chicken'>Chicken</a>
+                <NavLink to='/recipes/chicken'>Chicken</NavLink>
               </li>
               <li>
-                <a href='/recipes/desserts'>Desserts</a>
+                <NavLink to='/recipes/desserts'>Desserts</NavLink>
               </li>
               <li>
-                <a href='/recipes/fish'>Fish</a>
+                <NavLink to='/recipes/fish'>Fish</NavLink>
               </li>
               <li>
-                <a href='/recipes/pasta'>Pasta</a>
+                <NavLink to='/recipes/pasta'>Pasta</NavLink>
               </li>
               <li>
-                <a href='/recipes/pastries'>Pastries</a>
+                <NavLink to='/recipes/pastries'>Pastries</NavLink>
               </li>
               <li>
-                <a href='/recipes/vegetarian'>Vegetarian</a>
+                <NavLink to='/recipes/vegetarian'>Vegetarian</NavLink>
               </li>
             </ul>
           </nav>
@@ -72,19 +72,19 @@ const NavBar = ({ loaded }) => {
       </div>
       <div className="site-header-bottom">
         <div className="left-col">
-          <a className="site-logo " href="/">
+          <NavLink className="site-logo " to="/">
             <img className="ingestibles-logo" alt="Ingestibles" src="/logo.png"/>
             <span id="site-header-category-brand">ingestibles</span>
             <span className="site-header-category category-"></span>
-          </a>
-          <a href="/recipes" className="btn btn-category-header">Recipes</a>
-          <a href="/recipes/my_plate" className="btn btn-category-header">My Plate</a>
+          </NavLink>
+          <NavLink to="/recipes" className="btn btn-category-header">Recipes</NavLink>
+          <NavLink to="/recipes/my_plate" className="btn btn-category-header">My Plate</NavLink>
         </div>
         <div className="right-col">
           <nav className="site-header-nav site-header-secondary-nav" aria-label="Contest and classes">
             <ul>
               <li>
-                <a id="site-header-secondary-link" href="/recipes/new_recipe">PUBLISH</a>
+                <NavLink id="site-header-secondary-link" to="/recipes/new_recipe">PUBLISH</NavLink >
               </li>
             </ul>
           </nav>

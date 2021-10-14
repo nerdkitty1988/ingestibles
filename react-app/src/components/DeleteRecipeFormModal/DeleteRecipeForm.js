@@ -25,7 +25,7 @@ function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, 
     };
 
     return (
-        open && (<div>
+        open && (<div style={{ color:'#F27D21', fontWeight:'bold'}}>
             {/* <ul className='error'>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>

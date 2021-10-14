@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import LogoutButton from '../auth/LogoutButton';
 
 function ProfileButton() {
@@ -40,38 +41,38 @@ function ProfileButton() {
   return (
     <div id="you-menu-container" className="right-col">
       {/* <span className="site-header-nav-feed-link" >
-        <a className="category-nav-link feed-link" rel="nofollow" href="/recipes/my_plate">Following</a>
+        <NavLink className="category-nav-link feed-link" rel="nofollow" to="/recipes/my_plate">Following</NavLink>
       </span> */}
       <div id="you-menu" className="dropdown">
         <i onClick={openMenu} className="fas fa-user-circle fa-2x" data-toggle="dropdown"></i>
         {showMenu && (
           <ul id="you-menu-dropdown" className="dropdown-menu pull-right">
             <li>
-              <a href={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Profile</a>
+              <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Profile</NavLink>
             </li>
             <li>
-              <a href={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Inbox </a>
+              <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Inbox </NavLink>
             </li>
             <li>
-              <a href={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Favorites </a>
+              <NavLink to={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Favorites </NavLink>
             </li>
             <li>
-              <a href={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Discussions </a>
+              <NavLink to={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Discussions </NavLink>
             </li>
             <li>
-              <a href={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Settings</a>
+              <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Settings</NavLink>
             </li>
             <li className="divider"></li>
             <li className="multi-link">
-              <a className="published-link" href="/recipes/my_plate">
+              <NavLink className="published-link" to="/recipes/my_plate">
                 Ingestibles
                 &nbsp;<span className="badge">{`${createdRecipes?.length}`}</span>
-              </a>
+              </NavLink>
             </li>
             <li>
               <div className="button-actions">
                 <LogoutButton />
-                <a className="btn btn-yellow btn-block btn-large create-btn verification-required" href="/recipes/new_recipe">New Ingestible</a>
+                <NavLink className="btn btn-yellow btn-block btn-large create-btn verification-required" to="/recipes/new_recipe">New Ingestible</NavLink>
               </div>
             </li>
           </ul>
