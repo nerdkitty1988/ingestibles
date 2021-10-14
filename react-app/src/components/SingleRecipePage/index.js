@@ -78,7 +78,7 @@ const SingleRecipePage = () => {
     </div>
     <div id="like-license-buttons">
       <button id="like-button">
-        <i className="fas fa-heart"></i>Like
+        <i className="fas fa-heart" id="likeButton"></i>Like
       </button>
     </div>
     <div id="recipe-images">
@@ -87,7 +87,7 @@ const SingleRecipePage = () => {
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
-          <img className="profileCircle" src={currentRecipe?.author?.profilePic} alt="profile" />
+          <img className="profileCircleRecipe" src={currentRecipe?.author?.profilePic} alt="profile" />
         </div>
         <div id="more-by-author">
           <p id="more-by-author-text">More by <br/>
@@ -109,7 +109,7 @@ const SingleRecipePage = () => {
       <p>{currentRecipe?.description}</p>
     </div>
     <div id="comment-button-container">
-      <a href="#comments-section" id="comment-button"><i className="fas fa-comments"></i>Comment</a>
+      <a href="#comments-section" id="comment-button"><i className="fas fa-comments" id="fasComments"></i>Comment</a>
     </div>
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (

@@ -270,7 +270,7 @@ function Profile() {
 						Cancel
 					</button>
 				</div>
-                <button type="button" className="deleteAccount" onClick={(e) => {handleDelete(e)}}>Delete Account</button>
+                <button type="button" className="deleteAccount" onClick={(e) => {if(window.confirm('Are you sure you want to delete your account?  You can not undo this!')){handleDelete(e)}}}>Delete Account</button>
 			</form>
 		</div>
 	);
