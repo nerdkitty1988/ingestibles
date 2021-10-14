@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 import SingleRecipePage from './components/SingleRecipePage';
 import Profile from "./components/Profile/profile";
 import EditRecipe from "./components/EditRecipe/EditRecipe"
+import Recipes from './components/Recipes/Recipes';
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -61,6 +62,9 @@ function App() {
 					<Route path='/recipes/:recipeId' exact={true}>
           	<SingleRecipePage />
         	</Route>
+					<Route path="/recipes" exact={true}>
+						<Recipes />
+					</Route>
 				</Switch>
 			)}
 		</BrowserRouter>
