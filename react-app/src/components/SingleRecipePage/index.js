@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
 import Instruction from "../Instruction"
+import Comment from "../Comment"
 import "./SingleRecipePage.css"
 
 const SingleRecipePage = () => {
@@ -10,6 +11,7 @@ const SingleRecipePage = () => {
   console.log(sessionUser)
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [otherRecipes, setOtherRecipes] = useState([]);
+  const [canComment, setCanComment] = useState(false)
 
   // async function retrieveRecipe() {
   //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
@@ -41,14 +43,16 @@ const SingleRecipePage = () => {
     //console.log("NOW IM GOING")
   },[])
 
-
-
   console.log("IM AT THE END", currentRecipe.comments, otherRecipes)
+
   const whatIWant = otherRecipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)
-  console.log("RIGHT AFTER", whatIWant)
+  //console.log("otherRecipes!!!!!", sessionUser)
+  //console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
+
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
   console.log("authorsIds ===>>>",authorsIds)
+
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
   console.log("authorsImages ===>>>",authorsImages)
 
@@ -56,20 +60,26 @@ const SingleRecipePage = () => {
   console.log("authorsIdsArr ===>>>",authorIdsArr)
   const authorImagesArr = [...new Set(authorsImages)]
   console.log("authorImagesArr ====>>>", authorImagesArr)
-
-
   const authorsObject = {}
   for(let i = 0; i < authorIdsArr.length; i++){
     let image = authorImagesArr[i];
     let id = authorIdsArr[i];
     authorsObject[id] = image;
   }
-
   console.log(authorsObject);
-
   const today  = new Date();
-
   console.log(today.toLocaleDateString("en-US"));
+
+  let commentBox;
+  if(sessionUser) {
+    commentBox = (
+      <Comment currentRecipe={currentRecipe}/>
+    )
+  }
+  else {
+
+  }
+
   return (
     <div id="main">
     <div id="recipe-info">
@@ -119,6 +129,10 @@ const SingleRecipePage = () => {
       </div>
       )
     })}
+    <div id="add-comment-box">
+      <button onClick={()=>setCanComment(true)}>Comment on this jont</button>
+      {canComment && commentBox}
+    </div>
     <div id="comments-section">
       <h1>{currentRecipe?.comments?.length} comments </h1>
       {currentRecipe?.comments?.map((comment) => {
@@ -129,7 +143,6 @@ const SingleRecipePage = () => {
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>
               <p id="comment-date">{today.toLocaleDateString("en-US")}</p>
             </div>
-
             <p id="comment-text">{comment.comment}</p>
         </div>
         )

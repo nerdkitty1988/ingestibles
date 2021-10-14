@@ -1,9 +1,8 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Media
+from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Media, Comment
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.forms import createRecipeForm
-from app.forms import editRecipeForm
+from app.forms import createRecipeForm, editRecipeForm, createCommentForm
 
 # setup AWS
 from app.s3_helpers import (
@@ -23,6 +22,21 @@ def single_recipe(id):
     recipe = Recipe.query.filter_by(id=id).first()
     return {'recipe': [recipe.to_dict()]}
 
+@recipe_routes.route('/<int:id>/comments', methods=['POST'])
+@login_required
+def create_comment():
+    formComment = createCommentForm()
+    formComment['csrf_token'].data = request.cookies['csrf_token']
+    if formComment.validate_on_submit():
+        comment = Comment(
+            userId=formComment.data['userId'],
+            recipeId=formComment.data['recipeId'],
+            commentBody=formComment.data['comment'],
+            time_created = formComment.data['time_created']
+        )
+        db.session.add(comment)
+        db.session.commit()
+        return comment.to_dict()
 #Fetch user's like recipes
 @recipe_routes.route('/my_plate/<int:id>')
 @login_required
