@@ -3,9 +3,12 @@
     position: fixed;
     flex-direction: row;
     background-image: url("cook.jpg");
-    background-size: contain;
-    width: 100vmax;
-    height: 100vmax;
+    /* background-size: contain; */
+    background-size: cover;
+    /* width: 100vmax; */
+    width: 100%;
+    /* height: 100vmax; */
+    height: 100%;
     background-color: white;
     opacity: 0.95;
 }
