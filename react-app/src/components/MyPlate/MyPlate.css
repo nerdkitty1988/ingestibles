@@ -1,7 +1,7 @@
 .recipeList {
     display: flex;
     flex-direction:row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .singleRecipe {

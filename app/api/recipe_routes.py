@@ -326,3 +326,15 @@ def edit_recipe(id):
         return recipe.to_dict()
 
     return {'errors': validation_errors_to_error_messages(formRecipe.errors)}, 400
+
+# To delete recipe
+@recipe_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_recipe(id):
+    recipe = Recipe.query.get(id)
+    if recipe.authorId != current_user.to_dict()['id'] or not recipe:
+        return {'errors': ['No authorization.']}, 401
+ 
+    db.session.delete(recipe)
+    db.session.commit()
+    return {'message': ['Delete Successfully']}
