@@ -73,35 +73,25 @@ const SingleRecipePage = () => {
 
 
 // Codes about Likes start here:
+  const [likeResponse, setLikeResponse] = useState('')
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/likes/${recipeId}`);
+      const like = await response.json();
+      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+    })();
+  }, [recipeId]);
+
+  
   const likeRecipe = async (e) => {
     e.preventDefault();
-    const deleteResponse = await fetch(`/api/likes/${recipeId}`, {
+    const response= await fetch(`/api/likes/${recipeId}`, {
       method: 'POST'
     })
-    // re-set all created_recipes to dynamically shown on page when recipe is deleted
-    // const response = await fetch(`/api/recipes/my_plate/${userId}`);
-    // const responseData = await response.json();
-    // setCreatedRecipes(responseData.created);
+    const like = await response.json();
+    (like.like) ? setLikeResponse(like.like) : setLikeResponse('') 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -140,8 +130,10 @@ const SingleRecipePage = () => {
       <p>By {currentRecipe?.author?.username} {">"}</p>
     </div>
     <div id="like-license-buttons">
-      <button id="like-button">
-        <i className="fas fa-heart" id="likeButton" onclick={likeRecipe}></i>Like
+        <button id="like-button" onClick={likeRecipe} >
+          {likeResponse? <i className="fas fa-heart" 
+            style={{ color: '#F27D21' }} id="likeButton"></i>:<i className="fas fa-heart" id="likeButton"></i>} Like
+        
       </button>
     </div>
     <div id="recipe-images">
