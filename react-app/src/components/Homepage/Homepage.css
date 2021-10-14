@@ -17,6 +17,8 @@
   clear: both;
 }
 
+
+
 a:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
@@ -481,9 +483,11 @@ a:hover {
 @media (max-width: 1720px){
 .home-content-text-wrap{max-width:1304px;}
 }
+
 @media (max-width: 1372px){
 .home-content-text-wrap{max-width:980px;}
 }
+
 @media (max-width: 1029px){
 .home-content-text-wrap{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;flex-flow:row wrap;max-width:645px;}
 }
@@ -511,6 +515,11 @@ a:hover {
   margin-left: 2.5vw;
   margin-right: 2.5vw;
   clear: both;
+}
+
+.home-content-explore-ibles {
+  max-height: 350px !important;
+  overflow-y: hidden;
 }
 
 .home-content-explore .home-content-explore-ible {
