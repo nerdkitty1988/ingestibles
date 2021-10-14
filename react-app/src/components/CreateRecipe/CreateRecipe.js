@@ -345,7 +345,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Enter step title - Required input'
+                    placeholder='Enter step title'
           
                 />
                </div>
@@ -360,7 +360,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Write a detailed description of this step - Required input'
+                    placeholder='Write a detailed description of this step'
                         
                 />
                 </div>
@@ -393,7 +393,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Enter step title - Required input'
+                    placeholder='Enter step title'
 
                 />
                 </div>
@@ -407,7 +407,7 @@ const CreateRecipe = () => {
                         return steps
 
                     })}
-                    placeholder='Write a detailed description of this step - Required input'
+                    placeholder='Write a detailed description of this step'
 
                 />
                 </div>

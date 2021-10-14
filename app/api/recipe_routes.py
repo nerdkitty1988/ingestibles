@@ -253,7 +253,7 @@ def edit_recipe(id):
             db.session.delete(ingredient)
 
         for (key, value) in request.form.items():
-            if key[0:10] == 'ingredient':
+            if key[0:10] == 'ingredient' and key[10:15] != 'Photo':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
         
         # delete old media, and then save media; request.form has image url as string; request.file has files/images, is dictionary
@@ -261,7 +261,7 @@ def edit_recipe(id):
             db.session.delete(media)
         for (key, value) in request.form.items():
             if key[0:5] == 'media':
-                db.session.add(Media(mediaUrl=media, recipeId=recipe.id))
+                db.session.add(Media(mediaUrl=value, recipeId=recipe.id))
 
         for (key, value) in request.files.items():
             if key[0:5] == 'media':

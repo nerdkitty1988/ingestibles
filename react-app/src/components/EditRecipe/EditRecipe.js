@@ -32,11 +32,9 @@ const EditRecipe = () => {
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
 
-    const [steps, setSteps] = useState({});
+    const [steps, setSteps] = useState({'oldSteps':{}});
     const [stepCounter, setStepCounter] = useState(0);
     const [errors, setErrors] = useState([]);
-    
-    const [hidden, setHidden] = useState(0);
 
     // fetch current recipe to pre-load data on edit form
     const { recipeId } = useParams();
@@ -72,6 +70,17 @@ const EditRecipe = () => {
             // pre-load media on edit form - media table
             recipe.medias.forEach((media, i) => {
                 oldMediaArr[i](media.mediaUrl)          
+            })
+            // pre-load steps on edit form - steps table
+            recipe.instructions.forEach((instruction, i) => {
+                setSteps(steps => {
+                    steps[`oldSteps`][`step${i+1}`]={}
+                    steps[`oldSteps`][`step${i + 1}`].photo = instruction.imageUrl
+                    steps[`oldSteps`][`step${i + 1}`].title = instruction.stepTitle
+                    steps[`oldSteps`][`step${i + 1}`].direction = instruction.directions
+                    return steps
+                })
+                setStepCounter(stepCounter => stepCounter + 1)
             })
             
 
@@ -400,7 +409,7 @@ const EditRecipe = () => {
             
             <div className='createRecipeWrapper'>
             <h4 style={{ textAlign: 'center' }}>Your Recipe Steps</h4>
-            <div className='createRecipeEl'>
+            {/* <div className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #1</h5>
                 <div className='createRecipeStep'>
                         <label className='editRecipeLabel'>Title </label >
@@ -446,22 +455,23 @@ const EditRecipe = () => {
                 })}
                 />
                 </div>
-            </div>
+            </div> */}
 
-            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='createRecipeEl'>
-                <h5 style={{ textAlign: 'center' }}>Step #{i + 2} </h5>
+            {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 1}`} className='createRecipeEl'>
+                <h5 style={{ textAlign: 'center' }}>Step #{i + 1} </h5>
                 < div className='createRecipeStep' >
                     <label className='editRecipeLabel'>Title </label>
                 <input
                     className='listingInput'
                     type="text"
+                    defaultValue={steps.oldSteps[`step${i + 1}`]?.title}
                     onChange={(e) => setSteps(steps => {
-                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].title = e.target.value : steps[`step${i + 2}`] = {}
-                        steps[`step${i + 2}`].title = e.target.value
+                        steps[`step${i + 1}`] ? steps[`step${i + 1}`].title = e.target.value : steps[`step${i + 1}`] = {}
+                        steps[`step${i + 1}`].title = e.target.value
                         return steps
 
                     })}
-                    placeholder='Enter step title - Required input'
+                    placeholder='Enter step title'
 
                 />
                 </div>
@@ -469,16 +479,24 @@ const EditRecipe = () => {
                     <label className='editRecipeLabel'>Instruction </label>
                 <textarea
                     className='listingInput'
+                    defaultValue={steps.oldSteps[`step${i + 1}`]?.direction}
                     onChange={(e) => setSteps(steps => {
-                        steps[`step${i + 2}`] ? steps[`step${i + 2}`].direction = e.target.value : steps[`step${i + 2}`] = {}
-                        steps[`step${i + 2}`].direction = e.target.value
+                        steps[`step${i + 1}`] ? steps[`step${i + 1}`].direction = e.target.value : steps[`step${i + 1}`] = {}
+                        steps[`step${i + 1}`].direction = e.target.value
                         return steps
 
                     })}
-                    placeholder='Write a detailed description of this step - Required input'
+                    placeholder='Write a detailed description of this step'
 
                 />
                 </div>
+                <img
+                    className='EditImg'
+                    
+                    src={steps.oldSteps[`step${i + 1}`]?.photo ? steps.oldSteps[`step${i + 1}`]?.photo : null} 
+                    
+                    alt={`PhotoForOriginalStep${i + 1}`} />
+
                 <div className='createRecipeStep'>
                     < label className='editRecipeLabel'> Photo </label>
                 <input   
@@ -486,8 +504,8 @@ const EditRecipe = () => {
                     type = "file"
                     accept = "image/*"                       
                     onChange = {(e) => setSteps(steps => {
-                    steps[`step${i + 2}`] ? steps[`step${i + 2}`].photo = e.target.files[0] : steps[`step${i + 2}`] = {}
-                    steps[`step${i + 2}`].photo = e.target.files[0]
+                    steps[`step${i + 1}`] ? steps[`step${i + 1}`].photo = e.target.files[0] : steps[`step${i + 1}`] = {}
+                    steps[`step${i + 1}`].photo = e.target.files[0]
                     return steps
                     })}
 
