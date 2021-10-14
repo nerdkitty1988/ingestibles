@@ -639,11 +639,11 @@ a:hover {
   vertical-align: top;
 }
 
-.home-content-explore-ible:first-child {
+/* .home-content-explore-ible:first-child {
   margin-left: 0;
-}
+} */
 
-@media (max-width: 1720px){
+/* @media (max-width: 1720px){
 .home-content-explore-ible:nth-child(5){display:none;}
 }
 
@@ -655,7 +655,7 @@ a:hover {
 .home-content-explore-ible:nth-child(4){display:block;}
 .home-content-explore-ible:nth-child(3){margin-left:0;}
 .home-content-explore-ible:nth-child(5){display:none;}
-}
+} */
 
 .home-content-explore-wrap,.home-content-explore-category-wrap {
   max-width: 1634px;
