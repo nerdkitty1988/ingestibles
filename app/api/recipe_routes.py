@@ -58,7 +58,8 @@ def create_recipe():
     for (key, value) in request.form.items():
         if key[0:4] == 'step':
             # e.g. step1_
-            stepPrefix = key[0:6]
+            stepNumForValidation = key[4:].split('_')[0]
+            stepPrefix = 'step' + stepNumForValidation + '_'
             # exclude not exit, '', all spaces
             if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
                 return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
@@ -134,9 +135,9 @@ def create_recipe():
         stepToVisit = []
         for (key, value) in request.form.items():
             if key[0:4] == 'step':
-                stepNumber = key[4]
-                if stepNumber not in stepToVisit:               
-                    stepToVisit.append(stepNumber)
+                stepNumForVisit = int(key[4:].split('_')[0])
+                if stepNumForVisit not in stepToVisit:
+                    stepToVisit.append(stepNumForVisit)
         stepToVisit.sort()
 
         # stepNumberVisited = []
@@ -145,7 +146,7 @@ def create_recipe():
             #     if key[0:4] == 'step':
             #         stepNumber = key[4]
             # e.g. step1_
-            stepPrefix = 'step'+stepN + '_'
+            stepPrefix = 'step'+str(stepN) + '_'
 
             # if(stepNumber not in stepNumberVisited):
             if(stepPrefix+'photo' in request.files.keys()):
@@ -182,7 +183,7 @@ def edit_recipe(id):
    
     
     # if userId is not current logged-in user, no authorization
-    if recipe.authorId != current_user.to_dict()['id'] or not recipe:
+    if not recipe or recipe.authorId != current_user.to_dict()['id'] :
         return {'errors': ['No authorization.']}, 401
 
     formRecipe = editRecipeForm()
@@ -198,19 +199,19 @@ def edit_recipe(id):
     for (key, value) in request.form.items():
         if key[0:4] == 'step':
             # e.g. step1_ ( step10_, key[0:7] )
-            stepPrefix = key[0:6]
+            stepNumForValidation = key[4:].split('_')[0]
+            stepPrefix = 'step' + stepNumForValidation +'_'
             # exclude not exit, '', all spaces
-            if((stepPrefix+'title' not in request.form.keys() and key[0:7]+'title' not in request.form.keys()) or
-                    (stepPrefix+'direction' not in request.form.keys() and key[0:7]+'direction' not in request.form.keys()) or
-                    (not request.form[stepPrefix+'title'] and not request.form[key[0:7]+'title']) or
-                    (not request.form[stepPrefix+'direction'] and not request.form[key[0:7]+'direction']) or
-                    (request.form[stepPrefix+'title'].isspace() and request.form[key[0:7]+'title'].isspace()) or
-                    (request.form[stepPrefix+'direction'].isspace()
-                     and request.form[key[0:7]+'direction'].isspace())
+            if((stepPrefix+'title' not in request.form.keys()) or
+                    (stepPrefix+'direction' not in request.form.keys()) or
+                    (not request.form[stepPrefix+'title']) or
+                    (not request.form[stepPrefix+'direction']) or
+                    (request.form[stepPrefix+'title'].isspace()) or
+                    (request.form[stepPrefix+'direction'].isspace())
                     ):
                 print('!!!!!eroor', key, value, stepPrefix +
                       'title', request.form.keys(), stepPrefix +
-                      'title' not in request.form.keys(), key[0:7]+'title' not in request.form.keys())
+                      'title' not in request.form.keys())
                 return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
@@ -301,15 +302,15 @@ def edit_recipe(id):
         stepToVisit = []
         for (key, value) in request.form.items():
             if key[0:4] == 'step':
-                stepNumber = key[4]
-                if stepNumber not in stepToVisit:               
-                    stepToVisit.append(stepNumber)
+                stepNumForVisit = int(key[4:].split('_')[0])
+                if stepNumForVisit not in stepToVisit:
+                    stepToVisit.append(stepNumForVisit)
         stepToVisit.sort()
 
        
         for stepN in stepToVisit: 
             # e.g. step1_
-            stepPrefix = 'step'+stepN + '_' 
+            stepPrefix = 'step'+str(stepN) + '_'
             if(stepPrefix+'photo' in request.files.keys()):
                 stepPhoto = request.files[stepPrefix+'photo']
                 if not allowed_file(stepPhoto.filename):

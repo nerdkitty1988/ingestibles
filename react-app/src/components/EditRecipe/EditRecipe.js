@@ -101,7 +101,7 @@ const EditRecipe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-
+        console.log('!!!!!!setOldStepsPhotos', oldStepsPhotos)
         // filter out null/empty/only spaces input
         const tags_notNull = {}
         Object.keys(tags).forEach(key=>{
@@ -381,9 +381,9 @@ const EditRecipe = () => {
 
              <div className='createRecipeWrapper'>
                 <h4 style={{ textAlign: 'center' }}>Ingredients</h4>
-                <img
+                {(ingredientPhoto_Old )?<img
                     className='EditImg'
-                    src={ingredientPhoto_Old} alt='OriginalIngredientPhoto' />
+                    src={ingredientPhoto_Old} alt='OriginalIngredientPhoto' />:null}
                 <div className='createRecipeEl'>
                     <label className='editRecipeLabel'>Replace ingredient photo above by </label>
                 
@@ -451,7 +451,7 @@ const EditRecipe = () => {
 
                 />
                 </div>
-                {oldStepsPhotos[`step${i + 1}`]?<img
+                {oldStepsPhotos[`step${i + 1}`] && oldStepsPhotos[`step${i + 1}`] !== 'null' && oldStepsPhotos[`step${i + 1}`] !== 'undefined'?<img
                     className='EditImg'
 
                     src={oldStepsPhotos[`step${i + 1}`]}
