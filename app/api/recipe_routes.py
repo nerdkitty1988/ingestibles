@@ -195,13 +195,13 @@ def edit_recipe(id):
 
     # validate title and instructions of steps are not empty, because number of steps are not certain, thus cannot use wts-form to validate them
 
-    # for (key, value) in request.form.items():
-    #     if key[0:4] == 'step':
-    #         # e.g. step1_
-    #         stepPrefix = key[0:6]
-    #         # exclude not exit, '', all spaces
-    #         if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
-    #             return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
+    for (key, value) in request.form.items():
+        if key[0:4] == 'step':
+            # e.g. step1_
+            stepPrefix = key[0:6]
+            # exclude not exit, '', all spaces
+            if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
+                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
         # if ingredientPhoto is a file, not a string(an url), save to AWS and get its url in following if statement
@@ -281,9 +281,11 @@ def edit_recipe(id):
                     
                 media_url = upload_media["url"]
                 db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
-        """
+       
         # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
         # e.g. step1_title step1_direction step1_photo as keys
+        for instruction in recipe.instructions:
+            db.session.delete(instruction)
 
         # to order steps by stepNumber
         stepToVisit = []
@@ -294,15 +296,10 @@ def edit_recipe(id):
                     stepToVisit.append(stepNumber)
         stepToVisit.sort()
 
-        # stepNumberVisited = []
-        for stepN in stepToVisit:
-            # for (key, value) in request.form.items():
-            #     if key[0:4] == 'step':
-            #         stepNumber = key[4]
+       
+        for stepN in stepToVisit: 
             # e.g. step1_
-            stepPrefix = 'step'+stepN + '_'
-
-            # if(stepNumber not in stepNumberVisited):
+            stepPrefix = 'step'+stepN + '_' 
             if(stepPrefix+'photo' in request.files.keys()):
                 stepPhoto = request.files[stepPrefix+'photo']
                 if not allowed_file(stepPhoto.filename):
@@ -316,13 +313,15 @@ def edit_recipe(id):
                     return {'errors': [upload_stepPhoto['errors']]}, 400
             
                 stepPhoto_url = upload_stepPhoto["url"]
+            elif(stepPrefix+'photo' in request.form.keys()):
+                stepPhoto_url = request.form[stepPrefix+'photo']
             else:
                 stepPhoto_url = None
 
             db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
-            # stepNumberVisited.append(stepNumber)
+           
         
-        """
+       
         db.session.commit()
         return recipe.to_dict()
 

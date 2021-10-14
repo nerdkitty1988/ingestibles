@@ -31,8 +31,9 @@ const EditRecipe = () => {
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
-
-    const [steps, setSteps] = useState({'oldSteps':{}});
+    
+    const [oldStepsPhotos, setOldStepsPhotos] = useState({});
+    const [steps, setSteps] = useState({});
     const [stepCounter, setStepCounter] = useState(0);
     const [errors, setErrors] = useState([]);
 
@@ -73,11 +74,15 @@ const EditRecipe = () => {
             })
             // pre-load steps on edit form - steps table
             recipe.instructions.forEach((instruction, i) => {
-                setSteps(steps => {
-                    steps[`oldSteps`][`step${i+1}`]={}
-                    steps[`oldSteps`][`step${i + 1}`].photo = instruction.imageUrl
-                    steps[`oldSteps`][`step${i + 1}`].title = instruction.stepTitle
-                    steps[`oldSteps`][`step${i + 1}`].direction = instruction.directions
+                setOldStepsPhotos(oldStepsPhotos => {
+                    oldStepsPhotos[`step${i + 1}`] = instruction.imageUrl
+                    return oldStepsPhotos
+                })
+                setSteps(steps => {           
+                    steps[`step${i + 1}`] = {}
+                    steps[`step${i + 1}`].photo = instruction.imageUrl
+                    steps[`step${i + 1}`].title = instruction.stepTitle
+                    steps[`step${i + 1}`].direction = instruction.directions
                     return steps
                 })
                 setStepCounter(stepCounter => stepCounter + 1)
@@ -86,10 +91,6 @@ const EditRecipe = () => {
 
         })();
     }, [recipeId]);
-
-
-
-
 
 
     // require login is handled by ProtectedRoute
@@ -106,8 +107,8 @@ const EditRecipe = () => {
                 tags_notNull[key] = tags[key]
             }
         })
-        const media_notNull = {}
 
+        const media_notNull = {}
         // if there is new media, then replace old, otherwise use old media url
         const mediaArr = [media1 ? media1 : media1_old, media2 ? media2 : media2_old, media3 ? media3 : media3_old, media4 ? media4 : media4_old, media5 ? media5 : media5_old]
         mediaArr.forEach((media,i) => {
@@ -129,6 +130,10 @@ const EditRecipe = () => {
             if (!(steps_notNull[key].title?steps_notNull[key].title.replace(/\s/g, '') :steps_notNull[key].title) && !(steps_notNull[key].direction?steps_notNull[key].direction.replace(/\s/g, '').length:steps_notNull[key].direction)) {
                 delete steps_notNull[key]
             } 
+            // if there is no image to replace, making sure it has original url/null
+            else if (!steps_notNull[key].photo){
+                steps_notNull[key].photo = oldStepsPhotos[key]
+            }
         })
 
 
@@ -153,14 +158,15 @@ const EditRecipe = () => {
             formData.append(key, media_notNull[key]);
         })
         // prepare steps data ready for AWS
-        // Object.keys(steps_notNull).forEach(key => {
-        //     // console.log('outside', key, steps_notNull[key])
-        //     Object.keys(steps_notNull[key]).forEach(k=>{
-        //         // console.log('inside', k, steps_notNull[key][k])
-        //         formData.append(key + '_' + k, steps_notNull[key][k]);
-        //     })
+        Object.keys(steps_notNull).forEach(key => {
+            // console.log('outside', key, steps_notNull[key])
+            Object.keys(steps_notNull[key]).forEach(k=>{
+                // console.log('inside', k, steps_notNull[key][k])
+                // e.g. step1_title
+                formData.append(key + '_' + k, steps_notNull[key][k]);
+            })
             
-        // })
+        })
         
     
         // formData.values() creates iterator and use for loop to print out values
@@ -182,7 +188,7 @@ const EditRecipe = () => {
             tags:tags_notNull,
             media:media_notNull,
             ingredients:ingredients_notNull,
-            // steps: steps_notNull,
+            steps: steps_notNull,
         }
         console.log('dictionary-recipe:', newRecipe)
 
@@ -409,53 +415,6 @@ const EditRecipe = () => {
             
             <div className='createRecipeWrapper'>
             <h4 style={{ textAlign: 'center' }}>Your Recipe Steps</h4>
-            {/* <div className='createRecipeEl'>
-                <h5 style={{ textAlign: 'center' }}>Step #1</h5>
-                <div className='createRecipeStep'>
-                        <label className='editRecipeLabel'>Title </label >
-                <input
-                    className='listingInput'
-                    type="text"
-                    onChange={(e) => setSteps(steps=>{
-                        steps['step1'] ? steps['step1'].title = e.target.value : steps['step1'] ={}
-                        steps['step1'].title = e.target.value
-                        return steps
-
-                    })}
-                    placeholder='Enter step title - Required input'
-          
-                />
-               </div>
-
-                <div className='createRecipeStep'>
-                        <label className='editRecipeLabel'>Instruction </label>
-                <textarea
-                    className='listingInput'
-                    onChange={(e) => setSteps(steps=>{
-                        steps['step1'] ? steps['step1'].direction = e.target.value : steps['step1'] ={}
-                        steps['step1'].direction = e.target.value
-                        return steps
-
-                    })}
-                    placeholder='Write a detailed description of this step - Required input'
-                        
-                />
-                </div>
-                <div className='createRecipeStep'>
-                        <label className='editRecipeLabel'>Photo </label>
-                <input
-                    className = 'listingInput'
-                    type = "file"
-                    accept = "image/*"
-                    onChange={(e) => setSteps(steps => {
-                    steps['step1'] ? steps['step1'].photo = e.target.files[0] : steps['step1'] = {}
-                    steps['step1'].photo = e.target.files[0]
-                    return steps
-
-                })}
-                />
-                </div>
-            </div> */}
 
             {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 1}`} className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #{i + 1} </h5>
@@ -464,7 +423,7 @@ const EditRecipe = () => {
                 <input
                     className='listingInput'
                     type="text"
-                    defaultValue={steps.oldSteps[`step${i + 1}`]?.title}
+                    defaultValue={steps[`step${i + 1}`]?.title}
                     onChange={(e) => setSteps(steps => {
                         steps[`step${i + 1}`] ? steps[`step${i + 1}`].title = e.target.value : steps[`step${i + 1}`] = {}
                         steps[`step${i + 1}`].title = e.target.value
@@ -479,7 +438,7 @@ const EditRecipe = () => {
                     <label className='editRecipeLabel'>Instruction </label>
                 <textarea
                     className='listingInput'
-                    defaultValue={steps.oldSteps[`step${i + 1}`]?.direction}
+                    defaultValue={steps[`step${i + 1}`]?.direction}
                     onChange={(e) => setSteps(steps => {
                         steps[`step${i + 1}`] ? steps[`step${i + 1}`].direction = e.target.value : steps[`step${i + 1}`] = {}
                         steps[`step${i + 1}`].direction = e.target.value
@@ -490,15 +449,15 @@ const EditRecipe = () => {
 
                 />
                 </div>
-                <img
+                {oldStepsPhotos[`step${i + 1}`]?<img
                     className='EditImg'
+
+                    src={oldStepsPhotos[`step${i + 1}`]}
                     
-                    src={steps.oldSteps[`step${i + 1}`]?.photo ? steps.oldSteps[`step${i + 1}`]?.photo : null} 
-                    
-                    alt={`PhotoForOriginalStep${i + 1}`} />
+                    alt={`OriginalPhotoForStep${i + 1}`} />:null}
 
                 <div className='createRecipeStep'>
-                    < label className='editRecipeLabel'> Photo </label>
+                    < label className='editRecipeLabel'>Replace photo of step #{i+1} by </label>
                 <input   
                     className = 'listingInput'
                     type = "file"
