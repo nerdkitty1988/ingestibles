@@ -256,7 +256,13 @@ def edit_recipe(id):
             if key[0:10] == 'ingredient':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
         
-        # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
+        # delete old media, and then save media; request.form has image url as string; request.file has files/images, is dictionary
+        for media in recipe.medias:
+            db.session.delete(media)
+        for (key, value) in request.form.items():
+            if key[0:5] == 'media':
+                db.session.add(Media(mediaUrl=media, recipeId=recipe.id))
+
         for (key, value) in request.files.items():
             if key[0:5] == 'media':
                 media = request.files[key]
