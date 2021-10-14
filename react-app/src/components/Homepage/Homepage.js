@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Homepage.css";
+import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Homepage = () => {
 
@@ -95,7 +97,9 @@ const Homepage = () => {
 		five();
 	}, [randomRecipes]);
 
-	console.log(typeof(tagName1))
+
+
+
 
 	return (
 		<main>
@@ -114,7 +118,58 @@ const Homepage = () => {
 					className="home-content-rotator carousel carousel-fade"
 				>
 					<div className="home-content-rotator-inner carousel-inner">
-						<div
+
+						<div className="home-content-rotator-slide-overlay">
+							<div className="home-content-rotator-slide-wrap">
+								<div className="home-content-adspot-wrap">
+									<div className="home-content-adspot-text">
+										<h1>YOURS FOR THE MAKING</h1>
+										<p>
+											Ingestibles is a community for
+											people who like to cook food. Come
+											explore, share, and create your next
+											recipe with us!
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<Carousel id="slider" className="home-content-rotator-inner carousel-inner" infiniteLoop={true} autoPlay={true} showThumbs={false} showArrows={false} showIndicators={false} showStatus={false} interval={5000} stopOnHover={false}>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1598023696416-0193a0bcd302?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1836&q=80" />
+							</div>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1626078297492-b7dc55294332?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+							</div>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80" />
+							</div>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" />
+							</div>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80" />
+							</div>
+							<div>
+								<img className="splash-images" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+							</div>
+						</Carousel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						{/* <div
 							className="home-content-rotator-slide item home-content-rotator-slide-align-middle"
 							style={{
 								backgroundImage:
@@ -250,9 +305,9 @@ const Homepage = () => {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
-					<div className="home-content-rotator-indicator-wrap">
+					{/* <div className="home-content-rotator-indicator-wrap">
 						<ol className="home-content-rotator-indicator carousel-indicators">
 							<li
 								data-target="#home-content-rotator"
@@ -285,7 +340,7 @@ const Homepage = () => {
 								className=""
 							></li>
 						</ol>
-					</div>
+					</div> */}
 				</div>
 				<div className="home-content-text">
 					<div className="home-content-text-wrap">
