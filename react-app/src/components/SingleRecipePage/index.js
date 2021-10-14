@@ -1,23 +1,52 @@
 import { React, useEffect, useState } from "react";
-import { useDispatch} from "react-redux";
+import { useSelector} from "react-redux";
 import { useParams } from "react-router";
 import Instruction from "../Instruction"
 import "./SingleRecipePage.css"
 
 const SingleRecipePage = () => {
-  const dispatch = useDispatch()
   const { recipeId } = useParams();
-  const [currentRecipe, setCurrentRecipe] = useState([])
-  async function retrieveRecipe(recipeId) {
-    const recipeData = await fetch(`/api/recipes/${recipeId}`)
-    const currentRecipeData = await recipeData.json();
-    setCurrentRecipe(...currentRecipeData.recipe)
+  const sessionUser = useSelector((state) => state.session.user);
+  console.log(sessionUser)
+  const [currentRecipe, setCurrentRecipe] = useState({});
+  const [otherRecipes, setOtherRecipes] = useState([]);
+
+  // async function retrieveRecipe() {
+  //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
+  //   const currentRecipeData = await recipeFetch.json();
+  //   const recipeData = currentRecipeData.recipe[0]
+  //   setCurrentRecipe(recipeData)
+  // }
+
+  // async function retrieveOtherRecipes() {
+  //   const recipeData = await fetch(`/api/recipes`)
+  //   const currentRecipeData = await recipeData.json();
+  //   const recipeArray = currentRecipeData.recipes.filter(recipe => recipe.authorId === currentRecipe.authorId)
+  //   const othersArray = recipeArray.filter(recipe => recipe.id !== currentRecipe.id)
+  //   console.log("WE GET HERE")
+  //   setOtherRecipes(othersArray)
+  // }
+  const fetchData = () => {
+   const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
+   const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
+  Promise.all([thisRecipe, others]).then((allData) => {
+    setCurrentRecipe(allData[0].recipe[0])
+    setOtherRecipes(allData[1].recipes)})
   }
+
   useEffect(() => {
-    retrieveRecipe(recipeId)
-  }, [dispatch, recipeId])
+    fetchData()
+    //console.log(recipeFetch)
+    //retrieveOtherRecipes()
+    //console.log("NOW IM GOING")
+  },[])
+
+
+
+  console.log("IM AT THE END", currentRecipe.comments, otherRecipes)
+  const whatIWant = otherRecipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)
+  console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
-  console.log("RECIPE IMAGES", recipeImages)
   return (
     <div id="main">
     <div id="recipe-info">
@@ -38,6 +67,9 @@ const SingleRecipePage = () => {
       </div>
       <div id="more-by-author">
         <p id="more-by-author-text">More by the author:</p>
+        {whatIWant && whatIWant.map(recipe => {
+          return (<><a href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br/></>)
+        })}
       </div>
       <div id="author-bio">
         <p>About: {currentRecipe?.author?.biography}</p>
@@ -47,16 +79,27 @@ const SingleRecipePage = () => {
       <p>{currentRecipe?.description}</p>
     </div>
     <div id="comment-button-container">
-      <button id="comment-button"><i className="fas fa-comments"></i>Comment</button>
+      <a href="#comments-section" id="comment-button"><i className="fas fa-comments"></i>Comment</a>
     </div>
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (
-        <div id="step">
+        <div key={index} id="step">
         <p><strong> Step {index + 1}: {instruction.stepTitle}</strong></p>
         <Instruction instruction={instruction}/>
       </div>
       )
     })}
+    <div id="comments-section">
+      <h2>{currentRecipe?.comments?.length} comments </h2>
+      {currentRecipe?.comments?.map((comment) => {
+        return (
+        <div id="comment">
+          <p>{comment.comment}</p>
+          <p>{comment.time_created}</p>
+        </div>
+        )
+      })}
+    </div>
   </div>
   )
 }

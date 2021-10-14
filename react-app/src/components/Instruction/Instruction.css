@@ -1,4 +1,4 @@
-#step-details {
+#step {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
 }
 
 #comment-button:hover .fas {
-  color: #a6c432;
+  color: orange;
 }
 
 .fas {

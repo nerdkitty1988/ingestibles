@@ -8,7 +8,7 @@ const Instruction = (instruction) => {
       <br/><br/>
       <p>{instruction.instruction.directions}</p>
       <div id="comment-button-container">
-        <button id="comment-button"><i className="fas fa-comments"></i>Comment</button>
+        <a href="#comments-section" id="comment-button"><i className="fas fa-comments"></i>Comment</a>
       </div>
     </div>
   )

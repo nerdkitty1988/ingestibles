@@ -42,7 +42,7 @@
 }
 
 #like-button:hover .fas {
-  color: magenta;
+  color: orange;
 }
 
 #recipe-images {
@@ -52,9 +52,11 @@
 }
 
 #author-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-areas:
+            "a . ."
+            ". c c"
+            "b b .";
   width: 100%;
   height: 180px;
   border: 1px solid lightgrey;
@@ -64,12 +66,21 @@
 }
 
 .profileCircle {
+  grid-area: "a";
   width: 70px;
   height: 70px;
   object-fit: cover;
   border-radius: 100%;
   margin-right: 10px;
   padding: 10px;
+}
+
+#more-by-author {
+  grid-area: "b";
+}
+
+#author-bio {
+  grid-area: "c";
 }
 
 #recipe-description {
@@ -105,10 +116,17 @@
 }
 
 #comment-button:hover .fas {
-  color: #a6c432;
+  color: orange;
 }
 
 .fas {
   color: #dedede;
   padding-right: 6px;
+}
+
+#comments-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
