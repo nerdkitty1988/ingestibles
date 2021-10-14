@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from app.models import Tag, Recipe, db
-from  sqlalchemy.sql.expression import func, select
+from app.models import Tag, Recipe
+from  sqlalchemy.sql.expression import func
 
 
 tag_routes = Blueprint('tags', __name__)
