@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import "./auth.css"
 
@@ -62,7 +62,7 @@ const LoginForm = () => {
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
                     <div className="loginSignupText">
-                        New to Ingestibles? <a href="/sign-up">Sign Up >></a>
+						New to Ingestibles? <NavLink to="/sign-up">Sign Up >></NavLink>
                     </div>
 				</form>
 			</div>

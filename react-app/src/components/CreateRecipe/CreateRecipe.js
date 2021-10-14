@@ -210,6 +210,8 @@ const CreateRecipe = () => {
                             placeholder='At least 1 Tag'
                             />
                         </div>))}
+                <label className='editRecipeLabel'
+                    style={{ marginLeft: '30%', marginRight: '10%', color: '#2196F2' }}> *We recommend you use tags to describe the type of recipe it is and the main ingredients</label>
                     <button onClick={tagCounterClick} 
                             style={{ marginRight: '12%' }}
                             className="btn-category-header"
