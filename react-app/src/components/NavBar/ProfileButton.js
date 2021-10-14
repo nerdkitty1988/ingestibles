@@ -5,7 +5,19 @@ import LogoutButton from '../auth/LogoutButton';
 function ProfileButton() {
   const [showMenu, setShowMenu] = useState(false);
 
+  const [createdRecipes, setCreatedRecipes] = useState([]);
+
   const sessionUser = useSelector((state) => state.session?.user);
+  const userId = sessionUser?.id;
+
+  useEffect(() => {
+		async function fetchData() {
+			const response = await fetch(`/api/recipes/my_plate/${userId}`);
+			const responseData = await response.json();
+			setCreatedRecipes(responseData.created);
+		}
+		fetchData();
+	}, [userId]);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -53,7 +65,7 @@ function ProfileButton() {
             <li className="multi-link">
               <a className="published-link" href="/recipes/my_plate">
                 Ingestibles
-                &nbsp;<span className="badge">0</span>
+                &nbsp;<span className="badge">{`${createdRecipes?.length}`}</span>
               </a>
             </li>
             <li>
