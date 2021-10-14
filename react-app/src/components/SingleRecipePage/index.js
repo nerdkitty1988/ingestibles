@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
 import Instruction from "../Instruction"
 import "./SingleRecipePage.css"
 
@@ -70,6 +71,59 @@ const SingleRecipePage = () => {
   const today  = new Date();
 
   console.log(today.toLocaleDateString("en-US"));
+
+
+// Codes about Likes start here:
+  const [likeResponse, setLikeResponse] = useState('')
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/likes/${recipeId}`);
+      const like = await response.json();
+      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+    })();
+  }, [recipeId]);
+
+  
+  const likeRecipe = async (e) => {
+    e.preventDefault();
+    const response= await fetch(`/api/likes/${recipeId}`, {
+      method: 'POST'
+    })
+    const like = await response.json();
+    (like.like) ? setLikeResponse(like.like) : setLikeResponse('') 
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Code about Likes end here
   return (
     <div id="main">
     <div id="recipe-info">
@@ -77,8 +131,10 @@ const SingleRecipePage = () => {
       <p>By {currentRecipe?.author?.username} {">"}</p>
     </div>
     <div id="like-license-buttons">
-      <button id="like-button">
-        <i className="fas fa-heart" id="likeButton"></i>Like
+        <button id="like-button" onClick={likeRecipe} >
+          {likeResponse? <i className="fas fa-heart" 
+            style={{ color: '#F27D21' }} id="likeButton"></i>:<i className="fas fa-heart" id="likeButton"></i>} Like
+        
       </button>
     </div>
     <div id="recipe-images">
