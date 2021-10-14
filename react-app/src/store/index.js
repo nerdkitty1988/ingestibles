@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import session from './session'
 
 const rootReducer = combineReducers({
-  session,
+  session
 });
 
 

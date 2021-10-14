@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar/NavBar";
-import Homepage from "./components/Homepage/Homepage";
-import MyPlate from "./components/MyPlate/MyPlate";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import LoginForm from './components/auth/LoginForm';
+import SignUpForm from './components/auth/SignUpForm';
+import NavBar from './components/NavBar/NavBar';
+import Homepage from './components/Homepage/Homepage';
+import MyPlate from './components/MyPlate/MyPlate';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import User from './components/User';
+import CreateRecipe from './components/CreateRecipe/CreateRecipe';
+import { authenticate } from './store/session';
+import SingleRecipePage from './components/SingleRecipePage';
 import Profile from "./components/Profile/profile";
 import EditRecipe from "./components/EditRecipe/EditRecipe"
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/User";
-import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
-import { authenticate } from "./store/session";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -57,6 +58,9 @@ function App() {
 					<ProtectedRoute path="/" exact={true}>
 						<h1>My Home Page</h1>
 					</ProtectedRoute>
+					<Route path='/recipes/:recipeId' exact={true}>
+          <SingleRecipePage />
+        </Route>
 				</Switch>
 			)}
 		</BrowserRouter>

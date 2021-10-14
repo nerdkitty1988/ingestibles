@@ -1,0 +1,26 @@
+#step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+#comment-button {
+  border: none;
+  font-size: 16px;
+  background-color: white;
+}
+
+#comment-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#comment-button:hover .fas {
+  color: orange;
+}
+
+.fas {
+  padding-right: 6px;
+}

@@ -18,6 +18,10 @@ def recipes():
     recipes = Recipe.query.all()
     return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
+@recipe_routes.route('/<int:id>')
+def single_recipe(id):
+    recipe = Recipe.query.filter_by(id=id).first()
+    return {'recipe': [recipe.to_dict()]}
 
 #Fetch user's like recipes
 @recipe_routes.route('/my_plate/<int:id>')
@@ -65,7 +69,7 @@ def create_recipe():
                 return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
-        
+
         if "ingredientPhoto" not in request.files:
             return {"errors": ["ingredientPhoto required"]}, 400
 
@@ -73,11 +77,11 @@ def create_recipe():
 
         if not allowed_file(ingredientPhoto.filename):
             return {"errors": ["ingredientPhoto file type not permitted"]}, 400
-    
+
         ingredientPhoto.filename = get_unique_filename(ingredientPhoto.filename)
 
         upload_ingredientPhoto = upload_file_to_s3(ingredientPhoto)
-        # print('upload_ingredientPhoto!!!', upload_ingredientPhoto)       
+        # print('upload_ingredientPhoto!!!', upload_ingredientPhoto)
         # print('ingredientPhoto.content_type!!!!', ingredientPhoto.content_type)
 
         if "url" not in upload_ingredientPhoto:
@@ -96,7 +100,7 @@ def create_recipe():
         )
         db.session.add(recipe)
         db.session.commit()
-        
+
         # save tags; request.form is dictionary
         for (key, value) in request.form.items():
             if key[0:3] == 'tag':
@@ -114,7 +118,7 @@ def create_recipe():
                 media = request.files[key]
                 if not allowed_file(media.filename):
                     return {"errors": [f"{key} file type not permitted"]}, 400
-    
+
                 media.filename = get_unique_filename(media.filename)
 
                 upload_media = upload_file_to_s3(media)
@@ -124,10 +128,10 @@ def create_recipe():
                     # it means that there was an error when we tried to upload
                     # so we send back that error message
                     return {'errors': [upload_media['errors']]}, 400
-                    
+
                 media_url = upload_media["url"]
                 db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
-        
+
         # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
         # e.g. step1_title step1_direction step1_photo as keys
 
@@ -158,9 +162,9 @@ def create_recipe():
                 if "url" not in upload_stepPhoto:
                     # if the dictionary doesn't have a url key
                     # it means that there was an error when we tried to upload
-                    # so we send back that error message 
+                    # so we send back that error message
                     return {'errors': [upload_stepPhoto['errors']]}, 400
-            
+
                 stepPhoto_url = upload_stepPhoto["url"]
             else:
                 stepPhoto_url = None
@@ -180,8 +184,8 @@ def edit_recipe(id):
     # query database to get book to edit
     # id comes from route
     recipe = Recipe.query.get(id)
-   
-    
+
+
     # if userId is not current logged-in user, no authorization
     if not recipe or recipe.authorId != current_user.to_dict()['id'] :
         return {'errors': ['No authorization.']}, 401
@@ -224,11 +228,11 @@ def edit_recipe(id):
 
             if not allowed_file(ingredientPhoto.filename):
                 return {"errors": ["ingredientPhoto file type not permitted"]}, 400
-    
+
             ingredientPhoto.filename = get_unique_filename(ingredientPhoto.filename)
 
             upload_ingredientPhoto = upload_file_to_s3(ingredientPhoto)
-            # print('upload_ingredientPhoto!!!', upload_ingredientPhoto)       
+            # print('upload_ingredientPhoto!!!', upload_ingredientPhoto)
             # print('ingredientPhoto.content_type!!!!', ingredientPhoto.content_type)
 
             if "url" not in upload_ingredientPhoto:
@@ -245,12 +249,12 @@ def edit_recipe(id):
         recipe.title = formRecipe.data['recipeTitle']
         recipe.description = formRecipe.data['introduction']
         recipe.ingredientPhoto = ingredientPhoto_url
- 
-        
+
+
         db.session.add(recipe)
         db.session.commit()
 
-        
+
         # delete all its associated tags and save new tags; request.form is dictionary
         for tag in recipe.tags:
             db.session.delete(tag)
@@ -258,7 +262,7 @@ def edit_recipe(id):
         for (key, value) in request.form.items():
             if key[0:3] == 'tag':
                 db.session.add(Tag(name=value, recipeId=recipe.id))
-        
+
         # delete all its associated ingredients and save new ingredients; request.form is dictionary
         for ingredient in recipe.ingredients:
             db.session.delete(ingredient)
@@ -266,7 +270,7 @@ def edit_recipe(id):
         for (key, value) in request.form.items():
             if key[0:10] == 'ingredient' and key[10:15] != 'Photo':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
-        
+
         # delete old media, and then save media; request.form has image url as string; request.file has files/images, is dictionary
         for media in recipe.medias:
             db.session.delete(media)
@@ -279,7 +283,7 @@ def edit_recipe(id):
                 media = request.files[key]
                 if not allowed_file(media.filename):
                     return {"errors": [f"{key} file type not permitted"]}, 400
-    
+
                 media.filename = get_unique_filename(media.filename)
 
                 upload_media = upload_file_to_s3(media)
@@ -289,10 +293,10 @@ def edit_recipe(id):
                     # it means that there was an error when we tried to upload
                     # so we send back that error message
                     return {'errors': [upload_media['errors']]}, 400
-                    
+
                 media_url = upload_media["url"]
                 db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
-       
+
         # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
         # e.g. step1_title step1_direction step1_photo as keys
         for instruction in recipe.instructions:
@@ -307,8 +311,8 @@ def edit_recipe(id):
                     stepToVisit.append(stepNumForVisit)
         stepToVisit.sort()
 
-       
-        for stepN in stepToVisit: 
+
+        for stepN in stepToVisit:
             # e.g. step1_
             stepPrefix = 'step'+str(stepN) + '_'
             if(stepPrefix+'photo' in request.files.keys()):
@@ -320,9 +324,9 @@ def edit_recipe(id):
                 if "url" not in upload_stepPhoto:
                     # if the dictionary doesn't have a url key
                     # it means that there was an error when we tried to upload
-                    # so we send back that error message 
+                    # so we send back that error message
                     return {'errors': [upload_stepPhoto['errors']]}, 400
-            
+
                 stepPhoto_url = upload_stepPhoto["url"]
             elif(stepPrefix+'photo' in request.form.keys()):
                 stepPhoto_url = request.form[stepPrefix+'photo']
@@ -330,9 +334,9 @@ def edit_recipe(id):
                 stepPhoto_url = None
 
             db.session.add(Instruction(imageUrl=stepPhoto_url, stepTitle=request.form[stepPrefix+'title'], directions=request.form[stepPrefix+'direction'], recipeId=recipe.id))
-           
-        
-       
+
+
+
         db.session.commit()
         return recipe.to_dict()
 
@@ -345,7 +349,7 @@ def delete_recipe(id):
     recipe = Recipe.query.get(id)
     if recipe.authorId != current_user.to_dict()['id'] or not recipe:
         return {'errors': ['No authorization.']}, 401
- 
+
     db.session.delete(recipe)
     db.session.commit()
     return {'message': ['Delete Successfully']}

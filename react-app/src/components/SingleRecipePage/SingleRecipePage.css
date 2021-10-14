@@ -1,0 +1,172 @@
+
+#main {
+  padding: 10px 60px ;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  line-height: 1.65;
+  color: #555;
+}
+
+
+#recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+
+#recipe-info > h1 {
+  padding: 0px 10px 10px;
+}
+
+#like-license-buttons {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#like-button {
+  background-color: #f6f6f6;
+  border: .5px solid #dedede;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+}
+#like-button:hover {
+  background-color: #dedede;
+  cursor: pointer;
+}
+
+#like-button:hover .fas {
+  color: orange;
+}
+
+#recipe-images {
+  display: flex;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+#author-info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 180px;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  background-color: #f6f6f6;
+  font-size: 14px;
+}
+
+#top-author-info {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#author-image {
+  width: 90px;
+  height: 90px;
+}
+
+.profileCircle {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 100%;
+  padding: 0px 15px;
+}
+
+#more-by-author {
+  display: flex;
+}
+
+#other-recipes-by-author {
+  padding-left: 10px;
+}
+
+#author-bio {
+  display: block;
+  padding-left: 15px;
+}
+
+#recipe-description {
+  padding: 20px;
+}
+
+#comment-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#comment-button {
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  padding-bottom: 40px;
+}
+
+#comment-button-container:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "";
+  width: 12%;
+  padding-top: 20px;
+  border-bottom: .5px solid #dedede;
+}
+
+#comment-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#comment-button:hover .fas {
+  color: orange;
+}
+
+.fas {
+  color: #dedede;
+  padding-right: 6px;
+}
+
+#comments-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#comments-section > h1 {
+  padding: 20px;
+  border-bottom: .5px solid #dedede;
+  width: 100%;
+  text-align: center;
+}
+
+#comment {
+  display: flex;
+  flex-direction: column;
+  border-bottom: .5px solid #dedede;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+#comment-image-username-date {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+#comment-date {
+  margin: 0;
+  padding-left: 5px;
+}
