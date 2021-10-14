@@ -38,8 +38,14 @@
 }
 
 .EditImg{
-    width:30%;
-    height:30%;
-    margin-Right: 35%;
+    width:20%;
+    height:20%;
+    margin-Right: 40%;
 }
 
+.editRecipeLabel{
+    text-align: start;
+    display: block;
+    margin-Left: 22%;
+    margin-bottom: 1%;
+}

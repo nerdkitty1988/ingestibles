@@ -14,6 +14,13 @@ const EditRecipe = () => {
     const [tagCounter, setTagCounter] = useState(0);
 
     const [introduction, setIntroduction] = useState("");
+    const [media1_old, setMedia1_Old] = useState("");
+    const [media2_old, setMedia2_Old] = useState("");
+    const [media3_old, setMedia3_Old] = useState("");
+    const [media4_old, setMedia4_Old] = useState("");
+    const [media5_old, setMedia5_Old] = useState("");
+    // use the following array to preload them in useEffect
+    const oldMediaArr = [setMedia1_Old, setMedia2_Old, setMedia3_Old, setMedia4_Old, setMedia5_Old]
     const [media1, setMedia1] = useState("");
     const [media2, setMedia2] = useState("");
     const [media3, setMedia3] = useState("");
@@ -62,6 +69,11 @@ const EditRecipe = () => {
                 })
                 setIngredientCounter(ingredientCounter => ingredientCounter + 1)
             })
+            // pre-load media on edit form - media table
+            recipe.medias.forEach((media, i) => {
+                oldMediaArr[i](media.mediaUrl)          
+            })
+            
 
         })();
     }, [recipeId]);
@@ -86,18 +98,22 @@ const EditRecipe = () => {
             }
         })
         const media_notNull = {}
-        const mediaArr = [media1, media2, media3, media4, media5]
+
+        // if there is new media, then replace old, otherwise use old media url
+        const mediaArr = [media1 ? media1 : media1_old, media2 ? media2 : media2_old, media3 ? media3 : media3_old, media4 ? media4 : media4_old, media5 ? media5 : media5_old]
         mediaArr.forEach((media,i) => {
             if (media) {
                 media_notNull[`media${i+1}`] = media
                 }
         })
+
         const ingredients_notNull = {}
         Object.keys(ingredients).forEach(key => {
             if (ingredients[key] && ingredients[key].replace(/\s/g, '').length) {
                 ingredients_notNull[key] = ingredients[key]
             }
         })
+
         // title and direction are required input, photo of steps is not required; thus delete the inputs that does not have title and does not have direction; backend will handle if one of those two are missing;
         const steps_notNull = {...steps}
         Object.keys(steps_notNull).forEach(key => {
@@ -123,10 +139,10 @@ const EditRecipe = () => {
         Object.keys(ingredients_notNull).forEach(key => {
             formData.append(key, ingredients_notNull[key]);
         })
-        // prepare mediainput data ready for AWS
-        // Object.keys(media_notNull).forEach(key => {
-        //     formData.append(key, media_notNull[key]);
-        // })
+        // prepare media input data ready for AWS
+        Object.keys(media_notNull).forEach(key => {
+            formData.append(key, media_notNull[key]);
+        })
         // prepare steps data ready for AWS
         // Object.keys(steps_notNull).forEach(key => {
         //     // console.log('outside', key, steps_notNull[key])
@@ -155,7 +171,7 @@ const EditRecipe = () => {
                 ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
             },            
             tags:tags_notNull,
-            // media:media_notNull,
+            media:media_notNull,
             ingredients:ingredients_notNull,
             // steps: steps_notNull,
         }
@@ -221,7 +237,7 @@ const EditRecipe = () => {
             <div className='createRecipeWrapper'>
                 <h4 style={{textAlign:'center'}}>Recipe Basics</h4>
                 <div className='createRecipeEl'>                   
-                    <label>Recipe Title </label>
+                <label className='editRecipeLabel'>Recipe Title </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -233,7 +249,7 @@ const EditRecipe = () => {
                 </div>
                 
                 {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 1}`}>
-                    <label>Tag #{i + 1} </label>
+                    <label className='editRecipeLabel'>Tag #{i + 1} </label>
                     <input
                         className='listingInput'
                         type="text" 
@@ -258,7 +274,7 @@ const EditRecipe = () => {
              <h4 style={{ textAlign: 'center' }}>Introduction</h4>
              <div className='createRecipeEl'>
                 
-                <label>Recipe Introduction </label>
+                    <label className='editRecipeLabel'>Recipe Introduction </label>
                 <textarea
                     className='listingInput'
                     value={introduction}
@@ -268,8 +284,12 @@ const EditRecipe = () => {
                 />
               </div>
              <div>
-                    <div className='createRecipeEl'>
-                <label>Photo/Video #1 </label>
+                    {media1_old ?<img
+                    className='EditImg'
+                    src={media1_old} alt='OriginalMedia1Photo' />:null}
+                   <div className='createRecipeEl'>
+                
+                        <label className='editRecipeLabel'>Replace Photo/Video#1 above by: </label>
                     <input
                         className='listingInput'
                         type="file"
@@ -279,8 +299,12 @@ const EditRecipe = () => {
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
               </div>
+                {media2_old?<img
+                    className='EditImg'
+                        src={media2_old} alt='OriginalMedia2Photo' />:null
+                }
                 <div className='createRecipeEl'>
-                <label>Photo/Video #2 </label>
+                        <label className='editRecipeLabel'>Replace Photo/Video#2 above by </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -289,8 +313,12 @@ const EditRecipe = () => {
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 />
               </div>
+                    {media3_old ? <img
+                        className='EditImg'
+                        src={media3_old} alt='OriginalMedia3Photo' /> : null
+                    }
               <div className='createRecipeEl'>
-                <label>Photo/Video #3 </label>
+                        <label className='editRecipeLabel'>Replace Photo/Video#3 above by </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -300,9 +328,13 @@ const EditRecipe = () => {
                 // required  
                 />
               </div>
+                    {media4_old ? <img
+                        className='EditImg'
+                        src={media4_old} alt='OriginalMedia4Photo' /> : null
+                    }
 
                 <div className='createRecipeEl'>
-                <label>Photo/Video #4 </label>
+                        <label className='editRecipeLabel'>Replace Photo/Video#4 above by </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -312,8 +344,12 @@ const EditRecipe = () => {
                 
                 />
               </div>
+                    {media5_old ? <img
+                        className='EditImg'
+                        src={media5_old} alt='OriginalMedia5Photo' /> : null
+                    }
                 <div className='createRecipeEl'>
-                <label>Photo/Video #5 </label>
+                        <label className='editRecipeLabel'>Replace Photo/Video#5 above by </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -332,7 +368,7 @@ const EditRecipe = () => {
                     className='EditImg'
                     src={ingredientPhoto_Old} alt='OriginalIngredientPhoto' />
                 <div className='createRecipeEl'>
-                <label>Replace photo by </label>
+                    <label className='editRecipeLabel'>Replace ingredient photo above by </label>
                 
                 <input
                     className='listingInput'
@@ -343,19 +379,9 @@ const EditRecipe = () => {
                     // placeholder='at least 1 ingredient photo for your dish'             
                 />
                 </div>
-                {/* <div className='createRecipeEl'>
-                <label >Ingredient #1 </label>
-                <input
-                    className='listingInput'
-                    type="text"
-                    key={`ingredient1`}
-                    onChange={(e) => setIngredients({...ingredients, 'ingredient1': e.target.value})}
-                    placeholder='At least 1 ingredient for your dish'
-                />
-                </div> */}
 
                 {[...Array(ingredientCounter)].map((el, i) => (<div className='createRecipeEl' key={`ingredient${i + 1}`}>
-                    <label>Ingredient #{i + 1} </label>
+                    <label className='editRecipeLabel'>Ingredient #{i + 1} </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -377,7 +403,7 @@ const EditRecipe = () => {
             <div className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #1</h5>
                 <div className='createRecipeStep'>
-                <label>Title </label >
+                        <label className='editRecipeLabel'>Title </label >
                 <input
                     className='listingInput'
                     type="text"
@@ -393,7 +419,7 @@ const EditRecipe = () => {
                </div>
 
                 <div className='createRecipeStep'>
-                <label>Instruction </label>
+                        <label className='editRecipeLabel'>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps=>{
@@ -407,7 +433,7 @@ const EditRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                <label>Photo </label>
+                        <label className='editRecipeLabel'>Photo </label>
                 <input
                     className = 'listingInput'
                     type = "file"
@@ -425,7 +451,7 @@ const EditRecipe = () => {
             {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #{i + 2} </h5>
                 < div className='createRecipeStep' >
-                <label>Title </label>
+                    <label className='editRecipeLabel'>Title </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -440,7 +466,7 @@ const EditRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                <label>Instruction </label>
+                    <label className='editRecipeLabel'>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps => {
@@ -454,7 +480,7 @@ const EditRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                < label > Photo </label>
+                    < label className='editRecipeLabel'> Photo </label>
                 <input   
                     className = 'listingInput'
                     type = "file"

@@ -255,7 +255,7 @@ def edit_recipe(id):
         for (key, value) in request.form.items():
             if key[0:10] == 'ingredient':
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
-        """
+        
         # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
         for (key, value) in request.files.items():
             if key[0:5] == 'media':
@@ -275,7 +275,7 @@ def edit_recipe(id):
                     
                 media_url = upload_media["url"]
                 db.session.add(Media(mediaUrl=media_url, recipeId=recipe.id))
-        
+        """
         # save steps; request.form does not have imgages/file, request.file has files/images, is dictionary
         # e.g. step1_title step1_direction step1_photo as keys
 

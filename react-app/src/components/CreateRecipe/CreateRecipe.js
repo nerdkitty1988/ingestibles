@@ -177,7 +177,7 @@ const CreateRecipe = () => {
             <div className='createRecipeWrapper'>
                 <h4 style={{textAlign:'center'}}>Recipe Basics</h4>
                 <div className='createRecipeEl'>                   
-                    <label>Recipe Title </label>
+                    <label className='createRecipelabel'>Recipe Title </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -188,7 +188,7 @@ const CreateRecipe = () => {
                     />
                 </div>
                 <div className='createRecipeEl'>
-                    <label>Tag #1 </label>
+                    <label className='createRecipelabel'>Tag #1 </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -199,7 +199,7 @@ const CreateRecipe = () => {
                 </div>
                     {/* per number of tags, render the tag input component */}
                     {[...Array(tagCounter)].map((el, i) => (<div className='createRecipeEl' key={`tag${i + 2}`}>
-                            <label>Tag #{i + 2} </label>
+                        <label className='createRecipelabel'>Tag #{i + 2} </label>
                             <input
                                 className='listingInput'
                                 type="text"                               
@@ -221,7 +221,7 @@ const CreateRecipe = () => {
              <h4 style={{ textAlign: 'center' }}>Introduction</h4>
              <div className='createRecipeEl'>
                 
-                <label>Recipe Introduction </label>
+                    <label className='createRecipelabel'>Recipe Introduction </label>
                 <textarea
                     className='listingInput'
                     value={introduction}
@@ -232,7 +232,7 @@ const CreateRecipe = () => {
               </div>
              <div>
                     <div className='createRecipeEl'>
-                <label>Photo/Video #1 </label>
+                        <label className='createRecipelabel'>Photo/Video #1 </label>
                     <input
                         className='listingInput'
                         type="file"
@@ -243,7 +243,7 @@ const CreateRecipe = () => {
                     />
               </div>
                 <div className='createRecipeEl'>
-                <label>Photo/Video #2 </label>
+                        <label className='createRecipelabel'>Photo/Video #2 </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -253,7 +253,7 @@ const CreateRecipe = () => {
                 />
               </div>
               <div className='createRecipeEl'>
-                <label>Photo/Video #3 </label>
+                        <label className='createRecipelabel'>Photo/Video #3 </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -265,7 +265,7 @@ const CreateRecipe = () => {
               </div>
 
                 <div className='createRecipeEl'>
-                <label>Photo/Video #4 </label>
+                        <label className='createRecipelabel'>Photo/Video #4 </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -276,7 +276,7 @@ const CreateRecipe = () => {
                 />
               </div>
                 <div className='createRecipeEl'>
-                <label>Photo/Video #5 </label>
+                        <label className='createRecipelabel'>Photo/Video #5 </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -292,7 +292,7 @@ const CreateRecipe = () => {
              <div className='createRecipeWrapper'>
                 <h4 style={{ textAlign: 'center' }}>Ingredients</h4>
                 <div className='createRecipeEl'>
-                <label>Ingredient Photo </label>
+                    <label className='createRecipelabel'>Ingredient Photo </label>
                 <input
                     className='listingInput'
                     type="file"
@@ -303,7 +303,7 @@ const CreateRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeEl'>
-                <label >Ingredient #1 </label>
+                    <label className='createRecipelabel'>Ingredient #1 </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -314,7 +314,7 @@ const CreateRecipe = () => {
                 </div>
 
                 {[...Array(ingredientCounter)].map((el, i) => (<div className='createRecipeEl' key={`ingredient${i + 2}`}>
-                    <label>Ingredient #{i + 2} </label>
+                    <label className='createRecipelabel'>Ingredient #{i + 2} </label>
                     <input
                         className='listingInput'
                         type="text"
@@ -335,7 +335,7 @@ const CreateRecipe = () => {
             <div className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #1</h5>
                 <div className='createRecipeStep'>
-                <label>Title </label >
+                        <label className='createRecipelabel'>Title </label >
                 <input
                     className='listingInput'
                     type="text"
@@ -351,7 +351,7 @@ const CreateRecipe = () => {
                </div>
 
                 <div className='createRecipeStep'>
-                <label>Instruction </label>
+                        <label className='createRecipelabel'>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps=>{
@@ -365,7 +365,7 @@ const CreateRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                <label>Photo </label>
+                        <label className='createRecipelabel'>Photo </label>
                 <input
                     className = 'listingInput'
                     type = "file"
@@ -383,7 +383,7 @@ const CreateRecipe = () => {
             {[...Array(stepCounter)].map((el, i) => (<div key={`step${i + 2}`} className='createRecipeEl'>
                 <h5 style={{ textAlign: 'center' }}>Step #{i + 2} </h5>
                 < div className='createRecipeStep' >
-                <label>Title </label>
+                    <label className='createRecipelabel'>Title </label>
                 <input
                     className='listingInput'
                     type="text"
@@ -398,7 +398,7 @@ const CreateRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                <label>Instruction </label>
+                    <label className='createRecipelabel'>Instruction </label>
                 <textarea
                     className='listingInput'
                     onChange={(e) => setSteps(steps => {
@@ -412,7 +412,7 @@ const CreateRecipe = () => {
                 />
                 </div>
                 <div className='createRecipeStep'>
-                < label > Photo </label>
+                    < label className='createRecipelabel'> Photo </label>
                 <input   
                     className = 'listingInput'
                     type = "file"
