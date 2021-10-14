@@ -119,6 +119,19 @@ export const updateUser = (updatedUser) => async (dispatch) => {
 	}
 };
 
+export const deleteUser = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}`, {
+        method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(userId),
+    })
+    if (response.ok) {
+        dispatch(removeUser())
+    }
+}
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
