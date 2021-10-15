@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { updateUser, deleteUser } from "../../store/session";
 import defaultPhoto from './profileDefaultPhoto.png'
 import "./profile.css";
@@ -26,6 +26,7 @@ function Profile() {
 
 	const handleSave = async (e) => {
 		e.preventDefault();
+        setErrors([]);
 		let updatedUser;
 		if (password === repeatPassword && password) {
 			updatedUser = {
@@ -48,7 +49,7 @@ function Profile() {
 
 		const data = await dispatch(updateUser(updatedUser));
 		if (data.errors) {
-			return data.errors;
+			setErrors(data.errors);
 		} else {
 			setUsernameShow(true);
 			setProfilePicShow(true);
@@ -91,6 +92,7 @@ function Profile() {
 						// hidden={!profilePicShow}
 						id="profPic"
 						src={profilePic ? profilePic : defaultPhoto}
+                        alt="profile"
 					/>
 					<button
 						type="button"

@@ -11,21 +11,24 @@ const NavBar = ({ loaded }) => {
 	const [recipes, setRecipes] = useState();
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await fetch(`/api/search/${searchTerm}`);
-			const responseData = await response.json();
-			console.log("!!!!", responseData);
-			setRecipes(responseData.recipes);
-		}
-		fetchData();
+        if(searchTerm){
+            async function fetchData() {
+                const response = await fetch(`/api/search/${searchTerm}`);
+                const responseData = await response.json();
+                console.log("!!!!", responseData);
+                setRecipes(responseData.recipes);
+            }
+            fetchData();
+        }
 	}, [searchTerm]);
 
 	let searchBlock;
 
 	if (recipes) {
+        console.log(recipes)
 		searchBlock = recipes.map((recipe) => {
 			return (
-				<NavLink to={`/recipes/${recipe.id}`} className="recipeNav">
+				<a href={`/recipes/${recipe.id}`} className="recipeNav">
 					<div key={`liked'_${recipe.id}`} className="singleRecipe">
 						<img
 							alt={recipe.name}
@@ -44,7 +47,7 @@ const NavBar = ({ loaded }) => {
 							{recipe.tags ? recipe.tags[0].name : "All Recipes"}
 						</p>
 					</div>
-				</NavLink>
+				</a>
 			);
 		});
 	}

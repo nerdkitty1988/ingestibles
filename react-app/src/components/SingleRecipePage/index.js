@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
 import Instruction from "../Instruction"
 import "./SingleRecipePage.css"
 
@@ -83,14 +82,14 @@ const SingleRecipePage = () => {
     })();
   }, [recipeId]);
 
-  
+
   const likeRecipe = async (e) => {
     e.preventDefault();
     const response= await fetch(`/api/likes/${recipeId}`, {
       method: 'POST'
     })
     const like = await response.json();
-    (like.like) ? setLikeResponse(like.like) : setLikeResponse('') 
+    (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
 
   }
 
@@ -132,9 +131,9 @@ const SingleRecipePage = () => {
     </div>
     <div id="like-license-buttons">
         <button id="like-button" onClick={likeRecipe} >
-          {likeResponse? <i className="fas fa-heart" 
+          {likeResponse? <i className="fas fa-heart"
             style={{ color: '#F27D21' }} id="likeButton"></i>:<i className="fas fa-heart" id="likeButton"></i>} Like
-        
+
       </button>
     </div>
     <div id="recipe-images">
