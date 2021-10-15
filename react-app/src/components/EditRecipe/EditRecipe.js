@@ -186,20 +186,20 @@ const EditRecipe = () => {
         // }
 
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
-        // const newRecipe = {
-        //     recipe:{
-        //         recipeId: +recipeId,
-        //         authorId: sessionUser.id,
-        //         title,
-        //         introduction,
-        //         ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
-        //     },            
-        //     tags:tags_notNull,
-        //     media:media_notNull,
-        //     ingredients:ingredients_notNull,
-        //     steps: steps_notNull,
-        // }
-        // console.log('dictionary-recipe:', newRecipe)
+        const newRecipe = {
+            recipe:{
+                recipeId: +recipeId,
+                authorId: sessionUser.id,
+                title,
+                introduction,
+                ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
+            },            
+            tags:tags_notNull,
+            media:media_notNull,
+            ingredients:ingredients_notNull,
+            steps: steps_notNull,
+        }
+        console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(editRecipeThunk({formData,recipeId}));
         if (data.errors) {
@@ -326,7 +326,7 @@ const EditRecipe = () => {
                             onChange={(e) => setMedia1(e.target.files[0])}
                         />
                     </div>
-                    {[[media2_old, setMedia2, play2, setPlay2], [media3_old, setMedia3, play3, setPlay3], [media4_old, setMedia4, play4, setPlay4], [media5_old, setMedia5, play5, setPlay5]].map(el=>(
+                    {[[media2_old, setMedia2, play2, setPlay2], [media3_old, setMedia3, play3, setPlay3], [media4_old, setMedia4, play4, setPlay4], [media5_old, setMedia5, play5, setPlay5]].map((el,i)=>(
                         <>
                             {el[0] && !['.mp4', '.mov', '.wmv'].includes(el[0].slice(el[0].length - 4, el[0].length)) ? <img
                                 className='EditImg'
@@ -344,7 +344,7 @@ const EditRecipe = () => {
                                         marginLeft: "40%",
                                         padding: '0'
                                     }}
-                                >
+                                > 
 
                                     <ReactPlayer
                                         className='EditImg'
@@ -374,7 +374,7 @@ const EditRecipe = () => {
 
                             <div className='createRecipeEl'>
 
-                                <label className='editRecipeLabel'>{el[0] ? 'Replace Photo/Video#2 above by: ' : 'Add Photo/Video#2 by: '}</label>
+                                <label className='editRecipeLabel'>{el[0] ? `Replace Photo/Video#${i + 2} by: ` : `Add Photo/Video#${i+2} by: `}</label>
                                 <input
                                     className='listingInput'
                                     type="file"

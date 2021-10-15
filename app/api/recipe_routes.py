@@ -142,6 +142,7 @@ def create_recipe():
         media1_url = upload_media1["url"]
         db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
         
+        
         # save media 2 - media 5 which can be a video/image
         for (key, value) in request.files.items():
             if key[0:5] == 'media' and key[0:6]!='media1':
@@ -306,12 +307,32 @@ def edit_recipe(id):
         # delete old media, and then save media; request.form has image url as string; request.file has files/images, is dictionary
         for media in recipe.medias:
             db.session.delete(media)
+        # save media 1 - photo only fist to make sure the smallest ID is photo
+        if 'media1' in request.files.keys():
+            media1 = request.files['media1']
+            if not allowed_file(media1.filename):
+                return {"errors": [f"media1 file type not permitted"]}, 400
+            media1.filename = get_unique_filename(media1.filename)
+            upload_media1 = upload_file_to_s3(media1)
+
+            if "url" not in upload_media1:
+                # if the dictionary doesn't have a url key
+                # it means that there was an error when we tried to upload
+                # so we send back that error message
+                return {'errors': [upload_media1['errors']]}, 400
+
+            media1_url = upload_media1["url"]
+            db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
+        else:
+            db.session.add(Media(mediaUrl=request.form['media1'], recipeId=recipe.id))
+        
+        # save media 2 -5
         for (key, value) in request.form.items():
-            if key[0:5] == 'media':
+            if key[0:5] == 'media' and key != 'media1':
                 db.session.add(Media(mediaUrl=value, recipeId=recipe.id))
 
         for (key, value) in request.files.items():
-            if key[0:5] == 'media':
+            if key[0:5] == 'media' and key != 'media1':
                 media = request.files[key]
                 if not allowed_file(media.filename):
                     return {"errors": [f"{key} file type not permitted"]}, 400
