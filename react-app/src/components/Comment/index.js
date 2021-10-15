@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router';
 
-const CommentForm = (recipe) => {
+const CommentForm = ({currentRecipe}) => {
   const user = useSelector(state => state.session.user);
   const [commentBody, setCommentBody] = useState('');
-
-
-  const createComment = (e) => {
+  const createComment = async(e) => {
     e.preventDefault()
     const newComment = {
-      comment: commentBody,
-      userId: user.id,
-      recipeId: recipe.id
+      "commentBody": commentBody,
+      "userId": user.id,
+      "recipeId": currentRecipe.id
     }
-    console.log("createComment recipe passed in =====>>", recipe)
-    console.log("createComment recipe.comments passed in =====>>", recipe.comments)
+    currentRecipe?.comments?.push(newComment)
+    console.log("createComment recipe passed in =====>>", currentRecipe)
+    console.log("createComment recipe.comments passed in =====>>",currentRecipe['comments'])
     console.log("createComment newComment passed in =====>>", newComment)
 
-    recipe.comments.push(newComment)
+    //createNewComment(newComment)
+    const commentData = await fetch(`/api/recipes/comments`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...newComment
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+      })
+      const data = await commentData.json()
+    return data
   }
+
 
   return (
     <form onSubmit={createComment}>

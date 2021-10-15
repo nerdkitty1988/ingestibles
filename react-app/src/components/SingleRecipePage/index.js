@@ -28,15 +28,15 @@ const SingleRecipePage = () => {
   //   console.log("WE GET HERE")
   //   setOtherRecipes(othersArray)
   // }
-  const fetchData = () => {
-   const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
-   const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
-  Promise.all([thisRecipe, others]).then((allData) => {
-    setCurrentRecipe(allData[0].recipe[0])
-    setOtherRecipes(allData[1].recipes)})
-  }
 
   useEffect(() => {
+    const fetchData = () => {
+     const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
+     const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
+    Promise.all([thisRecipe, others]).then((allData) => {
+      setCurrentRecipe(allData[0].recipe[0])
+      setOtherRecipes(allData[1].recipes)})
+    }
     fetchData()
     //console.log(recipeFetch)
     //retrieveOtherRecipes()
@@ -51,24 +51,24 @@ const SingleRecipePage = () => {
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
 
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
-  console.log("authorsIds ===>>>",authorsIds)
+  //console.log("authorsIds ===>>>",authorsIds)
 
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
-  console.log("authorsImages ===>>>",authorsImages)
+  //console.log("authorsImages ===>>>",authorsImages)
 
   const authorIdsArr = [...new Set(authorsIds)]
-  console.log("authorsIdsArr ===>>>",authorIdsArr)
+  //console.log("authorsIdsArr ===>>>",authorIdsArr)
   const authorImagesArr = [...new Set(authorsImages)]
-  console.log("authorImagesArr ====>>>", authorImagesArr)
+  //console.log("authorImagesArr ====>>>", authorImagesArr)
   const authorsObject = {}
   for(let i = 0; i < authorIdsArr.length; i++){
     let image = authorImagesArr[i];
     let id = authorIdsArr[i];
     authorsObject[id] = image;
   }
-  console.log(authorsObject);
+  //console.log(authorsObject);
   const today  = new Date();
-  console.log(today.toLocaleDateString("en-US"));
+  //console.log(today.toLocaleDateString("en-US"));
 
   let commentBox;
   if(sessionUser) {

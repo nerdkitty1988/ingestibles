@@ -1,3 +1,4 @@
+from operator import contains
 from flask import Blueprint, jsonify, session, request
 from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Media, Comment
 from flask_login import login_required, current_user
@@ -32,18 +33,31 @@ def single_recipe(id):
     recipe = Recipe.query.filter_by(id=id).first()
     return {'recipe': [recipe.to_dict()]}
 
-@recipe_routes.route('/<int:id>/comments', methods=['POST'])
+# @recipe_routes.route('/<int:id>/comments')
+# def get_comments(id):
+#     comments = Comment.query.filter_by(recipeId=id).all()
+#     print("COMMENTS ======>>>>>>", comments)
+#     return { 'comments': [comment.to_dict() for comment in comments]}
+
+@recipe_routes.route('/comments', methods=['POST'])
 @login_required
 def create_comment():
+    print("CAN WE GET HERE?")
     formComment = createCommentForm()
+    print("FORMDATA", formComment.data)
+    print("HOW ABOUT HERe?")
+
     formComment['csrf_token'].data = request.cookies['csrf_token']
+    print("CRAZY STRING ~~~~~~~", formComment)
     if formComment.validate_on_submit():
+        print("CRAZY STRING 2 ~~~~~~~~~~")
+
         comment = Comment(
             userId=formComment.data['userId'],
             recipeId=formComment.data['recipeId'],
-            commentBody=formComment.data['comment'],
-            time_created = formComment.data['time_created']
+            comment=formComment.data['commentBody'],
         )
+        print("COMMENT DB SIDE ===============================================================================>>>>>>>>>>>>>>>", comment)
         db.session.add(comment)
         db.session.commit()
         return comment.to_dict()

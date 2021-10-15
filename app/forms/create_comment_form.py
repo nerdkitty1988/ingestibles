@@ -9,4 +9,4 @@ class createCommentForm(FlaskForm):
   recipeId = IntegerField(
       'recipeId', validators=[DataRequired()])
   commentBody = TextAreaField('comment', validators=[DataRequired()])
-  time_created = DateField('time_created', validators=[DataRequired()])
+  #time_created = DateField('time_created', validators=[DataRequired()])
