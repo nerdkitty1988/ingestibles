@@ -28,7 +28,7 @@ const NavBar = ({ loaded }) => {
         console.log(recipes)
 		searchBlock = recipes.map((recipe) => {
 			return (
-				<NavLink to={`/recipes/${recipe.id}`} className="recipeNav">
+				<a href={`/recipes/${recipe.id}`} className="recipeNav">
 					<div key={`liked'_${recipe.id}`} className="singleRecipe">
 						<img
 							alt={recipe.name}
@@ -47,7 +47,7 @@ const NavBar = ({ loaded }) => {
 							{recipe.tags ? recipe.tags[0].name : "All Recipes"}
 						</p>
 					</div>
-				</NavLink>
+				</a>
 			);
 		});
 	}
