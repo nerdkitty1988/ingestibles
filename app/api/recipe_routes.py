@@ -20,12 +20,12 @@ def recipes():
 
 @recipe_routes.route('/recent')
 def recent_recipes():
-    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc()).limit(5)
+    recipes = Recipe.query.order_by(Recipe.id.desc()).limit(5)
     return {"recent": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/previous')
 def previous_recipes():
-    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc())
+    recipes = Recipe.query.order_by(Recipe.id.desc())
     return {"previous": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/<int:id>')
@@ -125,8 +125,8 @@ def create_recipe():
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
 
         # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
-        
-        # save media 1 - photo only fist to make sure the smallest ID is photo  
+
+        # save media 1 - photo only fist to make sure the smallest ID is photo
         media1 = request.files['media1']
         if not allowed_file(media1.filename):
             return {"errors": [f"media1 file type not permitted"]}, 400
@@ -141,8 +141,8 @@ def create_recipe():
 
         media1_url = upload_media1["url"]
         db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
-        
-        
+
+
         # save media 2 - media 5 which can be a video/image
         for (key, value) in request.files.items():
             if key[0:5] == 'media' and key[0:6]!='media1':
@@ -325,7 +325,7 @@ def edit_recipe(id):
             db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
         else:
             db.session.add(Media(mediaUrl=request.form['media1'], recipeId=recipe.id))
-        
+
         # save media 2 -5
         for (key, value) in request.form.items():
             if key[0:5] == 'media' and key != 'media1':
