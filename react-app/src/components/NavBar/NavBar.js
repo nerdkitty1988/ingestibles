@@ -108,31 +108,61 @@ const NavBar = ({ loaded }) => {
 							<button
 							onClick={clickToSearch}
 							value = 'Cake'
+								style={{
+									backgroundColor: '#555',
+									color:'white',
+									border: 'none'
+									}}
 							>Cake
 							</button>
 							<button
 								onClick={clickToSearch}
 								value='Appetizer'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
 							>Appetizer
 							</button>
 							<button
 								onClick={clickToSearch}
 								value='Entree'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
 							>Entree
 							</button>
 							<button
 								onClick={clickToSearch}
 								value='Dessert'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
 							>Dessert
 							</button>
 							<button
 								onClick={clickToSearch}
 								value='Snack'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
 							>Snack
 							</button>
 							<button
 								onClick={clickToSearch}
 								value='Beverage'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border:'none'
+								}}
 							>Beverage
 							</button>
 						</ul>
