@@ -29,7 +29,10 @@ const EditRecipe = () => {
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
-    const [play1, setPlay1] = useState(true);
+    const [play2, setPlay2] = useState(false);
+    const [play3, setPlay3] = useState(false);
+    const [play4, setPlay4] = useState(false);
+    const [play5, setPlay5] = useState(false);
     
     const [ingredientPhoto_Old, setIngredientPhoto_Old] = useState(null);
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
@@ -308,113 +311,83 @@ const EditRecipe = () => {
                     style={{ resize: 'none' }}
                 />
               </div>
-                <div>
-                    {media1_old && !['.mp4', '.mov','.wmv'].includes(media1_old.slice(media1_old.length-4,media1_old.length)) ?<img
-                    className='EditImg'
-                    src={media1_old} alt='OriginalMedia1Photo' />:null}
-                    
-                    {media1_old && ['.mp4', '.mov','.wmv'].includes(media1_old.slice(media1_old.length - 4, media1_old.length))?
-                    <div 
-                    // className='EditImg'
-                    style={{
-                        width: "300px",
-                        height: "300px",
-                        marginLeft:"40%",
-                        padding:'0'
-                    }}
-                    >   
-                        
-                    <ReactPlayer
-                        className='EditImg'
-                        url={media1_old}
-                        playing={play1}
-                        onClick={e=>{
-                            setPlay1(play1=>!play1)}}
-                        loop
-                        style={{
-                            // position: 'relative',
-                            // left: '0',
-                            // top: '0',
-                            width: "350px",
-                            height: "350px",
-                            margin:'0',
-                            display: 'inline'
-                                }} /> </div>
-                            : null}
-                    
-                   <div className='createRecipeEl'>
-                
-                        <label className='editRecipeLabel'>{media1_old ? 'Replace Photo/Video#1 above by: ' : 'Add Photo/Video#1 by: '}</label>
-                    <input
-                        className='listingInput'
-                        type="file"
-                        // value={media1}
-                            accept="image/*,video/mp4,video/mov,video/wmv"
-                        onChange={(e) => setMedia1(e.target.files[0])}
-                        // placeholder='Include 1-5 photo and/or video about your finished dish'
-                    />
-              </div>
-                {media2_old?<img
-                    className='EditImg'
-                        src={media2_old} alt='OriginalMedia2Photo' />:null
-                }
-                <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>{media2_old ? 'Replace Photo/Video#2 above by: ' : 'Add Photo/Video#2 by: '}</label>
-                <input
-                    className='listingInput'
-                    type="file"
-                    accept="image/*,video/mp4,video/mov,video/wmv"
-                    onChange={(e) => setMedia2(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-                />
-              </div>
-                    {media3_old ? <img
-                        className='EditImg'
-                        src={media3_old} alt='OriginalMedia3Photo' /> : null
-                    }
-              <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>{media3_old ? 'Replace Photo/Video#3 above by: ' : 'Add Photo/Video#3 by: '}</label>
-                <input
-                    className='listingInput'
-                    type="file"
-                    accept="image/*,video/mp4,video/mov,video/wmv"
-                    onChange={(e) => setMedia3(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-                // required  
-                />
-              </div>
-                    {media4_old ? <img
-                        className='EditImg'
-                        src={media4_old} alt='OriginalMedia4Photo' /> : null
-                    }
 
-                <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>{media4_old ? 'Replace Photo/Video#4 above by: ' : 'Add Photo/Video#4 by: '}</label>
-                <input
-                    className='listingInput'
-                    type="file"
-                   accept="image/*,video/mp4,video/mov,video/wmv"
-                    onChange={(e) => setMedia4(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-                
-                />
-              </div>
-                    {media5_old ? <img
+                <div>
+                    {media1_old ? <img
                         className='EditImg'
-                        src={media5_old} alt='OriginalMedia5Photo' /> : null
+                        src={media1_old} alt='OriginalMedia1Photo' /> : null
                     }
-                <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>{media5_old ? 'Replace Photo/Video#5 above by: ' : 'Add Photo/Video#5 by: '}</label>
-                <input
-                    className='listingInput'
-                    type="file"
-                    accept="image/*,video/mp4,video/mov,video/wmv"
-                    onChange={(e) => setMedia5(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-            
-                />
-              </div>
-             </div>
+                    <div className='createRecipeEl'>
+                        <label className='editRecipeLabel'>{media1_old ? 'Replace Photo#1 above by: ' : 'Add Photo#1 by: '}</label>
+                        <input
+                            className='listingInput'
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setMedia1(e.target.files[0])}
+                        />
+                    </div>
+                    {[[media2_old, setMedia2, play2, setPlay2], [media3_old, setMedia3, play3, setPlay3], [media4_old, setMedia4, play4, setPlay4], [media5_old, setMedia5, play5, setPlay5]].map(el=>(
+                        <>
+                            {el[0] && !['.mp4', '.mov', '.wmv'].includes(el[0].slice(el[0].length - 4, el[0].length)) ? <img
+                                className='EditImg'
+                                src={el[0]} alt='OriginalMedia2Photo' /> : null}
+
+                            {el[0] && ['.mp4', '.mov', '.wmv'].includes(el[0].slice(el[0].length - 4, el[0].length)) ?
+                                <div
+                                    // className='EditImg'
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '2%',
+                                        width: "300px",
+                                        height: "300px",
+                                        marginLeft: "40%",
+                                        padding: '0'
+                                    }}
+                                >
+
+                                    <ReactPlayer
+                                        className='EditImg'
+                                        url={el[0]}
+                                        playing={el[2]}
+                                        loop
+                                        style={{
+                                            // position: 'relative',
+                                            // left: '0',
+                                            // top: '0',
+                                            width: "350px",
+                                            height: "350px",
+                                            margin: '0',
+                                            display: 'inline'
+                                        }} />
+                                    <button
+                                        style={{ maxHeight: '32px' }}
+                                        className='btn-category-header'
+                                        onClick={e => {
+                                            e.preventDefault()
+                                            el[3](play => !play)
+                                        }}>{el[2] ? 'Pause' : 'Play'}</button>
+                                </div>
+                                : null}
+
+
+
+                            <div className='createRecipeEl'>
+
+                                <label className='editRecipeLabel'>{el[0] ? 'Replace Photo/Video#2 above by: ' : 'Add Photo/Video#2 by: '}</label>
+                                <input
+                                    className='listingInput'
+                                    type="file"
+                                    accept="image/*,video/mp4,video/mov,video/wmv"
+                                    onChange={(e) => el[1](e.target.files[0])}
+
+                                />
+                            </div>
+
+                        
+                    </>
+                ))}
+                </div>
             </div>
 
              <div className='createRecipeWrapper'>
