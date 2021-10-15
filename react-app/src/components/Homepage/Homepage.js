@@ -198,7 +198,7 @@ const Homepage = () => {
 						<h2>Explore Recipes</h2>
 						<div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
 							<NavLink
-								to={`/recipes/${tagName1}`}
+								to={`/tags/${tagName1}`}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -297,7 +297,7 @@ const Homepage = () => {
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
 							<NavLink
-								to={`/recipes/${tagName2}`}
+								to={`/tags/${tagName2}`}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -390,7 +390,7 @@ const Homepage = () => {
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
 							<NavLink
-								to={`/recipes/${tagName3}`}
+								to={`/tags/${tagName3}`}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -483,7 +483,7 @@ const Homepage = () => {
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
 							<NavLink
-								to={`/recipes/${tagName4}`}
+								to={`/tags/${tagName4}`}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -576,7 +576,7 @@ const Homepage = () => {
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
 							<NavLink
-								to={`/recipes/${tagName5}`}
+								to={`/tags/${tagName5}`}
 								className="home-content-explore-link"
 							>
 								<h3>

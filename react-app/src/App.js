@@ -59,9 +59,12 @@ function App() {
 						<h1>My Home Page</h1>
 					</ProtectedRoute>
 					<Route path='/recipes/:recipeId' exact={true}>
-          	<SingleRecipePage />
-        	</Route>
+          	            <SingleRecipePage />
+        	        </Route>
 					<Route path="/recipes" exact={true}>
+						<Recipes />
+					</Route>
+                    <Route path="/tags/:tagName" exact={true}>
 						<Recipes />
 					</Route>
 				</Switch>
