@@ -51,16 +51,10 @@ function ProfileButton() {
               <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Profile</NavLink>
             </li>
             <li>
-              <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Inbox </NavLink>
+              <NavLink to={`/recipes`} style={{textDecoration: 'none'}}>All Recipes </NavLink>
             </li>
             <li>
               <NavLink to={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Favorites </NavLink>
-            </li>
-            <li>
-              <NavLink to={`/recipes/my_plate`} style={{textDecoration: 'none'}}>Discussions </NavLink>
-            </li>
-            <li>
-              <NavLink to={`/users/${sessionUser?.id}`} style={{textDecoration: 'none'}}>Settings</NavLink>
             </li>
             <li className="divider"></li>
             <li className="multi-link">

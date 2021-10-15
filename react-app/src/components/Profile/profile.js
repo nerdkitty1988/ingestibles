@@ -187,7 +187,7 @@ function Profile() {
 							Cancel
 						</button>
 					</div>
-                    
+
 					<div className="profileData">
 						<p hidden={!usernameShow} id="profUsername">
 							Username: {username}
@@ -289,7 +289,7 @@ function Profile() {
 						</button>
 						<button
 							type="button"
-							onClick={(e) => setBiographyShow(true)}
+							onClick={(e) => resetData(e)}
 							hidden={biographyShow}
 							className="cancelButton"
 						>
@@ -299,7 +299,7 @@ function Profile() {
 					<div className="passwordButtons">
 						<button
 							type="button"
-							onClick={(e) => resetData()}
+							onClick={(e) => setPasswordShow(false)}
 							hidden={!passwordShow}
 							className="editButtons"
 						>
@@ -331,7 +331,7 @@ function Profile() {
 						</button>
 						<button
 							type="button"
-							onClick={(e) => resetData()}
+							onClick={(e) => resetData(e)}
 							hidden={passwordShow}
 							className="cancelButton"
 						>
