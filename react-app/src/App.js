@@ -64,6 +64,9 @@ function App() {
 					<Route path="/recipes" exact={true}>
 						<Recipes />
 					</Route>
+                    <Route path="/tags/:tagName" exact={true}>
+						<Recipes />
+					</Route>
 				</Switch>
 			)}
 		</BrowserRouter>
