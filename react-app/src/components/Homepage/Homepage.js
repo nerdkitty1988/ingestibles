@@ -40,7 +40,7 @@ const Homepage = () => {
 	function shuffle(arr) {
 		let currIdx = arr.length
 		let randIdx;
-		while (currIdx != 0) {
+		while (currIdx !== 0) {
 			randIdx = Math.floor(Math.random() * currIdx);
 			currIdx--;
 			[arr[currIdx], arr[randIdx]] = [
@@ -137,25 +137,25 @@ const Homepage = () => {
 
 						<Carousel id="slider" className="home-content-rotator-inner carousel-inner" infiniteLoop={true} autoPlay={true} showThumbs={false} showArrows={false} showIndicators={false} showStatus={false} interval={5000} stopOnHover={false}>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1598023696416-0193a0bcd302?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1836&q=80" />
+								<img className="splash-images" alt="car1" src="https://images.unsplash.com/photo-1598023696416-0193a0bcd302?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1836&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1626078297492-b7dc55294332?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+								<img className="splash-images" alt="car2" src="https://images.unsplash.com/photo-1626078297492-b7dc55294332?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80" />
+								<img className="splash-images" alt="car3" src="https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" />
+								<img className="splash-images" alt="car4" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80" />
+								<img className="splash-images" alt="car5" src="https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+								<img className="splash-images" alt="car6" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
 							</div>
 						</Carousel>
-						
+
 					</div>
 
 				</div>
@@ -210,28 +210,16 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags1?.map((tag1) => (
-										<div className="home-content-explore-ible">
+										<div key={tag1.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag1?.id}`}
 											>
-												{/* ////////////after seeding media, copy data-src and paste into src below for each category!!!!//////////// */}
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={
-														tag1?.medias[0]
-													}
-													src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+													data-src={tag1?.medias[0].mediaUrl}
+													src={tag1?.medias[0].mediaUrl}
 													alt={tag1?.title}
 												/>
-												<noscript>
-													<img
-														src={
-															tag1
-																?.medias[0]
-														}
-														alt={tag1?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -262,33 +250,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -309,22 +270,16 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags2?.map((tag2) => (
-										<div className="home-content-explore-ible">
+										<div key={tag2.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag2?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag2?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1527275393322-8ddae8bd5de9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag2?.medias[0].mediaUrl}
+													src={tag2?.medias[0].mediaUrl}
 													alt={tag2?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag2?.medias[0]}`}
-														alt={tag2?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -355,33 +310,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -402,22 +330,16 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags3?.map((tag3) => (
-										<div className="home-content-explore-ible">
+										<div key={tag3.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag3?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag3?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag3?.medias[0].mediaUrl}
+													src={tag3?.medias[0].mediaUrl}
 													alt={tag3?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag3?.medias[0]}`}
-														alt={tag3?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -448,33 +370,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -495,22 +390,16 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags4?.map((tag4) => (
-										<div className="home-content-explore-ible">
+										<div key={tag4.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag4?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag4?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag4?.medias[0].mediaUrl}
+													src={tag4?.medias[0].mediaUrl}
 													alt={tag4?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag4?.medias[0]}`}
-														alt={tag4?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -541,33 +430,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -588,22 +450,16 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags5?.map((tag5) => (
-										<div className="home-content-explore-ible">
+										<div key={tag5.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag5?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag5?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1561043433-9265f73e685f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80"
+													data-src={tag5?.medias[0].mediaUrl}
+													src={tag5?.medias[0].mediaUrl}
 													alt={tag5?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag5?.medias[0]}`}
-														alt={tag5?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -632,33 +488,6 @@ const Homepage = () => {
 													>
 														{tag5?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
-											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
 												</span>
 											</div>
 										</div>

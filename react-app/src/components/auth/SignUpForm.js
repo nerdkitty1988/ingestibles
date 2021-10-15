@@ -66,8 +66,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="loginPage">
-      <div className="loginformContainer" style = {{width:'450px'}}>
+    <div className="loginPage" style={{overflow:'scroll'}}>
+      <div className="loginformContainer" style={{ width: '450px', paddingTop: '5%' }}>
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (

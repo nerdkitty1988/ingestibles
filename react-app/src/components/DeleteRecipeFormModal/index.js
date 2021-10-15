@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Modal, ModalContext } from '../../context/Modal';
+import { ModalContext } from '../../context/Modal';
 import DeleteRecipeForm from './DeleteRecipeForm';
 // import { useSelector } from 'react-redux';
 
-function DeleteRecipeFormModal({ id, userId, setCreatedRecipes}) {
+function DeleteRecipeFormModal({ id, userId, setCreatedRecipes, setLikedRecipes}) {
 
     const [showModal, setShowModal] = useState(false);
     const [showDelete, setShowDelete] = useState(true);
@@ -17,14 +17,18 @@ function DeleteRecipeFormModal({ id, userId, setCreatedRecipes}) {
                 setShowDelete(false)
                 setOpen(true)
                 }}>Delete</button>}
-           
+
             {showModal && (
-                
+
                 <ModalContext.Provider value={{ setShowModal }} onClose={() => {setShowModal(false)}}>
-                    <DeleteRecipeForm id={id} userId={userId} setCreatedRecipes={setCreatedRecipes}
-                        setShowDelete={setShowDelete} setOpen={setOpen} open={open}/>
+                    <DeleteRecipeForm 
+                    id={id} 
+                    userId={userId} 
+                    setCreatedRecipes={setCreatedRecipes}
+                    setLikedRecipes={setLikedRecipes}
+                    setShowDelete={setShowDelete} setOpen={setOpen} open={open}/>
                 </ModalContext.Provider>
-                
+
             )}
 
         </div>

@@ -56,7 +56,9 @@ function MyPlate() {
 				className='btn-category-header'
 			    id={recipe.id} 
 				userId={userId} 
-				setCreatedRecipes={setCreatedRecipes}/>
+				setCreatedRecipes={setCreatedRecipes}
+				setLikedRecipes={setLikedRecipes}
+				/>
 			</div>
 			</div>
 		);
