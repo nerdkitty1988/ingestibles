@@ -1,125 +1,122 @@
 .recipeList {
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .singleRecipe {
-    display: block;
-    width: 300px;
-    height: 330px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    margin: 10px;
-    box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.486);
-    text-align: center;
+	display: block;
+	width: 300px;
+	height: 330px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	margin: 10px;
+	box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.486);
+	text-align: center;
 }
 
 .recipePic {
-    width: 100%;
-    height: 73%;
+	width: 100%;
+	height: 73%;
 }
 
 .authorName {
-    color: grey;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+	color: grey;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
 }
 
 .recipeTitle {
-    color: rgba(0, 0, 0, 0.774);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    text-decoration: none;
-    text-decoration: none;
+	color: rgba(0, 0, 0, 0.774);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	text-decoration: none;
 }
 
 .recipeBlock {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .plateHeadings {
-    margin-left: 50px;
-    margin-top: 50px;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.699);
+	margin-left: 50px;
+	margin-top: 50px;
+	font-family: "Yanone Kaffeesatz", sans-serif;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.699);
 }
 
 .recipeNav {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .profileCircle {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 100%;
-    margin-right: 10px;
-    box-shadow: 0px 0px 2px 1px orange;
+	width: 130px;
+	height: 130px;
+	object-fit: cover;
+	border-radius: 100%;
+	margin-right: 10px;
 }
 
 .plateTop {
-    display: flex;
-    width: 100%;
-    height: 295px;
-    border: 2px solid rgba(128, 128, 128, 0.11);
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	width: 100%;
+	height: 295px;
+	border: 2px solid rgba(128, 128, 128, 0.11);
+	justify-content: center;
+	align-items: center;
 }
 
 .profButton {
-    text-decoration: none;
-    padding: 8px;
-    border: 1px solid rgba(128, 128, 128, 0.164);
-    border-radius: 3px;
-    margin: 5px;
-    color: black;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: rgba(204, 204, 204, 0.356);
-    font-size: 14px;
-    box-shadow: 0px 0px 2px 1px rgba(255, 166, 0, 0.514);
-
+	text-decoration: none;
+	padding: 8px;
+	border: 1px solid rgba(128, 128, 128, 0.164);
+	border-radius: 3px;
+	margin: 5px;
+	color: black;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: rgba(204, 204, 204, 0.356);
+	font-size: 14px;
+	box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.473);
 }
 
 .profCard {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	align-items: center;
 }
 
 .plateTopCard {
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+	align-items: center;
 }
 
 .buttonDiv {
-    padding: 10px;
+	padding: 10px;
 }
 
 .joinDate {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    padding-top: 50px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.527);
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 200;
+	padding-top: 50px;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.527);
 }
 
 .fas {
-   color: orange;
+	color: orange;
 }
 
 #username {
-    font-family: Arial, Helvetica, sans-serif;
-    text-shadow: 0px 0px 3px orange;
+	font-family: Arial, Helvetica, sans-serif;
+	text-shadow: 0px 0px 3px orange;
 }
 
-
 .btn-category-header {
-    font-family: Arial, Helvetica, sans-serif;
-    box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.596);
+	font-family: Arial, Helvetica, sans-serif;
+	box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.596);
 }

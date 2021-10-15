@@ -28,9 +28,9 @@
     height: 35px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 0.226);
+    box-shadow: 0px 0px 2px 1px rgba(190, 187, 187, 0.397);
     border: none;
-    background-color: rgba(255, 166, 0, 0.205);
+    background-color: rgba(206, 199, 185, 0.205);
     border-radius: 5px;
     padding: 10px;
 }
@@ -51,6 +51,10 @@
     border-radius: 5px;
     padding: 10px;
     margin-top: 30px;
+}
+
+.deleteAccount:hover {
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😰</text></svg>") 16 0,auto; /*!emojicursor.app*/
 }
 
 .saveButton {
@@ -86,7 +90,7 @@
 }
 
 .cancelButton:hover{
-    cursor:pointer
+    cursor: no-drop;
 }
 
 .saveButton:hover{
