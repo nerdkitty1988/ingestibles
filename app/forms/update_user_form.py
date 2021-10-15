@@ -10,4 +10,4 @@ class UpdateUserForm(FlaskForm):
     email = StringField('email')
     password = StringField('password')
     biography = TextAreaField('biography')
-    profilePic = StringField('profilePic')
+    # profilePic = StringField('profilePic')

@@ -1,8 +1,8 @@
 import React from "react";
 
 
-function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, setOpen }) {
-
+function DeleteRecipeForm({ id, userId, setCreatedRecipes, setLikedRecipes, setShowDelete, open, setOpen }) {
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const deleteResponse = await fetch(`/api/recipes/delete/${id}`, {
@@ -12,6 +12,7 @@ function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, 
         const response = await fetch(`/api/recipes/my_plate/${userId}`);
         const responseData = await response.json();
         setCreatedRecipes(responseData.created);
+        setLikedRecipes(responseData.liked);
     };
 
     const cancelSubmit = async (e) => {

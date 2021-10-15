@@ -9,13 +9,15 @@
     "http-proxy-middleware": "^1.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-player": "^2.9.0",
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.21",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "redux": "^4.1.0",
+    "redux": "^4.1.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "video-react": "^0.14.1"
   },
   "scripts": {
     "start": "react-scripts start",
