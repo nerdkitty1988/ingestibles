@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editRecipeThunk } from '../../store/editRecipe';
+import ReactPlayer from 'react-player'
+// import { Player } from 'video-react';
+// import "../node_modules/video-react/dist/video-react.css";
 import './EditRecipe.css';
 
 const EditRecipe = () => {
@@ -26,6 +29,7 @@ const EditRecipe = () => {
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
+    const [play1, setPlay1] = useState(true);
     
     const [ingredientPhoto_Old, setIngredientPhoto_Old] = useState(null);
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
@@ -192,7 +196,7 @@ const EditRecipe = () => {
             ingredients:ingredients_notNull,
             steps: steps_notNull,
         }
-        // console.log('dictionary-recipe:', newRecipe)
+        console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(editRecipeThunk({formData,recipeId}));
         if (data.errors) {
@@ -304,10 +308,40 @@ const EditRecipe = () => {
                     style={{ resize: 'none' }}
                 />
               </div>
-             <div>
-                    {media1_old ?<img
+                <div>
+                    {media1_old && !['.mp4', '.mov','.wmv'].includes(media1_old.slice(media1_old.length-4,media1_old.length)) ?<img
                     className='EditImg'
                     src={media1_old} alt='OriginalMedia1Photo' />:null}
+                    
+                    {media1_old && ['.mp4', '.mov','.wmv'].includes(media1_old.slice(media1_old.length - 4, media1_old.length))?
+                    <div 
+                    // className='EditImg'
+                    style={{
+                        width: "300px",
+                        height: "300px",
+                        marginLeft:"40%",
+                        padding:'0'
+                    }}
+                    >   
+                        
+                    <ReactPlayer
+                        className='EditImg'
+                        url={media1_old}
+                        playing={play1}
+                        onClick={e=>{
+                            setPlay1(play1=>!play1)}}
+                        loop
+                        style={{
+                            // position: 'relative',
+                            // left: '0',
+                            // top: '0',
+                            width: "350px",
+                            height: "350px",
+                            margin:'0',
+                            display: 'inline'
+                                }} /> </div>
+                            : null}
+                    
                    <div className='createRecipeEl'>
                 
                         <label className='editRecipeLabel'>{media1_old ? 'Replace Photo/Video#1 above by: ' : 'Add Photo/Video#1 by: '}</label>
@@ -315,7 +349,7 @@ const EditRecipe = () => {
                         className='listingInput'
                         type="file"
                         // value={media1}
-                        accept="image/*,video/mp4,video/mov,video/wmv"
+                            accept="image/*,video/mp4,video/mov,video/wmv"
                         onChange={(e) => setMedia1(e.target.files[0])}
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
