@@ -63,7 +63,7 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <li key={ind} sytle={{ color: '#F27D21' }}>{error}</li>
             ))}
           </div>
           <div>
@@ -123,7 +123,7 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
+              // required={true}
               className="signupInput"
             ></input>
           </div>

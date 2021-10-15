@@ -42,7 +42,7 @@ const LoginForm = () => {
 				<form onSubmit={onLogin}>
 					<div>
 						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
+							<li key={ind} sytle={{ color:'#F27D21'}}>{error}</li>
 						))}
 					</div>
 					<div>
