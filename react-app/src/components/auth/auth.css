@@ -21,9 +21,9 @@
     padding-top: 115px;
 }
 
-.loginInput {
+.loginInput,.signupInput{
     padding: 9px 11px;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0px 0px 2px 1px grey;
     width: 100%;
     margin: 10px 10px 10px -10px;
@@ -31,7 +31,7 @@
     height: 20px;
 }
 
-.loginInput:hover {
+.loginInput:hover, .signupInput:hover {
     box-shadow: 0px 0px 2px 1px rgba(255, 166, 0, 0.397);
 }
 
@@ -60,4 +60,9 @@
 
 .loginSignupText > a {
     color: white;
+}
+
+.signupInput{
+    margin: 2px 10px 2px -10px;
+
 }

@@ -301,7 +301,7 @@ const EditRecipe = () => {
                     value={introduction}
                     onChange={(e) => setIntroduction(e.target.value)}
                     placeholder='Briefly describe what you made.'
-                    //required
+                    style={{ resize: 'none' }}
                 />
               </div>
              <div>
@@ -452,7 +452,7 @@ const EditRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-
+                    style={{ resize: 'none' }}
                 />
                 </div>
                 {oldStepsPhotos[`step${i + 1}`] && oldStepsPhotos[`step${i + 1}`] !== 'null' && oldStepsPhotos[`step${i + 1}`] !== 'undefined'?<img

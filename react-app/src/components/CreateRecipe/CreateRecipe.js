@@ -228,6 +228,7 @@ const CreateRecipe = () => {
                     className='listingInput'
                     value={introduction}
                     onChange={(e) => setIntroduction(e.target.value)}
+                    style={{ resize: 'none'}}
                     placeholder='Briefly describe what you made.'
                     //required
                 />
@@ -363,7 +364,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-                        
+                    style={{ resize: 'none' }} 
                 />
                 </div>
                 <div className='createRecipeStep'>
@@ -410,7 +411,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-
+                    style={{ resize: 'none' }}
                 />
                 </div>
                 <div className='createRecipeStep'>

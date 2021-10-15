@@ -19,6 +19,11 @@ const LoginForm = () => {
 		}
 	};
 
+	const demoUser = async (e) => {
+		e.preventDefault();
+		await dispatch(login('demo@aa.io', 'password'));
+	};
+
 	const updateEmail = (e) => {
 		setEmail(e.target.value);
 	};
@@ -61,6 +66,7 @@ const LoginForm = () => {
 						/>
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
+					<button className="loginButton" onClick={demoUser}>Demo User</button>
                     <div className="loginSignupText">
 						New to Ingestibles? <NavLink to="/sign-up">Sign Up >></NavLink>
                     </div>
