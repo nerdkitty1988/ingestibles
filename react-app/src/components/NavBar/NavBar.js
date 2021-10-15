@@ -96,25 +96,25 @@ const NavBar = ({ loaded }) => {
 								</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/beef">Beef</NavLink>
+								<NavLink to="/recipes/tags/beef">Beef</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/chicken">Chicken</NavLink>
+								<NavLink to="/recipes/tags/chicken">Chicken</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/desserts">Desserts</NavLink>
+								<NavLink to="/recipes/tags/dessert">Dessert</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/fish">Fish</NavLink>
+								<NavLink to="/recipes/tags/fish">Fish</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/pasta">Pasta</NavLink>
+								<NavLink to="/recipes/tags/pasta">Pasta</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/pastries">Pastries</NavLink>
+								<NavLink to="/recipes/tags/pastry">Pastry</NavLink>
 							</li>
 							<li>
-								<NavLink to="/recipes/vegetarian">Vegetarian</NavLink>
+								<NavLink to="/recipes/tags/vegetarian">Vegetarian</NavLink>
 							</li>
 						</ul>
 					</nav>

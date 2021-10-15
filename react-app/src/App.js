@@ -13,6 +13,7 @@ import SingleRecipePage from './components/SingleRecipePage';
 import Profile from "./components/Profile/profile";
 import EditRecipe from "./components/EditRecipe/EditRecipe"
 import Recipes from './components/Recipes/Recipes';
+import Footer from './components/Footer/Footer';
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -66,6 +67,7 @@ function App() {
 					</Route>
 				</Switch>
 			)}
+			<Footer />
 		</BrowserRouter>
 	);
 }

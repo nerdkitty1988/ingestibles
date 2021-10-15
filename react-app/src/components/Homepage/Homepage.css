@@ -568,6 +568,7 @@ a:hover {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+
 .home-content-explore .home-content-explore-ible .ible-featured {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -588,6 +589,12 @@ a:hover {
 
 .home-content-explore .home-content-explore-ible .contest-prize {
   font-size: 12px;
+}
+
+.ible-favorites {
+  font-size: 13px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #555;
 }
 
 .home-content-explore .home-content-explore-ible .contest-prize a {
@@ -707,4 +714,8 @@ a:hover {
 
 .splash-images {
   min-width: 980px;
+}
+
+#home-container {
+  margin-bottom: 20px;
 }
