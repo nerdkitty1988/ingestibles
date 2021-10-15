@@ -7,6 +7,15 @@ const Recipes = () => {
 	const [recentRecipes, setRecentRecipes] = useState([]);
 	const [previousRecipes, setPreviousRecipes] = useState([]);
 	const [allLikes, setAllLikes] = useState([]);
+    const [tagname, setTagname] = useState();
+
+    const location = useLocation();
+
+	if (location.pathname.startsWith("/tags")) {
+		const parts = location.pathname.split("/");
+		setTagname(parts[2])
+
+	}
 
 	useEffect(() => {
 		async function recipes() {
@@ -16,6 +25,7 @@ const Recipes = () => {
 		}
 
 		async function recent_recipes() {
+
 			const response = await fetch("/api/recipes/recent");
 			const responseData = await response.json();
 			setRecentRecipes(responseData);
@@ -23,7 +33,16 @@ const Recipes = () => {
 
 		// remember to exclude the first 5 from this array
 		async function previous_recipes() {
-			const response = await fetch("/api/recipes/previous");
+            if (location.pathname.startsWith("/tags")) {
+                const parts = location.pathname.split("/");
+                setTagname(parts[2])
+            }
+            if (tagname) {
+                const response = await fetch(`/api/tags/${tagname}`);
+            }else{
+                const response = await fetch("/api/recipes/previous");
+            }
+
 			const responseData = await response.json();
 			setPreviousRecipes(responseData);
 		}
@@ -224,7 +243,7 @@ const Recipes = () => {
 							>
 								<h3>
 									<span className="anchor-text">
-										Previous
+										{tagname ? `Recipes with tag ${tagname}` : "Previous"}
 									</span>
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
