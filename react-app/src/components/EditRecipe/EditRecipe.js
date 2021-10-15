@@ -310,7 +310,7 @@ const EditRecipe = () => {
                     src={media1_old} alt='OriginalMedia1Photo' />:null}
                    <div className='createRecipeEl'>
                 
-                        <label className='editRecipeLabel'>Replace Photo/Video#1 above by: </label>
+                        <label className='editRecipeLabel'>{media1_old ? 'Replace Photo/Video#1 above by: ' : 'Add Photo/Video#1 by: '}</label>
                     <input
                         className='listingInput'
                         type="file"
@@ -325,7 +325,7 @@ const EditRecipe = () => {
                         src={media2_old} alt='OriginalMedia2Photo' />:null
                 }
                 <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>Replace Photo/Video#2 above by </label>
+                        <label className='editRecipeLabel'>{media2_old ? 'Replace Photo/Video#2 above by: ' : 'Add Photo/Video#2 by: '}</label>
                 <input
                     className='listingInput'
                     type="file"
@@ -339,7 +339,7 @@ const EditRecipe = () => {
                         src={media3_old} alt='OriginalMedia3Photo' /> : null
                     }
               <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>Replace Photo/Video#3 above by </label>
+                        <label className='editRecipeLabel'>{media3_old ? 'Replace Photo/Video#3 above by: ' : 'Add Photo/Video#3 by: '}</label>
                 <input
                     className='listingInput'
                     type="file"
@@ -355,7 +355,7 @@ const EditRecipe = () => {
                     }
 
                 <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>Replace Photo/Video#4 above by </label>
+                        <label className='editRecipeLabel'>{media4_old ? 'Replace Photo/Video#4 above by: ' : 'Add Photo/Video#4 by: '}</label>
                 <input
                     className='listingInput'
                     type="file"
@@ -370,7 +370,7 @@ const EditRecipe = () => {
                         src={media5_old} alt='OriginalMedia5Photo' /> : null
                     }
                 <div className='createRecipeEl'>
-                        <label className='editRecipeLabel'>Replace Photo/Video#5 above by </label>
+                        <label className='editRecipeLabel'>{media5_old ? 'Replace Photo/Video#5 above by: ' : 'Add Photo/Video#5 by: '}</label>
                 <input
                     className='listingInput'
                     type="file"
@@ -389,7 +389,7 @@ const EditRecipe = () => {
                     className='EditImg'
                     src={ingredientPhoto_Old} alt='OriginalIngredientPhoto' />:null}
                 <div className='createRecipeEl'>
-                    <label className='editRecipeLabel'>Replace ingredient photo above by </label>
+                    <label className='editRecipeLabel'>{ingredientPhoto_Old ? 'Replace ingredient photo above by: ' : 'Add ingredient photo above by: ' }</label>
                 
                 <input
                     className='listingInput'
@@ -463,7 +463,7 @@ const EditRecipe = () => {
                     alt={`OriginalPhotoForStep${i + 1}`} />:null}
 
                 <div className='createRecipeStep'>
-                    < label className='editRecipeLabel'>Replace photo of step #{i+1} by </label>
+                    < label className='editRecipeLabel'>{oldStepsPhotos[`step${i + 1}`] && oldStepsPhotos[`step${i + 1}`] !== 'null' && oldStepsPhotos[`step${i + 1}`] !== 'undefined' ? `Replace photo of step #${i + 1} by: ` : `Add photo of step #${i + 1} by: `}</label>
                 <input   
                     className = 'listingInput'
                     type = "file"

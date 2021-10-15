@@ -54,8 +54,8 @@ const Recipes = () => {
           <div className="home-content-explore-wrap">
             <h2>Recipes</h2>
             <div className={`home-content-explore-category home-content-explore-category-recent clearfix`}>
-              <a
-                href={'/recipes'}
+              <NavLink
+                to={'/recipes'}
                 className="home-content-explore-link"
               >
                 <h3>
@@ -63,13 +63,13 @@ const Recipes = () => {
                   &nbsp;
                   <i className="fas fa-angle-right fa-2x"></i>
                 </h3>
-              </a>
+              </NavLink>
               <div className="home-content-explore-category-wrap ">
                 <div id="recentRecipes">
                   {recRecipes?.map((recRecipe) => (
                     <div className="home-content-explore-ible">
-                      <a
-                        href={`/recipes/${recRecipe?.id}`}
+                      <NavLink
+                        to={`/recipes/${recRecipe?.id}`}
                       >
                         {/* ////////////after seeding media, copy data-src and paste into src below for each category!!!!//////////// */}
                         <img
@@ -89,34 +89,34 @@ const Recipes = () => {
                             alt={recRecipe?.title}
                           />
                         </noscript>
-                      </a>
+                      </NavLink>
                       <div className="home-content-explore-ible-info">
                         <strong>
-                          <a
+                          <NavLink
                             className="ible-title"
-                            href={`/recipes/${recRecipe?.id}`}
+                            to={`/recipes/${recRecipe?.id}`}
                           >
                             {recRecipe?.title}
-                          </a>
+                          </NavLink>
                         </strong>
                         <span className="ible-author">
                           &nbsp;by&nbsp;
-                          <a
-                            href={`/users/${recRecipe?.author?.id}`}
+                          <NavLink
+                            to={`/users/${recRecipe?.author?.id}`}
                           >
                             {
                               recRecipe?.author
                                 ?.username
                             }
-                          </a>
+                          </NavLink>
                         </span>
                         <span className="ible-channel">
                           &nbsp;in&nbsp;
-                          <a
-                            href={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
+                          <NavLink
+                            to={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
                           >
                             {recRecipe?.tags[0]?.name?.toLowerCase()}
-                          </a>
+                          </NavLink>
                         </span>
                       </div>
                       <div className="ible-stats">
@@ -153,8 +153,8 @@ const Recipes = () => {
             </div>
 
             <div>
-              <a
-                href={'/recipes'}
+              <NavLink
+                to={'/recipes'}
                 className="home-content-explore-link"
               >
                 <h3>
@@ -162,13 +162,13 @@ const Recipes = () => {
                   &nbsp;
                   <i className="fas fa-angle-right fa-2x"></i>
                 </h3>
-              </a>
+              </NavLink>
               <div>
                 <div id="recentRecipes">
                   {prevRecipes?.map((prevRecipe) => (
                     <div className="home-content-explore-ible">
-                      <a
-                        href={`/recipes/${prevRecipe?.id}`}
+                      <NavLink
+                        to={`/recipes/${prevRecipe?.id}`}
                       >
                         <img
                           className=" ls-is-cached lazyloaded"
@@ -182,34 +182,34 @@ const Recipes = () => {
                             alt={prevRecipe?.title}
                           />
                         </noscript>
-                      </a>
+                      </NavLink>
                       <div className="home-content-explore-ible-info">
                         <strong>
-                          <a
+                          <NavLink
                             className="ible-title"
-                            href={`/recipes/${prevRecipe?.id}`}
+                            to={`/recipes/${prevRecipe?.id}`}
                           >
                             {prevRecipe?.title}
-                          </a>
+                          </NavLink>
                         </strong>
                         <span className="ible-author">
                           &nbsp;by&nbsp;
-                          <a
-                            href={`/users/${prevRecipe?.author?.id}`}
+                          <NavLink
+                            to={`/users/${prevRecipe?.author?.id}`}
                           >
                             {
                               prevRecipe?.author
                                 ?.username
                             }
-                          </a>
+                          </NavLink>
                         </span>
                         <span className="ible-channel">
                           &nbsp;in&nbsp;
-                          <a
-                            href={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
+                          <NavLink
+                            to={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
                           >
                             {prevRecipe?.tags[0]?.name?.toLowerCase()}
-                          </a>
+                          </NavLink>
                         </span>
                       </div>
                       <div className="ible-stats">

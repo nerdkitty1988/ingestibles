@@ -73,10 +73,12 @@ def create_recipe():
         if key[0:4] == 'step':
             # e.g. step1_
             stepNumForValidation = key[4:].split('_')[0]
-            stepPrefix = 'step' + stepNumForValidation + '_'
-            # exclude not exit, '', all spaces
-            if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
-                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
+            # step1 is valided by Form class
+            if int(stepNumForValidation) != 1:
+                stepPrefix = 'step' + stepNumForValidation + '_'
+                # exclude not exit, '', all spaces
+                if((stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
+                    return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
 
@@ -214,19 +216,21 @@ def edit_recipe(id):
         if key[0:4] == 'step':
             # e.g. step1_ ( step10_, key[0:7] )
             stepNumForValidation = key[4:].split('_')[0]
-            stepPrefix = 'step' + stepNumForValidation +'_'
-            # exclude not exit, '', all spaces
-            if((stepPrefix+'title' not in request.form.keys()) or
+            # step1 is valided by Form class
+            if int(stepNumForValidation) != 1:
+                stepPrefix = 'step' + stepNumForValidation +'_'
+                # exclude not exit, '', all spaces
+                if((stepPrefix+'title' not in request.form.keys()) or
                     (stepPrefix+'direction' not in request.form.keys()) or
                     (not request.form[stepPrefix+'title']) or
                     (not request.form[stepPrefix+'direction']) or
                     (request.form[stepPrefix+'title'].isspace()) or
                     (request.form[stepPrefix+'direction'].isspace())
                     ):
-                # print('!!!!!eroor', key, value, stepPrefix +
-                #       'title', request.form.keys(), stepPrefix +
-                #       'title' not in request.form.keys())
-                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
+                    # print('!!!!!eroor', key, value, stepPrefix +
+                    #       'title', request.form.keys(), stepPrefix +
+                    #       'title' not in request.form.keys())
+                    return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
         # if ingredientPhoto is a file, not a string(an url), save to AWS and get its url in following if statement
