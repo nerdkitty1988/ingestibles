@@ -20,12 +20,12 @@ def recipes():
 
 @recipe_routes.route('/recent')
 def recent_recipes():
-    recipes = Recipe.query.order_by(Recipe.id.desc()).limit(5)
+    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc()).limit(5)
     return {"recent": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/previous')
 def previous_recipes():
-    recipes = Recipe.query.order_by(Recipe.id.desc())
+    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc())
     return {"previous": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/<int:id>')
