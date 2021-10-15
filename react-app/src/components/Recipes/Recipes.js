@@ -118,6 +118,12 @@ const Recipes = () => {
                             {recRecipe?.tags[0]?.name?.toLowerCase()}
                           </a>
                         </span>
+                        <p className="ible-channel">
+                          Created on&nbsp;
+                          <span>
+                            {new Date(recRecipe?.time_created).toLocaleDateString()}
+                          </span>
+                        </p>
                       </div>
                       <div className="ible-stats">
                         <span className="ible-stats-left-col ible-featured">
@@ -211,6 +217,12 @@ const Recipes = () => {
                             {prevRecipe?.tags[0]?.name?.toLowerCase()}
                           </a>
                         </span>
+                        <p className="ible-channel">
+                          Created on&nbsp;
+                          <span>
+                            {new Date(prevRecipe?.time_created).toLocaleDateString()}
+                          </span>
+                        </p>
                       </div>
                       <div className="ible-stats">
                         <span className="ible-stats-left-col ible-featured">
