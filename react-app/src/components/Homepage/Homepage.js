@@ -155,7 +155,7 @@ const Homepage = () => {
 								<img className="splash-images" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
 							</div>
 						</Carousel>
-						
+
 					</div>
 
 				</div>
@@ -214,24 +214,12 @@ const Homepage = () => {
 											<NavLink
 												to={`/recipes/${tag1?.id}`}
 											>
-												{/* ////////////after seeding media, copy data-src and paste into src below for each category!!!!//////////// */}
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={
-														tag1?.medias[0]
-													}
-													src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+													data-src={tag1?.medias[0].mediaUrl}
+													src={tag1?.medias[0].mediaUrl}
 													alt={tag1?.title}
 												/>
-												<noscript>
-													<img
-														src={
-															tag1
-																?.medias[0]
-														}
-														alt={tag1?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -262,33 +250,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -315,16 +276,10 @@ const Homepage = () => {
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag2?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1527275393322-8ddae8bd5de9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag2?.medias[0].mediaUrl}
+													src={tag2?.medias[0].mediaUrl}
 													alt={tag2?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag2?.medias[0]}`}
-														alt={tag2?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -355,33 +310,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -408,16 +336,10 @@ const Homepage = () => {
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag3?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag3?.medias[0].mediaUrl}
+													src={tag3?.medias[0].mediaUrl}
 													alt={tag3?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag3?.medias[0]}`}
-														alt={tag3?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -448,33 +370,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -501,16 +396,10 @@ const Homepage = () => {
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag4?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2360&q=80"
+													data-src={tag4?.medias[0].mediaUrl}
+													src={tag4?.medias[0].mediaUrl}
 													alt={tag4?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag4?.medias[0]}`}
-														alt={tag4?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -541,33 +430,6 @@ const Homepage = () => {
 													</NavLink>
 												</span>
 											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
-												</span>
-											</div>
 										</div>
 									))}
 								</div>
@@ -594,16 +456,10 @@ const Homepage = () => {
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${tag5?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1561043433-9265f73e685f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80"
+													data-src={tag5?.medias[0].mediaUrl}
+													src={tag5?.medias[0].mediaUrl}
 													alt={tag5?.title}
 												/>
-												<noscript>
-													<img
-														src={`/recipes/${tag5?.medias[0]}`}
-														alt={tag5?.title}
-													/>
-												</noscript>
 											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
@@ -632,33 +488,6 @@ const Homepage = () => {
 													>
 														{tag5?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
-											</div>
-											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
-												<span className="ible-stats-right-col">
-													<span className="ible-favorites">
-														<i
-															title="Favorites Count"
-															className="icon icon-favorite"
-														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
-													</span>
 												</span>
 											</div>
 										</div>

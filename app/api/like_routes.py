@@ -34,4 +34,9 @@ def get_like(id):
         return {'unlike': 'unlike'}
     else:
         return {'like': 'like'}
-        
+
+@like_routes.route('/')
+def likes():
+    likes = Like.query.all()
+    return {'likes': [like.to_dict() for like in likes]}
+
