@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import "./Recipes.css";
 
 
@@ -8,8 +6,6 @@ const Recipes = () => {
 	const [allRecipes, setAllRecipes] = useState([]);
 	const [recentRecipes, setRecentRecipes] = useState([]);
 	const [previousRecipes, setPreviousRecipes] = useState([]);
-
-	const sessionUser = useSelector((state) => state.session?.user);
 
 	useEffect(() => {
 		async function recipes() {

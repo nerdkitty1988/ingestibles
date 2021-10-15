@@ -11,13 +11,15 @@ const NavBar = ({ loaded }) => {
 	const [recipes, setRecipes] = useState();
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await fetch(`/api/search/${searchTerm}`);
-			const responseData = await response.json();
-			console.log("!!!!", responseData);
-			setRecipes(responseData.recipes);
-		}
-		fetchData();
+        if(searchTerm){
+            async function fetchData() {
+                const response = await fetch(`/api/search/${searchTerm}`);
+                const responseData = await response.json();
+                console.log("!!!!", responseData);
+                setRecipes(responseData.recipes);
+            }
+            fetchData();
+        }
 	}, [searchTerm]);
 
 	let searchBlock;
