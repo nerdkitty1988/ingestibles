@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
 import EditComment from "../EditComment";
 import Instruction from "../Instruction"
 import NewComment from "../NewComment"

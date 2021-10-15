@@ -7,13 +7,13 @@ import NavBar from './components/NavBar/NavBar';
 import Homepage from './components/Homepage/Homepage';
 import MyPlate from './components/MyPlate/MyPlate';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
 import CreateRecipe from './components/CreateRecipe/CreateRecipe';
 import { authenticate } from './store/session';
 import SingleRecipePage from './components/SingleRecipePage';
 import Profile from "./components/Profile/profile";
 import EditRecipe from "./components/EditRecipe/EditRecipe"
 import Recipes from './components/Recipes/Recipes';
+import Footer from './components/Footer/Footer';
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -60,13 +60,17 @@ function App() {
 						<h1>My Home Page</h1>
 					</ProtectedRoute>
 					<Route path='/recipes/:recipeId' exact={true}>
-          	<SingleRecipePage />
-        	</Route>
+          				<SingleRecipePage />
+        			</Route>
 					<Route path="/recipes" exact={true}>
+						<Recipes />
+					</Route>
+                    <Route path="/tags/:tagName" exact={true}>
 						<Recipes />
 					</Route>
 				</Switch>
 			)}
+			<Footer />
 		</BrowserRouter>
 	);
 }

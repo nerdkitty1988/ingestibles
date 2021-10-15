@@ -235,12 +235,12 @@ const CreateRecipe = () => {
               </div>
              <div>
                     <div className='createRecipeEl'>
-                        <label className='createRecipelabel'>Photo/Video #1 </label>
+                        <label className='createRecipelabel'>Photo#1 - required </label>
                     <input
                         className='listingInput'
                         type="file"
                         // value={media1}
-                        accept="image/*,video/mp4,video/mov,video/wmv"
+                        accept="image/*"
                         onChange={(e) => setMedia1(e.target.files[0])}
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />

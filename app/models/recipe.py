@@ -48,5 +48,6 @@ class Recipe(db.Model):
             "comments": [comment.to_dict() for comment in self.comments],
             "tags": [tag.to_dict() for tag in self.tags],
             "likes": [like.to_dict() for like in self.likes],
-            "medias": [media.to_dict() for media in self.medias]
+            "medias": [media.to_dict() for media in self.medias],
+            "time_created": self.time_created
         }

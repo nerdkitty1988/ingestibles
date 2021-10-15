@@ -11,21 +11,34 @@ const NavBar = ({ loaded }) => {
 	const [recipes, setRecipes] = useState();
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await fetch(`/api/search/${searchTerm}`);
-			const responseData = await response.json();
-			console.log("!!!!", responseData);
-			setRecipes(responseData.recipes);
-		}
-		fetchData();
+        if(searchTerm){
+            async function fetchData() {
+                const response = await fetch(`/api/search/${searchTerm}`);
+                const responseData = await response.json();
+				console.log("!!!!type-responseData", responseData);
+                setRecipes(responseData.recipes);
+            }
+            fetchData();
+        }
 	}, [searchTerm]);
+
+	const clickToSearch = async(e) =>{
+		// e.preventdefault()
+		// console.log('e.target.value', e.target.value)
+		setSearchTerm(e.target.value)
+		const response = await fetch(`/api/search/${e.target.value}`);
+		const responseData = await response.json();
+		// console.log("!!!!click-responseData", responseData);
+		setRecipes(responseData.recipes);
+	}
 
 	let searchBlock;
 
 	if (recipes) {
+        console.log(recipes)
 		searchBlock = recipes.map((recipe) => {
 			return (
-				<NavLink to={`/recipes/${recipe.id}`} className="recipeNav">
+				<a href={`/recipes/${recipe.id}`} className="recipeNav">
 					<div key={`liked'_${recipe.id}`} className="singleRecipe">
 						<img
 							alt={recipe.name}
@@ -44,7 +57,7 @@ const NavBar = ({ loaded }) => {
 							{recipe.tags ? recipe.tags[0].name : "All Recipes"}
 						</p>
 					</div>
-				</NavLink>
+				</a>
 			);
 		});
 	}
@@ -88,31 +101,70 @@ const NavBar = ({ loaded }) => {
 					>
 						<ul className="category-nav-link">
 							<li>
-								<a href="/">
+								<NavLink to="/">
 									<i className="fas fa-home"></i>
-								</a>
+								</NavLink>
 							</li>
-							<li>
-								<a href="/recipes/beef">Beef</a>
-							</li>
-							<li>
-								<a href="/recipes/chicken">Chicken</a>
-							</li>
-							<li>
-								<a href="/recipes/desserts">Desserts</a>
-							</li>
-							<li>
-								<a href="/recipes/fish">Fish</a>
-							</li>
-							<li>
-								<a href="/recipes/pasta">Pasta</a>
-							</li>
-							<li>
-								<a href="/recipes/pastries">Pastries</a>
-							</li>
-							<li>
-								<a href="/recipes/vegetarian">Vegetarian</a>
-							</li>
+							<button
+							onClick={clickToSearch}
+							value = 'Cake'
+								style={{
+									backgroundColor: '#555',
+									color:'white',
+									border: 'none'
+									}}
+							>Cake
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Appetizer'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Appetizer
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Entree'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Entree
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Dessert'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Dessert
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Snack'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Snack
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Beverage'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border:'none'
+								}}
+							>Beverage
+							</button>
 						</ul>
 					</nav>
 				</div>
@@ -120,7 +172,7 @@ const NavBar = ({ loaded }) => {
 			</div>
 			<div className="site-header-bottom">
 				<div className="left-col">
-					<a className="site-logo " href="/">
+					<NavLink className="site-logo " to="/">
 						<img
 							className="ingestibles-logo"
 							alt="Ingestibles"
@@ -128,16 +180,16 @@ const NavBar = ({ loaded }) => {
 						/>
 						<span id="site-header-category-brand">ingestibles</span>
 						<span className="site-header-category category-"></span>
-					</a>
-					<a href="/recipes" className="btn btn-category-header">
+					</NavLink>
+					<NavLink to="/recipes" className="btn btn-category-header">
 						Recipes
-					</a>
-					<a
-						href="/recipes/my_plate"
+					</NavLink>
+					<NavLink
+						to="/recipes/my_plate"
 						className="btn btn-category-header"
 					>
 						My Plate
-					</a>
+					</NavLink>
 				</div>
 				<div className="right-col">
 					<nav
@@ -146,12 +198,12 @@ const NavBar = ({ loaded }) => {
 					>
 						<ul>
 							<li>
-								<a
+								<NavLink
 									id="site-header-secondary-link"
-									href="/recipes/new_recipe"
+									to="/recipes/new_recipe"
 								>
 									PUBLISH
-								</a>
+								</NavLink>
 							</li>
 						</ul>
 					</nav>
