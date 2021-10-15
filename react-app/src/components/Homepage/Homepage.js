@@ -40,7 +40,7 @@ const Homepage = () => {
 	function shuffle(arr) {
 		let currIdx = arr.length
 		let randIdx;
-		while (currIdx != 0) {
+		while (currIdx !== 0) {
 			randIdx = Math.floor(Math.random() * currIdx);
 			currIdx--;
 			[arr[currIdx], arr[randIdx]] = [
@@ -137,22 +137,22 @@ const Homepage = () => {
 
 						<Carousel id="slider" className="home-content-rotator-inner carousel-inner" infiniteLoop={true} autoPlay={true} showThumbs={false} showArrows={false} showIndicators={false} showStatus={false} interval={5000} stopOnHover={false}>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1598023696416-0193a0bcd302?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1836&q=80" />
+								<img className="splash-images" alt="car1" src="https://images.unsplash.com/photo-1598023696416-0193a0bcd302?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1836&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1626078297492-b7dc55294332?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+								<img className="splash-images" alt="car2" src="https://images.unsplash.com/photo-1626078297492-b7dc55294332?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80" />
+								<img className="splash-images" alt="car3" src="https://images.unsplash.com/photo-1607198179219-cd8b835fdda7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1469&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" />
+								<img className="splash-images" alt="car4" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80" />
+								<img className="splash-images" alt="car5" src="https://images.unsplash.com/photo-1540432797114-187727adf19b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80" />
 							</div>
 							<div>
-								<img className="splash-images" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
+								<img className="splash-images" alt="car6" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80" />
 							</div>
 						</Carousel>
 
@@ -210,7 +210,7 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags1?.map((tag1) => (
-										<div className="home-content-explore-ible">
+										<div key={tag1.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag1?.id}`}
 											>
@@ -270,7 +270,7 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags2?.map((tag2) => (
-										<div className="home-content-explore-ible">
+										<div key={tag2.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag2?.id}`}
 											>
@@ -330,7 +330,7 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags3?.map((tag3) => (
-										<div className="home-content-explore-ible">
+										<div key={tag3.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag3?.id}`}
 											>
@@ -390,7 +390,7 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags4?.map((tag4) => (
-										<div className="home-content-explore-ible">
+										<div key={tag4.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag4?.id}`}
 											>
@@ -450,7 +450,7 @@ const Homepage = () => {
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags5?.map((tag5) => (
-										<div className="home-content-explore-ible">
+										<div key={tag5.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag5?.id}`}
 											>

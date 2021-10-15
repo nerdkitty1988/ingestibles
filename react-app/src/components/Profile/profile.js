@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { updateUser, deleteUser } from "../../store/session";
 import defaultPhoto from './profileDefaultPhoto.png'
 import "./profile.css";
@@ -16,7 +16,8 @@ function Profile() {
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const [biography, setBiography] = useState(user?.biography);
-	const [profilePic, setProfilePic] = useState(user?.profilePic);
+	const [profilePic_old, setProfilePic_old] = useState(user?.profilePic);
+	const [profilePic, setProfilePic] = useState(null);
 	const [errors, setErrors] = useState([]);
 	const [usernameShow, setUsernameShow] = useState(true);
 	const [emailShow, setEmailShow] = useState(true);
@@ -26,35 +27,57 @@ function Profile() {
 
 	const handleSave = async (e) => {
 		e.preventDefault();
+        setErrors([]);
 		let updatedUser;
 		if (password === repeatPassword && password) {
 			updatedUser = {
 				id: sessionUser.id,
-				username: username,
-				email: email,
-				biography: biography,
-				profilePic: profilePic,
+				username: username && username !=='undefined' ? username : user?.username,
+				email: email && email!== 'undefined'? email : user?.email,
+				biography: biography && biography !== 'undefined'? biography:user?.biography,
+				profilePic: profilePic && profilePic !== 'null' && profilePic !== 'undefined'? profilePic : user?.profilePic,
 				password: password,
 			};
 		} else {
 			updatedUser = {
 				id: sessionUser.id,
-				username: username,
-				email: email,
-				biography: biography,
-				profilePic: profilePic,
+				username: username && username !== 'undefined'? username : user?.username,
+				email: email && email !== 'undefined'? email : user?.email,
+				biography: biography && biography !== 'undefined'? biography : user?.biography,
+				profilePic: profilePic && profilePic !== 'null' && profilePic !== 'undefined' ? profilePic : user?.profilePic,
 			};
 		}
 
-		const data = await dispatch(updateUser(updatedUser));
+		console.log('!!!!updatedUser',
+			updatedUser
+		)
+
+		// prepare recipe input data ready for AWS
+		const formData = new FormData();
+		Object.keys(updatedUser).forEach(key=>{
+			formData.append(key, updatedUser[key])
+		})
+
+		for (let value of formData.values()) {
+            console.log('formData.values Start');
+            console.log(value);
+            console.log('formData.values End');
+        }
+
+		const data = await dispatch(updateUser({formData,id:sessionUser.id}));
 		if (data.errors) {
-			return data.errors;
+			setErrors(data.errors);
 		} else {
 			setUsernameShow(true);
 			setProfilePicShow(true);
 			setEmailShow(true);
 			setBiographyShow(true);
 			setPasswordShow(true)
+            
+			setProfilePic_old(data.profilePic)
+			const response = await fetch(`/api/users/${sessionUser.id}`);
+			const responseData = await response.json();
+			setUser(responseData);
 			history.push(`/users/${data.id}`);
 		}
 	};
@@ -90,7 +113,8 @@ function Profile() {
 					<img
 						// hidden={!profilePicShow}
 						id="profPic"
-						src={profilePic ? profilePic : defaultPhoto}
+						src={profilePic_old ? profilePic_old: defaultPhoto}
+                        alt="profile"
 					/>
 					<button
 						type="button"
@@ -103,9 +127,12 @@ function Profile() {
 					<input
 						hidden={profilePicShow}
 						className="editProfInput"
-						type="url"
+						// type="url"
+						//onChange={(e) => setProfilePic(e.target.value)}
 						defaultValue={profilePic}
-						onChange={(e) => setProfilePic(e.target.value)}
+						type="file"
+						accept="image/*"
+						onChange={(e) => setProfilePic(e.target.files[0])}
 					/>
 					<button
 						type="button"

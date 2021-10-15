@@ -88,13 +88,13 @@ export const signUp =
 		}
 	};
 
-export const updateUser = (updatedUser) => async (dispatch) => {
-	const response = await fetch(`/api/users/${updatedUser.id}`, {
-		method: "PATCH",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(updatedUser),
+export const updateUser = (({formData,id}) => async (dispatch) => {
+	const response = await fetch(`/api/users/${id}`, {
+		method: "POST",
+		// headers: {
+		// 	"Content-Type": "application/json",
+		// },
+		body: formData,
 	});
 	if (response.ok) {
 		const data = await response.json();
@@ -108,7 +108,7 @@ export const updateUser = (updatedUser) => async (dispatch) => {
 	} else {
 		return ["An error occurred. Please try again."];
 	}
-};
+});
 
 export const deleteUser = (userId) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}`, {

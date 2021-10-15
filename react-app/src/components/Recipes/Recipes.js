@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import "./Recipes.css";
 
 
@@ -9,8 +8,6 @@ const Recipes = () => {
 	const [recentRecipes, setRecentRecipes] = useState([]);
 	const [previousRecipes, setPreviousRecipes] = useState([]);
 	const [allLikes, setAllLikes] = useState([]);
-
-	const sessionUser = useSelector((state) => state.session?.user);
 
 	useEffect(() => {
 		async function recipes() {
@@ -92,8 +89,8 @@ const Recipes = () => {
           <div className="home-content-explore-wrap">
             <h2>Recipes</h2>
             <div className={`home-content-explore-category home-content-explore-category-recent clearfix`}>
-              <a
-                href={'/recipes'}
+              <NavLink
+                to={'/recipes'}
                 className="home-content-explore-link"
               >
                 <h3>
@@ -101,13 +98,13 @@ const Recipes = () => {
                   &nbsp;
                   <i className="fas fa-angle-right fa-2x"></i>
                 </h3>
-              </a>
+              </NavLink>
               <div className="home-content-explore-category-wrap ">
                 <div id="recentRecipes">
                   {recRecipes?.map((recRecipe) => (
                     <div className="home-content-explore-ible">
-                      <a
-                        href={`/recipes/${recRecipe?.id}`}
+                      <NavLink
+                        to={`/recipes/${recRecipe?.id}`}
                       >
                         <img
                           className=" ls-is-cached lazyloaded"
@@ -126,34 +123,34 @@ const Recipes = () => {
                             alt={recRecipe?.title}
                           />
                         </noscript>
-                      </a>
+                      </NavLink>
                       <div className="home-content-explore-ible-info">
                         <strong>
-                          <a
+                          <NavLink
                             className="ible-title"
-                            href={`/recipes/${recRecipe?.id}`}
+                            to={`/recipes/${recRecipe?.id}`}
                           >
                             {recRecipe?.title}
-                          </a>
+                          </NavLink>
                         </strong>
                         <span className="ible-author">
                           &nbsp;by&nbsp;
-                          <a
-                            href={`/users/${recRecipe?.author?.id}`}
+                          <NavLink
+                            to={`/users/${recRecipe?.author?.id}`}
                           >
                             {
                               recRecipe?.author
                                 ?.username
                             }
-                          </a>
+                          </NavLink>
                         </span>
                         <span className="ible-channel">
                           &nbsp;in&nbsp;
-                          <a
-                            href={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
+                          <NavLink
+                            to={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
                           >
                             {recRecipe?.tags[0]?.name?.toLowerCase()}
-                          </a>
+                          </NavLink>
                         </span>
                         <p className="ible-channel">
                           Created on&nbsp;
@@ -177,8 +174,8 @@ const Recipes = () => {
             </div>
 
             <div>
-              <a
-                href={'/recipes'}
+              <NavLink
+                to={'/recipes'}
                 className="home-content-explore-link"
               >
                 <h3>
@@ -186,13 +183,13 @@ const Recipes = () => {
                   &nbsp;
                   <i className="fas fa-angle-right fa-2x"></i>
                 </h3>
-              </a>
+              </NavLink>
               <div>
                 <div id="recentRecipes">
                   {prevRecipes?.map((prevRecipe) => (
                     <div className="home-content-explore-ible">
-                      <a
-                        href={`/recipes/${prevRecipe?.id}`}
+                      <NavLink
+                        to={`/recipes/${prevRecipe?.id}`}
                       >
                         <img
                           className=" ls-is-cached lazyloaded"
@@ -206,34 +203,34 @@ const Recipes = () => {
                             alt={prevRecipe?.title}
                           />
                         </noscript>
-                      </a>
+                      </NavLink>
                       <div className="home-content-explore-ible-info">
                         <strong>
-                          <a
+                          <NavLink
                             className="ible-title"
-                            href={`/recipes/${prevRecipe?.id}`}
+                            to={`/recipes/${prevRecipe?.id}`}
                           >
                             {prevRecipe?.title}
-                          </a>
+                          </NavLink>
                         </strong>
                         <span className="ible-author">
                           &nbsp;by&nbsp;
-                          <a
-                            href={`/users/${prevRecipe?.author?.id}`}
+                          <NavLink
+                            to={`/users/${prevRecipe?.author?.id}`}
                           >
                             {
                               prevRecipe?.author
                                 ?.username
                             }
-                          </a>
+                          </NavLink>
                         </span>
                         <span className="ible-channel">
                           &nbsp;in&nbsp;
-                          <a
-                            href={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
+                          <NavLink
+                            to={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
                           >
                             {prevRecipe?.tags[0]?.name?.toLowerCase()}
-                          </a>
+                          </NavLink>
                         </span>
                         <p className="ible-channel">
                           Created on&nbsp;
