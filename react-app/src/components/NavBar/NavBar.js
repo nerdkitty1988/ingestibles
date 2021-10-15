@@ -15,12 +15,22 @@ const NavBar = ({ loaded }) => {
             async function fetchData() {
                 const response = await fetch(`/api/search/${searchTerm}`);
                 const responseData = await response.json();
-                console.log("!!!!", responseData);
+				console.log("!!!!type-responseData", responseData);
                 setRecipes(responseData.recipes);
             }
             fetchData();
         }
 	}, [searchTerm]);
+
+	const clickToSearch = async(e) =>{
+		// e.preventdefault()
+		// console.log('e.target.value', e.target.value)
+		setSearchTerm(e.target.value)
+		const response = await fetch(`/api/search/${e.target.value}`);
+		const responseData = await response.json();
+		// console.log("!!!!click-responseData", responseData);
+		setRecipes(responseData.recipes);
+	}
 
 	let searchBlock;
 
@@ -95,27 +105,66 @@ const NavBar = ({ loaded }) => {
 									<i className="fas fa-home"></i>
 								</NavLink>
 							</li>
-							<li>
-								<NavLink to="/recipes/tags/beef">Beef</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/chicken">Chicken</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/dessert">Dessert</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/fish">Fish</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/pasta">Pasta</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/pastry">Pastry</NavLink>
-							</li>
-							<li>
-								<NavLink to="/recipes/tags/vegetarian">Vegetarian</NavLink>
-							</li>
+							<button
+							onClick={clickToSearch}
+							value = 'Cake'
+								style={{
+									backgroundColor: '#555',
+									color:'white',
+									border: 'none'
+									}}
+							>Cake
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Appetizer'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Appetizer
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Entree'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Entree
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Dessert'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Dessert
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Snack'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border: 'none'
+								}}
+							>Snack
+							</button>
+							<button
+								onClick={clickToSearch}
+								value='Beverage'
+								style={{
+									backgroundColor: '#555',
+									color: 'white',
+									border:'none'
+								}}
+							>Beverage
+							</button>
 						</ul>
 					</nav>
 				</div>
