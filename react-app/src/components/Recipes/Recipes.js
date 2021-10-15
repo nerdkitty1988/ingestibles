@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import "./Recipes.css";
-import { useLocation } from "react-router-dom";
 
 const Recipes = () => {
 	const [allRecipes, setAllRecipes] = useState([]);
 	const [recentRecipes, setRecentRecipes] = useState([]);
 	const [previousRecipes, setPreviousRecipes] = useState([]);
-	const [tagRecipes, setTagRecipes] = useState([]);
-
-	const location = useLocation();
-
-	let tagname = "";
-	if (location.pathname.startsWith("/tags")) {
-		const parts = location.pathname.split("/");
-		tagname = parts[2];
-	}
+	const [allLikes, setAllLikes] = useState([]);
 
 	useEffect(() => {
 		async function recipes() {
@@ -36,28 +28,88 @@ const Recipes = () => {
 			setPreviousRecipes(responseData);
 		}
 
-		async function tag_recipes() {
-			const response = await fetch(`/api/recipes/${tagname}`);
+		async function all_likes() {
+			const response = await fetch("/api/likes");
 			const responseData = await response.json();
-			setRecentRecipes(responseData);
+			setAllLikes(responseData);
 		}
 
-		tag_recipes();
 		recipes();
 		recent_recipes();
 		previous_recipes();
+		all_likes();
 	}, []);
 
 	const recRecipes = recentRecipes?.recent;
 	const prevRecipes = previousRecipes?.previous?.slice(5);
 
+	const allLikesArr = allLikes?.likes;
+
+	function counter(rec) {
+		let count = 0;
+
+		allLikesArr?.forEach((ele) => {
+			if (ele?.recipeId == rec?.id) {
+				count++;
+			}
+		});
+		return count;
+	}
+
+	if (recRecipes) {
+		console.log(recRecipes[0]?.medias[0]?.mediaUrl);
+	}
 	return (
 		<main>
-			<div
-				id="home-container"
-				className="home-wrapper-wrapper full-wrapper home-content clearfix"
-			>
-				<h1>Hello World. I'm going to put some stuff here.</h1>
+			<div className="home-wrapper-wrapper full-wrapper home-content clearfix">
+				<div
+					id="kitchen"
+					className="home-content-rotator carousel carousel-fade"
+				>
+					<div className="home-content-rotator-slide-overlay">
+						<div className="home-content-rotator-slide-wrap">
+							<div className="home-content-adspot-wrap">
+								<div
+									style={{
+										color: "#2196F2",
+										textAlign: "center",
+										width: "0px",
+										margin: "0%",
+									}}
+									className="home-content-adspot-text"
+								>
+									<h1
+										style={{
+											color: "orange",
+											lineHeight: "90px",
+											fontSize: "100px",
+										}}
+									>
+										Try
+									</h1>
+									<h1
+										style={{
+											color: "white",
+											lineHeight: "90px",
+											fontSize: "100px",
+										}}
+									>
+										Something
+									</h1>
+									<h1
+										style={{
+											color: "#eee",
+											lineHeight: "90px",
+											fontSize: "100px",
+										}}
+									>
+										New
+									</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<hr />
 
@@ -67,8 +119,8 @@ const Recipes = () => {
 						<div
 							className={`home-content-explore-category home-content-explore-category-recent clearfix`}
 						>
-							<a
-								href={"/recipes"}
+							<NavLink
+								to={"/recipes"}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -78,21 +130,24 @@ const Recipes = () => {
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
-							</a>
+							</NavLink>
 							<div className="home-content-explore-category-wrap ">
 								<div id="recentRecipes">
 									{recRecipes?.map((recRecipe) => (
 										<div className="home-content-explore-ible">
-											<a
-												href={`/recipes/${recRecipe?.id}`}
+											<NavLink
+												to={`/recipes/${recRecipe?.id}`}
 											>
-												{/* ////////////after seeding media, copy data-src and paste into src below for each category!!!!//////////// */}
 												<img
 													className=" ls-is-cached lazyloaded"
 													data-src={
 														recRecipe?.medias[0]
+															?.mediaUrl
 													}
-													src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+													src={
+														recRecipe?.medias[0]
+															?.mediaUrl
+													}
 													alt={recRecipe?.title}
 												/>
 												<noscript>
@@ -103,60 +158,56 @@ const Recipes = () => {
 														alt={recRecipe?.title}
 													/>
 												</noscript>
-											</a>
+											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
-													<a
+													<NavLink
 														className="ible-title"
-														href={`/recipes/${recRecipe?.id}`}
+														to={`/recipes/${recRecipe?.id}`}
 													>
 														{recRecipe?.title}
-													</a>
+													</NavLink>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
-													<a
-														href={`/users/${recRecipe?.author?.id}`}
+													<NavLink
+														to={`/users/${recRecipe?.author?.id}`}
 													>
 														{
 															recRecipe?.author
 																?.username
 														}
-													</a>
+													</NavLink>
 												</span>
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
-													<a
-														href={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
+													<NavLink
+														to={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{recRecipe?.tags[0]?.name?.toLowerCase()}
-													</a>
+													</NavLink>
 												</span>
+												<p className="ible-channel">
+													Created on&nbsp;
+													<span>
+														{new Date(
+															recRecipe?.time_created
+														).toLocaleDateString()}
+													</span>
+												</p>
 											</div>
 											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
 												<span className="ible-stats-right-col">
 													<span className="ible-favorites">
 														<i
+															className="fas fa-heart"
 															title="Favorites Count"
-															className="icon icon-favorite"
 														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
+														&nbsp;&nbsp;
+														{allLikesArr
+															? counter(recRecipe)
+															: ""}
+														&nbsp;
 													</span>
 												</span>
 											</div>
@@ -167,8 +218,8 @@ const Recipes = () => {
 						</div>
 
 						<div>
-							<a
-								href={"/recipes"}
+							<NavLink
+								to={"/recipes"}
 								className="home-content-explore-link"
 							>
 								<h3>
@@ -178,18 +229,26 @@ const Recipes = () => {
 									&nbsp;
 									<i className="fas fa-angle-right fa-2x"></i>
 								</h3>
-							</a>
+							</NavLink>
 							<div>
 								<div id="recentRecipes">
 									{prevRecipes?.map((prevRecipe) => (
 										<div className="home-content-explore-ible">
-											<a
-												href={`/recipes/${prevRecipe?.id}`}
+											<NavLink
+												to={`/recipes/${prevRecipe?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={`/recipes/${prevRecipe?.medias[0]}`}
-													src="https://images.unsplash.com/photo-1527275393322-8ddae8bd5de9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2360&q=80"
+													data-src={
+														prevRecipes[0]
+															?.medias[0]
+															?.mediaUrl
+													}
+													src={
+														prevRecipes[0]
+															?.medias[0]
+															?.mediaUrl
+													}
 													alt={prevRecipe?.title}
 												/>
 												<noscript>
@@ -198,60 +257,58 @@ const Recipes = () => {
 														alt={prevRecipe?.title}
 													/>
 												</noscript>
-											</a>
+											</NavLink>
 											<div className="home-content-explore-ible-info">
 												<strong>
-													<a
+													<NavLink
 														className="ible-title"
-														href={`/recipes/${prevRecipe?.id}`}
+														to={`/recipes/${prevRecipe?.id}`}
 													>
 														{prevRecipe?.title}
-													</a>
+													</NavLink>
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;
-													<a
-														href={`/users/${prevRecipe?.author?.id}`}
+													<NavLink
+														to={`/users/${prevRecipe?.author?.id}`}
 													>
 														{
 															prevRecipe?.author
 																?.username
 														}
-													</a>
+													</NavLink>
 												</span>
 												<span className="ible-channel">
 													&nbsp;in&nbsp;
-													<a
-														href={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
+													<NavLink
+														to={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{prevRecipe?.tags[0]?.name?.toLowerCase()}
-													</a>
+													</NavLink>
 												</span>
+												<p className="ible-channel">
+													Created on&nbsp;
+													<span>
+														{new Date(
+															prevRecipe?.time_created
+														).toLocaleDateString()}
+													</span>
+												</p>
 											</div>
 											<div className="ible-stats">
-												<span className="ible-stats-left-col ible-featured">
-													<span>
-														<i
-															title="Featured Project"
-															className="icon icon-featured"
-														></i>
-														<span className="thumb-divider"></span>
-													</span>
-												</span>
 												<span className="ible-stats-right-col">
 													<span className="ible-favorites">
 														<i
+															className="fas fa-heart"
 															title="Favorites Count"
-															className="icon icon-favorite"
 														></i>
-														&nbsp;1&nbsp;
-													</span>
-													<span className="ible-views">
-														<i
-															title="Views Count"
-															className="icon icon-views1"
-														></i>
-														&nbsp;253&nbsp;
+														&nbsp;&nbsp;
+														{allLikesArr
+															? counter(
+																	prevRecipe
+															  )
+															: ""}
+														&nbsp;
 													</span>
 												</span>
 											</div>

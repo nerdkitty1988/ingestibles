@@ -20,12 +20,12 @@ def recipes():
 
 @recipe_routes.route('/recent')
 def recent_recipes():
-    recipes = Recipe.query.order_by(Recipe.id.desc()).limit(5)
+    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc()).limit(5)
     return {"recent": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/previous')
 def previous_recipes():
-    recipes = Recipe.query.order_by(Recipe.id.desc())
+    recipes = Recipe.join(Tag).query.order_by(Recipe.id.desc())
     return {"previous": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route('/<int:id>')
@@ -73,10 +73,12 @@ def create_recipe():
         if key[0:4] == 'step':
             # e.g. step1_
             stepNumForValidation = key[4:].split('_')[0]
-            stepPrefix = 'step' + stepNumForValidation + '_'
-            # exclude not exit, '', all spaces
-            if(( stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
-                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
+            # step1 is valided by Form class
+            if int(stepNumForValidation) != 1:
+                stepPrefix = 'step' + stepNumForValidation + '_'
+                # exclude not exit, '', all spaces
+                if((stepPrefix+'title' not in request.form.keys()) or (stepPrefix+'direction' not in request.form.keys()) or (not request.form[stepPrefix+'title']) or (not request.form[stepPrefix+'direction']) or request.form[stepPrefix+'title'].isspace() or request.form[stepPrefix+'direction'].isspace()):
+                    return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
 
@@ -123,8 +125,27 @@ def create_recipe():
                 db.session.add(Ingredient(info=value, recipeId=recipe.id))
 
         # save media; request.form does not have imgages/file, request.file has files/images, is dictionary
+        
+        # save media 1 - photo only fist to make sure the smallest ID is photo  
+        media1 = request.files['media1']
+        if not allowed_file(media1.filename):
+            return {"errors": [f"media1 file type not permitted"]}, 400
+        media1.filename = get_unique_filename(media1.filename)
+        upload_media1 = upload_file_to_s3(media1)
+
+        if "url" not in upload_media1:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return {'errors': [upload_media1['errors']]}, 400
+
+        media1_url = upload_media1["url"]
+        db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
+        
+        
+        # save media 2 - media 5 which can be a video/image
         for (key, value) in request.files.items():
-            if key[0:5] == 'media':
+            if key[0:5] == 'media' and key[0:6]!='media1':
                 media = request.files[key]
                 if not allowed_file(media.filename):
                     return {"errors": [f"{key} file type not permitted"]}, 400
@@ -214,19 +235,21 @@ def edit_recipe(id):
         if key[0:4] == 'step':
             # e.g. step1_ ( step10_, key[0:7] )
             stepNumForValidation = key[4:].split('_')[0]
-            stepPrefix = 'step' + stepNumForValidation +'_'
-            # exclude not exit, '', all spaces
-            if((stepPrefix+'title' not in request.form.keys()) or
+            # step1 is valided by Form class
+            if int(stepNumForValidation) != 1:
+                stepPrefix = 'step' + stepNumForValidation +'_'
+                # exclude not exit, '', all spaces
+                if((stepPrefix+'title' not in request.form.keys()) or
                     (stepPrefix+'direction' not in request.form.keys()) or
                     (not request.form[stepPrefix+'title']) or
                     (not request.form[stepPrefix+'direction']) or
                     (request.form[stepPrefix+'title'].isspace()) or
                     (request.form[stepPrefix+'direction'].isspace())
                     ):
-                # print('!!!!!eroor', key, value, stepPrefix +
-                #       'title', request.form.keys(), stepPrefix +
-                #       'title' not in request.form.keys())
-                return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
+                    # print('!!!!!eroor', key, value, stepPrefix +
+                    #       'title', request.form.keys(), stepPrefix +
+                    #       'title' not in request.form.keys())
+                    return {"errors": [f"{stepPrefix}title and {stepPrefix}direction are both required. Otherwise please leave them both empty, to exclude this step."]}, 400
 
     if formRecipe.validate_on_submit():
         # if ingredientPhoto is a file, not a string(an url), save to AWS and get its url in following if statement
@@ -284,12 +307,32 @@ def edit_recipe(id):
         # delete old media, and then save media; request.form has image url as string; request.file has files/images, is dictionary
         for media in recipe.medias:
             db.session.delete(media)
+        # save media 1 - photo only fist to make sure the smallest ID is photo
+        if 'media1' in request.files.keys():
+            media1 = request.files['media1']
+            if not allowed_file(media1.filename):
+                return {"errors": [f"media1 file type not permitted"]}, 400
+            media1.filename = get_unique_filename(media1.filename)
+            upload_media1 = upload_file_to_s3(media1)
+
+            if "url" not in upload_media1:
+                # if the dictionary doesn't have a url key
+                # it means that there was an error when we tried to upload
+                # so we send back that error message
+                return {'errors': [upload_media1['errors']]}, 400
+
+            media1_url = upload_media1["url"]
+            db.session.add(Media(mediaUrl=media1_url, recipeId=recipe.id))
+        else:
+            db.session.add(Media(mediaUrl=request.form['media1'], recipeId=recipe.id))
+        
+        # save media 2 -5
         for (key, value) in request.form.items():
-            if key[0:5] == 'media':
+            if key[0:5] == 'media' and key != 'media1':
                 db.session.add(Media(mediaUrl=value, recipeId=recipe.id))
 
         for (key, value) in request.files.items():
-            if key[0:5] == 'media':
+            if key[0:5] == 'media' and key != 'media1':
                 media = request.files[key]
                 if not allowed_file(media.filename):
                     return {"errors": [f"{key} file type not permitted"]}, 400
