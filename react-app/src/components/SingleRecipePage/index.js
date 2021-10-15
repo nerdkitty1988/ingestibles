@@ -2,8 +2,9 @@ import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import EditComment from "../EditComment";
 import Instruction from "../Instruction"
-import Comment from "../Comment"
+import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
 
 const SingleRecipePage = () => {
@@ -12,7 +13,9 @@ const SingleRecipePage = () => {
   console.log(sessionUser)
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [otherRecipes, setOtherRecipes] = useState([]);
-  const [canComment, setCanComment] = useState(false)
+  const [comments, setComments] = useState([])
+  const [canComment, setCanComment] = useState(false);
+  const [canEdit, setCanEdit] = useState(false)
 
   // async function retrieveRecipe() {
   //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
@@ -34,9 +37,12 @@ const SingleRecipePage = () => {
     const fetchData = () => {
      const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
      const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
-    Promise.all([thisRecipe, others]).then((allData) => {
-      setCurrentRecipe(allData[0].recipe[0])
-      setOtherRecipes(allData[1].recipes)})
+     const comments = fetch(`/api/recipes/comments`).then((res) => res.json())
+     Promise.all([thisRecipe, others, comments]).then((allData) => {
+       setCurrentRecipe(allData[0].recipe[0])
+       setOtherRecipes(allData[1].recipes)
+       setComments(allData[2].comments)
+      })
     }
     fetchData()
     //console.log(recipeFetch)
@@ -44,7 +50,7 @@ const SingleRecipePage = () => {
     //console.log("NOW IM GOING")
   },[])
 
-  console.log("IM AT THE END", currentRecipe.comments, otherRecipes)
+  const currentRecipeComments = comments?.filter(comment => comment.recipeId === currentRecipe.id)
 
   const whatIWant = otherRecipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)
   //console.log("otherRecipes!!!!!", sessionUser)
@@ -71,16 +77,15 @@ const SingleRecipePage = () => {
   const today  = new Date();
   //console.log(today.toLocaleDateString("en-US"));
 
-  let commentBox;
+  let newCommentBox;
   if(sessionUser) {
-    commentBox = (
-      <Comment currentRecipe={currentRecipe}/>
+    newCommentBox = (
+      <NewComment currentRecipe={currentRecipe} setCanComment={setCanComment} setComments={setComments} />
     )
-  }
+   }
   else {
 
   }
-
   console.log(today.toLocaleDateString("en-US"));
 
 
@@ -104,6 +109,19 @@ const SingleRecipePage = () => {
     (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
 
   }
+
+  const deleteComment = async (event, id) => {
+    event.preventDefault();
+    const response = await fetch(`/api/recipes/delete/comments/${id}`, {
+      method: 'DELETE'
+    })
+    const confirm = await response.json();
+    console.log(confirm)
+    const newComments = await fetch(`/api/recipes/comments`).then((res) => res.json())
+    console.log("newComments =======>>>>", newComments.comments)
+    return setComments(newComments.comments)
+  }
+
 // Code about Likes end here
   return (
     <div id="main">
@@ -158,17 +176,24 @@ const SingleRecipePage = () => {
     })}
     <div id="add-comment-box">
       <button onClick={()=>setCanComment(true)}>Comment on this jont</button>
-      {canComment && commentBox}
+      {canComment && newCommentBox}
     </div>
     <div id="comments-section">
-      <h1>{currentRecipe?.comments?.length} comments </h1>
-      {currentRecipe?.comments?.map((comment) => {
+      <h1>{currentRecipeComments?.length} comments </h1>
+      {currentRecipeComments?.map((comment) => {
         return (
           <div id="comment">
             <div id="comment-image-username-date">
               <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>
               <p id="comment-date">{today.toLocaleDateString("en-US")}</p>
+              {(sessionUser && sessionUser.id === comment.userId) &&
+                <div id="comment-owner-buttons">
+                  <button onClick={()=> setCanEdit(true)}>Edit</button>
+                  {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
+                  <button onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
+                </div>
+                }
             </div>
             <p id="comment-text">{comment.comment}</p>
         </div>

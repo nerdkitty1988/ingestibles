@@ -1,5 +1,6 @@
 from operator import contains
 from flask import Blueprint, jsonify, session, request
+from app.forms.edit_comment_form import editCommentForm
 from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Media, Comment
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
@@ -33,11 +34,11 @@ def single_recipe(id):
     recipe = Recipe.query.filter_by(id=id).first()
     return {'recipe': [recipe.to_dict()]}
 
-# @recipe_routes.route('/<int:id>/comments')
-# def get_comments(id):
-#     comments = Comment.query.filter_by(recipeId=id).all()
-#     print("COMMENTS ======>>>>>>", comments)
-#     return { 'comments': [comment.to_dict() for comment in comments]}
+@recipe_routes.route('/comments')
+def get_comments():
+    comments = Comment.query.all()
+    print("COMMENTS ======>>>>>>", comments)
+    return { 'comments': [comment.to_dict() for comment in comments]}
 
 @recipe_routes.route('/comments', methods=['POST'])
 @login_required
@@ -55,12 +56,38 @@ def create_comment():
         comment = Comment(
             userId=formComment.data['userId'],
             recipeId=formComment.data['recipeId'],
-            comment=formComment.data['commentBody'],
+            comment=formComment.data['comment'],
         )
-        print("COMMENT DB SIDE ===============================================================================>>>>>>>>>>>>>>>", comment)
         db.session.add(comment)
         db.session.commit()
         return comment.to_dict()
+    else:
+        return { 'errors': validation_errors_to_error_messages(formComment.errors)}, 400
+@recipe_routes.route('/comments/<int:id>', methods=['PATCH'])
+@login_required
+def update_comment(id):
+    comment = Comment.query.get(id)
+    formComment = editCommentForm()
+    formComment['csrf_token'].data = request.cookies['csrf_token']
+    print("CRAZY STRING ~~~~~~~", formComment)
+    if formComment.validate_on_submit():
+        print("CRAZY STRING 2 ~~~~~~~~~~")
+        comment.comment = formComment.data['comment']
+        db.session.commit()
+        return comment.to_dict()
+    else:
+        return { 'errors': validation_errors_to_error_messages(formComment.errors)}, 400
+@recipe_routes.route('/delete/comments/<int:id>', methods=['DELETE'])
+@login_required
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    if comment.userId != current_user.to_dict()['id'] or not comment:
+        return {'errors': ['No authorization.']}, 401
+
+    db.session.delete(comment)
+    db.session.commit()
+    return {'message': ['Delete Successfully']}
+
 #Fetch user's like recipes
 @recipe_routes.route('/my_plate/<int:id>')
 @login_required
