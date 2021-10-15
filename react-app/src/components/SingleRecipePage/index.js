@@ -1,7 +1,9 @@
 import { React, useEffect, useState } from "react";
 import { useSelector} from "react-redux";
 import { useParams } from "react-router";
+import EditComment from "../EditComment";
 import Instruction from "../Instruction"
+import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
 
 const SingleRecipePage = () => {
@@ -10,6 +12,9 @@ const SingleRecipePage = () => {
   console.log(sessionUser)
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [otherRecipes, setOtherRecipes] = useState([]);
+  const [comments, setComments] = useState([])
+  const [canComment, setCanComment] = useState(false);
+  const [canEdit, setCanEdit] = useState(false)
 
   // async function retrieveRecipe() {
   //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
@@ -26,49 +31,60 @@ const SingleRecipePage = () => {
   //   console.log("WE GET HERE")
   //   setOtherRecipes(othersArray)
   // }
-  const fetchData = () => {
-   const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
-   const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
-  Promise.all([thisRecipe, others]).then((allData) => {
-    setCurrentRecipe(allData[0].recipe[0])
-    setOtherRecipes(allData[1].recipes)})
-  }
 
   useEffect(() => {
+    const fetchData = () => {
+     const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
+     const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
+     const comments = fetch(`/api/recipes/comments`).then((res) => res.json())
+     Promise.all([thisRecipe, others, comments]).then((allData) => {
+       setCurrentRecipe(allData[0].recipe[0])
+       setOtherRecipes(allData[1].recipes)
+       setComments(allData[2].comments)
+      })
+    }
     fetchData()
     //console.log(recipeFetch)
     //retrieveOtherRecipes()
     //console.log("NOW IM GOING")
   },[])
 
+  const currentRecipeComments = comments?.filter(comment => comment.recipeId === currentRecipe.id)
 
-
-  console.log("IM AT THE END", currentRecipe.comments, otherRecipes)
   const whatIWant = otherRecipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)
-  console.log("RIGHT AFTER", whatIWant)
+  //console.log("otherRecipes!!!!!", sessionUser)
+  //console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
+
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
-  console.log("authorsIds ===>>>",authorsIds)
+  //console.log("authorsIds ===>>>",authorsIds)
+
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
-  console.log("authorsImages ===>>>",authorsImages)
+  //console.log("authorsImages ===>>>",authorsImages)
 
   const authorIdsArr = [...new Set(authorsIds)]
-  console.log("authorsIdsArr ===>>>",authorIdsArr)
+  //console.log("authorsIdsArr ===>>>",authorIdsArr)
   const authorImagesArr = [...new Set(authorsImages)]
-  console.log("authorImagesArr ====>>>", authorImagesArr)
-
-
+  //console.log("authorImagesArr ====>>>", authorImagesArr)
   const authorsObject = {}
   for(let i = 0; i < authorIdsArr.length; i++){
     let image = authorImagesArr[i];
     let id = authorIdsArr[i];
     authorsObject[id] = image;
   }
-
-  console.log(authorsObject);
-
+  //console.log(authorsObject);
   const today  = new Date();
+  //console.log(today.toLocaleDateString("en-US"));
 
+  let newCommentBox;
+  if(sessionUser) {
+    newCommentBox = (
+      <NewComment currentRecipe={currentRecipe} setCanComment={setCanComment} setComments={setComments} />
+    )
+   }
+  else {
+
+  }
   console.log(today.toLocaleDateString("en-US"));
 
 
@@ -93,34 +109,17 @@ const SingleRecipePage = () => {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const deleteComment = async (event, id) => {
+    event.preventDefault();
+    const response = await fetch(`/api/recipes/delete/comments/${id}`, {
+      method: 'DELETE'
+    })
+    const confirm = await response.json();
+    console.log(confirm)
+    const newComments = await fetch(`/api/recipes/comments`).then((res) => res.json())
+    console.log("newComments =======>>>>", newComments.comments)
+    return setComments(newComments.comments)
+  }
 
 // Code about Likes end here
   return (
@@ -174,17 +173,27 @@ const SingleRecipePage = () => {
       </div>
       )
     })}
+    <div id="add-comment-box">
+      <button onClick={()=>setCanComment(true)}>Comment on this jont</button>
+      {canComment && newCommentBox}
+    </div>
     <div id="comments-section">
-      <h1>{currentRecipe?.comments?.length} comments </h1>
-      {currentRecipe?.comments?.map((comment) => {
+      <h1>{currentRecipeComments?.length} comments </h1>
+      {currentRecipeComments?.map((comment) => {
         return (
           <div id="comment">
             <div id="comment-image-username-date">
               <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>
               <p id="comment-date">{today.toLocaleDateString("en-US")}</p>
+              {(sessionUser && sessionUser.id === comment.userId) &&
+                <div id="comment-owner-buttons">
+                  <button onClick={()=> setCanEdit(true)}>Edit</button>
+                  {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
+                  <button onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
+                </div>
+                }
             </div>
-
             <p id="comment-text">{comment.comment}</p>
         </div>
         )
