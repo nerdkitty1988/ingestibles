@@ -10,14 +10,22 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [biography, setBiography] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  const [profilePic, setProfilePic] = useState(null);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, biography, profilePic));
+      // prepare recipe input data ready for AWS
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("biography", biography);
+      formData.append("profilePic", profilePic);
+
+      const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data)
       }
@@ -50,7 +58,7 @@ const SignUpForm = () => {
   };
 
   const updateProfilePic = (e) => {
-    setProfilePic(e.target.value);
+    setProfilePic(e.target.files[0]);
   };
 
   if (user) {
@@ -99,10 +107,12 @@ const SignUpForm = () => {
           <div>
             <label>Profile Picture Url</label>
             <input
-              type='url'
+              // type='url'
               name='profilePic'
+              type="file"
+              accept="image/*"
               onChange={updateProfilePic}
-              value={profilePic}
+              // value={profilePic}
               className="signupInput"
             ></input>
           </div>
