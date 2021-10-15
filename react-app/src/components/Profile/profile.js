@@ -73,7 +73,7 @@ function Profile() {
 			setEmailShow(true);
 			setBiographyShow(true);
 			setPasswordShow(true)
-            
+
 			setProfilePic_old(data.profilePic)
 			const response = await fetch(`/api/users/${sessionUser.id}`);
 			const responseData = await response.json();
@@ -88,6 +88,20 @@ function Profile() {
         await dispatch(deleteUser(userId));
 		history.push(`/`);
 
+    }
+
+    const resetData = () => {
+        setUsername(user?.username);
+        setEmail(user?.email);
+        setPassword("");
+        setRepeatPassword("");
+        setBiography(user?.biography);
+        setProfilePic(null);
+        setUsernameShow(true);
+        setEmailShow(true);
+        setPasswordShow(true);
+        setBiographyShow(true);
+        setProfilePicShow(true);
     }
 
 	useEffect(() => {
@@ -144,7 +158,7 @@ function Profile() {
 					</button>
 					<button
 						type="button"
-						onClick={(e) => setProfilePicShow(true)}
+						onClick={(e) => resetData()}
 						hidden={profilePicShow}
                         className="cancelButton"
 					>
@@ -180,7 +194,7 @@ function Profile() {
 					</button>
 					<button
 						type="button"
-						onClick={(e) => setUsernameShow(true)}
+						onClick={(e) => resetData()}
 						hidden={usernameShow}
                         className="cancelButton"
 					>
@@ -216,7 +230,7 @@ function Profile() {
 					</button>
 					<button
 						type="button"
-						onClick={(e) => setEmailShow(true)}
+						onClick={(e) => resetData()}
 						hidden={emailShow}
                         className="cancelButton"
 					>
@@ -262,7 +276,7 @@ function Profile() {
 				<div className="passwordButtons">
 					<button
 						type="button"
-						onClick={(e) => setPasswordShow(false)}
+						onClick={(e) => resetData()}
 						hidden={!passwordShow}
                         className="editButtons"
 					>
@@ -294,7 +308,7 @@ function Profile() {
 					</button>
 					<button
 						type="button"
-						onClick={() => setPasswordShow(true)}
+						onClick={(e) => resetData()}
 						hidden={passwordShow}
                         className="cancelButton"
 					>
