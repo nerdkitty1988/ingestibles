@@ -67,7 +67,7 @@ const SignUpForm = () => {
 
   return (
     <div className="loginPage">
-      <div className="loginformContainer">
+      <div className="loginformContainer" style = {{width:'450px'}}>
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
@@ -105,7 +105,7 @@ const SignUpForm = () => {
             ></textarea>
           </div>
           <div>
-            <label>Profile Picture Url</label>
+            <label>Profile Picture</label>
             <input
               // type='url'
               name='profilePic'
@@ -114,6 +114,7 @@ const SignUpForm = () => {
               onChange={updateProfilePic}
               // value={profilePic}
               className="signupInput"
+              style={{backgroundColor:'white'}}
             ></input>
           </div>
           <div>
