@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; 
 
-function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, setOpen }) {
+function DeleteRecipeForm({ id, userId, setCreatedRecipes, setLikedRecipes, setShowDelete, open, setOpen }) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,6 +12,7 @@ function DeleteRecipeForm({ id, userId, setCreatedRecipes, setShowDelete, open, 
         const response = await fetch(`/api/recipes/my_plate/${userId}`);
         const responseData = await response.json();
         setCreatedRecipes(responseData.created);
+        setLikedRecipes(responseData.liked);
     };
 
     const cancelSubmit = async (e) => {
