@@ -10,7 +10,7 @@ const Recipes = () => {
 	const [previousRecipes, setPreviousRecipes] = useState([]);
 	const [allLikes, setAllLikes] = useState([]);
 
-	// const sessionUser = useSelector((state) => state.session?.user);
+	const sessionUser = useSelector((state) => state.session?.user);
 
 	useEffect(() => {
 		async function recipes() {
