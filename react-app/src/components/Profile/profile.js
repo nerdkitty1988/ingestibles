@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { updateUser, deleteUser } from "../../store/session";
+import defaultPhoto from './profileDefaultPhoto.png'
 import "./profile.css";
 
 function Profile() {
@@ -53,6 +54,7 @@ function Profile() {
 			setProfilePicShow(true);
 			setEmailShow(true);
 			setBiographyShow(true);
+			setPasswordShow(true)
 			history.push(`/users/${data.id}`);
 		}
 	};
@@ -61,6 +63,8 @@ function Profile() {
         e.preventDefault();
         const userId = sessionUser.id
         await dispatch(deleteUser(userId));
+		history.push(`/`);
+
     }
 
 	useEffect(() => {
@@ -84,9 +88,9 @@ function Profile() {
 				</div>
 				<div className="profileData">
 					<img
-						hidden={!profilePicShow}
+						// hidden={!profilePicShow}
 						id="profPic"
-						src={profilePic}
+						src={profilePic ? profilePic : defaultPhoto}
 					/>
 					<button
 						type="button"

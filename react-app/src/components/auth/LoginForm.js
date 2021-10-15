@@ -19,6 +19,11 @@ const LoginForm = () => {
 		}
 	};
 
+	const demoUser = async (e) => {
+		e.preventDefault();
+		await dispatch(login('demo@aa.io', 'password'));
+	};
+
 	const updateEmail = (e) => {
 		setEmail(e.target.value);
 	};
@@ -37,7 +42,7 @@ const LoginForm = () => {
 				<form onSubmit={onLogin}>
 					<div>
 						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
+							<li key={ind} sytle={{ color:'#F27D21'}}>{error}</li>
 						))}
 					</div>
 					<div>
@@ -61,6 +66,7 @@ const LoginForm = () => {
 						/>
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
+					<button className="loginButton" onClick={demoUser}>Demo User</button>
                     <div className="loginSignupText">
 						New to Ingestibles? <NavLink to="/sign-up">Sign Up >></NavLink>
                     </div>
