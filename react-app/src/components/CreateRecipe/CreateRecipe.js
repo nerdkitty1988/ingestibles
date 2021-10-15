@@ -210,6 +210,8 @@ const CreateRecipe = () => {
                             placeholder='At least 1 Tag'
                             />
                         </div>))}
+                <label className='editRecipeLabel'
+                    style={{ marginLeft: '30%', marginRight: '10%', color: '#2196F2' }}> *We recommend you use tags to describe the type of recipe it is and the main ingredients</label>
                     <button onClick={tagCounterClick} 
                             style={{ marginRight: '12%' }}
                             className="btn-category-header"
@@ -226,6 +228,7 @@ const CreateRecipe = () => {
                     className='listingInput'
                     value={introduction}
                     onChange={(e) => setIntroduction(e.target.value)}
+                    style={{ resize: 'none'}}
                     placeholder='Briefly describe what you made.'
                     //required
                 />
@@ -361,7 +364,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-                        
+                    style={{ resize: 'none' }} 
                 />
                 </div>
                 <div className='createRecipeStep'>
@@ -408,7 +411,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-
+                    style={{ resize: 'none' }}
                 />
                 </div>
                 <div className='createRecipeStep'>

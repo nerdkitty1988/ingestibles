@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import "./auth.css"
 
@@ -17,6 +17,11 @@ const LoginForm = () => {
 		if (data) {
 			setErrors(data);
 		}
+	};
+
+	const demoUser = async (e) => {
+		e.preventDefault();
+		await dispatch(login('demo@aa.io', 'password'));
 	};
 
 	const updateEmail = (e) => {
@@ -37,7 +42,7 @@ const LoginForm = () => {
 				<form onSubmit={onLogin}>
 					<div>
 						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
+							<li key={ind} sytle={{ color:'#F27D21'}}>{error}</li>
 						))}
 					</div>
 					<div>
@@ -61,8 +66,9 @@ const LoginForm = () => {
 						/>
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
+					<button className="loginButton" onClick={demoUser}>Demo User</button>
                     <div className="loginSignupText">
-                        New to Ingestibles? <a href="/sign-up">Sign Up >></a>
+						New to Ingestibles? <NavLink to="/sign-up">Sign Up >></NavLink>
                     </div>
 				</form>
 			</div>

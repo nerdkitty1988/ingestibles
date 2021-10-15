@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     biography = db.Column(db.Text, nullable=True)
-    profilePic = db.Column(db.String(255), nullable=True)
+    profilePic = db.Column(db.String, nullable=True)
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete")

@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { Modal, ModalContext } from '../../context/Modal';
 import DeleteRecipeForm from './DeleteRecipeForm';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-
-
-
-function DeleteRecipeFormModal({ id}) {
+function DeleteRecipeFormModal({ id, userId, setCreatedRecipes}) {
 
     const [showModal, setShowModal] = useState(false);
+    const [showDelete, setShowDelete] = useState(true);
+    const [open, setOpen] = useState(true)
 
     return (
         <div style={{ display: 'inline' }}>
-            <button  onClick={() => setShowModal(true)}>Delete</button>
-
+            {showDelete && <button className='btn-category-header'
+            onClick={() => {
+                setShowModal(true)
+                setShowDelete(false)
+                setOpen(true)
+                }}>Delete</button>}
+           
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <DeleteRecipeForm id={id} />
-                </Modal>
+                
+                <ModalContext.Provider value={{ setShowModal }} onClose={() => {setShowModal(false)}}>
+                    <DeleteRecipeForm id={id} userId={userId} setCreatedRecipes={setCreatedRecipes}
+                        setShowDelete={setShowDelete} setOpen={setOpen} open={open}/>
+                </ModalContext.Provider>
+                
             )}
 
         </div>

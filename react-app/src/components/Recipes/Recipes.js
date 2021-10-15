@@ -18,22 +18,22 @@ const Recipes = () => {
 			setAllRecipes(responseData);
 		}
 
-    async function recent_recipes() {
+        async function recent_recipes() {
 			const response = await fetch('/api/recipes/recent');
 			const responseData = await response.json();
 			setRecentRecipes(responseData);
 		}
 
     // remember to exclude the first 5 from this array
-    async function previous_recipes() {
+        async function previous_recipes() {
 			const response = await fetch('/api/recipes/previous');
 			const responseData = await response.json();
 			setPreviousRecipes(responseData);
 		}
 
 		recipes();
-    recent_recipes();
-    previous_recipes();
+        recent_recipes();
+        previous_recipes();
 	}, []);
 
   const recRecipes = recentRecipes?.recent

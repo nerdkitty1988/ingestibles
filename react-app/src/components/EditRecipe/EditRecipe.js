@@ -49,7 +49,7 @@ const EditRecipe = () => {
             const response = await fetch(`/api/recipes/edit/${recipeId}`);
             recipe = await response.json();
             setRecipe(recipe)
-            console.log(recipe, recipe.tags)
+            // console.log(recipe, recipe.tags)
             // pre-load data on edit form - recipe table 
             setTitle(recipe.title)
             setIntroduction(recipe.description)
@@ -101,7 +101,7 @@ const EditRecipe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        console.log('!!!!!!setOldStepsPhotos', oldStepsPhotos)
+        // console.log('!!!!!!setOldStepsPhotos', oldStepsPhotos)
         // filter out null/empty/only spaces input
         const tags_notNull = {}
         Object.keys(tags).forEach(key=>{
@@ -172,11 +172,11 @@ const EditRecipe = () => {
         
     
         // formData.values() creates iterator and use for loop to print out values
-        for (let value of formData.values()) {
-            console.log('formData.values Start');
-            console.log(value);
-            console.log('formData.values End');
-        }
+        // for (let value of formData.values()) {
+        //     console.log('formData.values Start');
+        //     console.log(value);
+        //     console.log('formData.values End');
+        // }
         
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
         const newRecipe = {
@@ -192,7 +192,7 @@ const EditRecipe = () => {
             ingredients:ingredients_notNull,
             steps: steps_notNull,
         }
-        console.log('dictionary-recipe:', newRecipe)
+        // console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(editRecipeThunk({formData,recipeId}));
         if (data.errors) {
@@ -279,7 +279,11 @@ const EditRecipe = () => {
                         }}
                         placeholder='At least 1 Tag'
                             />
+                    
                     </div>))}
+                <label className='editRecipeLabel' 
+                    style={{ marginLeft: '30%', marginRight: '10%', color:'#2196F2'}}> *We recommend you use tags to describe the type of recipe it is and the main ingredients</label>
+                    
                     <button onClick={tagCounterClick} 
                             style={{ marginRight: '12%' }}
                             className="btn-category-header"
@@ -297,7 +301,7 @@ const EditRecipe = () => {
                     value={introduction}
                     onChange={(e) => setIntroduction(e.target.value)}
                     placeholder='Briefly describe what you made.'
-                    //required
+                    style={{ resize: 'none' }}
                 />
               </div>
              <div>
@@ -448,7 +452,7 @@ const EditRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-
+                    style={{ resize: 'none' }}
                 />
                 </div>
                 {oldStepsPhotos[`step${i + 1}`] && oldStepsPhotos[`step${i + 1}`] !== 'null' && oldStepsPhotos[`step${i + 1}`] !== 'undefined'?<img
