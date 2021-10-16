@@ -36,7 +36,7 @@ const Homepage = () => {
 
 	const randomSet = new Set(randomArr1);
 	const randomArr2 = Array.from(randomSet);
-
+	console.log('suffle before', randomArr2)
 	function shuffle(arr) {
 		let currIdx = arr.length
 		let randIdx;
@@ -51,8 +51,10 @@ const Homepage = () => {
 	}
 
 	shuffle(randomArr2)
+	console.log('suffle after', randomArr2)
 
 	const random5 = randomArr2.slice(0, 5);
+	console.log('after slice 5 random5 ', random5 )
 
 	useEffect(() => {
 		const one = async () => {
@@ -96,10 +98,6 @@ const Homepage = () => {
 		four();
 		five();
 	}, [randomRecipes]);
-
-
-
-
 
 	return (
 		<main>
@@ -196,9 +194,9 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
-						<div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
+						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
 							<h3>
-								<span className="anchor-text">{`${tagName1}`}</span>
+								<span className="anchor-text">{tagName1}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
@@ -249,9 +247,9 @@ const Homepage = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</div>}
 
-						<div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
+						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName2}`}</span>
 								&nbsp;
@@ -304,9 +302,9 @@ const Homepage = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</div>}
 
-						<div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
+						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName3}`}</span>
 								&nbsp;
@@ -359,9 +357,9 @@ const Homepage = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</div>}
 
-						<div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
+						{tagName4 && tagName4!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName4}`}</span>
 								&nbsp;
@@ -414,9 +412,9 @@ const Homepage = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</div>}
 
-						<div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
+						{tagName5 && tagName5 !== 'Undefined' && <div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName5}`}</span>
 								&nbsp;
@@ -469,7 +467,7 @@ const Homepage = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</div>}
 
 					</div>
 				</div>
