@@ -31,21 +31,18 @@ const NavBar = ({ loaded }) => {
 		// console.log("!!!!click-responseData", responseData);
 		setRecipes(responseData.recipes);
 	}
-    // click on anypart of header except searchResult Div, will clear the search
+    // click on cancel search button to clear search results
 	const clearClickToSearch = async (e) => {
 		setSearchTerm('')
-		// const response = await fetch(`/api/search/`);
-		// const responseData = await response.json();
-		// setRecipes([]);
 	}
 
 	let searchBlock;
 
 	if (recipes) {
         console.log(recipes)
-		searchBlock = recipes.map((recipe) => {
+		searchBlock = recipes.map((recipe,i) => {
 			return (
-				<a href={`/recipes/${recipe.id}`} className="recipeNav">
+				<a key={`link${i}`} href={`/recipes/${recipe.id}`} className="recipeNav">
 					<div key={`liked'_${recipe.id}`} className="singleRecipe">
 						<img
 							alt={recipe.name}
@@ -177,8 +174,7 @@ const NavBar = ({ loaded }) => {
 				</div>
 				{loaded && sessionLinks}
 			</div>
-			<div className="site-header-bottom"
-				onClick={clearClickToSearch}>
+			<div className="site-header-bottom">
 				<div className="left-col">
 					<NavLink className="site-logo " to="/">
 						<img
@@ -236,8 +232,9 @@ const NavBar = ({ loaded }) => {
 			</div>
 			{searchTerm ? (
 				<div className="searchReultsContainer">
-					<h1 className="plateHeadings">Search reults for: </h1>
-					<h2 className="searchTerm">{searchTerm}</h2>
+					<h1 className="plateHeadings">Search results for: </h1>
+					<h2 className="searchTerm" style={{display:'inline'}} >{searchTerm}</h2>
+					<button style={{ marginLeft: '28px', marginTop: '2px', padding: '3px', color:'#2196F2', display:'inline'}} className="btn-category-header" onClick={clearClickToSearch}>Clear results</button>
 					<ul className="searchedRecipes">{searchBlock}</ul>
 				</div>
 			) : null}
