@@ -681,10 +681,6 @@ a:hover {
 .home-content-explore-wrap,.home-content-explore-category-wrap{max-width:645px;}
 }
 
-.home-content-explore-link:hover .anchor-text {
-  text-decoration: underline;
-}
-
 .home-content-explore h2 {
   margin-bottom: 30px;
 }
@@ -704,6 +700,10 @@ a:hover {
 
 .home-content-explore-category {
   margin-bottom: 30px;
+}
+
+.home-content-explore-category:hover {
+  cursor: default;
 }
 
 .fa-angle-right {

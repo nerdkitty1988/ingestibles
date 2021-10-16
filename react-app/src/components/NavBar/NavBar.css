@@ -104,16 +104,16 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
     color: #ccc;
 }
 
-.category-nav-link > li > a:link {
+.category-nav-link > button:link {
     color: #ccc;
     text-decoration: none;
 }
 
-.category-nav-link > li > a:visited {
+.category-nav-link > button:visited {
     color: #ccc;
 }
 
-.category-nav-link > li > a:hover {
+.category-nav-link > button:hover {
     cursor: pointer;
     text-decoration: underline;
 }
@@ -194,7 +194,7 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
     font-weight: 700;
     color: #000;
     min-width: 228px;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .ingestibles-logo {
@@ -204,16 +204,9 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
 }
 
 #site-header-category-brand {
-    /* position: relative;
-    color: #000;
-    text-decoration: none; */
     font-family: 'Myriad Pro',Helvetica,Arial,sans-serif;
-    /* font-size: 22px;
-    font-weight: 700;
-    min-width: 188px;
-    line-height: 20px;
-    bottom: 35px; */
 }
+
 
 .btn-category-header {
     position: relative;
@@ -234,6 +227,7 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
     line-height: 20px;
     border: 1px solid #ccc;
     text-decoration: none;
+    text-decoration: none !important;
 }
 
 .site-header-bottom .right-col {
