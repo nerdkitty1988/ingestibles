@@ -168,7 +168,7 @@ const NavBar = ({ loaded }) => {
 			<div className="site-header-bottom">
 				<div className="left-col">
 					<NavLink to="/">
- 						<img alt = 'logo' className="ingestibles-logo" src="/logo.png"/>
+ 						<img alt = 'logo' className="ingestibles-logo" src="https://raw.githubusercontent.com/nerdkitty1988/ingestibles/main/react-app/src/components/NavBar/logo.png"/>
 					</NavLink>
 					<NavLink className="site-logo " to="/">
 						<span id="site-header-category-brand">ingestibles</span>
