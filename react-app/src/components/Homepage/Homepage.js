@@ -36,7 +36,7 @@ const Homepage = () => {
 
 	const randomSet = new Set(randomArr1);
 	const randomArr2 = Array.from(randomSet);
-	console.log('suffle before', randomArr2)
+	//console.log('suffle before', randomArr2)
 	function shuffle(arr) {
 		let currIdx = arr.length
 		let randIdx;
@@ -51,10 +51,10 @@ const Homepage = () => {
 	}
 
 	shuffle(randomArr2)
-	console.log('suffle after', randomArr2)
+	//console.log('suffle after', randomArr2)
 
 	const random5 = randomArr2.slice(0, 5);
-	console.log('after slice 5 random5 ', random5 )
+	//console.log('after slice 5 random5 ', random5 )
 
 	useEffect(() => {
 		const one = async () => {

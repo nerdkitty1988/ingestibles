@@ -70,7 +70,7 @@ function Profile() {
 			};
 		}
 
-		console.log("!!!!updatedUser", updatedUser);
+		//console.log("!!!!updatedUser", updatedUser);
 
 		// prepare recipe input data ready for AWS
 		const formData = new FormData();
@@ -78,11 +78,11 @@ function Profile() {
 			formData.append(key, updatedUser[key]);
 		});
 
-		for (let value of formData.values()) {
-			console.log("formData.values Start");
-			console.log(value);
-			console.log("formData.values End");
-		}
+		// for (let value of formData.values()) {
+		// 	//console.log("formData.values Start");
+		// 	//console.log(value);
+		// 	//console.log("formData.values End");
+		// }
 
 		const data = await dispatch(
 			updateUser({ formData, id: sessionUser.id })

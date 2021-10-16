@@ -6,15 +6,15 @@ def seed_tags():
     tag1 = Tag(
         name="CAKE", recipeId=1)
     tag13 = Tag(
-        name="CHOCOLATE", recipeId=1)
+        name="Snack", recipeId=1)
     tag14 = Tag(
-        name="CHEESECAKE", recipeId=1)
+        name="Appetizer", recipeId=1)
     tag2 = Tag(
-        name="CAKE", recipeId=2)
+        name="Dessert", recipeId=2)
     tag3 = Tag(
-        name="CAKE", recipeId=3)
+        name="Entree", recipeId=3)
     tag4 = Tag(
-        name="BREAKFAST", recipeId=4)
+        name="Beverage", recipeId=4)
     tag15 = Tag(
         name="CUPCAKE", recipeId=4)
     tag5 = Tag(
