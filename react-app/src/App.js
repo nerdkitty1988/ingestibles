@@ -47,9 +47,9 @@ function App() {
 					<ProtectedRoute path="/recipes/my_plate" exact={true}>
 						<MyPlate />
 					</ProtectedRoute>
-					<Route path="/users/:userId" exact={true}>
+					<ProtectedRoute path="/users/:userId" exact={true}>
 						<Profile />
-					</Route>
+					</ProtectedRoute>
 					<ProtectedRoute path="/recipes/new_recipe" exact={true}>
 						<CreateRecipe />
 					</ProtectedRoute>

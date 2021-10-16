@@ -51,11 +51,11 @@ function MyPlate() {
 			<NavLink
 				to={`/recipes/edit/${recipe.id}`} className='btn-category-header'
 				style={{ marginTop: '1%' }}
-			>Edit</NavLink>		
+			>Edit</NavLink>
 			<DeleteRecipeFormModal
 				className='btn-category-header'
-			    id={recipe.id} 
-				userId={userId} 
+			    id={recipe.id}
+				userId={userId}
 				setCreatedRecipes={setCreatedRecipes}
 				setLikedRecipes={setLikedRecipes}
 				/>
@@ -67,7 +67,7 @@ function MyPlate() {
 
 
 	return (
-		<>
+		<div className="plateContainer">
             <div className="plateTop">
                 <div className="plateTopCard">
 					<img alt={sessionUser.username} src={sessionUser.profilePic ? sessionUser.profilePic :'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'} className="profileCircle"/>
@@ -88,7 +88,7 @@ function MyPlate() {
 				<h1 className="plateHeadings">RECIPES I LIKE </h1>
 				<ul className="recipeList">{likedRecipeBlock}</ul>
 			</div>
-		</>
+		</div>
 	);
 }
 

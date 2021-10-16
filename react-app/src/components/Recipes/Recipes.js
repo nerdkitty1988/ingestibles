@@ -112,15 +112,6 @@ const Recipes = () => {
                             src={recRecipe?.medias[0]?.mediaUrl}
                             alt={recRecipe?.title}
                           />
-                          <noscript>
-                            <img
-                              src={
-                                recRecipe
-                                  ?.medias[0]
-                              }
-                              alt={recRecipe?.title}
-                            />
-                          </noscript>
                         </NavLink>
                         <div className="home-content-explore-ible-info">
                           <strong>
@@ -195,12 +186,6 @@ const Recipes = () => {
                             src={prevRecipes[0]?.medias[0]?.mediaUrl}
                             alt={prevRecipe?.title}
                           />
-                          <noscript>
-                            <img
-                              src={`/recipes/${prevRecipe?.medias[0]}`}
-                              alt={prevRecipe?.title}
-                            />
-                          </noscript>
                         </NavLink>
                         <div className="home-content-explore-ible-info">
                           <strong>
