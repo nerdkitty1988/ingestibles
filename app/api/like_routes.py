@@ -12,6 +12,8 @@ like_routes = Blueprint('likes', __name__)
 def post_like(id):
     likedbefore = Like.query.filter_by(
         recipeId=id, userId=int(current_user.to_dict()['id'])).first()
+    # if not current_user.to_dict()['id']:
+    #     return {'errors': 'No authorization'}, 403
 
     if not likedbefore:
         like = Like(recipeId=id, userId=int(current_user.to_dict()['id']))
