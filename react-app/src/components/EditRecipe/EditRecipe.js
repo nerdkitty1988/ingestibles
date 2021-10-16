@@ -46,7 +46,7 @@ const EditRecipe = () => {
 
     // fetch current recipe to pre-load data on edit form
     const { recipeId } = useParams();
-    let [recipe, setRecipe] = useState({});
+    // let [recipe, setRecipe] = useState({});
     // let recipe = {}
     useEffect(() => {
         if (!recipeId) {
@@ -55,7 +55,7 @@ const EditRecipe = () => {
         (async () => {
             const response = await fetch(`/api/recipes/edit/${recipeId}`);
             const recipe = await response.json();
-            setRecipe(recipe)
+            // setRecipe(recipe)
             // console.log(recipe, recipe.tags)
             // pre-load data on edit form - recipe table
             setTitle(recipe.title)
