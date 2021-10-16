@@ -5,11 +5,12 @@ import EditComment from "../EditComment";
 import Instruction from "../Instruction"
 import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
+import ReactPlayer from 'react-player'
 
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser)
+  //console.log(sessionUser)
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [otherRecipes, setOtherRecipes] = useState([]);
   const [comments, setComments] = useState([])
@@ -55,8 +56,25 @@ const SingleRecipePage = () => {
   //console.log("otherRecipes!!!!!", sessionUser)
   //console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
-
+  //for 1-5 photos/video start
+  const media1To5 = currentRecipe && currentRecipe.medias ? currentRecipe.medias.map(media => media.mediaUrl):[]
+  const [play1, setPlay1] = useState(false);
+  const [play2, setPlay2] = useState(false);
+  const [play3, setPlay3] = useState(false);
+  const [play4, setPlay4] = useState(false);
+  const [play5, setPlay5] = useState(false);
+  const videoArr = [[media1To5[0], play1, setPlay1], [media1To5[1], play2, setPlay2], [media1To5[2], play3, setPlay3], [media1To5[3], play4, setPlay4], [media1To5[4], play5, setPlay5]]
+  const isVideo = (url)=> {
+    if (url) {
+      return ['.mp4', '.mov', '.wmv'].includes(url.slice(url.length-4,url.length))
+    } else {
+      return false
+    }
+  }
+ 
+   //for 1-5 photos/video end
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
+ 
   //console.log("authorsIds ===>>>",authorsIds)
 
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
@@ -85,7 +103,7 @@ const SingleRecipePage = () => {
   else {
 
   }
-  console.log(today.toLocaleDateString("en-US"));
+  //console.log(today.toLocaleDateString("en-US"));
 
 
 // Codes about Likes start here:
@@ -115,9 +133,9 @@ const SingleRecipePage = () => {
       method: 'DELETE'
     })
     const confirm = await response.json();
-    console.log(confirm)
+    //console.log(confirm)
     const newComments = await fetch(`/api/recipes/comments`).then((res) => res.json())
-    console.log("newComments =======>>>>", newComments.comments)
+    //console.log("newComments =======>>>>", newComments.comments)
     return setComments(newComments.comments)
   }
 
@@ -135,9 +153,50 @@ const SingleRecipePage = () => {
 
       </button>
     </div>
-    <div id="recipe-images">
-      <img src={recipeImages && recipeImages[recipeImages.length - 1]} alt="meat" />
-    </div>
+      <div
+      style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap'}}>
+        {media1To5?.map( (el, i) => (
+          <div key={`mediaDiv${i}`}
+            >{
+            !isVideo(el) && <img
+              style={{ width: '400px', height: '400px'}}
+              src={el} alt='RecipePhoto' />}</div>))
+        }
+
+        {videoArr.map((el,i)=>(
+          el&&isVideo(el[0])&&<div
+            key={`video${i}`}
+            style={{
+              display: 'flex',
+              alignItems: 'end',
+              // width: "600px",
+              // height: "600px",
+            }}
+          >
+            <ReactPlayer
+              url={el[0]}
+              playing={el[1]}
+              loop
+              style={{
+                display: 'inline',
+                marginBottom:'10px',
+                padding:'0',
+                width: "600px",
+                height: "600px",
+              }} />
+
+            <button
+              style={{ maxHeight: '48px' }}
+              className='btn-category-header'
+              onClick={e => {
+                e.preventDefault()
+                el[2](play => !play)
+              }}>{el[1] ? 'Pause' : 'Play'}</button>
+
+          </div>
+        ))}
+      </div>                    
+  
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
@@ -147,8 +206,8 @@ const SingleRecipePage = () => {
           <p id="more-by-author-text">More by <br/>
                                       the author:</p>
           <div id="other-recipes-by-author">
-            {whatIWant && whatIWant.map(recipe => {
-              return (<><a href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br/></>)
+            {whatIWant && whatIWant.map((recipe,i) => {
+              return (<><a key={`linktoRecipe${i}`} href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br key={`linktoRecipeBr${i}`}/></>)
             })}
           </div>
         </div>
@@ -167,7 +226,7 @@ const SingleRecipePage = () => {
     </div>
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (
-        <div key={index} id="step">
+        <div key={'currentRec'+index} id="step">
         <p><strong> Step {index + 1}: {instruction.stepTitle}</strong></p>
         <Instruction instruction={instruction}/>
       </div>
@@ -179,9 +238,9 @@ const SingleRecipePage = () => {
     </div>
     <div id="comments-section">
       <h1>{currentRecipeComments?.length} comments </h1>
-      {currentRecipeComments?.map((comment) => {
+      {currentRecipeComments?.map((comment,i) => {
         return (
-          <div id="comment">
+          <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
               <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>

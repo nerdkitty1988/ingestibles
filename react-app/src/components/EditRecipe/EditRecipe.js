@@ -54,7 +54,7 @@ const EditRecipe = () => {
         }
         (async () => {
             const response = await fetch(`/api/recipes/edit/${recipeId}`);
-            recipe = await response.json();
+            const recipe = await response.json();
             setRecipe(recipe)
             // console.log(recipe, recipe.tags)
             // pre-load data on edit form - recipe table
@@ -62,7 +62,7 @@ const EditRecipe = () => {
             setIntroduction(recipe.description)
             setIngredientPhoto_Old(recipe.ingredientPhoto)
             // pre-load data on edit form - tag table
-            recipe.tags.forEach((tag,i)=>{
+            recipe.tags?.forEach((tag,i)=>{
                 setTags(tags => {
                     tags[`tag${i+1}`] = tag.name
                     return tags
@@ -186,20 +186,20 @@ const EditRecipe = () => {
         // }
 
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
-        const newRecipe = {
-            recipe:{
-                recipeId: +recipeId,
-                authorId: sessionUser.id,
-                title,
-                introduction,
-                ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
-            },            
-            tags:tags_notNull,
-            media:media_notNull,
-            ingredients:ingredients_notNull,
-            steps: steps_notNull,
-        }
-        console.log('dictionary-recipe:', newRecipe)
+        // const newRecipe = {
+        //     recipe:{
+        //         recipeId: +recipeId,
+        //         authorId: sessionUser.id,
+        //         title,
+        //         introduction,
+        //         ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
+        //     },            
+        //     tags:tags_notNull,
+        //     media:media_notNull,
+        //     ingredients:ingredients_notNull,
+        //     steps: steps_notNull,
+        // }
+        // console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(editRecipeThunk({formData,recipeId}));
         if (data.errors) {
@@ -327,7 +327,7 @@ const EditRecipe = () => {
                         />
                     </div>
                     {[[media2_old, setMedia2, play2, setPlay2], [media3_old, setMedia3, play3, setPlay3], [media4_old, setMedia4, play4, setPlay4], [media5_old, setMedia5, play5, setPlay5]].map((el,i)=>(
-                        <>
+                        <div key={`mediaDiv${i}`}>
                             {el[0] && !['.mp4', '.mov', '.wmv'].includes(el[0].slice(el[0].length - 4, el[0].length)) ? <img
                                 className='EditImg'
                                 src={el[0]} alt='OriginalMedia2Photo' /> : null}
@@ -385,7 +385,7 @@ const EditRecipe = () => {
                             </div>
 
                         
-                    </>
+                        </div>
                 ))}
                 </div>
             </div>

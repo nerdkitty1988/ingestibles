@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
@@ -8,7 +7,7 @@ const Footer = () => {
 		<footer id="footer" className="footer footer-desktop ">
       <div className="footer-row footer-row-top">
         <div className="footer-robot robot-icon robot-icon-">
-          <img src="/logo.png" />
+          <img src="/logo.png" alt='logoImgage'/>
         </div>
         <div className="footer-categories">
           <div id="quote1" className="title">"No one is born a great cook,</div>
@@ -22,10 +21,10 @@ const Footer = () => {
             <li className='group-name'>
               <span>{`Johnny Park`}</span>
               <span>{` | `}</span>
-              <a href="https://www.linkedin.com/in/johnny-park-b81857212">
+              <a href="https://www.linkedin.com/in/johnny-park-b81857212" rel="noreferrer" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/gobugi">
+              <a href="https://github.com/gobugi" target="_blank" rel="noreferrer">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
@@ -34,30 +33,30 @@ const Footer = () => {
               <span>{`Meitong Qu `}</span>
               &nbsp;
               <span>{`| `}</span>
-              <a href="https://www.linkedin.com/in/meitongqu/">
+              <a href="https://www.linkedin.com/in/meitongqu/" rel="noreferrer" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/MayUWish">
+              <a href="https://github.com/MayUWish" rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
 
             <li className='group-name'>
               <span>{`Jami Travers | `}</span>
-              <a href="https://www.linkedin.com/in/jami-travers-3393711aa/">
+              <a href="https://www.linkedin.com/in/jami-travers-3393711aa/" rel="noreferrer" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/nerdkitty1988">
+              <a href="https://github.com/nerdkitty1988" rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
 
             <li className='group-name'>
               <span>{`Darren Via II | `}</span>
-              <a href="https://www.linkedin.com/in/darren-via-ii-552667159/">
+              <a href="https://www.linkedin.com/in/darren-via-ii-552667159/" rel="noreferrer" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/aivnerrad">
+              <a href="https://github.com/aivnerrad " rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>

@@ -25,14 +25,14 @@ const EditComment = ({currentRecipe, setCanEdit, setComments, commentId}) => {
           }
       })
       const data = await commentData.json()
-      console.log("DATA HERE EDIT COMMENT =========>>>>>", data)
+      //console.log("DATA HERE EDIT COMMENT =========>>>>>", data)
       if(data.errors){
         setErrors(data.errors)
         setCanEdit(true)
       }else {
         setCanEdit(false)
         const newComments = await (await fetch('/api/recipes/comments')).json()
-        console.log("NEW COMMENTS .JSON ======>>>>", newComments)
+        //console.log("NEW COMMENTS .JSON ======>>>>", newComments)
         setComments(newComments.comments)
       }
 

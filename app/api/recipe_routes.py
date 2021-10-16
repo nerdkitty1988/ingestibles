@@ -37,21 +37,21 @@ def single_recipe(id):
 @recipe_routes.route('/comments')
 def get_comments():
     comments = Comment.query.all()
-    print("COMMENTS ======>>>>>>", comments)
+    # print("COMMENTS ======>>>>>>", comments)
     return { 'comments': [comment.to_dict() for comment in comments]}
 
 @recipe_routes.route('/comments', methods=['POST'])
 @login_required
 def create_comment():
-    print("CAN WE GET HERE?")
+    # print("CAN WE GET HERE?")
     formComment = createCommentForm()
-    print("FORMDATA", formComment.data)
-    print("HOW ABOUT HERe?")
+    # print("FORMDATA", formComment.data)
+    # print("HOW ABOUT HERe?")
 
     formComment['csrf_token'].data = request.cookies['csrf_token']
-    print("CRAZY STRING ~~~~~~~", formComment)
+    # print("CRAZY STRING ~~~~~~~", formComment)
     if formComment.validate_on_submit():
-        print("CRAZY STRING 2 ~~~~~~~~~~")
+        # print("CRAZY STRING 2 ~~~~~~~~~~")
 
         comment = Comment(
             userId=formComment.data['userId'],
@@ -69,9 +69,9 @@ def update_comment(id):
     comment = Comment.query.get(id)
     formComment = editCommentForm()
     formComment['csrf_token'].data = request.cookies['csrf_token']
-    print("CRAZY STRING ~~~~~~~", formComment)
+    # print("CRAZY STRING ~~~~~~~", formComment)
     if formComment.validate_on_submit():
-        print("CRAZY STRING 2 ~~~~~~~~~~")
+        # print("CRAZY STRING 2 ~~~~~~~~~~")
         comment.comment = formComment.data['comment']
         db.session.commit()
         return comment.to_dict()

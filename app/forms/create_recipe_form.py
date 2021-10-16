@@ -24,7 +24,7 @@ class createRecipeForm(FlaskForm):
     # require at least first ingredient is input
     ingredient1 = StringField('ingredient1', validators=[DataRequired()])
     # require at least first media is input
-    media1 = StringField('media1', validators=[DataRequired()])
+    media1 = StringField('media1', validators=[DataRequired('Photo#1 is required.')])
     # require at least first step , of which title and direction are required input
     step1_title = StringField('step1_title', validators=[DataRequired()])
     step1_direction = StringField('step1_direction', validators=[DataRequired()])

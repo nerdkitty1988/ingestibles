@@ -15,7 +15,7 @@ const NavBar = ({ loaded }) => {
             async function fetchData() {
                 const response = await fetch(`/api/search/${searchTerm}`);
                 const responseData = await response.json();
-				console.log("!!!!type-responseData", responseData);
+				//console.log("!!!!type-responseData", responseData);
                 setRecipes(responseData.recipes);
             }
             fetchData();
@@ -31,14 +31,18 @@ const NavBar = ({ loaded }) => {
 		// console.log("!!!!click-responseData", responseData);
 		setRecipes(responseData.recipes);
 	}
+    // click on cancel search button to clear search results
+	const clearClickToSearch = async (e) => {
+		setSearchTerm('')
+	}
 
 	let searchBlock;
 
 	if (recipes) {
-        console.log(recipes)
-		searchBlock = recipes.map((recipe) => {
+        //console.log(recipes)
+		searchBlock = recipes.map((recipe,i) => {
 			return (
-				<a href={`/recipes/${recipe.id}`} className="recipeNav">
+				<a key={`link${i}`} href={`/recipes/${recipe.id}`} className="recipeNav">
 					<div key={`liked'_${recipe.id}`} className="singleRecipe">
 						<img
 							alt={recipe.name}
@@ -106,16 +110,6 @@ const NavBar = ({ loaded }) => {
 								</NavLink>
 							</li>
 							<button
-							onClick={clickToSearch}
-							value = 'Cake'
-								style={{
-									backgroundColor: '#555',
-									color:'#ccc',
-									border: 'none'
-									}}
-							>Cake
-							</button>
-							<button
 								onClick={clickToSearch}
 								value='Appetizer'
 								style={{
@@ -173,7 +167,7 @@ const NavBar = ({ loaded }) => {
 			<div className="site-header-bottom">
 				<div className="left-col">
 					<NavLink to="/">
- 						<img className="ingestibles-logo" src="/logo.png"/>
+ 						<img alt = 'logo' className="ingestibles-logo" src="/logo.png"/>
 					</NavLink>
 					<NavLink className="site-logo " to="/">
 						<span id="site-header-category-brand">ingestibles</span>
@@ -225,8 +219,9 @@ const NavBar = ({ loaded }) => {
 			</div>
 			{searchTerm ? (
 				<div className="searchReultsContainer">
-					<h1 className="plateHeadings">Search reults for: </h1>
-					<h2 className="searchTerm">{searchTerm}</h2>
+					<h1 className="plateHeadings">Search results for: </h1>
+					<h2 className="searchTerm" style={{display:'inline'}} >{searchTerm}</h2>
+					<button style={{ marginLeft: '28px', marginTop: '2px', padding: '3px', color:'#2196F2', display:'inline'}} className="btn-category-header" onClick={clearClickToSearch}>Clear results</button>
 					<ul className="searchedRecipes">{searchBlock}</ul>
 				</div>
 			) : null}
