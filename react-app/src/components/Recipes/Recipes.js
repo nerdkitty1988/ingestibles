@@ -51,7 +51,7 @@ const Recipes = () => {
     let count = 0;
 
       allLikesArr?.forEach(ele => {
-        if (ele?.recipeId == rec?.id) {
+        if (+ele?.recipeId === +rec?.id) {
           count++;
         };
       });
@@ -99,8 +99,8 @@ const Recipes = () => {
                 </NavLink>
                 <div className="home-content-explore-category-wrap ">
                   <div id="recentRecipes">
-                    {recRecipes?.map((recRecipe) => (
-                      <div className="home-content-explore-ible">
+                    {recRecipes?.map((recRecipe,i) => (
+                      <div className="home-content-explore-ible" key={`recRecipe${i}`}>
                         <NavLink
                           to={`/recipes/${recRecipe?.id}`}
                         >
@@ -175,8 +175,8 @@ const Recipes = () => {
                 </NavLink>
                 <div>
                   <div id="recentRecipes">
-                    {prevRecipes?.map((prevRecipe) => (
-                      <div className="home-content-explore-ible">
+                    {prevRecipes?.map((prevRecipe,i) => (
+                      <div className="home-content-explore-ible" key={`preRecipe${i}`}>
                         <NavLink
                           to={`/recipes/${prevRecipe?.id}`}
                         >

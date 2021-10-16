@@ -15,7 +15,7 @@ const NavBar = ({ loaded }) => {
             async function fetchData() {
                 const response = await fetch(`/api/search/${searchTerm}`);
                 const responseData = await response.json();
-				console.log("!!!!type-responseData", responseData);
+				//console.log("!!!!type-responseData", responseData);
                 setRecipes(responseData.recipes);
             }
             fetchData();
@@ -39,7 +39,7 @@ const NavBar = ({ loaded }) => {
 	let searchBlock;
 
 	if (recipes) {
-        console.log(recipes)
+        //console.log(recipes)
 		searchBlock = recipes.map((recipe,i) => {
 			return (
 				<a key={`link${i}`} href={`/recipes/${recipe.id}`} className="recipeNav">
@@ -110,16 +110,6 @@ const NavBar = ({ loaded }) => {
 								</NavLink>
 							</li>
 							<button
-							onClick={clickToSearch}
-							value = 'Cake'
-								style={{
-									backgroundColor: '#555',
-									color:'#ccc',
-									border: 'none'
-									}}
-							>Cake
-							</button>
-							<button
 								onClick={clickToSearch}
 								value='Appetizer'
 								style={{
@@ -177,7 +167,7 @@ const NavBar = ({ loaded }) => {
 			<div className="site-header-bottom">
 				<div className="left-col">
 					<NavLink to="/">
- 						<img className="ingestibles-logo" src="/logo.png"/>
+ 						<img alt = 'logo' className="ingestibles-logo" src="/logo.png"/>
 					</NavLink>
 					<NavLink className="site-logo " to="/">
 						<span id="site-header-category-brand">ingestibles</span>

@@ -26,7 +26,7 @@ const NewComment = ({currentRecipe, setCanComment, setComments}) => {
           }
       })
       const data = await commentData.json()
-      console.log("DATA =======>>>>", data)
+      //console.log("DATA =======>>>>", data)
       if(data.errors){
         setErrors(data.errors)
         setCanComment(true)
@@ -35,7 +35,7 @@ const NewComment = ({currentRecipe, setCanComment, setComments}) => {
       }
 
       const newComments = await (await fetch('/api/recipes/comments')).json()
-      console.log("NEW COMMENTS .JSON ======>>>>", newComments)
+      //console.log("NEW COMMENTS .JSON ======>>>>", newComments)
       setComments(newComments.comments)
 
     return data
@@ -47,7 +47,7 @@ const NewComment = ({currentRecipe, setCanComment, setComments}) => {
       <div style={{ color:'#F27D21'}}>
                     {errors.map((error, ind) => (
                     <li style={{ marginLeft:'15%', textAlign:'start'}}
-                            key={ind}>{error}</li>
+                            key={'newCommentErr'+ind}>{error}</li>
                     ))}
                 </div>
     <form onSubmit={createComment}>
