@@ -4,7 +4,7 @@ import "./Instruction.css"
 const Instruction = (instruction) => {
   return(
     <div id="step-details">
-      <img src={instruction.instruction.imageUrl} alt="step"/>
+      {instruction.instruction.imageUrl && instruction.instruction.imageUrl !== 'null' && instruction.instruction.imageUrl !== 'undefined' && <img src={instruction.instruction.imageUrl} alt="step"/>}
       <br/><br/>
       <p>{instruction.instruction.directions}</p>
       <div id="comment-button-container">
