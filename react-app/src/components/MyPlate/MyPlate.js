@@ -25,7 +25,7 @@ function MyPlate() {
 
 	const likedRecipeBlock = likedRecipes.map((recipe) => {
 		return (
-			<NavLink to={`/recipes/${recipe.id}`} className="recipeNav">
+			<NavLink key={`likedLink'_${recipe.id}`} to={`/recipes/${recipe.id}`} className="recipeNav">
 				<div key={`liked'_${recipe.id}`} className="singleRecipe">
 					<img alt={recipe.name} className="recipePic" src={(recipe.medias && recipe.medias[0]) ? recipe.medias[0]['mediaUrl'] : defaultPhoto} />
 					<h4 className="recipeTitle">{recipe.title.slice(0, 25) + '...'}</h4>
