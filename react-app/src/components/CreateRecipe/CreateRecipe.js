@@ -244,6 +244,8 @@ const CreateRecipe = () => {
                         onChange={(e) => setMedia1(e.target.files[0])}
                         // placeholder='Include 1-5 photo and/or video about your finished dish'
                     />
+                        <label style={{ textAlign: 'start', marginLeft:'23%',color: '#2196F2', display:'block' }}> *Accepted file format: images
+                    </label>
               </div>
                 <div className='createRecipeEl'>
                         <label className='createRecipelabel'>Photo/Video #2 </label>
@@ -254,6 +256,8 @@ const CreateRecipe = () => {
                     onChange={(e) => setMedia2(e.target.files[0])}
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 />
+                <label style={{ textAlign: 'start', marginLeft: '23%', color: '#2196F2', display: 'block' }}> *Accepted file format: images, video/mp4, video/mov, video/wmv
+                </label>
               </div>
               <div className='createRecipeEl'>
                         <label className='createRecipelabel'>Photo/Video #3 </label>
@@ -265,6 +269,8 @@ const CreateRecipe = () => {
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 // required  
                 />
+                <label style={{ textAlign: 'start', marginLeft: '23%', color: '#2196F2', display: 'block' }}> *Accepted file format: images, video/mp4, video/mov, video/wmv
+                        </label>
               </div>
 
                 <div className='createRecipeEl'>
@@ -277,6 +283,8 @@ const CreateRecipe = () => {
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
                 
                 />
+                <label style={{ textAlign: 'start', marginLeft: '23%', color: '#2196F2', display: 'block' }}> *Accepted file format: images, video/mp4, video/mov, video/wmv
+                        </label>
               </div>
                 <div className='createRecipeEl'>
                         <label className='createRecipelabel'>Photo/Video #5 </label>
@@ -288,6 +296,8 @@ const CreateRecipe = () => {
                     // placeholder='Include 1-5 photo and/or video about your finished dish' 
             
                 />
+                <label style={{ textAlign: 'start', marginLeft: '23%', color: '#2196F2', display: 'block' }}> *Accepted file format: images, video/mp4, video/mov, video/wmv
+                        </label>
               </div>
              </div>
             </div>
