@@ -72,10 +72,10 @@ const SingleRecipePage = () => {
       return false
     }
   }
- 
+
    //for 1-5 photos/video end
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
- 
+
   //console.log("authorsIds ===>>>",authorsIds)
 
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
@@ -111,7 +111,7 @@ const SingleRecipePage = () => {
   const [likeResponse, setLikeResponse] = useState('')
   useEffect(() => {
     (async () => {
-      const response = await fetch(`/api/likes/${recipeId}`);
+      const response = await fetch(`/api/likes/${recipeId}/`);
       const like = await response.json();
       (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
     })();
@@ -201,8 +201,8 @@ const SingleRecipePage = () => {
 
           </div>
         ))}
-      </div>                    
-  
+      </div>
+
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
