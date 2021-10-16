@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./NavBar.css";
 
+
 const NavBar = ({ loaded }) => {
 	const sessionUser = useSelector((state) => state.session?.user);
 
@@ -167,7 +168,7 @@ const NavBar = ({ loaded }) => {
 			<div className="site-header-bottom">
 				<div className="left-col">
 					<NavLink to="/">
- 						<img alt = 'logo' className="ingestibles-logo" src="/logo.png"/>
+ 						<img alt = 'logo' className="ingestibles-logo" src="./logo.png"/>
 					</NavLink>
 					<NavLink className="site-logo " to="/">
 						<span id="site-header-category-brand">ingestibles</span>
