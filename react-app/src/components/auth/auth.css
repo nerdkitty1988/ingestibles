@@ -1,6 +1,6 @@
 .loginPage {
     display: flex;
-    position: fixed;
+    /* position: relative; */
     flex-direction: row;
     background-image: url("cook.jpg");
     background-size: cover;
