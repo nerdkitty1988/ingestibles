@@ -22,10 +22,10 @@ const Footer = () => {
             <li className='group-name'>
               <span>{`Johnny Park`}</span>
               <span>{` | `}</span>
-              <a href="https://www.linkedin.com/in/johnny-park-b81857212">
+              <a href="https://www.linkedin.com/in/johnny-park-b81857212" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/gobugi">
+              <a href="https://github.com/gobugi" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
@@ -34,30 +34,30 @@ const Footer = () => {
               <span>{`Meitong Qu `}</span>
               &nbsp;
               <span>{`| `}</span>
-              <a href="https://www.linkedin.com/in/meitongqu/">
+              <a href="https://www.linkedin.com/in/meitongqu/" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/MayUWish">
+              <a href="https://github.com/MayUWish" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
 
             <li className='group-name'>
               <span>{`Jami Travers | `}</span>
-              <a href="https://www.linkedin.com/in/jami-travers-3393711aa/">
+              <a href="https://www.linkedin.com/in/jami-travers-3393711aa/" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/nerdkitty1988">
+              <a href="https://github.com/nerdkitty1988" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>
 
             <li className='group-name'>
               <span>{`Darren Via II | `}</span>
-              <a href="https://www.linkedin.com/in/darren-via-ii-552667159/">
+              <a href="https://www.linkedin.com/in/darren-via-ii-552667159/" target="_blank">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/aivnerrad">
+              <a href="https://github.com/aivnerrad " target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
             </li>

@@ -5,7 +5,7 @@ function DeleteRecipeForm({ id, userId, setCreatedRecipes, setLikedRecipes, setS
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const deleteResponse = await fetch(`/api/recipes/delete/${id}`, {
+        await fetch(`/api/recipes/delete/${id}`, {
             method: 'DELETE'
         })
         // re-set all created_recipes to dynamically shown on page when recipe is deleted
