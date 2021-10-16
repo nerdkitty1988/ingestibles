@@ -66,7 +66,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="loginPage" style={{overflow:'scroll'}}>
+    <div className="loginPage">
       <div className="loginformContainer" style={{ width: '450px', paddingTop: '5%' }}>
         <form onSubmit={onSignUp}>
           <div>
@@ -138,8 +138,8 @@ const SignUpForm = () => {
               className="signupInput"
             ></input>
           </div>
-          <button type='submit' className="loginButton" >Sign Up</button>
-					<button className="loginButton" onClick={demoUser}>Demo User</button>
+          <button id="signupButton" type='submit' className="loginButton" >Sign Up</button>
+					<button id="demoButton" className="loginButton" onClick={demoUser}>Demo User</button>
           <div className="loginSignupText">
 						Already have an account? <NavLink to="/login">Log In >></NavLink>
           </div>
