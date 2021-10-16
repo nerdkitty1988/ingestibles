@@ -110,7 +110,7 @@ const NavBar = ({ loaded }) => {
 							value = 'Cake'
 								style={{
 									backgroundColor: '#555',
-									color:'white',
+									color:'#ccc',
 									border: 'none'
 									}}
 							>Cake
@@ -120,7 +120,7 @@ const NavBar = ({ loaded }) => {
 								value='Appetizer'
 								style={{
 									backgroundColor: '#555',
-									color: 'white',
+									color: '#ccc',
 									border: 'none'
 								}}
 							>Appetizer
@@ -130,7 +130,7 @@ const NavBar = ({ loaded }) => {
 								value='Entree'
 								style={{
 									backgroundColor: '#555',
-									color: 'white',
+									color: '#ccc',
 									border: 'none'
 								}}
 							>Entree
@@ -140,7 +140,7 @@ const NavBar = ({ loaded }) => {
 								value='Dessert'
 								style={{
 									backgroundColor: '#555',
-									color: 'white',
+									color: '#ccc',
 									border: 'none'
 								}}
 							>Dessert
@@ -150,7 +150,7 @@ const NavBar = ({ loaded }) => {
 								value='Snack'
 								style={{
 									backgroundColor: '#555',
-									color: 'white',
+									color: '#ccc',
 									border: 'none'
 								}}
 							>Snack
@@ -160,7 +160,7 @@ const NavBar = ({ loaded }) => {
 								value='Beverage'
 								style={{
 									backgroundColor: '#555',
-									color: 'white',
+									color: '#ccc',
 									border:'none'
 								}}
 							>Beverage
@@ -172,14 +172,11 @@ const NavBar = ({ loaded }) => {
 			</div>
 			<div className="site-header-bottom">
 				<div className="left-col">
+					<NavLink to="/">
+ 						<img className="ingestibles-logo" src="/logo.png"/>
+					</NavLink>
 					<NavLink className="site-logo " to="/">
-						<img
-							className="ingestibles-logo"
-							alt="Ingestibles"
-							src="/logo.png"
-						/>
 						<span id="site-header-category-brand">ingestibles</span>
-						<span className="site-header-category category-"></span>
 					</NavLink>
 					<NavLink to="/recipes" className="btn btn-category-header">
 						Recipes

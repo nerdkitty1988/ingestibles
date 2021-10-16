@@ -4,17 +4,17 @@ import "./Recipes.css";
 
 
 const Recipes = () => {
-	const [allRecipes, setAllRecipes] = useState([]);
+	// const [allRecipes, setAllRecipes] = useState([]);
 	const [recentRecipes, setRecentRecipes] = useState([]);
 	const [previousRecipes, setPreviousRecipes] = useState([]);
 	const [allLikes, setAllLikes] = useState([]);
 
 	useEffect(() => {
-		async function recipes() {
-			const response = await fetch('/api/recipes');
-			const responseData = await response.json();
-			setAllRecipes(responseData);
-		}
+		// async function recipes() {
+		// 	const response = await fetch('/api/recipes');
+		// 	const responseData = await response.json();
+		// 	setAllRecipes(responseData);
+		// }
 
     async function recent_recipes() {
 			const response = await fetch('/api/recipes/recent');
@@ -35,7 +35,7 @@ const Recipes = () => {
 			setAllLikes(responseData);
 		}
 
-		recipes();
+		// recipes();
     recent_recipes();
     previous_recipes();
     all_likes();
@@ -58,9 +58,6 @@ const Recipes = () => {
     return count;
   }
 
-  if (recRecipes) {
-    console.log(recRecipes[0]?.medias[0]?.mediaUrl)
-  }
   return (
     <main>
       <div id="home-container">

@@ -26,6 +26,7 @@
   margin-bottom: 12px;
   font-weight: 500;
   letter-spacing: 0.5px;
+  text-align: left;
 }
 
 
@@ -70,6 +71,7 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+
 }
 
 
@@ -83,11 +85,17 @@
 
 #footer .footer-row-bottom {
   max-width: 100%;
+  justify-content: space-around;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  color: #bbb;
 }
 
 
 #footer .footer-row .footer-categories {
   width: 425px;
+  font-style: italic;
+  margin-top: 40px;
 }
 
 
@@ -100,23 +108,6 @@
 
 @media (max-width: 768px) {
   #footer .footer-row .footer-categories {
-    width: 200px;
-  }
-}
-
-
-#footer .footer-row .footer-categories-links {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  width: 280px;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  columns: 2;
-}
-
-
-@media (max-width: 768px) {
-  #footer .footer-row .footer-categories-links {
     width: 200px;
   }
 }
@@ -139,129 +130,49 @@
 }
 
 
-#footer .footer-row .footer-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;width:100%;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  color: #bbb;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-
-@media (max-width: 1199px) {
-  #footer .footer-row .footer-links {
-    margin: 0 1vw;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-}
-
-
-#footer .footer-row .footer-links .adsk-logo img {
-  height: 24px;
-  width: auto;
-}
-
-
-#footer .footer-row .footer-links-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 15px;
-}
-
-
-@media (max-width: 600px) {
-  #footer .footer-row .footer-links-list {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column;
-    flex-flow: column;
-  }
-
-  #footer .footer-row .footer-links-list .divider {
-    display: none;
-  }
-}
-
-
-#footer .footer-row .footer-links-list .divider {
-  margin: 0 5px;
-}
-
-
-.footer-about-us {
+.footer-find-us {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
+  text-align: left !important;
 }
 
-.footer-links {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
-}
-
-.footer-links-list {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
-}
-
-.fa-hamburger {
-  padding-right: 12px;
-}
-
-.fa-drumstick-bite {
-  padding-right: 12px;
-}
-
-.fa-ice-cream {
-  padding-right: 12px;
-}
-
-.fa-fish {
-  padding-right: 12px;
-}
-
-.fa-utensils {
-  padding-right: 12px;
-}
-
-.fa-birthday-cake {
-  padding-right: 12px;
-}
-
-.fa-carrot {
-  padding-right: 12px;
-}
 
 .fa-linkedin {
-  font-size: 1.2rem;
-  padding-right: 5px;
+  font-size: 1.4rem;
+  padding-right: 7px;
+  padding-left: 3px;
 }
 
 .fa-github-square {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .group-name {
-  margin-left: 0;
-  color: #bbb;
-}
-
-.groupmates {
-  margin-right: 0 !important;
-}
-
-.member-name {
   text-align: left;
-  margin-left: 0;
+  color: #bbb;
+  justify-content: space-between;
 }
 
-.footer-about-us > ul > li {
+.footer-find-us > ul {
+  text-align: right;
+
+}
+
+.footer-find-us > ul > li {
   justify-content: space-between;
+  text-align: right;
+}
+
+#quote2 {
+  margin-left: 25%;
+}
+
+#julia {
+  color: orange;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
   text-align: center;
+  margin-left: 28%;
+  font-style: normal;
+  margin-top: 5px;
 }
