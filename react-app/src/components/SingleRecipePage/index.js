@@ -5,6 +5,7 @@ import EditComment from "../EditComment";
 import Instruction from "../Instruction"
 import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
+import ReactPlayer from 'react-player'
 
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
@@ -55,8 +56,25 @@ const SingleRecipePage = () => {
   //console.log("otherRecipes!!!!!", sessionUser)
   //console.log("RIGHT AFTER", whatIWant)
   const recipeImages = currentRecipe?.instructions?.map(instruction => instruction.imageUrl)
-
+  //for 1-5 photos/video start
+  const media1To5 = currentRecipe && currentRecipe.medias ? currentRecipe.medias.map(media => media.mediaUrl):[]
+  const [play1, setPlay1] = useState(false);
+  const [play2, setPlay2] = useState(false);
+  const [play3, setPlay3] = useState(false);
+  const [play4, setPlay4] = useState(false);
+  const [play5, setPlay5] = useState(false);
+  const videoArr = [[media1To5[0], play1, setPlay1], [media1To5[1], play2, setPlay2], [media1To5[2], play3, setPlay3], [media1To5[3], play4, setPlay4], [media1To5[4], play5, setPlay5]]
+  const isVideo = (url)=> {
+    if (url) {
+      return ['.mp4', '.mov', '.wmv'].includes(url.slice(url.length-4,url.length))
+    } else {
+      return false
+    }
+  }
+ 
+   //for 1-5 photos/video end
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
+ 
   //console.log("authorsIds ===>>>",authorsIds)
 
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
@@ -135,9 +153,49 @@ const SingleRecipePage = () => {
 
       </button>
     </div>
-    <div id="recipe-images">
-      <img src={recipeImages && recipeImages[recipeImages.length - 1]} alt="meat" />
-    </div>
+      <div
+      style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap'}}>
+        {media1To5?.map( (el, i) => (
+          <div key={`mediaDiv${i}`}
+            >{
+            !isVideo(el) && <img
+              style={{ width: '400px', height: '400px'}}
+              src={el} alt='RecipePhoto' />}</div>))
+        }
+
+        {videoArr.map(el=>(
+          el&&isVideo(el[0])&&<div
+            style={{
+              display: 'flex',
+              alignItems: 'end',
+              // width: "600px",
+              // height: "600px",
+            }}
+          >
+            <ReactPlayer
+              url={el[0]}
+              playing={el[1]}
+              loop
+              style={{
+                display: 'inline',
+                marginBottom:'10px',
+                padding:'0',
+                width: "600px",
+                height: "600px",
+              }} />
+
+            <button
+              style={{ maxHeight: '48px' }}
+              className='btn-category-header'
+              onClick={e => {
+                e.preventDefault()
+                el[2](play => !play)
+              }}>{el[1] ? 'Pause' : 'Play'}</button>
+
+          </div>
+        ))}
+      </div>                    
+  
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
