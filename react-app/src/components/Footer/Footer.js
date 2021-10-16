@@ -6,7 +6,7 @@ const Footer = () => {
 		<footer id="footer" className="footer footer-desktop ">
       <div className="footer-row footer-row-top">
         <div className="footer-robot robot-icon robot-icon-">
-          <img src="/logo.png" alt='logoImgage'/>
+          <img src="https://raw.githubusercontent.com/nerdkitty1988/ingestibles/main/react-app/src/components/NavBar/logo.png" alt='logoImage'/>
         </div>
         <div className="footer-categories">
           <div id="quote1" className="title">"No one is born a great cook,</div>
