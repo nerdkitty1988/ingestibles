@@ -248,18 +248,18 @@ const SingleRecipePage = () => {
         return (
           <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
-              <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
-              <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>
-              <p id="comment-date">{today.toLocaleDateString("en-US")}</p>
-              {(sessionUser && sessionUser.id === comment.userId) &&
-                <div id="comment-owner-buttons">
-                  <button onClick={()=> setCanEdit(true)}>Edit</button>
-                  {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
-                  <button onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
-                </div>
-                }
+              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic} alt="author"/>
+              <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
+              <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>
             </div>
             <p id="comment-text">{comment.comment}</p>
+              {(sessionUser && sessionUser.id === comment.userId) &&
+                <div id="comment-owner-buttons">
+                  <button className="commentButtons" onClick={()=> setCanEdit(true)}>Edit</button>
+                  {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
+                  <button className="commentButtons"onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
+                </div>
+                }
         </div>
         )
       })}
