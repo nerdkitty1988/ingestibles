@@ -8,32 +8,32 @@ const CreateRecipe = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    
+
     const [title, setTitle] = useState("");
     // [this.tagName1, this.setTagName1] = useState("");
     // [this.tagName2, this.setTagName2] = useState("");
     const [tags, setTags] = useState({});
     const [tagCounter, setTagCounter] = useState(0);
-    
+
     const [introduction, setIntroduction] = useState("");
     const [media1, setMedia1] = useState("");
     const [media2, setMedia2] = useState("");
     const [media3, setMedia3] = useState("");
     const [media4, setMedia4] = useState("");
     const [media5, setMedia5] = useState("");
-    
+
     const [ingredientPhoto, setIngredientPhoto] = useState(null);
     const [ingredients, setIngredients] = useState({});
     const [ingredientCounter, setIngredientCounter] = useState(0);
-    
+
     const [steps, setSteps] = useState({});
     const [stepCounter, setStepCounter] = useState(0);
 
     const [errors, setErrors] = useState([]);
 
     // require login is handled by ProtectedRoute
-    
-    
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -63,7 +63,7 @@ const CreateRecipe = () => {
         Object.keys(steps_notNull).forEach(key => {
             if (!(steps_notNull[key].title?steps_notNull[key].title.replace(/\s/g, '') :steps_notNull[key].title) && !(steps_notNull[key].direction?steps_notNull[key].direction.replace(/\s/g, '').length:steps_notNull[key].direction)) {
                 delete steps_notNull[key]
-            } 
+            }
         })
 
 
@@ -75,7 +75,7 @@ const CreateRecipe = () => {
         formData.append("introduction", introduction);
         // prepare tags input data ready for AWS
         Object.keys(tags_notNull).forEach(key => {
-            formData.append(key, tags_notNull[key]);       
+            formData.append(key, tags_notNull[key]);
         })
         // prepare ingredients input data ready for AWS
         Object.keys(ingredients_notNull).forEach(key => {
@@ -92,16 +92,16 @@ const CreateRecipe = () => {
                 // console.log('inside', k, steps_notNull[key][k])
                 formData.append(key + '_' + k, steps_notNull[key][k]);
             })
-            
+
         })
-    
+
         // formData.values() creates iterator and use for loop to print out values
         // for (let value of formData.values()) {
         //     console.log('formData.values Start');
         //     console.log(value);
         //     console.log('formData.values End');
         // }
-        
+
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
         // const newRecipe = {
         //     recipe:{
@@ -109,7 +109,7 @@ const CreateRecipe = () => {
         //         title,
         //         introduction,
         //         ingredientPhoto
-        //     },            
+        //     },
         //     tags:tags_notNull,
         //     media:media_notNull,
         //     ingredients:ingredients_notNull,
@@ -126,7 +126,7 @@ const CreateRecipe = () => {
         }
 
     }
-    
+
     // count how many tags the user would like to have
     const tagCounterClick = async (e) => {
         e.preventDefault();
@@ -152,12 +152,12 @@ const CreateRecipe = () => {
     }
 
 
-    return ( 
-        <form onSubmit={handleSubmit} >
+    return (
+        <form id="createRecipeForm" onSubmit={handleSubmit} >
             <div className='newRecipeButtonWrapper'>
 
                 <NavLink to='/recipes/my_plate' exact={true}
-                className='btn-category-header' 
+                className='btn-category-header'
                     style={{ display: 'block', marginTop: '1%', backgroundColor:'#FAD7BB', maxHeight:'20px'}}>Cancel</NavLink>
 
                 <div style={{ color:'#F27D21'}}>
@@ -170,13 +170,13 @@ const CreateRecipe = () => {
                 <button className='btn-category-header'
                 style={{ display: 'block', marginTop: '1%', backgroundColor: '#FAD7BB', maxHeight:'35px' }}
                 >Create Recipe</button>
-                
+
 
             </div>
-            
+
             <div className='createRecipeWrapper'>
                 <h4 style={{textAlign:'center'}}>Recipe Basics</h4>
-                <div className='createRecipeEl'>                   
+                <div className='createRecipeEl'>
                     <label className='createRecipelabel'>Recipe Title </label>
                     <input
                         className='listingInput'
@@ -184,7 +184,7 @@ const CreateRecipe = () => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Recipe Title'
-                        // required  
+                        // required
                     />
                 </div>
                 <div className='createRecipeEl'>
@@ -202,7 +202,7 @@ const CreateRecipe = () => {
                         <label className='createRecipelabel'>Tag #{i + 2} </label>
                             <input
                                 className='listingInput'
-                                type="text"                               
+                                type="text"
                                 onChange={(e) => setTags(tags=>{
                                     tags[`tag${i+2}`] = e.target.value
                                     return tags
@@ -212,17 +212,17 @@ const CreateRecipe = () => {
                         </div>))}
                 <label className='editRecipeLabel'
                     style={{ marginLeft: '30%', marginRight: '10%', color: '#2196F2' }}> *We recommend you use tags to describe the type of recipe it is and the main ingredients</label>
-                    <button onClick={tagCounterClick} 
+                    <button onClick={tagCounterClick}
                             style={{ marginRight: '12%' }}
                             className="btn-category-header"
                             >Add Tag</button>
-                           
+
             </div>
-            
+
             <div className='createRecipeWrapper'>
              <h4 style={{ textAlign: 'center' }}>Introduction</h4>
              <div className='createRecipeEl'>
-                
+
                     <label className='createRecipelabel'>Recipe Introduction </label>
                 <textarea
                     className='listingInput'
@@ -252,7 +252,7 @@ const CreateRecipe = () => {
                     type="file"
                     accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia2(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
+                    // placeholder='Include 1-5 photo and/or video about your finished dish'
                 />
               </div>
               <div className='createRecipeEl'>
@@ -262,8 +262,8 @@ const CreateRecipe = () => {
                     type="file"
                     accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia3(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-                // required  
+                    // placeholder='Include 1-5 photo and/or video about your finished dish'
+                // required
                 />
               </div>
 
@@ -274,8 +274,8 @@ const CreateRecipe = () => {
                     type="file"
                    accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia4(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-                
+                    // placeholder='Include 1-5 photo and/or video about your finished dish'
+
                 />
               </div>
                 <div className='createRecipeEl'>
@@ -285,8 +285,8 @@ const CreateRecipe = () => {
                     type="file"
                     accept="image/*,video/mp4,video/mov,video/wmv"
                     onChange={(e) => setMedia5(e.target.files[0])}
-                    // placeholder='Include 1-5 photo and/or video about your finished dish' 
-            
+                    // placeholder='Include 1-5 photo and/or video about your finished dish'
+
                 />
               </div>
              </div>
@@ -302,7 +302,7 @@ const CreateRecipe = () => {
                     // value={ingredientPhoto}
                     accept="image/*"
                     onChange={(e) => setIngredientPhoto(e.target.files[0])}
-                    // placeholder='at least 1 ingredient photo for your dish'             
+                    // placeholder='at least 1 ingredient photo for your dish'
                 />
                 </div>
                 <div className='createRecipeEl'>
@@ -332,7 +332,7 @@ const CreateRecipe = () => {
                         style={{ marginRight: '12%' }}
                         className="btn-category-header">Add Ingredient</button>
             </div>
-            
+
             <div className='createRecipeWrapper'>
             <h4 style={{ textAlign: 'center' }}>Your Recipe Steps</h4>
             <div className='createRecipeEl'>
@@ -349,7 +349,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Enter step title'
-          
+
                 />
                </div>
 
@@ -364,7 +364,7 @@ const CreateRecipe = () => {
 
                     })}
                     placeholder='Write a detailed description of this step'
-                    style={{ resize: 'none' }} 
+                    style={{ resize: 'none' }}
                 />
                 </div>
                 <div className='createRecipeStep'>
@@ -416,10 +416,10 @@ const CreateRecipe = () => {
                 </div>
                 <div className='createRecipeStep'>
                     < label className='createRecipelabel'> Photo </label>
-                <input   
+                <input
                     className = 'listingInput'
                     type = "file"
-                    accept = "image/*"                       
+                    accept = "image/*"
                     onChange = {(e) => setSteps(steps => {
                     steps[`step${i + 2}`] ? steps[`step${i + 2}`].photo = e.target.files[0] : steps[`step${i + 2}`] = {}
                     steps[`step${i + 2}`].photo = e.target.files[0]
@@ -428,15 +428,15 @@ const CreateRecipe = () => {
 
                 />
                 </div>
-                
+
             </div>))}
             <button onClick={stepCounterClick}
                     style={{ marginRight: '12%' }}
                     className="btn-category-header">Add Step</button>
            </div>
-            
 
-               
+
+
         </form>
 
     );
