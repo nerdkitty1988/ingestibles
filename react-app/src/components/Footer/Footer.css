@@ -13,8 +13,14 @@
   -ms-flex-align: center;
   align-items: center;
   background: #555;
-  position: relative;
+  /* position: relative; */
   padding: 30px 2.5vw 10px;
+  margin-top: 0px;
+
+  position: relative;
+  width:100%;
+  bottom:0px;
+  z-index: 500;
 }
 
 

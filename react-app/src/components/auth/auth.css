@@ -1,18 +1,16 @@
 .loginPage {
-    display: flex;
-    /* position: relative; */
-    flex-direction: row;
-    background-image: url("cook.jpg");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    background-color: white;
     opacity: 0.95;
+    background: url(cook.jpg) no-repeat left center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .loginformContainer {
     display: flex;
-    height: 100vmax;
+    min-height: 63vmin;
+    max-height: 100vh;
     background-color: rgba(15, 15, 15, 0.199) ;
     backdrop-filter: blur(5px);
     margin-left: 50px;
@@ -62,7 +60,15 @@
     color: white;
 }
 
+.loginformContainer > form > div > label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eee;
+}
+
 .signupInput{
     margin: 2px 10px 2px -10px;
+}
 
+#signupButton, #demoButton {
+    width: 105.874%;
 }

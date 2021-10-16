@@ -47,7 +47,7 @@ const LoginForm = () => {
 					</div>
 					<div>
 						<input
-                            className="loginInput"
+														className="loginInput"
 							name="email"
 							type="text"
 							placeholder="Email"
@@ -57,7 +57,7 @@ const LoginForm = () => {
 					</div>
 					<div>
 						<input
-                            className="loginInput"
+														className="loginInput"
 							name="password"
 							type="password"
 							placeholder="Password"
@@ -67,9 +67,9 @@ const LoginForm = () => {
 						<button type="submit" className="loginButton">Log In</button>
 					</div>
 					<button className="loginButton" onClick={demoUser}>Demo User</button>
-                    <div className="loginSignupText">
+										<div className="loginSignupText">
 						New to Ingestibles? <NavLink to="/sign-up">Sign Up >></NavLink>
-                    </div>
+										</div>
 				</form>
 			</div>
 		</div>

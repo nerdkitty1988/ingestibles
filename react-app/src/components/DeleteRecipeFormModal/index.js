@@ -10,7 +10,7 @@ function DeleteRecipeFormModal({ id, userId, setCreatedRecipes, setLikedRecipes}
     const [open, setOpen] = useState(true)
 
     return (
-        <div style={{ display: 'inline' }}>
+        <div style={{ display: 'inline' }, { marginTop: '1%' }}>
             {showDelete && <button className='btn-category-header'
             onClick={() => {
                 setShowModal(true)
@@ -21,9 +21,9 @@ function DeleteRecipeFormModal({ id, userId, setCreatedRecipes, setLikedRecipes}
             {showModal && (
 
                 <ModalContext.Provider value={{ setShowModal }} onClose={() => {setShowModal(false)}}>
-                    <DeleteRecipeForm 
-                    id={id} 
-                    userId={userId} 
+                    <DeleteRecipeForm
+                    id={id}
+                    userId={userId}
                     setCreatedRecipes={setCreatedRecipes}
                     setLikedRecipes={setLikedRecipes}
                     setShowDelete={setShowDelete} setOpen={setOpen} open={open}/>
