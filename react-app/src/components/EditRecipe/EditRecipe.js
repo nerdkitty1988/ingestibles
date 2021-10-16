@@ -186,20 +186,20 @@ const EditRecipe = () => {
         // }
 
         // when not using AWS note: tags,media,ingredients,instructions need to be {}, otherwise wtforms will not capture data correctly; e.g. if it is an [], it will only capture the first element
-        const newRecipe = {
-            recipe:{
-                recipeId: +recipeId,
-                authorId: sessionUser.id,
-                title,
-                introduction,
-                ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
-            },            
-            tags:tags_notNull,
-            media:media_notNull,
-            ingredients:ingredients_notNull,
-            steps: steps_notNull,
-        }
-        console.log('dictionary-recipe:', newRecipe)
+        // const newRecipe = {
+        //     recipe:{
+        //         recipeId: +recipeId,
+        //         authorId: sessionUser.id,
+        //         title,
+        //         introduction,
+        //         ingredientPhoto:ingredientPhoto?ingredientPhoto:ingredientPhoto_Old
+        //     },            
+        //     tags:tags_notNull,
+        //     media:media_notNull,
+        //     ingredients:ingredients_notNull,
+        //     steps: steps_notNull,
+        // }
+        // console.log('dictionary-recipe:', newRecipe)
 
         const data = await dispatch(editRecipeThunk({formData,recipeId}));
         if (data.errors) {
