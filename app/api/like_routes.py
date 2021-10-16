@@ -26,7 +26,7 @@ def post_like(id):
         return {'unlike': 'unlike'}
 
 
-@like_routes.route('/<int:id>')
+@like_routes.route('/<int:id>/')
 @login_required
 def get_like(id):
     likedbefore = Like.query.filter_by(
