@@ -10,7 +10,7 @@ import ReactPlayer from 'react-player'
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser)
+  //console.log(sessionUser)
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [otherRecipes, setOtherRecipes] = useState([]);
   const [comments, setComments] = useState([])
@@ -103,7 +103,7 @@ const SingleRecipePage = () => {
   else {
 
   }
-  console.log(today.toLocaleDateString("en-US"));
+  //console.log(today.toLocaleDateString("en-US"));
 
 
 // Codes about Likes start here:
@@ -133,9 +133,9 @@ const SingleRecipePage = () => {
       method: 'DELETE'
     })
     const confirm = await response.json();
-    console.log(confirm)
+    //console.log(confirm)
     const newComments = await fetch(`/api/recipes/comments`).then((res) => res.json())
-    console.log("newComments =======>>>>", newComments.comments)
+    //console.log("newComments =======>>>>", newComments.comments)
     return setComments(newComments.comments)
   }
 
@@ -163,8 +163,9 @@ const SingleRecipePage = () => {
               src={el} alt='RecipePhoto' />}</div>))
         }
 
-        {videoArr.map(el=>(
+        {videoArr.map((el,i)=>(
           el&&isVideo(el[0])&&<div
+            key={`video${i}`}
             style={{
               display: 'flex',
               alignItems: 'end',
@@ -205,8 +206,8 @@ const SingleRecipePage = () => {
           <p id="more-by-author-text">More by <br/>
                                       the author:</p>
           <div id="other-recipes-by-author">
-            {whatIWant && whatIWant.map(recipe => {
-              return (<><a href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br/></>)
+            {whatIWant && whatIWant.map((recipe,i) => {
+              return (<><a key={`linktoRecipe${i}`} href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br key={`linktoRecipeBr${i}`}/></>)
             })}
           </div>
         </div>
@@ -225,7 +226,7 @@ const SingleRecipePage = () => {
     </div>
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (
-        <div key={index} id="step">
+        <div key={'currentRec'+index} id="step">
         <p><strong> Step {index + 1}: {instruction.stepTitle}</strong></p>
         <Instruction instruction={instruction}/>
       </div>
@@ -237,9 +238,9 @@ const SingleRecipePage = () => {
     </div>
     <div id="comments-section">
       <h1>{currentRecipeComments?.length} comments </h1>
-      {currentRecipeComments?.map((comment) => {
+      {currentRecipeComments?.map((comment,i) => {
         return (
-          <div id="comment">
+          <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
               <img className="profileCircle" id="comment-owner-image" src={authorsObject[comment.userId]} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>MyUserName{comment.userId}</a>

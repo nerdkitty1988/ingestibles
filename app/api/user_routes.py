@@ -29,7 +29,7 @@ def user(id):
 def updateUser(id):
     form = UpdateUserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('request.files!!!!', request.files)
+    # print('request.files!!!!', request.files)
     if form.validate_on_submit():
         user = User.query.get(id)
 
