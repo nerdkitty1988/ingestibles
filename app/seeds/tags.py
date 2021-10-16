@@ -3,36 +3,15 @@ from app.models import db, Tag
 
 # Adds tags
 def seed_tags():
-    tag1 = Tag(
-        name="CAKE", recipeId=1)
-    tag13 = Tag(
-        name="Snack", recipeId=1)
-    tag14 = Tag(
-        name="Appetizer", recipeId=1)
-    tag2 = Tag(
-        name="Dessert", recipeId=2)
-    tag3 = Tag(
-        name="Entree", recipeId=3)
-    tag4 = Tag(
-        name="Beverage", recipeId=4)
-    tag15 = Tag(
-        name="CUPCAKE", recipeId=4)
-    tag5 = Tag(
-        name="DRINK", recipeId=5)
-    tag6 = Tag(
-        name="CANDY", recipeId=6)
-    tag7 = Tag(
-        name="CANDY", recipeId=7)
-    tag8 = Tag(
-        name="PASTA", recipeId=8)
-    tag9 = Tag(
-        name="PASTA", recipeId=9)
-    tag10 = Tag(
-        name="SALAD", recipeId=10)
-    tag11 = Tag(
-        name="SALAD", recipeId=11)
-    tag12 = Tag(
-        name="BBQ", recipeId=12)
+    tag701 = Tag(
+        name="Beverage", recipeId=1)
+    tag702 = Tag(
+        name="Vodka", recipeId=1)
+    tag703 = Tag(
+        name="Ginger", recipeId=1)
+    tag704 = Tag(
+        name="Alcoholic drink", recipeId=1)
+    
 
     db.session.add(tag1)
     db.session.add(tag2)

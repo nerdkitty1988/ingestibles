@@ -3,33 +3,7 @@ from app.models import db, Recipe
 
 # Adds recipes
 def seed_recipes():
-    recipe1 = Recipe(
-        title='No-Bake Chocolate Cheesecake With Kit Kats', description="In this Instructable, I will show you how to make a no-bake chocolate cheesecake with Kit Kats from scratch. This easy cheesecake recipe is so awesome and doesn't have any eggs in it. If you love chocolate and you love cheesecake you have got to try this. It has four amazing layers, oreo cookie bottom crust, chocolate cheesecake filling, chocolate ganache on top of that, and then whipped cream and mini-chocolate chips. All surrounded by a layer of Kit Kats. A chocolate lover's dream cake. If I can do it, you can do it. Let's get started!", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe2 = Recipe(
-        title="Spirited Away Cake: No Face's Feast", description="""Hello!
-
-If you've ever watched Hayao Miyazaki's award winning film "Spirited Away,' you might recall a certain food scene. In it, No-Face, a spirit, ravenously consumes pounds of delicious food in front of his hosts. Miyazaki is such a master with animated food I felt compelled to make a cake honoring such a fun scene.
-
-Be warned though, this is not an easy cake! It took me wayyy to long to finish inbetween work and school. If anyone wants to re-create this, I have suggestions on each step to make the process a little easier. :)
-
-Enough rambling, onto the cake!
-
-(no-face drawing by Valentina Hramov)""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe3 = Recipe(
-        title='HEALTHY VEGAN CREAMY MANGO TART NO-BAKE', description="""
-        If you’re looking for a healthy dessert✨that tastes delicious😋, is easy to make, and will appeal to all eaters at the table, then this 🌱Vegan & Gluten Free Creamy Mango tart is for you!
-
-This tart has a creamy 🥭mango-cashews filling with a 🥥coconut-almond crust.
-
-Mango is:
-
-A low-calorie fruit that is high in fibre 😀.
-A good source of immune-boosting nutrients like Vitamins A and C.
-A good source of antioxidants.
-It’s a no-bake tart that anybody can master, and I’ll show you all the steps below.""", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe4 = Recipe(
-        title="3 Cheese ‘N Bacon Breakfast Cupcakes", description="I made a recipe similar to these unusual cupcakes years ago for a brunch. Everyone loved them and I decided that they would be perfect for the Instructables Cheese Speed Challenge! They feature 3 kinds of cheese....shredded cheddar, ricotta and cream cheese. These cheesy sweet and savory breakfast cupcakes are fun to make, fun to serve, fun to look at and fun to eat!", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe5 = Recipe(
+    recipe701 = Recipe(
         title='Tom Yum Vodka', description="""I think by now, Thailand's famous Tom Yum Goong (hot and sour prawn soup) is a household name around the world. But this is more than just a soup. Tom yum's hot, spicy, sour, packed-with-herbs flavour is used in everything from potato chips to instant noodles.
 
 So I had a stroke of genius.
@@ -40,35 +14,24 @@ The delicious, aromatic herbs give this drink a unique scent that you just can't
 
 The best part?
 
-It's so easy to make, you can have this recipe done in just 5 minutes today. And tomorrow, you can reap the reward of a delicious, sophisticated little beverage.""", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe6 = Recipe(
-        title='Halloween/ Harvest Chocolate Bark', description="""What did the dog say to make the squirrel run up the tree?... " Bark! Bark! Bark! "
+It's so easy to make, you can have this recipe done in just 5 minutes today. And tomorrow, you can reap the reward of a delicious, sophisticated little beverage.""", authorId=1, ingredientPhoto='https://content.instructables.com/ORIG/FZ2/8QSC/KTPSYXDD/FZ28QSCKTPSYXDD.jpg?auto=webp&frame=1&width=552&height=1024&fit=bounds&md=f596ae9807c182a3b39b52ae88ce2df0')
 
-Okay, I know that was pretty bad, but I promise you these are really, really good! They also make a great midday snack, or a nice little treat for family, friends, and co-workers.
+    recipe702 = Recipe(
+        title="Spirited Away Cake: No Face's Feast", description="""Hello!
 
-Prep time: 30- 35 minutes""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe7 = Recipe(
-        title='Homemade Twix Bars', description="""In this Instructable, I will show you how to make copycat Twix Bars at home. This homemade Twix candy bars recipe is so awesome and really easy to make. If you are a fan of Twix cookie bars you will love these homemade Twix. I love copycat recipes, and this is one of my favorites. If I can do it, you can do it. Let's get started!
+If you've ever watched Hayao Miyazaki's award winning film "Spirited Away,' you might recall a certain food scene. In it, No-Face, a spirit, ravenously consumes pounds of delicious food in front of his hosts. Miyazaki is such a master with animated food I felt compelled to make a cake honoring such a fun scene.
 
-Don't forget to follow me and check out my other Instructables.
+Be warned though, this is not an easy cake! It took me wayyy to long to finish inbetween work and school. If anyone wants to re-create this, I have suggestions on each step to make the process a little easier. :)
 
-Follow the easy steps below or watch the video tutorial or do both! :)""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe8 = Recipe(
-        title='Rigatoni With Sausage, Spinach, & Goat Cheese', description='This creamy, tangy, and delicious Rigatoni with Sausage, Spinach, and Goat Cheese dish will quickly become a family favorite. This recipe has basic ingredients, but it turns into magic when the melted goat cheese brings them together. The whole meal can come together very quickly, so it’s great for a last-minute dinner.', authorId=3, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe9 = Recipe(
-        title='Skillet Ravioli Lasagna', description="""This one pot meal is the perfect dinner for a busy weeknight. It comes together easily, is extra tasty, and best of all the clean-up is super quick!
+Enough rambling, onto the cake!
 
-I love a good lasagna, but sometimes the effort seems like too much – this Skillet Ravioli Lasagna is a great alternative and really packs in the flavour of a traditional lasagna.
-
-Note: This meal serves 6, so feel free to divide the recipe in half for a smaller portion or if you are concerned it won’t fit in your pan. It does require a large pan with high sides.""", authorId=3, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe10 = Recipe(
-        title='Five Bean Salad', description="""Who wants to cook in the summer, right? So what can we eat? Oh! Legumes!
-
-Protein, fiber, vitamins and minerals!
-
-Very healthy stuff! Combine a few of them and they are very colorful too.
-
-This is a great salad for a summer barbecue. Or just eaten by itself because its packed with flavor. Also this salad is easy peasy especially if your just buying all the beans precooked in jars or cans. If you live in the Americas you will be extremely lucky to have at your disposal a limitless variety of beans or, as they are called in some parts, frijoles So go ahead and find a nice variety of beans to put in your salad, Hey! you might even make a Six Bean Salad but that would be an entirely different instructable""", authorId=4, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
+(no-face drawing by Valentina Hramov)""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
+   
+   
+    
+    
+  
+   
     recipe11 = Recipe(
         title='RECIPE |MANDARIN AVOCADO SALAD', description="""Spring is finally here! With 15 degree weather, I am forcing myself to believe that spring is here to stay even after that random snow storm we had last week. With Spring, comes warmer weather and cooler dishes like this Mandarin Avocado Salad. I've been trying to get back into my salad routine to cure my skin issues. After all, you are what you eat.
 
