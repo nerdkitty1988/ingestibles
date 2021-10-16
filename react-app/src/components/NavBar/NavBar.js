@@ -31,6 +31,13 @@ const NavBar = ({ loaded }) => {
 		// console.log("!!!!click-responseData", responseData);
 		setRecipes(responseData.recipes);
 	}
+    // click on anypart of header except searchResult Div, will clear the search
+	const clearClickToSearch = async (e) => {
+		setSearchTerm('')
+		// const response = await fetch(`/api/search/`);
+		// const responseData = await response.json();
+		// setRecipes([]);
+	}
 
 	let searchBlock;
 
@@ -170,7 +177,8 @@ const NavBar = ({ loaded }) => {
 				</div>
 				{loaded && sessionLinks}
 			</div>
-			<div className="site-header-bottom">
+			<div className="site-header-bottom"
+				onClick={clearClickToSearch}>
 				<div className="left-col">
 					<NavLink className="site-logo " to="/">
 						<img
