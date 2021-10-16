@@ -6,6 +6,7 @@ import Instruction from "../Instruction"
 import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
 import ReactPlayer from 'react-player'
+import { useHistory } from 'react-router-dom';
 
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
@@ -16,7 +17,7 @@ const SingleRecipePage = () => {
   const [comments, setComments] = useState([])
   const [canComment, setCanComment] = useState(false);
   const [canEdit, setCanEdit] = useState(false)
-
+  const history = useHistory();
   // async function retrieveRecipe() {
   //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
   //   const currentRecipeData = await recipeFetch.json();
@@ -36,7 +37,7 @@ const SingleRecipePage = () => {
   useEffect(() => {
     const fetchData = () => {
      const thisRecipe =  fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) => setCurrentRecipe(data.recipe[0]))
-     const others = fetch(`/api/recipes`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
+     const others = fetch(`/api/recipes/`).then((res) => res.json())//.then((data) => setOtherRecipes([...data recipes.filter(recipe => recipe.authorId === currentRecipe.authorId && recipe.id !== currentRecipe.id)]))
      const comments = fetch(`/api/recipes/comments`).then((res) => res.json())
      Promise.all([thisRecipe, others, comments]).then((allData) => {
        setCurrentRecipe(allData[0].recipe[0])
@@ -71,10 +72,10 @@ const SingleRecipePage = () => {
       return false
     }
   }
- 
+
    //for 1-5 photos/video end
   const authorsIds = otherRecipes.map(recipe => recipe.author.id)
- 
+
   //console.log("authorsIds ===>>>",authorsIds)
 
   const authorsImages = otherRecipes.map(recipe => recipe.author.profilePic)
@@ -110,7 +111,7 @@ const SingleRecipePage = () => {
   const [likeResponse, setLikeResponse] = useState('')
   useEffect(() => {
     (async () => {
-      const response = await fetch(`/api/likes/${recipeId}`);
+      const response = await fetch(`/api/likes/${recipeId}/`);
       const like = await response.json();
       (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
     })();
@@ -124,6 +125,9 @@ const SingleRecipePage = () => {
     })
     const like = await response.json();
     (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+    if(like.errors){
+      history.push('/login')
+    }
 
   }
 
@@ -165,7 +169,7 @@ const SingleRecipePage = () => {
 
         {videoArr.map((el,i)=>(
           el&&isVideo(el[0])&&<div
-            key={`video${i}`}
+            key={`videoDiv${i}`}
             style={{
               display: 'flex',
               alignItems: 'end',
@@ -174,6 +178,7 @@ const SingleRecipePage = () => {
             }}
           >
             <ReactPlayer
+              key={`videoRecactPlayer${i}`}
               url={el[0]}
               playing={el[1]}
               loop
@@ -186,6 +191,7 @@ const SingleRecipePage = () => {
               }} />
 
             <button
+              key={`videoRecactPlayButton${i}`}
               style={{ maxHeight: '48px' }}
               className='btn-category-header'
               onClick={e => {
@@ -195,8 +201,8 @@ const SingleRecipePage = () => {
 
           </div>
         ))}
-      </div>                    
-  
+      </div>
+
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
@@ -227,8 +233,8 @@ const SingleRecipePage = () => {
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (
         <div key={'currentRec'+index} id="step">
-        <p><strong> Step {index + 1}: {instruction.stepTitle}</strong></p>
-        <Instruction instruction={instruction}/>
+          <p key={'p' + index}><strong> Step {index + 1}: {instruction.stepTitle}</strong></p>
+        <Instruction key={'instruction' + index} instruction={instruction}/>
       </div>
       )
     })}

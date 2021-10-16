@@ -30,7 +30,7 @@ const Recipes = () => {
 		}
 
     async function all_likes() {
-			const response = await fetch('/api/likes');
+			const response = await fetch('/api/likes/');
 			const responseData = await response.json();
 			setAllLikes(responseData);
 		}

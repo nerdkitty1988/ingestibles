@@ -46,7 +46,7 @@ const EditRecipe = () => {
 
     // fetch current recipe to pre-load data on edit form
     const { recipeId } = useParams();
-    let [recipe, setRecipe] = useState({});
+    // let [recipe, setRecipe] = useState({});
     // let recipe = {}
     useEffect(() => {
         if (!recipeId) {
@@ -55,7 +55,7 @@ const EditRecipe = () => {
         (async () => {
             const response = await fetch(`/api/recipes/edit/${recipeId}`);
             const recipe = await response.json();
-            setRecipe(recipe)
+            // setRecipe(recipe)
             // console.log(recipe, recipe.tags)
             // pre-load data on edit form - recipe table
             setTitle(recipe.title)
@@ -325,9 +325,11 @@ const EditRecipe = () => {
                             accept="image/*"
                             onChange={(e) => setMedia1(e.target.files[0])}
                         />
+                        <label style={{ textAlign: 'start', marginLeft: '23%', color: '#2196F2', display: 'block' }}> *Accepted file format: images
+                        </label>
                     </div>
                     {[[media2_old, setMedia2, play2, setPlay2], [media3_old, setMedia3, play3, setPlay3], [media4_old, setMedia4, play4, setPlay4], [media5_old, setMedia5, play5, setPlay5]].map((el,i)=>(
-                        <div key={`mediaDiv${i}`}>
+                        <div key={`mediaDiv${i}`} style={{marginBottom:'1%'}}>
                             {el[0] && !['.mp4', '.mov', '.wmv'].includes(el[0].slice(el[0].length - 4, el[0].length)) ? <img
                                 className='EditImg'
                                 src={el[0]} alt='OriginalMedia2Photo' /> : null}
@@ -336,13 +338,15 @@ const EditRecipe = () => {
                                 <div
                                     // className='EditImg'
                                     style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '2%',
-                                        width: "300px",
-                                        height: "300px",
-                                        marginLeft: "40%",
-                                        padding: '0'
+                                        // display: 'flex',
+                                        // alignItems: 'center',
+                                        // // gap: '2%',
+                                        width: "36%",
+                                        height: "36%",
+                                        marginLeft: "36%",
+                                        // padding: '0',
+                                        // marginTop:'1px',
+                                        // marginBottom: '0',
                                     }}
                                 > 
 
@@ -352,12 +356,10 @@ const EditRecipe = () => {
                                         playing={el[2]}
                                         loop
                                         style={{
-                                            // position: 'relative',
-                                            // left: '0',
-                                            // top: '0',
-                                            width: "350px",
-                                            height: "350px",
+                                            maxWidth: "50%",
+                                            height: "50%",
                                             margin: '0',
+                                            padding:'0',
                                             display: 'inline'
                                         }} />
                                     <button
@@ -383,6 +385,8 @@ const EditRecipe = () => {
 
                                 />
                             </div>
+                            <label style={{ textAlign: 'start', marginLeft: '30%', marginTop:'0', color: '#2196F2', display: 'block'}}> *Accepted file format: images, video/mp4, video/mov, video/wmv
+                            </label>
 
                         
                         </div>
