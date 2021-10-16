@@ -197,16 +197,11 @@ const Homepage = () => {
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
 						<div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
-							<NavLink
-								to={`/tags/${tagName1}`}
-								className="home-content-explore-link"
-							>
-								<h3>
-									<span className="anchor-text">{`${tagName1}`}</span>
-									&nbsp;
-									<i className="fas fa-angle-right fa-2x"></i>
-								</h3>
-							</NavLink>
+							<h3>
+								<span className="anchor-text">{`${tagName1}`}</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags1?.map((tag1) => (
@@ -257,16 +252,11 @@ const Homepage = () => {
 						</div>
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
-							<NavLink
-								to={`/tags/${tagName2}`}
-								className="home-content-explore-link"
-							>
-								<h3>
-									<span className="anchor-text">{`${tagName2}`}</span>
-									&nbsp;
-									<i className="fas fa-angle-right fa-2x"></i>
-								</h3>
-							</NavLink>
+							<h3>
+								<span className="anchor-text">{`${tagName2}`}</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags2?.map((tag2) => (
@@ -317,16 +307,11 @@ const Homepage = () => {
 						</div>
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
-							<NavLink
-								to={`/tags/${tagName3}`}
-								className="home-content-explore-link"
-							>
-								<h3>
-									<span className="anchor-text">{`${tagName3}`}</span>
-									&nbsp;
-									<i className="fas fa-angle-right fa-2x"></i>
-								</h3>
-							</NavLink>
+							<h3>
+								<span className="anchor-text">{`${tagName3}`}</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags3?.map((tag3) => (
@@ -377,16 +362,11 @@ const Homepage = () => {
 						</div>
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
-							<NavLink
-								to={`/tags/${tagName4}`}
-								className="home-content-explore-link"
-							>
-								<h3>
-									<span className="anchor-text">{`${tagName4}`}</span>
-									&nbsp;
-									<i className="fas fa-angle-right fa-2x"></i>
-								</h3>
-							</NavLink>
+							<h3>
+								<span className="anchor-text">{`${tagName4}`}</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags4?.map((tag4) => (
@@ -437,16 +417,11 @@ const Homepage = () => {
 						</div>
 
 						<div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
-							<NavLink
-								to={`/tags/${tagName5}`}
-								className="home-content-explore-link"
-							>
-								<h3>
-									<span className="anchor-text">{`${tagName5}`}</span>
-									&nbsp;
-									<i className="fas fa-angle-right fa-2x"></i>
-								</h3>
-							</NavLink>
+							<h3>
+								<span className="anchor-text">{`${tagName5}`}</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
 									{tags5?.map((tag5) => (
