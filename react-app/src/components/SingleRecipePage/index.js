@@ -7,6 +7,7 @@ import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
 import ReactPlayer from 'react-player'
 import { useHistory } from 'react-router-dom';
+import defaultPhoto from "./profileDefaultPhoto.png";
 
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
@@ -112,12 +113,15 @@ const SingleRecipePage = () => {
   // Codes about Likes start here:
   const [likeResponse, setLikeResponse] = useState('')
   useEffect(() => {
-    (async () => {
-      const response = await fetch(`/api/likes/${recipeId}/`);
-      const like = await response.json();
-      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
-    })();
-  }, [recipeId]);
+    if (sessionUser){
+      (async () => {
+        const response = await fetch(`/api/likes/${recipeId}/`);
+        const like = await response.json();
+        (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+      })();
+
+    }
+  }, [recipeId,sessionUser]);
 
 
   const likeRecipe = async (e) => {
@@ -180,23 +184,29 @@ const SingleRecipePage = () => {
           style={{ color: '#F27D21' }} id="likeButton"></i>{currentRecipe.likes && currentRecipe.likes.length} </p>
       </div>
       <div id="like-button-and-photo-container">
+    <div id="recipe-info">
+      <h1>{currentRecipe.title}</h1>
+      <p>By {currentRecipe?.author?.username} {">"}</p>
+    </div>
         <div id="like-license-buttons">
           <button id="like-button" onClick={likeRecipe} >
             {likeResponse ? <i className="fas fa-heart"
               style={{ color: '#F27D21' }} id="likeButton"></i> : <i className="fas fa-heart" id="likeButton"></i>} Like
           </button>
         </div>
-        <div
-          style={{ display: 'flex', justifyContent: 'space-around', gap: '10px', alignItems: 'end', flexWrap: 'wrap' }}>
-          {media1To5?.map((el, i) => (
-            <div key={`mediaDiv${i}`}
+      <div
+      style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap', marginBottom:'1%'}}>
+        {media1To5?.map( (el, i) => (
+          <div key={`mediaDiv${i}`}
             >{
-                !isVideo(el) && <img
-                  style={{ width: '600px', height: '600px' }}
-                  src={el} alt='RecipePhoto' />}</div>))
-          }
-          {videoArr.map((el, i) => (
-            el && isVideo(el[0]) && <div
+            !isVideo(el) && <img
+                key={`recipePhoto${i}`}
+              style={{ width: '400px', height: '400px', borderRadius:'7px'}}
+              src={el} alt='RecipePhoto' />}</div>))
+        }
+
+        {videoArr.map((el,i)=>(
+          el&&isVideo(el[0])&&<div
             key={`videoDiv${i}`}
               style={{
                 display: 'flex',
@@ -243,6 +253,31 @@ const SingleRecipePage = () => {
               })}
             </div>
           </div>
+                display: 'inline',
+                marginBottom:'10px',
+                padding:'0',
+                width: "600px",
+                height: "600px",
+
+              }} />
+
+            <button
+              key={`videoRecactPlayButton${i}`}
+              style={{ maxHeight: '48px' }}
+              className='btn-category-header'
+              onClick={e => {
+                e.preventDefault()
+                el[2](play => !play)
+              }}>{el[1] ? 'Pause' : 'Play'}</button>
+
+          </div>
+        ))}
+      </div>
+
+    <div id="author-info">
+      <div id="top-author-info">
+        <div id="author-image">
+            <img className="profileCircleRecipe" src={(currentRecipe?.author?.profilePic) ? currentRecipe?.author?.profilePic : defaultPhoto} alt="profile" />
         </div>
         <div id="author-bio-container">
           <div id="author-bio">
@@ -304,6 +339,28 @@ const SingleRecipePage = () => {
                   <img className="profileCircle" id="comment-profileCircle" src={comment.user.profilePic} alt="author" />
                   <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
                   {!canEdit && <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>}
+      )
+    })}
+    <div id="add-comment-box">
+      <button className="commentButtons" onClick={()=>setCanComment(true)}>Comment on this jont</button>
+      {canComment && newCommentBox}
+    </div>
+    <div id="comments-section">
+      <h1>{currentRecipeComments?.length} comments </h1>
+      {currentRecipeComments?.map((comment,i) => {
+        return (
+          <div id="comment" key={`comment${i}`}>
+            <div id="comment-image-username-date">
+              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic ? comment.user.profilePic : defaultPhoto} alt="author"/>
+              <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
+              <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>
+            </div>
+            <p id="comment-text">{comment.comment}</p>
+              {(sessionUser && sessionUser.id === comment.userId) &&
+                <div id="comment-owner-buttons">
+                  <button className="commentButtons" onClick={()=> setCanEdit(true)}>Edit</button>
+                  {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
+                  <button className="commentButtons" onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
                 </div>
                 {(thisIsMyComment) &&
                   <div id="comment-buttons-container">

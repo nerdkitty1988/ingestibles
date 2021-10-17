@@ -87,16 +87,11 @@ const Recipes = () => {
             <div className="home-content-explore-wrap">
               <h2>Recipes</h2>
               <div className={`home-content-explore-category home-content-explore-category-recent clearfix`}>
-                <NavLink
-                  to={'/recipes'}
-                  className="home-content-explore-link"
-                >
-                  <h3>
-                    <span className="anchor-text">Most Recent</span>
-                    &nbsp;
-                    <i className="fas fa-angle-right fa-2x"></i>
-                  </h3>
-                </NavLink>
+                <h3>
+                  <span className="anchor-text">Most Recent</span>
+                  &nbsp;
+                  <i className="fas fa-angle-right fa-2x"></i>
+                </h3>
                 <div className="home-content-explore-category-wrap ">
                   <div id="recentRecipes">
                     {recRecipes?.map((recRecipe,i) => (
@@ -123,7 +118,8 @@ const Recipes = () => {
                             </NavLink>
                           </strong>
                           <span className="ible-author">
-                            &nbsp;by&nbsp;
+                            &nbsp;by&nbsp;{recRecipe?.author?.username}
+                            {/* &nbsp;by&nbsp;
                             <NavLink
                               to={`/users/${recRecipe?.author?.id}`}
                             >
@@ -131,16 +127,16 @@ const Recipes = () => {
                                 recRecipe?.author
                                   ?.username
                               }
-                            </NavLink>
+                            </NavLink> */}
                           </span>
-                          <span className="ible-channel">
+                          {/* <span className="ible-channel">
                             &nbsp;in&nbsp;
                             <NavLink
                               to={`/recipes/${recRecipe?.tags[0]?.name?.toLowerCase()}`}
                             >
                               {recRecipe?.tags[0]?.name?.toLowerCase()}
                             </NavLink>
-                          </span>
+                          </span> */}
                           <p className="ible-channel">
                             Created on&nbsp;
                             <span>
@@ -162,17 +158,12 @@ const Recipes = () => {
                 </div>
               </div>
 
-              <div>
-                <NavLink
-                  to={'/recipes'}
-                  className="home-content-explore-link"
-                >
-                  <h3>
-                    <span className="anchor-text">Previous</span>
-                    &nbsp;
-                    <i className="fas fa-angle-right fa-2x"></i>
-                  </h3>
-                </NavLink>
+              <div className={`home-content-explore-category home-content-explore-category-previous clearfix`}>
+                <h3>
+                  <span className="anchor-text">Previous</span>
+                  &nbsp;
+                  <i className="fas fa-angle-right fa-2x"></i>
+                </h3>
                 <div>
                   <div id="recentRecipes">
                     {prevRecipes?.map((prevRecipe,i) => (
@@ -197,7 +188,8 @@ const Recipes = () => {
                             </NavLink>
                           </strong>
                           <span className="ible-author">
-                            &nbsp;by&nbsp;
+                            &nbsp;by&nbsp;{prevRecipe?.author?.username}
+                            {/* &nbsp;by&nbsp;
                             <NavLink
                               to={`/users/${prevRecipe?.author?.id}`}
                             >
@@ -205,16 +197,16 @@ const Recipes = () => {
                                 prevRecipe?.author
                                   ?.username
                               }
-                            </NavLink>
+                            </NavLink> */}
                           </span>
-                          <span className="ible-channel">
+                          {/* <span className="ible-channel">
                             &nbsp;in&nbsp;
                             <NavLink
                               to={`/recipes/${prevRecipe?.tags[0]?.name?.toLowerCase()}`}
                             >
                               {prevRecipe?.tags[0]?.name?.toLowerCase()}
                             </NavLink>
-                          </span>
+                          </span> */}
                           <p className="ible-channel">
                             Created on&nbsp;
                             <span>
