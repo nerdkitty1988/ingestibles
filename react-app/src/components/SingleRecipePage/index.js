@@ -17,6 +17,7 @@ const SingleRecipePage = () => {
   const [comments, setComments] = useState([])
   const [canComment, setCanComment] = useState(false);
   const [canEdit, setCanEdit] = useState(false)
+  const [commenting, setCommenting] = useState(false)
   const history = useHistory();
   // async function retrieveRecipe() {
   //   const recipeFetch = await fetch(`/api/recipes/${recipeId}`)
@@ -98,7 +99,7 @@ const SingleRecipePage = () => {
   let newCommentBox;
   if(sessionUser) {
     newCommentBox = (
-      <NewComment currentRecipe={currentRecipe} setCanComment={setCanComment} setComments={setComments} />
+      <NewComment currentRecipe={currentRecipe} setCanComment={setCanComment} setComments={setComments} setCommenting={setCommenting} />
     )
    }
   else {
@@ -142,31 +143,58 @@ const SingleRecipePage = () => {
     //console.log("newComments =======>>>>", newComments.comments)
     return setComments(newComments.comments)
   }
+  let singularOrPlural;
+  if(currentRecipe?.comments?.length > 1){
+    singularOrPlural = "Comments"
+  }else {
+    singularOrPlural = "Comment"
+  }
+  const postingComment = () => {
+    setCanComment(true)
+    setCommenting(true)
+  }
 
+  let innerWhiteBox;
+  if(commenting){
+    innerWhiteBox = (
+      <>
+        {canComment && newCommentBox}
+      </>
+    )
+  } else {
+    innerWhiteBox = (
+      <>
+      <button id="post-comment-button" onClick={()=> postingComment()}><i className="fas fa-comments" id="fasComments"></i>Post Comment</button>
+      </>
+    )
+  }
 // Code about Likes end here
+  console.log(currentRecipe)
+
   return (
     <div id="main">
     <div id="recipe-info">
-      <h1>{currentRecipe.title}</h1>
-      <p>By {currentRecipe?.author?.username} {">"}</p>
+      <h1 id="recipe-title">{currentRecipe.title}</h1>
+      <p id="author-and-tags">By {currentRecipe?.author?.username} {">"} {currentRecipe.tags && currentRecipe.tags[0].name.charAt(0).toUpperCase() + currentRecipe.tags[0].name.slice(1)}</p>
+      <p id="likes-display"><i className="fas fa-heart"
+              style={{ color: '#F27D21' }} id="likeButton"></i>{currentRecipe.likes && currentRecipe.likes.length} </p>
     </div>
-    <div id="like-license-buttons">
-        <button id="like-button" onClick={likeRecipe} >
-          {likeResponse? <i className="fas fa-heart"
-            style={{ color: '#F27D21' }} id="likeButton"></i>:<i className="fas fa-heart" id="likeButton"></i>} Like
-
-      </button>
-    </div>
+    <div id="like-button-and-photo-container">
+      <div id="like-license-buttons">
+          <button id="like-button" onClick={likeRecipe} >
+            {likeResponse? <i className="fas fa-heart"
+              style={{ color: '#F27D21' }} id="likeButton"></i>:<i className="fas fa-heart" id="likeButton"></i>} Like
+        </button>
+      </div>
       <div
       style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap'}}>
         {media1To5?.map( (el, i) => (
           <div key={`mediaDiv${i}`}
             >{
             !isVideo(el) && <img
-              style={{ width: '400px', height: '400px'}}
+              style={{ width: '600px', height: '600px'}}
               src={el} alt='RecipePhoto' />}</div>))
         }
-
         {videoArr.map((el,i)=>(
           el&&isVideo(el[0])&&<div
             key={`videoDiv${i}`}
@@ -189,7 +217,6 @@ const SingleRecipePage = () => {
                 width: "600px",
                 height: "600px",
               }} />
-
             <button
               key={`videoRecactPlayButton${i}`}
               style={{ maxHeight: '48px' }}
@@ -198,11 +225,10 @@ const SingleRecipePage = () => {
                 e.preventDefault()
                 el[2](play => !play)
               }}>{el[1] ? 'Pause' : 'Play'}</button>
-
           </div>
         ))}
       </div>
-
+    </div>
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
@@ -230,6 +256,19 @@ const SingleRecipePage = () => {
     <div id="comment-button-container">
       <a href="#comments-section" id="comment-button"><i className="fas fa-comments" id="fasComments"></i>Comment</a>
     </div>
+    <div id="ingredients-container">
+      <h1 id="ingredients-title">Ingredients</h1>
+      <div id="ingredients-list-container">
+        <ul id="ingredients-list">
+          {currentRecipe?.ingredients?.map((ingredient, index) => {
+            return (
+              <li key={'currentIngredient'+index} id="ingredient">{ingredient.info}</li>
+            )
+          })}
+        </ul>
+      </div>
+      <a href="#comments-section" id="comment-button"><i className="fas fa-comments" id="fasComments"></i>Comment</a>
+    </div>
     {currentRecipe?.instructions?.map((instruction, index) => {
       return (
         <div key={'currentRec'+index} id="step">
@@ -239,16 +278,24 @@ const SingleRecipePage = () => {
       )
     })}
     <div id="add-comment-box">
-      <button onClick={()=>setCanComment(true)}>Comment on this jont</button>
-      {canComment && newCommentBox}
+      <div id="user-image">
+        <img id="comment-profileCircle" className="profileCircle" src={sessionUser.profilePic} alt="profile"/>
+      </div>
+      <div id="inner-white-box">
+        {innerWhiteBox}
+      </div>
+      <p id="comment-note">If you ain't got nothin' nice to say, don't say nothin' at all.</p>
+      <div id="post-comment-button-div">
+        <button id="little-post-comment-button" type='submit' form="comment-form">Post</button>
+      </div>
     </div>
     <div id="comments-section">
-      <h1>{currentRecipeComments?.length} comments </h1>
+      <h1>{currentRecipeComments?.length} {singularOrPlural} </h1>
       {currentRecipeComments?.map((comment,i) => {
         return (
           <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
-              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic} alt="author"/>
+              <img className="profileCircle" id="comment-profileCircle" src={comment.user.profilePic} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
               <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>
             </div>

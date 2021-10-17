@@ -1,0 +1,17 @@
+#comment-form {
+  width: 90%;
+  height: 80%;
+
+}
+
+#comment-textarea {
+  border: none;
+  resize: none;
+  width: 95%;
+  height: 60%;
+  margin: 20px;
+  position: relative;
+  right: 20px;
+  outline: none;
+  font-size: 16px;
+}
