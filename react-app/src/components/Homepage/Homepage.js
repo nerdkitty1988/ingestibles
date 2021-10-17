@@ -194,7 +194,7 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
+						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{tagName1}</span>
 								&nbsp;
@@ -250,7 +250,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
+						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName2}`}</span>
 								&nbsp;
@@ -306,7 +306,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
+						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName3}`}</span>
 								&nbsp;
@@ -362,7 +362,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName4 && tagName4!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
+						{tagName4 && tagName4!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName4}`}</span>
 								&nbsp;
@@ -418,7 +418,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName5 && tagName5 !== 'Undefined' && <div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
+						{tagName5 && tagName5 !== 'Undefined' && <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{`${tagName5}`}</span>
 								&nbsp;

@@ -97,9 +97,9 @@ def seed_media():
     media5071 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FND/AS3E/KL0VG22V/FNDAS3EKL0VG22V.jpg?auto=webp&frame=1&fit=bounds&md=0b5e6642d10fbde83fa714ed99905f1f', recipeId=17)
     media5072 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/F7X/SEPT/KL0VG28U/F7XSEPTKL0VG28U.gif?format=mp4', recipeId=17)
+        mediaUrl='https://content.instructables.com/ORIG/F7X/SEPT/KL0VG28U/F7XSEPTKL0VG28U.gif', recipeId=17)
     media5073 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/F48/5C3Z/KL0VGCCF/F485C3ZKL0VGCCF.gif?format=mp4', recipeId=17)
+        mediaUrl='https://content.instructables.com/ORIG/F48/5C3Z/KL0VGCCF/F485C3ZKL0VGCCF.gif', recipeId=17)
 
 
 
