@@ -62,12 +62,7 @@ def seed_users():
     db.session.add(bobbie)
     db.session.add(tim)
     db.session.add(angelina)
-    db.session.add(dummy6)
-    db.session.add(dummy7)
-    db.session.add(dummy8)
-    db.session.add(dummy9)
-    db.session.add(dummy10)
-    db.session.add(dummy11)
+
     db.session.add(user701)
     db.session.add(user702)
     db.session.add(user703)
