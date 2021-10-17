@@ -15,7 +15,7 @@ def seed_likes():
         userId=1, recipeId=8)
     like706 = Like(
         userId=1, recipeId=9)
-    
+
     like707 = Like(
         userId=3, recipeId=1)
     like708 = Like(
@@ -56,7 +56,7 @@ def seed_likes():
         userId=12, recipeId=5)
     like724 = Like(
         userId=2, recipeId=5)
-    
+
     like725 = Like(
         userId=3, recipeId=6)
     like726 = Like(
@@ -80,6 +80,14 @@ def seed_likes():
     like733 = Like(
         userId=5, recipeId=10)
 
+    like10 = Like(
+        userId=1, recipeId=10)
+    like11 = Like(
+        userId=1, recipeId=10)
+    like12 = Like(
+        userId=1, recipeId=10)
+    like13 = Like(
+        userId=3, recipeId=1)
 
     db.session.add(like701)
     db.session.add(like702)

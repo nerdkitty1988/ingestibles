@@ -245,7 +245,7 @@ const SingleRecipePage = () => {
       )
     })}
     <div id="add-comment-box">
-      <button onClick={()=>setCanComment(true)}>Comment on this jont</button>
+      <button className="commentButtons" onClick={()=>setCanComment(true)}>Comment on this jont</button>
       {canComment && newCommentBox}
     </div>
     <div id="comments-section">
@@ -263,7 +263,7 @@ const SingleRecipePage = () => {
                 <div id="comment-owner-buttons">
                   <button className="commentButtons" onClick={()=> setCanEdit(true)}>Edit</button>
                   {canEdit &&  <EditComment currentRecipe={currentRecipe} setCanEdit={setCanEdit} setComments={setComments} commentId={comment.id}/>}
-                  <button className="commentButtons"onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
+                  <button className="commentButtons" onClick={(e)=> deleteComment(e, comment.id)}>Delete</button>
                 </div>
                 }
         </div>
