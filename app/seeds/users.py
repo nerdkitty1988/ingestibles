@@ -13,20 +13,7 @@ def seed_users():
         username='tim', email='tim@aa.io', password='password', biography='If it is healthy, I will try it.', profilePic='https://media.npr.org/assets/img/2018/04/17/npr_84364431_full_vert-ba5ff3e9efe3084b63ae9d7cafc5dd409a73bd51-s300-c85.jpg')
     angelina = User(
         username='angelina', email='angelina@aa.io', password='password', biography='Pumpkin spice time has arrived!', profilePic='https://southblueprint.com/wp-content/uploads/2020/10/ECC21D0A-778A-48B1-BF16-DF1B1C5199FA-53CE2E76-1575-42DA-94CA-17B4D54DC155-900x600.jpg')
-    
-    # dummy 6-11 to be replaced by other seed data of users
-    dummy6 = User(
-        username='1', email='1@aa.io', password='password')
-    dummy7 = User(
-        username='2', email='2@aa.io', password='password')
-    dummy8 = User(
-        username='3', email='3@aa.io', password='password')
-    dummy9 = User(
-        username='4', email='4@aa.io', password='password')
-    dummy10 = User(
-        username='5', email='5@aa.io', password='password')
-    dummy11 = User(
-        username='6', email='7@aa.io', password='password')
+
 
     user701 = User(
         username='happyHug', email='happyhug@aa.io', password='password', biography='I love food!')
@@ -69,18 +56,6 @@ def seed_users():
     user903 = User(
         username='rickroll', email='rick@roll.com', password='password', biography="We're no strangers to love. You know the rules and so do I. A full commitment's what I'm thinking of. You wouldn't get this from any other guy. I just wanna tell you how I'm feeling. Gotta make you understand. Never gonna give you up. Never gonna let you down. Never gonna run around and desert you. Never gonna make you cry. Never gonna say goodbye. Never gonna tell a lie and hurt you", profilePic='https://cdn.vox-cdn.com/thumbor/7BMHi-0CALa3odBFMD-MJK9Ye4Y=/0x44:1268x889/1200x800/filters:focal(0x44:1268x889)/cdn.vox-cdn.com/uploads/chorus_image/image/47684009/Screenshot_2014-07-19_15.24.57.0.png')
 
-    dummy6 = User(
-        username='1', email='1@aa.io', password='password')
-    dummy7 = User(
-        username='2', email='2@aa.io', password='password')
-    dummy8 = User(
-        username='3', email='3@aa.io', password='password')
-    dummy9 = User(
-        username='4', email='4@aa.io', password='password')
-    dummy10 = User(
-        username='5', email='5@aa.io', password='password')
-    dummy11 = User(
-        username='6', email='7@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -101,7 +76,7 @@ def seed_users():
     db.session.add(user301)
     db.session.add(user302)
     db.session.add(user303)
-    
+
     db.session.add(user501)
     db.session.add(user502)
     db.session.add(user503)
@@ -114,12 +89,6 @@ def seed_users():
     db.session.add(user902)
     db.session.add(user903)
 
-    db.session.add(dummy6)
-    db.session.add(dummy7)
-    db.session.add(dummy8)
-    db.session.add(dummy9)
-    db.session.add(dummy10)
-    db.session.add(dummy11)
 
 
     db.session.commit()
