@@ -360,6 +360,720 @@ def seed_instructions():
             directions="VERDICT:  Taste: I think these trail mix pouches actually taste quite good, even though they challenge the sensory experience of eating trail mix a bit. The first impression is that you are stuffing, well, plastic in your mouth, and the plastic can have a very slight salty flavor from the agar, but as soon as you start chewing, the plastic disappears, and you get all the goodness from the trail mix. If you really think about it, the edible plastic adds a slight, chewy gummy-bear texture in the background, but it goes perfectly with the dried fruit.  Durability: The plastic holds up pretty well to scrunching, even though it may rip in areas that are very thin. However, the seams are a bit fragile and can easily open so that trail mix falls out. Also, the plastic is sensitive to humidity. So I probably wouldn't stuff these goodie bags in the kids' pockets if I knew they were going to play in the rain or stick their hands in the pocket a thousand times to feel if the treat is still there (even though I think I might actually slip one of these in my own pocket, hmmm, but for the kids, maybe put it as a surprise in the sack lunch for school). I think the best way to store and carry these plastic pockets with trail mix would be in a real food-grade plastic bag or container.  I hope you liked this instructable! If you did, please vote for me in the Science of Cooking contest and Pocket-Sized contest. Thank you! Also, if you try this out, please share the result and any modifications in the comments!")
 
 
+    instruction50101 = Instruction(
+        recipeId=11,
+        imageUrl="https://content.instructables.com/ORIG/FLR/R3EN/IBM254HX/FLRR3ENIBM254HX.jpg?auto=webp&frame=1&fit=bounds&md=423007502182c04a377df3c7240a85e7", stepTitle="Dice the Tomatoes", directions="""
+            Start with a large Roma tomato.
+
+            Use a sharp knife to slice the tomato lengthwise into quarters.
+
+            Use your knife and remove the seeds from each tomato quarter.
+
+            Take each tomato quarter and slice it lengthwise into at least five strips.
+
+            Rotate the sliced tomato quarter horizontally and cut the strips into a dice.
+
+            Repeat for all of the tomatoes :)
+
+            For this recipe I used three large Roma tomatoes.
+        """)
+    instruction50102 = Instruction(
+        recipeId=11,
+        imageUrl="https://content.instructables.com/ORIG/F9C/HB5S/IBM250ND/F9CHB5SIBM250ND.jpg?auto=webp&frame=1&fit=bounds&md=6c87d6389a05d75e0c74619a3de9e472", stepTitle="Prepare the Bruschetta Mix", directions="""
+            This part is really easy!
+
+            Placed your diced tomatoes into a bowl.
+
+            Add two tablespoons of extra virgin olive oil.
+
+            Add three tablespoons of shredded Parmesan cheese.
+
+            Add three tablespoons of diced/shredded cilantro.
+
+            Add 1 teaspoon of garlic powder or two teaspoons of diced roasted garlic
+
+            Mix everything up with a spoon and smile!
+
+            Note: Traditional bruschetta uses fresh basil instead of cilantro. We used cilantro since we had a "bunch" on hand for the guacamole.
+        """)
+    instruction50103 = Instruction(
+        recipeId=11,
+        imageUrl="https://content.instructables.com/ORIG/FZY/1NJK/IBM250PI/FZY1NJKIBM250PI.jpg?auto=webp&frame=1&fit=bounds&md=790d9aa6830bd08df050af69d1d6b65d", stepTitle="Prepare the Guacamole", directions="""
+            This is another really easy step!
+
+            Slice open two avocados and use a spoon to scoop the fruit away from the skin.
+
+            Place the avocado into a bowl and remove the big seeds!
+
+            To the avocados add the following:
+
+                Juice of two fresh limes
+                3 tablespoons diced/shredded cilantro
+                1 teaspoon kosher salt
+                1 teaspoon garlic powder
+                1/4 teaspoon cayenne pepper
+                Now mash it all together until smooth!
+
+            Note: Traditional guacamole would also include a small diced red onion. I don't like raw onions so I don't add them to my guacamole!
+        """)
+    instruction50104 = Instruction(
+        recipeId=11,
+        imageUrl="https://content.instructables.com/ORIG/FLJ/75ZH/IBM250PJ/FLJ75ZHIBM250PJ.jpg?auto=webp&frame=1&fit=bounds&md=86b352d519127646d69c517db940ad67", stepTitle="Toast the Bread and Assemble", directions="""
+            Slice a loaf of French bread on a diagonal for bite sized toasts.
+
+            Brush each side of the bread with olive oil.
+
+            The olive oil adds flavor and helps the bread look beautiful after toasting!
+
+            Toast the bread on your grill over High heat.
+
+            Do your toasting with the lid up and pay attention! It is easy to go from "beautifully toasted" to "burnt to a crisp".
+
+            Depending upon your grill you will need to toast for about three minutes per side.
+
+            You could also do this in the oven using the broiler. You know...just in case it's raining or something :)
+
+            Remove the toasted bread from the grill.
+
+            Spread a layer of the fresh guacamole onto the toast.
+
+            Pile the fresh bruschetta on top of the guacamole.
+
+            Take a big bite and smile!
+
+            I hope you enjoyed this Instructable! I would appreciate any votes you are willing to provide!
+        """)
+
+
+
+
+
+    instruction50201 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FT8/D0US/KUGYA4VW/FT8D0USKUGYA4VW.jpg?auto=webp&frame=1&fit=bounds&md=5208bb94e2aa9bdb2a68c7040b057950", stepTitle="Prepare the Meat", directions="This is a large piece of meat I'm working with and we need to do a little trick to season it properly from the inside. let's cut about 10 slices into the meat. Make sure you don't cut all the way through, the bottom has to stay intact.")
+    instruction50202 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FNX/H9CS/KUGYA4VX/FNXH9CSKUGYA4VX.jpg?auto=webp&frame=1&fit=bounds&md=9917f5f930438cb067714d99790465ac", stepTitle="Season the Meat", directions="Let's make the marinade first. simply mix 3-4 tbsp olive oil, 2 tsp red paprika, 1 tsp salt, 1 tbsp whole grain mustard, 3 tbsp soy sauce, 1 tbsp dijon mustard and 1 tsp pepper in a small bowl or cup. Then place the pork collar into a deep baking dish, pour the marinade over it and use your hands to properly coat the meat with the marinade.")
+    instruction50203 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FBS/GORU/KUGYA4VY/FBSGORUKUGYA4VY.jpg?auto=webp&frame=1&fit=bounds&md=26fe32d2f4e596829cb94efa4f117c35", stepTitle="Onion Base Now", directions="Remove the seasoned meat from the dish for a bit. Roughly chop/cut 5-6 smaller onions and add them to the baking dish. Spread them out evenly, to form a nice layer.")
+    instruction50204 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FXM/HUKY/KUGYA4VZ/FXMHUKYKUGYA4VZ.jpg?auto=webp&frame=1&fit=bounds&md=c7a92090d9566f2c8d5788304007034e", stepTitle="Time for the Bacon", directions="Place the meat back into the baking dish and insert a slice of smoked bacon into every cut that you have made previously. To make this dish more fragrant, season it with Italian seasonings. Secure the ends with a couple of toothpicks, so the meat doesn't 'open' too much while baking.")
+    instruction50205 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FEK/K17R/KUGYA4W0/FEKK17RKUGYA4W0.jpg?auto=webp&frame=1&fit=bounds&md=6caf43a787cf567688e3b56479d614bd", stepTitle="Time to Bake", directions="Cover the baking dish with aluminum foil and bake in the oven at 200-220C or 400-425F for about 90 minutes.")
+    instruction50206 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FOC/KKU2/KUGYA4W1/FOCKKU2KUGYA4W1.jpg?auto=webp&frame=1&fit=bounds&md=5f83fb387b7edc4234e2aa54beb28f4d", stepTitle="Time to Add Potatoes & Carrots", directions="""90 minutes later, the meat should be quite soft. Make a fork test, it should slide in easily. If it's not the case, give it 20 more minutes.
+
+        Now cut a few carrots into bigger chunks and drop them into the baking dish, nicely around the meat. Next come the potatoes, place them over the carrots all over the meat again. Make sure to fill all the empty space. Season the potatoes with some olive oil, salt and pepper.
+
+        Put the baking dish back into the oven, this time without the foil cover. Give it 45 or so more minutes so the potatoes bake fully too.""")
+    instruction50207 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/F03/WHTR/KUGYA4W3/F03WHTRKUGYA4W3.jpg?auto=webp&frame=1&fit=bounds&md=0dad81c5b5018bf27c0f18752e09adb4", stepTitle="We Are Done", directions="Once the meat is tender and potatoes catch some nice golden brown color, we are done and it's time to serve.")
+    instruction50208 = Instruction(
+        recipeId=12,
+        imageUrl="https://content.instructables.com/ORIG/FKM/OLJI/KUGYA4W7/FKMOLJIKUGYA4W7.jpg?auto=webp&frame=1&fit=bounds&md=c9e64bde0b7c49942a95c294d18f7c71", stepTitle="Serving Time", directions="""Slice the meat now, go through the cuts we have made at the beginning. I like to use everything from the dish, including the onions and carrots, plus the potatoes of course. There is a lot of juices and drippings in the baking dish, make sure to use them! Pour a few tablespoons of this liquid goodness over the meat and potatoes.
+
+        Thanks for reading,
+
+        Matej.""")
+
+
+
+
+    instruction50301 = Instruction(
+        recipeId=13,
+        imageUrl="https://content.instructables.com/ORIG/FM5/Y8BG/IJRFGQNY/FM5Y8BGIJRFGQNY.jpg?auto=webp&frame=1&fit=bounds&md=1531abdddefa403cc4a0ff1f2ebc9557", stepTitle="Melt the Chocolate", directions="""
+            Melt the chocolate in the top of a double boiler, or by placing it in a heatproof bowl and microwaving in 15-second blasts until the chocolate is mostly melted. Once the chocolate is mostly melted, stir it gently; the remaining bits should melt in the residual heat. Let the melted chocolate cool for 5-10 minutes. While it cools, line the inside of six small bowls with plastic wrap, pressing the plastic wrap in as smoothly as you can to smoothe it into the shape of the bowl (a few small wrinkles are OK). Use enough plastic wrap so that it slightly hangs over the sides, which will make removal easier later. If you don’t have six bowls for molding, this is ok: you can make the chocolate bowls a few at a time and re-use the same molding bowls.
+        """)
+    instruction50302 = Instruction(
+        recipeId=13,
+        imageUrl="https://content.instructables.com/ORIG/FX7/NQSM/IJRFGPRT/FX7NQSMIJRFGPRT.jpg?auto=webp&frame=1&height=1024&fit=bounds&md=433e62a28bd07e5aaf1b8666f32fc135", stepTitle="Brush the Chocolate on the Plastic", directions="""
+            Using either your small spatula or pastry brush, spread a thin and even layer of chocolate inside of the plastic wrap lining each of the molding bowls, taking special attention to spread the chocolate on the sides. Don’t go too nuts: you’ll put a second layer of chocolate in the bowls, so only use about ½ of the melted chocolate for this step. Once you’ve put a layer of chocolate in each plastic-lined bowl, place them in the refrigerator for about 10 minutes. This will help them “set”.
+        """)
+    instruction50303 = Instruction(
+        recipeId=13,
+        imageUrl="https://content.instructables.com/ORIG/FXZ/3XSR/IJRFGPQ6/FXZ3XSRIJRFGPQ6.jpg?auto=webp&frame=1&fit=bounds&md=6196c58008ddb60275b9de218c705de4", stepTitle="Add Another Layer of Chocolate and Chill", directions="""
+            After 10 minutes, remove each bowl unit from the refrigerator. The initial layer of chocolate should be firm and look slightly matte. Brush the inside of each bowl with another layer of chocolate, once again giving special attention to the sides of each bowl.Return the molding bowls to the refrigerator, and let them set for 10-15 minutes. Remove from the refrigerator, and use the plastic wrap overhanging the sides to pull out the chocolate bowl from the molding bowl. As gently as possible, peel the plastic wrap off. It should come off very easily, and you will be left with chocolate bowls. Keep the bowls in the refrigerator, covered in plastic, until ready to fill. When ready, gently unsold the plastic and fill.
+        """)
+
+
+
+
+
+
+
+    instruction50401 = Instruction(
+        recipeId=14,
+        imageUrl="https://content.instructables.com/ORIG/FIA/3ZLR/INPE8NHN/FIA3ZLRINPE8NHN.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e9577c8b6237a94e0b24ae6b651edee0", stepTitle="Slice the Spice", directions="""
+            With a knife, cut your peppers into pieces. I cut the habaneros in half and sliced the jalapeno.
+
+            If you will be using dried peppers, you don’t need to cut them.
+        """)
+    instruction50402 = Instruction(
+        recipeId=14,
+        imageUrl="https://content.instructables.com/ORIG/FZS/II0X/INPE8SZQ/FZSII0XINPE8SZQ.jpg?auto=webp&frame=1&width=1024&fit=bounds&md=34b9a13020b4e29cbd31b584b852da05", stepTitle="Hot Water", directions="""
+            1. Place the peppers into a jar or mug and then pour in 1 cup of boiling hot water.
+            2. Wait for the water to cool.
+            3. When the water has reached room temperature, it should be spicy and ready to use.
+            Don’t sniff the water, it might make your nose cry.
+
+            You only really need ½ a cup of water to make a batch of gummies, but it’s always good to have extra just in case you spill or want to make a second batch.
+        """)
+    instruction50403 = Instruction(
+        recipeId=14,
+        imageUrl="https://content.instructables.com/ORIG/FZG/A30A/INPE8NHV/FZGA30AINPE8NHV.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=a773a8d42b584eb5620337586e92ddeb", stepTitle="Mix", directions="""
+            1. Measure out 1/2 cup of spicy water into a microwavable measuring glass.
+            2. Microwave for 2 minutes.
+            3. Remove from microwave.
+            4. Stir in in 2 tbsp sugar.
+            5. Stir in 1/2 tsp Kool-Aid mix.
+            6. Stir in 2 packets of unflavored gelatin.
+            7. If a lot of gelatin is left undissolved, microwave the mixture for 30 seconds and stir again.
+            8. Scoop out any chunks of gelatin that may be floating on top.
+        """)
+    instruction50404 = Instruction(
+        recipeId=14,
+        imageUrl="https://content.instructables.com/ORIG/FAJ/XTK5/INPE8NHS/FAJXTK5INPE8NHS.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=fda7b8d8e2e9bb2c89cc285dbaf6d993", stepTitle="Pour and Wait", directions="""
+            1. Pour the mixture into a candy mold.
+            2. Place in refrigerator for an hour or so to set, or in the freezer for 20 minutes, or just leave them out at room temperature for a few hours.
+            3. Once they've solidified, you can remove them from mold and enjoy.
+            I don’t know how to quantitatively measure the spiciness of each of the gummies I made using the different peppers. So, I’ll just let you know how many peppers I put per cup of water and I’ll try to describe the spice level.
+
+            2 Habaneros, 1 cup Water: (mixed with Orange Kool-Aid) Spiciest of the three. Has a bite to it, but doesn’t set your mouth on fire. Wouldn’t want to pop a whole one into my mouth, but if I did it wouldn’t be terrible. Best enjoyed squirrel-style, (in tiny bites over a longer period of time). Could eat more than one but would rather have something less spicy.
+
+            1 Jalapeno, 1 cup Water: (mixed with Green Apple Kool-Aid) Moderately spicy. Just enough spice it give it a kick. The heat isn’t overpowering and doesn’t distract from the overall flavor of the gummy. Green Apple Kool-Aid adds a sour taste which made this gummy sweet, sour and spicy. Strange, yet tasty.
+
+            5 Dried Japanese Chili Peppers, 1 cup Water: (mixed with Cherry Kool-Aid) Spice is barely noticeable, would feed these to a child.
+        """)
+
+
+
+
+    instruction50501 = Instruction(
+        recipeId=15,
+        imageUrl="https://content.instructables.com/ORIG/FY2/SR4E/HIGFJMJH/FY2SR4EHIGFJMJH.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=bbb60be5c2992da2089e03d9ec95d27b", stepTitle="The Aroma Base", directions="""
+            the following instructions will be for one drink!
+
+            with a sharp knife, peel away some slices of the lemon zest and put them in a longdrink glass. (be carefull not to cut the white part of the lemon, as it is bitter)
+            add one twig of fresh mint.
+
+            crush the lemon and the mint with a muddler or something similar. this will make the aromas and essential oils come out.
+        """)
+    instruction50502 = Instruction(
+        recipeId=15,
+        imageUrl="https://content.instructables.com/ORIG/FC0/A2SU/HIGFJMJW/FC0A2SUHIGFJMJW.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=587c8897b9225d8995085315a15f4033", stepTitle="Gin & Juice & Gingerale", directions="""
+            put 3 cubes of ice in the glass and add 4 cl (40 ml) of gin.
+
+            add a dash of blackcurrant juice (you can also leave that out if you don't have any)
+
+            fill the rest of the glass half with cranberry juice and half with ginger ale.
+        """)
+    instruction50503 = Instruction(
+        recipeId=15,
+        imageUrl="https://content.instructables.com/ORIG/FG8/5PB2/HIGFFXAT/FG85PB2HIGFFXAT.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=17c34506d600aff806170d56a097b46e", stepTitle="Enjoy!", directions="""
+            add a slice of lemon for decoration and enjoy your drink!
+        """)
+
+
+
+
+    instruction50601 = Instruction(
+        recipeId=16,
+        imageUrl="https://content.instructables.com/ORIG/FFE/41L1/H8AZCSWT/FFE41L1H8AZCSWT.jpg?auto=webp&frame=1&fit=bounds&md=d84fed2a6e3087367289fbe9ae2a5a00", stepTitle="Mixing It Up", directions="""
+            TIPS
+            - Cabbage is the key "crunch" factor here so dice to your preference.
+            - Mix a teaspoon of salt into the chopped lettuce; the salt will help extract excess water, which can be poured out after a few minutes of sitting.
+
+            Now mix all of the ingredients up in a large bowl until even.
+
+            Time: 2 minutes
+
+            TIP
+            - Start by making only 10 at a time and increase as you get quick at making them.
+            - Microwave a spoonful of the mix for about 45 seconds or until it's cooked. Then add salt, pepper, and/or soy sauce according to your preference.
+        """)
+    instruction50602 = Instruction(
+        recipeId=16,
+        imageUrl="https://content.instructables.com/ORIG/FQK/V1VP/H8AZCT74/FQKV1VPH8AZCT74.jpg?auto=webp&frame=1&fit=bounds&md=539bf0eaa0a57149ee1e60a981dde4a6", stepTitle="Forming the Gyozas", directions="""
+            Time: about 2 minutes to make 10 gyozas
+
+            - Place a gyoza wrapper in your hand and then a small spoonful of the filling in the center of the wrapper.
+            - Wet a finger tip and draw a quick half-circle ring inside the edge of the gyoza wrapper (basically around the filling).
+            - Pick up and pinch together the wet edge and its opposite edge at the center (right above the filling). Then pinch a little more to either side, leaving the two ends open.
+
+            TIP
+            Cover unused wrappers with a clean kitchen towel to keep them from drying.
+        """)
+    instruction50603 = Instruction(
+        recipeId=16,
+        imageUrl="https://content.instructables.com/ORIG/FF9/1AM3/H7W5Z2ZL/FF91AM3H7W5Z2ZL.jpg?auto=webp&frame=1&fit=bounds&md=a15e96f46e6208d18749d8cfb6e56cf8", stepTitle="Cooking Them!", directions="""
+            Time: about 10 minutes
+
+            - Lightly oil the pan and put it on medium heat until it's warm (don't overheat or the oil will start to splatter).
+            - Place 10 gyozas in the pan next to each other. The gyozas should sizzle a bit as you place them in the pan.
+            - When the gyozas' bottoms form a slight, golden brown coating, pour enough water until it's about 1/2 inch deep. Then cover the pan with the lid and open once in a while to let the steam out.
+            - When almost all of the water is gone, use the spatula to "work" the sticky gyozas off the pan. The bottom of the gyozas should be covered in more brown spots but are still crispy. Try to keep them together!
+
+            TIPS
+            - Sprinkle some water on the "pasty white" portions of the gyoza wrappers. This will help make the gyozas more presentable when they're done cooking.
+            - Can't finish all 50 gyozas? You can put the uncooked gyozas in the freezer until you need them. Then just defrost them and cook them as you would normally! (It's OK if they're stuck together.)
+        """)
+    instruction50604 = Instruction(
+        recipeId=16,
+        imageUrl="https://content.instructables.com/ORIG/FK7/W7XI/H7UQQYNQ/FK7W7XIH7UQQYNQ.jpg?auto=webp&frame=1&fit=bounds&md=abcebf706fecd1a93d416e51c9521fdc", stepTitle="Eating and Serving Your Work of Art", directions="""
+            Congratulations! You've made your very own gyozas! Now try different ingredients such as:
+
+          - Corn
+          - Peas
+          - Shitake mushrooms
+          - Chicken/beef/shrimp
+          - Tofu (this can be a bit harder to work with, so I'd suggest using firm tofu)
+
+          Enjoy!
+
+          TIP
+          Add some chopped garlic and a tiny bit of sesame oil into the soy sauce.
+        """)
+
+
+
+
+
+    instruction50701 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/FCR/TYKG/KKZG04FO/FCRTYKGKKZG04FO.jpg?auto=webp&frame=1&fit=bounds&md=5067fa1b9fb2de85be18c891bdd3878b", stepTitle="Marinating Chicken", directions="""
+            For Marinating the chicken, mix the following ingredients:
+
+            Here I have taken 1 Kilogram of chicken (with bone) and marinated it by adding:
+
+            1 cup fresh thick curd.
+            2-3 tablespoon ginger garlic paste.
+            Add salt as per taste.
+            1 teaspoon turmeric powder.
+            2 teaspoon red chili powder.
+            Mix everything well and keep it aside for 30-40 minutes.
+
+            pro tip:
+
+            The more time you marinate the chicken, more juicy and flavorful the meat will be. 30 minutes is enough though.
+        """)
+    instruction50702 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/FKN/6XGC/KKZG04FU/FKN6XGCKKZG04FU.jpg?auto=webp&frame=1&fit=bounds&md=45db907e1b55821ce7de1d4679b512b0", stepTitle="Preparation", directions="""
+            While the chicken is marinating lets prep everything required for this recipe
+
+            - Finely slice 1 medium sized onion.
+            - Grind 1 medium sized onion.
+            - Finely Chop 2 tomatoes.
+            - Cut 2 small sized potatoes in small cubes.
+        """)
+    instruction50703 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/F8A/WP8T/KKZG04EQ/F8AWP8TKKZG04EQ.jpg?auto=webp&frame=1&fit=bounds&md=df47bb27a489d4c5a7d0c932e52b414b", stepTitle="Curry Making", directions="""
+            Take a pan and heat 4-5 tablespoon oil (vegetable oil or mustard oil). Here I am using mustard oil because here in India it is said that nonveg tastes better when cooked with mustard oil.
+            Add all the whole spices (bay leaf, black peppercorn, black cardamom, green cardamom, cinnamon stick, cloves) to the hot oil and sauté is for a min.
+            Then add the sliced onions and sauté.
+            cook the onions till they are slightly golden brown.
+            Once the onions turn brown add the grinded onion paste and cook it for 5 minutes
+            Add chopped tomatoes and cook till oil separates.
+        """)
+    instruction50704 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/FY8/NZJD/KKZG04EW/FY8NZJDKKZG04EW.jpg?auto=webp&frame=1&fit=bounds&md=852f5635cdc4c5fb2d6c474a6a05d1d6", stepTitle="Adding Spices", directions="""
+            Adding spices is a spicy affair, specially if you are sensitive to spices, be careful with these since this is a Indian dish, it is medium spicy !
+
+            Add the following spices:
+
+            - 2-3 tablespoon of red chili powder.
+            - 1 tablespoon of turmeric powder.
+            - 2 tablespoon of coriander cumin powder.
+            - Add salt as per taste.
+            - 2-3 tablespoon of chicken masala.
+            Mix all the ingredients and cook for about 3-4 mins.
+        """)
+    instruction50705 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/FZ5/ZHK7/KKZG04ES/FZ5ZHK7KKZG04ES.jpg?auto=webp&frame=1&fit=bounds&md=0ff46f4e0808a1c81d3b063b16501809", stepTitle="Cooking Chicken", directions="""
+            - Once the spices are added and oil separates, we can now directly add our marinated chicken.
+            - Mix the chicken well.
+            - Cover and let the chicken cook for 15 minutes.
+            -  Take the lid off, Add the potatoes and mix everything well.
+            - Add 2 cups of water.
+            - Cover it and let it cook for 10 more minutes.
+            Yummy chicken curry is ready!
+
+            There is one optional step that you can follow to make the curry taste even better.
+        """)
+    instruction50706 = Instruction(
+        recipeId=17,
+        imageUrl="https://content.instructables.com/ORIG/FVU/X3M4/KKZG04FT/FVUX3M4KKZG04FT.jpg?auto=webp&frame=1&fit=bounds&md=347246c24ae06e81f939b42733a0726c", stepTitle="Optional Step", directions="""
+            This is a optional step, but following this step will make the chicken curry even more tasty.
+
+            - Heat a small pan.
+            - Add 1 tablespoon of oil.
+            - Once the oil is hot add 1 teaspoon of cumin seeds. Let it pop.
+            - Then Add 2 tablespoon of chopped ginger and cook it for a min.
+            - Add 7-9 curry leaves and turn off the flame.
+            - add this mixture to the chicken curry.
+            Tada! Chicken curry is ready. Garnish with fresh coriander leaves, Serve hot with rice/ roti and Enjoy.
+
+            If you found this recipe useful, vote for us in one pot challenge! thank you for reading.
+        """)
+
+
+
+
+    instruction50801 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/F2G/Z2IB/KRWGGM0J/F2GZ2IBKRWGGM0J.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=f833406bac42070a5212c1cbd6a6fd14", stepTitle="Pomegranate Seeds", directions="""
+            1. Cut pomegranate and remove the pomegranate seeds.
+            2. We need about 3/4 cup of pomegranate seeds to extract the juice.
+        """)
+    instruction50802 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/FVX/1571/KRWGGLT4/FVX1571KRWGGLT4.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=0f2341542ab64bb276c8d94b31c9714f", stepTitle="Extract Juice", directions="""
+            1. Take a mixer/grinder, and grind 3/4th cup of pomegranate seeds.
+            2. Strain the juice with the help of a strainer and a spoon.
+            3. Keep this juice aside.
+        """)
+    instruction50803 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/FQ3/MUKJ/KRWGGLT3/FQ3MUKJKRWGGLT3.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=9b83f6e6c5d7ee77367ce487248db537", stepTitle="Prep Pomegranate Juice", directions="""
+            1. Add about 1 tablespoon of sugar ( You can adjust according to your taste). I like Ice-cream semi-sweet.
+            2. If you are using whipping cream 1 tablespoon is enough as whipping cream already has sugar.
+            3. If you're using heavy cream, add 2-4 tablespoon of sugar.
+            4. Mix sugar and juice till the sugar is dissolved completely.
+            5. To that add 3 tablespoon of milk powder and mix well.
+            6. Keep this mixture aside.
+        """)
+    instruction50804 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/F08/VBM8/KRWGGLRO/F08VBM8KRWGGLRO.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=6b7dfe2c3c932f3152f5bfd2e9eb6d5a", stepTitle="Whip the Cream", directions="""
+            1. Take 1 cup of whipping cream or heavy cream in a big bowl.
+            2. Start beating it with a beater or a whisk till you get super-soft peaks.
+            3. Don't beat till you get stiff peaks. We want soft peaks for making ice-cream.
+        """)
+    instruction50805 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/FLU/6PGR/KRWGGLRN/FLU6PGRKRWGGLRN.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=55043c4282100209d8058bf69ce556d5", stepTitle="Adding Prepared Pomegranate Juice", directions="""
+            1. To the whipped cream, gradually add the pomegranate juice.
+            2. Add little by little and mix well with a spatula.
+            3. Don't overmix.
+            4. Mix till the whipped cream and pomegranate juice are perfectly combined.
+        """)
+    instruction50806 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/F4N/7NV7/KRWGGM0R/F4N7NV7KRWGGM0R.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=0e6640f52d24aa21bdce9891ec45ebdd", stepTitle="Add Food Color (Optional)", directions="""
+            1. For a bit of color, add 1-2 drops of red food color.
+            2. Mix everything well.
+        """)
+    instruction50807 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/FSK/ZSNW/KRWGGM1L/FSKZSNWKRWGGM1L.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=52b758a452c0bf2d0274d8892be8fdf5", stepTitle="SET the Ice-cream", directions="""
+            1. Transfer this cream mixture to a freezer safe container.
+            2. Top with some pomegranate seeds.
+            3. Cover it.
+            4. Let it set in the freezer for about 6-8 hours (Best overnight).
+        """)
+    instruction50808 = Instruction(
+        recipeId=18,
+        imageUrl="https://content.instructables.com/ORIG/FX8/JTQG/KRXX5VJB/FX8JTQGKRXX5VJB.jpg?auto=webp&frame=1&fit=bounds&md=641770878fe6c93d95e9e7cbde67c7aa", stepTitle="Ready", directions="""
+            Our Pomegranate Ice-cream is absolutely ready to delight our taste buds!
+
+            Scoop out your Ice-cream and Garnish it with some more Pomegranate seeds . This gives a nice crunch to the Ice-cream. Making this requires less than 30 minutes. Best when you wanna eat something sweet and cool. Make this and Enjoy with your family! I hope you like the recipe. I Hope you enjoy eating it more than you enjoyed making it! It definitely tastes better than the one you find in Ice-cream stores. It looks so tempting and creamy. Do try this recipe and tell me in the comments how it was. I promise you are gonna love it. Also please follow me on Instagram @thelockdowncheff. Thank you for reading.
+        """)
+
+
+
+
+
+    instruction90101 = Instruction(
+        recipeId=19,
+        imageUrl="https://content.instructables.com/ORIG/F4U/I07S/KNG1CRSJ/F4UI07SKNG1CRSJ.png?auto=webp&frame=1&width=1024&fit=bounds&md=e7f745475b7ba2a001be1f2ac423280d", stepTitle="Garlic and Tomato", directions="""
+            Heat butter in a pan until melted, add garlic and cook on a medium heat couple minutes until aromatic.
+
+            Add chopped tomato and cook few minutes more.
+        """)
+    instruction90102 = Instruction(
+        recipeId=19,
+        imageUrl="https://content.instructables.com/ORIG/F5N/MTZY/KNG1CRSK/F5NMTZYKNG1CRSK.png?auto=webp&frame=1&width=1024&fit=bounds&md=d9746d4b70b1ac661498a0dfc083ca72", stepTitle="Cheese, Starch and Cream", directions="""
+            Add shredded cheese to the pan, then corn starch.
+            Stir everything with a spatula. Cook until cheese starts to melt.
+
+            Turn the heat to low and add room temperature full fat cream.
+
+            Stir, cooking until smooth.
+        """)
+    instruction90103 = Instruction(
+        recipeId=19,
+        imageUrl="https://content.instructables.com/ORIG/FDA/LYW0/KNG1CRSM/FDALYW0KNG1CRSM.png?auto=webp&frame=1&width=1024&fit=bounds&md=1e31e0f026085d2ced9eacc824bb2b7c", stepTitle="Spice It Up", directions="""
+            Add spices and marinated chili. You can chop fresh one, but it will be less spicy.
+
+            Add parsley or cilantro, stir and cook few minutes.
+        """)
+    instruction90104 = Instruction(
+        recipeId=19,
+        imageUrl="https://content.instructables.com/ORIG/FFB/FNUC/KNG1CRT0/FFBFNUCKNG1CRT0.png?auto=webp&frame=1&width=1024&fit=bounds&md=66d5cba8bc3f2ff7a6cd818d0292bf74", stepTitle="Let It Cool and Enjoy!", directions="""
+            We served our Chile con queso warm in heat-proof dish with tortilla chips on the side.
+
+            Also sprinkle chili flake on top, if you wish.
+
+            Enjoy!
+        """)
+
+
+
+
+
+
+    instruction90201 = Instruction(
+        recipeId=20,
+        imageUrl="https://content.instructables.com/ORIG/FPJ/R33A/HIXPVTQE/FPJR33AHIXPVTQE.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=7e77b6630845483aab0ea21fedfa076e", stepTitle="Blend and Enjoy!", directions="""
+            Combine all ingredients in a high speed blender and pulse until combined. If too thick, add more liquid to thin the consistency. Garnish with a wedge of watermelon and a sprig of mint.
+
+            For more delicious and easy recipes, check out my blog: www.kitchencandid.com
+        """)
+
+
+
+
+
+
+    instruction90301 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F3W/WF6G/KQTHRAPD/F3WWF6GKQTHRAPD.jpg?auto=webp&frame=1&fit=bounds&md=2fbd50640ea62cc716544f17af9dda74", stepTitle="Cut Paneer Into Rectangular Cubes", directions="""
+            Take a big block of Paneer.
+            Cut it into medium sized rectangular cubes.
+            Don't cut it too thin because we have to put it into a wooden skewer.
+            Our Paneer cubes are ready.
+        """)
+    instruction90302 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F8F/NMEJ/KQTHRAOR/F8FNMEJKQTHRAOR.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=c9dee75c443e27c79d71f60e6a831933", stepTitle="Marination", directions="""
+            Take the paneer cubes from last step in a bowl, to that add the following:
+
+            1. 1 tablespoon of ginger garlic paste.
+            2. 1 tablespoon of soy sauce
+            3. 1 tablespoon of chili sauce
+            4. 1 tablespoon of schezwan sauce
+            5. 1 tablespoon of tomato sauce/ketchup
+            6. Salt as per taste
+            7. 1/2 teaspoon of black pepper powder
+            8. 1/2 teaspoon of kashmiri red chili powder
+            Mix everything well carefully. Our marination is ready. Keep this marination aside for 1 hour (Minimum 30 mins).
+        """)
+    instruction90303 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F3U/IJGE/KQTHRANG/F3UIJGEKQTHRANG.jpg?auto=webp&frame=1&height=1024&fit=bounds&md=0eb888376c3384e3f74d00a77b79a247", stepTitle="Preparing Coating Slurry for Frying Paneer", directions="""
+            In a glass take:
+
+            - 2 Tablespoon of all purpose flour.
+            - 1 Tablespoon of corn flour.
+            - Salt as per taste.
+            - 1/4 cup of water.
+            - Mix this well, make a semi liquid paste.
+            Our slurry is ready.
+        """)
+    instruction90304 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F02/OA5Y/KQTHRAOP/F02OA5YKQTHRAOP.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=936fa1bc04dfb379999e7845ab1f8ed2", stepTitle="Assembling and Frying Paneer", directions="""
+            - Take the marinated paneer cubes and thread onto metal or bamboo skewers. I'm using Bamboo Skewers.
+            - Heat a pan, Add some oil.
+            - Dip the marinated paneer into the slurry we made and fry them on the pan. (You can shallow fry or deep fry the paneer as per your liking.)
+            - Fry for 1-2 mins on each side till it is nice golden brown and ready.
+            - Our fried Paneer is ready.
+            Keep this aside and start preparing the sauce.
+        """)
+    instruction90305 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F2Q/2917/KQUX6RS1/F2Q2917KQUX6RS1.jpg?auto=webp&frame=1&fit=bounds&md=0ac4dc8b718428345af62c4f0f19cdf1", stepTitle="Preparing Sauce", directions="""
+            In the same pan:
+
+            - Add 3 tablespoon of oil.
+            - Add 2-3 Tablespoon of finely chopped garlic.
+            - 1 medium sized onion finely chopped
+            - 2 green chilies finely chopped
+            - Fry them Nicely till they're nice golden.
+            - Add the left over marinate and the following sauces.
+                - 1 Tablespoon of chili sauce
+                - 1 tablespoon of soy sauce
+                - 1 tablespoon of schezwan sauce
+                - 1 tablespoon of tomato sauce/ketchup.
+            - Mix everything well and let the sauces cook for a min.
+            - Add a pinch of orange food color (optional).
+            - Add some water and let it cook for another minute.
+            - In 1/2th cup of water, Add 1 tablespoon of corn flour and make a slurry.
+            - Add this slurry to the pan and mix well. Make sure that there are no lumps.
+            - Let it cook .Keep stirring. After a minute our sauce will be is ready.
+            - Add the fried Paneer to the sauces and coat them well carefully.
+        """)
+    instruction90306 = Instruction(
+        recipeId=31,
+        imageUrl="https://content.instructables.com/ORIG/F2T/N6OX/KQUX6RWX/F2TN6OXKQUX6RWX.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e3d9f1c597c55e8cecf0a4811c1471ed", stepTitle="Ready!", directions="""
+            Tadaa! Our Paneer satay is ready. Serve it on a plate and put the sauce all over the paneer sticks. Garnish it with some green spring onions. Enjoy!
+
+            I hope you like the recipe. You can use boneless chicken in place of paneer, the recipe will be the same. I Hope you enjoy eating it more than you enjoyed making it! It definitely tastes better than the one you find in restaurants. It was looking so tempting and yummy. Do try this recipe and tell me in the comments how it was. I promise you are gonna love it. Also please follow me on Instagram @thelockdowncheff.
+
+            Thank you for reading.
+        """)
+
+
+
+
+
+    instruction90401 = Instruction(
+        recipeId=32,
+        imageUrl="https://content.instructables.com/ORIG/F9K/OW1L/HSYO27VI/F9KOW1LHSYO27VI.jpg?auto=webp&frame=1&fit=bounds&md=c3b79f3ea52b322b4d5e13f4869ef7b5", stepTitle="Prepping Mexican Style Chicken", directions="""
+            Tip #1 Mexican food is all about improv
+
+            Dice the chicken and set aside. Now heat a dash of vegetable oil in a skillet on medium heat, add garlic and let sit for a minute or so.  Add the diced chicken and cook thoroughly.  Once chicken is cook through add diced onions and green peppers.  Cover and let the onions and green soften. Add about a 1/4 cup of water to the skillet. Now time to add your spices(Cumin, garlic powder, paprika, chili powder, salt, pepper, etc)…I can’t tell you exact amounts to add of each, but you be the judge.  Add the spices I listed in the ingredients section at your discretion (Add this point if you like spicy foods then add you favorite hot sauce to the chicken). Lower the heat and let simmer until use.
+        """)
+    instruction90402 = Instruction(
+        recipeId=32,
+        imageUrl="https://content.instructables.com/ORIG/FB1/RXZ4/HSYO278D/FB1RXZ4HSYO278D.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=332e45c6ce6400fd18014c59e667afa5", stepTitle="Prepping Vegetables", directions="""
+            Tip #2 Make as much as you like, You like onions well then add more onions!
+
+            Now time to prep your vegetables!  Dice your red onions, garlic, and tomatoes and set aside in separate bowls.  Now chop your cilantro and basil (Set aside separately).
+        """)
+    instruction90403 = Instruction(
+        recipeId=32,
+        imageUrl="https://content.instructables.com/ORIG/F2X/Y2EB/HSYO2798/F2XY2EBHSYO2798.jpg?auto=webp&frame=1&fit=bounds&md=d578210bd7806b7dc14ff9c57622f14f", stepTitle="Prep Guacamole and Salsas", directions="""
+            Now open your avocados, remove the seed and mash up into bowl until smooth.  Incorporate in a portion of your prepared garlic, red onions, cilantro, a squeeze of lime, and a dash of sugar…Mix it up! Taste and add more lime or sugar depending on flavor.  This is your guacamole! Next we prep our corn and tomato salsas. Open your can of corn and drain out the liquid.  Place in small bowl and mix in basil and red onions.  Set aside.  To make your tomato salsa take the diced tomatoes mix in red onions, cilantro, and cumin…that’s all there is to it. Set it aside.
+        """)
+    instruction90404 = Instruction(
+        recipeId=32,
+        imageUrl="https://content.instructables.com/ORIG/FM0/EGYV/HSYO27HG/FM0EGYVHSYO27HG.jpg?auto=webp&frame=1&fit=bounds&md=366cd5e0b244b75edef231070dbe40a7", stepTitle="Dos Capas Assembly", directions="""
+            Tip #3 Clean as you go…makes for less cleaning afterwards
+
+            Time to Assemble! Preheat oven to 350 and a skilllet on medium heat.  Place hard shells into oven and bake until hot, while they are baking heat up small soft tortillas on each side until bubbles start to form.  Now take soft shell and place hard shell into it then begin to load with ingredients.  Start with cheese, chicken, corn salsa, tomato salsa, lettuce, hot sauce, sour cream, and guacamole.  If you would like to get your soft shell to stick to hard shell you can put the guac inbetween the shells =) Sneakyyyy eh?
+        """)
+    instruction90405 = Instruction(
+        recipeId=32,
+        imageUrl="https://content.instructables.com/ORIG/F6G/FYYI/HSYO27KH/F6GFYYIHSYO27KH.jpg?auto=webp&frame=1&fit=bounds&md=1884901f85792b07a29318d91f058d00", stepTitle="Suggestions", directions="""
+            Pick a nice sauce to go on top of each dish. I prefer maybe garlic and herb, or a chipotle ranch.
+
+            For more Mexican flavor add some fresh cilantro on top on any dish.
+
+            Serve with a white wine, corona, or if your feeling a bit ambitious maybe a strawberry patron margarita.
+        """)
+
+
+
+
+
+
+    instruction90501 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/FLP/JQ21/HJKBZ8DC/FLPJQ21HJKBZ8DC.jpg?auto=webp&frame=1&fit=bounds&md=218fd73a7b41682e00797b36ebc5d9e8", stepTitle="Step 1", directions="""
+            1.Take condensed milk (250 ml ) [if you don't have it boil 1 litre full -cream milk until it gets 1/4 to its quantity in a saucepan.]
+            2.cool it down for half an hour
+        """)
+    instruction90502 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/FZO/5XFO/HJKBZ8DK/FZO5XFOHJKBZ8DK.jpg?auto=webp&frame=1&fit=bounds&md=64ed7c3e739820b662dd4aa1c77d0610", stepTitle="Step 2", directions="""
+            1. take 1 cup milk
+            2. add 1 teaspoon of fennel seeds and 4 to 5 cardomom in the milk.
+            3. Then boil the milk for upto 10 min at sim flame.      [ it adds flavour and aroma of these to milk so make sure flame is at sim ]
+            4. After it pour the boil milk into grinder.
+            5. Add 1 teaspoon gulkand and 1 teaspoon of fennel seeds to grinder.
+            6. Grind the mixture well.
+            7.  Take a bowl and pour the mixture from fine mesh strainer and gently shake the strainer to extract all the juices from the remaining extract.
+            8.Now take this flavored milk and cool it down for 30 min. in fridge
+        """)
+    instruction90503 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/FD6/EAPF/HJKBZ8H0/FD6EAPFHJKBZ8H0.jpg?auto=webp&frame=1&fit=bounds&md=b96525cd994f5e2dbe1493789a35d032", stepTitle="Step 3", directions="""
+            1. take 4 betel leaves and place it into a fine mesh cotton cloth.
+            (note : we use only fine mesh cotton cloth so to extract only the juice purely )
+            2. now close the cloth and beat it for some time.
+            3. Now extract the juice of betel leaves into a bowl by squeezing the cloth.
+        """)
+    instruction90504 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/F6C/ZGTI/HJKBZ8IQ/F6CZGTIHJKBZ8IQ.jpg?auto=webp&frame=1&fit=bounds&md=c51291c1486cccb4106bf6584df5a1cb", stepTitle="Step 4", directions="""
+            1. Take the rest condensed milk in a bowl.
+            2. add the flavored milk mixture in  the bowl ( obtained at step 2 )
+            3. add betel leaves juice extract to it.
+            4. add 4 teaspoon of powdered or icing sugar to it..
+            5. now blend this mixture until the whole contents get mixed.
+            6. now pour the content into a plastic container.
+            7. put this container in the fridger for 1 hour.
+        """)
+    instruction90505 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/FUC/YAF2/HJKBZ8MB/FUCYAF2HJKBZ8MB.jpg?auto=webp&frame=1&fit=bounds&md=341a967fb70086e8b3796b687e7809a5", stepTitle="Step 5", directions="""
+            1. now take out the container from the fridger and scrape it into a bowl again. [ this step is done to make the ice cream more soft )
+            2. add 200ml  cream to the bowl.
+            3. add 4-5 drops of food colour ( green ).
+            4 . now fully blend the mixture till it gets foamy.
+            5. now add finely cutted betel leaves and rose leaves and add to the mixture.
+            6. now blend the mixture slowly by hand with a spoon.
+            7. now again pour it to the plastic container .
+            8. put this container in the fridger for atleast 5-6 hours before serving.
+        """)
+    instruction90506 = Instruction(
+        recipeId=33,
+        imageUrl="https://content.instructables.com/ORIG/FQE/0PYE/HJKBZ8Q5/FQE0PYEHJKBZ8Q5.jpg?auto=webp&frame=1&fit=bounds&md=b44fb1925d217c63bdfe7662aaa25873", stepTitle="Step 6", directions="""
+            1. Take out the container from the fridger and scrape it out into a small bowl.
+            2 Garnish it with small rose leaves and a 1/2 teaspon gulkand.
+            NOW you are ready to enjoy the lavish, rich in taste paan bahar ice cream.
+        """)
+
+
+
+
+
+    instruction90601 = Instruction(
+        recipeId=34,
+        imageUrl="https://content.instructables.com/ORIG/FKL/FHR3/KTPSX0Q8/FKLFHR3KTPSX0Q8.jpg?auto=webp&frame=1&fit=bounds&md=51264d70cee545bf74de9aa845f5b3f2", stepTitle="Searing the Beef", directions="""
+            Add 2 tbsp oil in a large pot or pan. Sear the beef from each side, about 10 minutes until browned.
+
+            Remove the meat from the pot or pan and leave aside.
+
+            You can use the same pot, if your meat is lean. Clean your pot or use another one.
+        """)
+    instruction90602 = Instruction(
+        recipeId=34,
+        imageUrl="https://content.instructables.com/ORIG/FQW/3821/KTPSX0RW/FQW3821KTPSX0RW.jpg?auto=webp&frame=1&fit=bounds&md=45d063efc0c86c95ac235b1a2df0b900", stepTitle="Spice It Up", directions="""
+            Heat leftover oil in a pot and add all spices and herbs.
+
+            Cook, stirring, for one minute until fragrant.
+        """)
+    instruction90603 = Instruction(
+        recipeId=34,
+        imageUrl="https://content.instructables.com/ORIG/FNY/CMXC/KTPSX0RX/FNYCMXCKTPSX0RX.jpg?auto=webp&frame=1&fit=bounds&md=896f930773d5ed5f8d94f230d1cf70e4", stepTitle="Cook Tomato Sauce", directions="""
+            Add canned tomatoes in the pot and crush them with the back of the spoon.
+
+            Blend raw tomatoes and add them to the pot.
+
+            Simmer the tomato sauce for 30 minutes.
+        """)
+    instruction90604 = Instruction(
+        recipeId=34,
+        imageUrl="https://content.instructables.com/ORIG/FUV/6O7K/KTPSX0S0/FUV6O7KKTPSX0S0.jpg?auto=webp&frame=1&fit=bounds&md=ded7c502c3f7f47fc9d95ece921b82b9", stepTitle="Cook the Stew", directions="""
+            Add bouillon cube and water to the sauce.
+
+            Bring to the boil and add meat back in the pot.
+
+            Cook about 40 minutes or until desired consistency.
+        """)
+    instruction90605 = Instruction(
+        recipeId=34,
+        imageUrl="https://content.instructables.com/ORIG/FMA/FCW5/KTPSX0Q5/FMAFCW5KTPSX0Q5.jpg?auto=webp&frame=1&fit=bounds&md=34b8b21fe2f9f19d6bcf53d13bc1deff", stepTitle="Enjoy", directions="""
+            Let it cool a little and enjoy! Sprinkle some fresh herbs on top.
+
+            You can also serve it with rice, vegetables or pasta.
+
+            This is so good just as it is, with a slice of bread.
+
+            This African style stew can be stored in the fridge up to 5 days.
+        """)
+
+
     db.session.add(jamiInstruction1)
     db.session.add(jamiInstruction2)
     db.session.add(jamiInstruction3)
@@ -431,6 +1145,87 @@ def seed_instructions():
     db.session.add(jamiInstruction69)
     db.session.add(jamiInstruction70)
     db.session.add(jamiInstruction71)
+
+    db.session.add(instruction50101)
+    db.session.add(instruction50102)
+    db.session.add(instruction50103)
+    db.session.add(instruction50104)
+
+    db.session.add(instruction50201)
+    db.session.add(instruction50202)
+    db.session.add(instruction50203)
+    db.session.add(instruction50204)
+    db.session.add(instruction50205)
+    db.session.add(instruction50206)
+    db.session.add(instruction50207)
+    db.session.add(instruction50208)
+
+    db.session.add(instruction50301)
+    db.session.add(instruction50302)
+    db.session.add(instruction50303)
+
+    db.session.add(instruction50401)
+    db.session.add(instruction50402)
+    db.session.add(instruction50403)
+    db.session.add(instruction50404)
+
+    db.session.add(instruction50501)
+    db.session.add(instruction50502)
+    db.session.add(instruction50503)
+
+    db.session.add(instruction50601)
+    db.session.add(instruction50602)
+    db.session.add(instruction50603)
+    db.session.add(instruction50604)
+
+    db.session.add(instruction50701)
+    db.session.add(instruction50702)
+    db.session.add(instruction50703)
+    db.session.add(instruction50704)
+    db.session.add(instruction50705)
+    db.session.add(instruction50706)
+
+    db.session.add(instruction50801)
+    db.session.add(instruction50802)
+    db.session.add(instruction50803)
+    db.session.add(instruction50804)
+    db.session.add(instruction50805)
+    db.session.add(instruction50806)
+    db.session.add(instruction50807)
+    db.session.add(instruction50808)
+
+    db.session.add(instruction90101)
+    db.session.add(instruction90102)
+    db.session.add(instruction90103)
+    db.session.add(instruction90104)
+
+    db.session.add(instruction90201)
+
+    db.session.add(instruction90301)
+    db.session.add(instruction90302)
+    db.session.add(instruction90303)
+    db.session.add(instruction90304)
+    db.session.add(instruction90305)
+    db.session.add(instruction90306)
+
+    db.session.add(instruction90401)
+    db.session.add(instruction90402)
+    db.session.add(instruction90403)
+    db.session.add(instruction90404)
+    db.session.add(instruction90405)
+
+    db.session.add(instruction90501)
+    db.session.add(instruction90502)
+    db.session.add(instruction90503)
+    db.session.add(instruction90504)
+    db.session.add(instruction90505)
+    db.session.add(instruction90506)
+
+    db.session.add(instruction90601)
+    db.session.add(instruction90602)
+    db.session.add(instruction90603)
+    db.session.add(instruction90604)
+    db.session.add(instruction90605)
 
     db.session.commit()
 

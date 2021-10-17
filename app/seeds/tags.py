@@ -44,6 +44,36 @@ def seed_tags():
     jamiTag20 = Tag(
         name="PLASTIC", recipeId=30)
 
+    tag501 = Tag(
+        name="appetizer", recipeId=11)
+    tag502 = Tag(
+        name="entree", recipeId=12)
+    tag503 = Tag(
+        name="dessert", recipeId=13)
+    tag504 = Tag(
+        name="snack", recipeId=14)
+    tag505 = Tag(
+        name="beverage", recipeId=15)
+    tag506 = Tag(
+        name="appetizer", recipeId=16)
+    tag507 = Tag(
+        name="entree", recipeId=17)
+    tag508 = Tag(
+        name="dessert", recipeId=18)
+
+    tag901 = Tag(
+        name="snack", recipeId=19)
+    tag902 = Tag(
+        name="beverage", recipeId=20)
+    tag903 = Tag(
+        name="appetizer", recipeId=31)
+    tag904 = Tag(
+        name="entree", recipeId=32)
+    tag905 = Tag(
+        name="dessert", recipeId=33)
+    tag906 = Tag(
+        name="entree", recipeId=34)
+
     db.session.add(jamiTag1)
     db.session.add(jamiTag2)
     db.session.add(jamiTag3)
@@ -64,6 +94,22 @@ def seed_tags():
     db.session.add(jamiTag18)
     db.session.add(jamiTag19)
     db.session.add(jamiTag20)
+
+    db.session.add(tag501)
+    db.session.add(tag502)
+    db.session.add(tag503)
+    db.session.add(tag504)
+    db.session.add(tag505)
+    db.session.add(tag506)
+    db.session.add(tag507)
+    db.session.add(tag508)
+
+    db.session.add(tag901)
+    db.session.add(tag902)
+    db.session.add(tag903)
+    db.session.add(tag904)
+    db.session.add(tag905)
+    db.session.add(tag906)
 
     db.session.commit()
 

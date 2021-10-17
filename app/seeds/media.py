@@ -67,6 +67,107 @@ def seed_media():
             mediaUrl='https://content.instructables.com/ORIG/FVB/UAMU/JGGTG035/FVBUAMUJGGTG035.jpg?auto=webp&frame=1&width=600&height=1024&fit=bounds&md=0bc4a49bc526e42f8267571d1ca39fef', recipeId=30)
 
 
+    media5011 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FB7/0ONL/IBM250KE/FB70ONLIBM250KE.jpg?auto=webp&frame=1&fit=bounds&md=6dca3a956e6504855a1600d4f77792ca', recipeId=11)
+
+
+    media5021 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FU9/SLP9/KUGYA4W2/FU9SLP9KUGYA4W2.jpg?auto=webp&frame=1&fit=bounds&md=897e928d97e8d6db08c6752976f56bec', recipeId=12)
+
+
+    media5031 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FEB/58DH/IJRFGPLR/FEB58DHIJRFGPLR.jpg?auto=webp&frame=1&height=1024&fit=bounds&md=b9de2f5842700d3667674a453e8c3662', recipeId=13)
+    media5032 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F4P/T75K/IJRFGPO8/F4PT75KIJRFGPO8.jpg?auto=webp&frame=1&height=1024&fit=bounds&md=3e55c08b595f68e9ae2f9cdb52ca8407', recipeId=13)
+
+
+    media5041 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FDN/YE2X/INPE8SN3/FDNYE2XINPE8SN3.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=05bc9656112d08859e8c3a149424db9a', recipeId=14)
+    media5042 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FW8/KLNP/INPE8TH9/FW8KLNPINPE8TH9.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=3cef8bcc16caf7118b1a315de07cc78a', recipeId=14)
+    media5043 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FB9/24EO/INPE8NHD/FB924EOINPE8NHD.jpg?auto=webp&frame=1&width=1024&fit=bounds&md=46841e78ff89cf32c4d2581bfc4dcecd', recipeId=14)
+
+
+
+    media5051 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FRB/MCWS/HIGIL7PG/FRBMCWSHIGIL7PG.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=0c243477f6161af72b4b92ac875a8f5a', recipeId=15)
+    media5052 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FRO/0HII/HIGFJMKR/FRO0HIIHIGFJMKR.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=03764972e37ffcec7365475e676ad92f', recipeId=15)
+
+
+
+    media5061 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F9S/RLOZ/H7UQQYPQ/F9SRLOZH7UQQYPQ.jpg?auto=webp&frame=1&fit=bounds&md=8e966cd4b3b0f8f803b582c97e82d0ef', recipeId=16)
+
+
+
+    media5071 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FND/AS3E/KL0VG22V/FNDAS3EKL0VG22V.jpg?auto=webp&frame=1&fit=bounds&md=0b5e6642d10fbde83fa714ed99905f1f', recipeId=17)
+    media5072 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F7X/SEPT/KL0VG28U/F7XSEPTKL0VG28U.gif?format=mp4', recipeId=17)
+    media5073 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F48/5C3Z/KL0VGCCF/F485C3ZKL0VGCCF.gif?format=mp4', recipeId=17)
+
+
+
+
+    media5081 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F4D/3C4K/KRXX5VJC/F4D3C4KKRXX5VJC.jpg?auto=webp&frame=1&fit=bounds&md=81235b25e3d06dffcc54cc73bf63a658', recipeId=18)
+    media5082 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FLB/IPG9/KRWGGLYM/FLBIPG9KRWGGLYM.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=6403e89551b25f45f62351f5d93b321a', recipeId=18)
+    media5083 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FHU/GX9U/KRWGGLRK/FHUGX9UKRWGGLRK.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=b9fddf75d960858a2658829f2b577d00', recipeId=18)
+    media5084 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FVX/1571/KRWGGLT4/FVX1571KRWGGLT4.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=0f2341542ab64bb276c8d94b31c9714f', recipeId=18)
+
+
+
+
+    media9011 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FFH/7FOZ/KNG1CRSF/FFH7FOZKNG1CRSF.jpg?auto=webp&frame=1&fit=bounds&md=b578a9659ac76d9f6f55880c7e5b913e', recipeId=19)
+
+
+
+    media9021 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FY8/9ZG2/HIW8L896/FY89ZG2HIW8L896.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e97535e8f044adeb5b69b523533c680a', recipeId=20)
+    media9022 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FU8/RGFO/HIXPVTQ8/FU8RGFOHIXPVTQ8.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e2e571fe971019e5635c2842457f1295', recipeId=20)
+    media9023 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FPJ/R33A/HIXPVTQE/FPJR33AHIXPVTQE.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=7e77b6630845483aab0ea21fedfa076e', recipeId=20)
+
+
+
+
+    media9031 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FG8/9F3Q/KQUX6UQJ/FG89F3QKQUX6UQJ.jpg?auto=webp&frame=1&fit=bounds&md=fe6b0316ec6caa3d10f037007e79ddd0', recipeId=31)
+    media9032 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F91/G8WD/KQTHRAPC/F91G8WDKQTHRAPC.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=8173b49c329a784d6489b18bdd8604a5', recipeId=31)
+    media9033 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/F8F/NMEJ/KQTHRAOR/F8FNMEJKQTHRAOR.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=c9dee75c443e27c79d71f60e6a831933', recipeId=31)
+    media9034 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FIH/Z2WQ/KQTHRANH/FIHZ2WQKQTHRANH.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=a2c727758470699008de681762165baf', recipeId=31)
+
+
+
+
+    media9041 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FBZ/RK83/HSYO26UW/FBZRK83HSYO26UW.jpg?auto=webp&frame=1&fit=bounds&md=4114ec4db91bfb4795ba927c6ca4e03f', recipeId=32)
+
+
+
+
+
+    media9051 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FPG/EA3J/HJKBZ7RW/FPGEA3JHJKBZ7RW.jpg?auto=webp&frame=1&fit=bounds&md=1b123a0c6eafa16afc5df82864365e2d', recipeId=33)
+
+
+
+    media9061 = Media(
+        mediaUrl='https://content.instructables.com/ORIG/FVX/FIUT/KTPSX0S6/FVXFIUTKTPSX0S6.jpg?auto=webp&frame=1&fit=bounds&md=1c095448b5caafb6a4319f6885cfa71b', recipeId=34)
+
+
+
 
     db.session.add(jamiMedia1)
     db.session.add(jamiMedia2)
@@ -100,6 +201,49 @@ def seed_media():
     db.session.add(jamiMedia30)
     db.session.add(jamiMedia31)
     db.session.add(jamiMedia14)
+
+
+    db.session.add(media5011)
+
+    db.session.add(media5021)
+
+    db.session.add(media5031)
+    db.session.add(media5032)
+
+    db.session.add(media5041)
+    db.session.add(media5042)
+    db.session.add(media5043)
+
+    db.session.add(media5051)
+    db.session.add(media5052)
+
+    db.session.add(media5061)
+
+    db.session.add(media5071)
+    db.session.add(media5072)
+    db.session.add(media5073)
+
+    db.session.add(media5081)
+    db.session.add(media5082)
+    db.session.add(media5083)
+    db.session.add(media5084)
+
+    db.session.add(media9011)
+
+    db.session.add(media9021)
+    db.session.add(media9022)
+    db.session.add(media9023)
+
+    db.session.add(media9031)
+    db.session.add(media9032)
+    db.session.add(media9033)
+    db.session.add(media9034)
+
+    db.session.add(media9041)
+
+    db.session.add(media9051)
+
+    db.session.add(media9061)
 
 
     db.session.commit()
