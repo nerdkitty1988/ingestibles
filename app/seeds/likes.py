@@ -33,9 +33,9 @@ def seed_likes():
     like10 = Like(
         userId=1, recipeId=10)
     like11 = Like(
-        userId=1, recipeId=11)
+        userId=1, recipeId=10)
     like12 = Like(
-        userId=1, recipeId=12)
+        userId=1, recipeId=10)
     like13 = Like(
         userId=3, recipeId=1)
 
