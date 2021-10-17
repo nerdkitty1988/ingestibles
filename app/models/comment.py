@@ -25,5 +25,7 @@ class Comment(db.Model):
             'id': self.id,
             'recipeId': self.recipeId,
             'userId': self.userId,
-            'comment': self.comment
+            'comment': self.comment,
+            'user': self.user.to_dict(),
+            'time_created': self.time_created
         }

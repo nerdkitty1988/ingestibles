@@ -224,7 +224,8 @@ const Homepage = () => {
 													</NavLink>
 												</strong>
 												<span className="ible-author">
-													&nbsp;by&nbsp;
+													&nbsp;by&nbsp;{tag1?.author?.username}
+													{/* &nbsp;by&nbsp;
 													<NavLink
 														to={`/users/${tag1?.author?.id}`}
 													>
@@ -232,16 +233,16 @@ const Homepage = () => {
 															tag1?.author
 																?.username
 														}
-													</NavLink>
+													</NavLink> */}
 												</span>
-												<span className="ible-channel">
+												{/* <span className="ible-channel">
 													&nbsp;in&nbsp;
 													<NavLink
 														to={`/recipes/${tag1?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{tag1?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
+												</span> */}
 											</div>
 										</div>
 									))}
@@ -279,7 +280,8 @@ const Homepage = () => {
 													</NavLink>
 												</strong>
 												<span className="ible-author">
-													&nbsp;by&nbsp;
+													&nbsp;by&nbsp;{tag2?.author?.username}
+													{/* &nbsp;by&nbsp;
 													<NavLink
 														to={`/users/${tag2?.author?.id}`}
 													>
@@ -287,16 +289,16 @@ const Homepage = () => {
 															tag2?.author
 																?.username
 														}
-													</NavLink>
+													</NavLink> */}
 												</span>
-												<span className="ible-channel">
+												{/* <span className="ible-channel">
 													&nbsp;in&nbsp;
 													<NavLink
 														to={`/recipes/${tag2?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{tag2?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
+												</span> */}
 											</div>
 										</div>
 									))}
@@ -334,7 +336,8 @@ const Homepage = () => {
 													</NavLink>
 												</strong>
 												<span className="ible-author">
-													&nbsp;by&nbsp;
+													&nbsp;by&nbsp;{tag3?.author?.username}
+													{/* &nbsp;by&nbsp;
 													<NavLink
 														to={`/users/${tag3?.author?.id}`}
 													>
@@ -342,16 +345,16 @@ const Homepage = () => {
 															tag3?.author
 																?.username
 														}
-													</NavLink>
+													</NavLink> */}
 												</span>
-												<span className="ible-channel">
+												{/* <span className="ible-channel">
 													&nbsp;in&nbsp;
 													<NavLink
 														to={`/recipes/${tag3?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{tag3?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
+												</span> */}
 											</div>
 										</div>
 									))}
@@ -389,7 +392,8 @@ const Homepage = () => {
 													</NavLink>
 												</strong>
 												<span className="ible-author">
-													&nbsp;by&nbsp;
+													&nbsp;by&nbsp;{tag4?.author?.username}
+													{/* &nbsp;by&nbsp;
 													<NavLink
 														to={`/users/${tag4?.author?.id}`}
 													>
@@ -397,16 +401,16 @@ const Homepage = () => {
 															tag4?.author
 																?.username
 														}
-													</NavLink>
+													</NavLink> */}
 												</span>
-												<span className="ible-channel">
+												{/* <span className="ible-channel">
 													&nbsp;in&nbsp;
 													<NavLink
 														to={`/recipes/${tag4?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{tag4?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
+												</span> */}
 											</div>
 										</div>
 									))}
@@ -444,7 +448,8 @@ const Homepage = () => {
 													</NavLink>
 												</strong>
 												<span className="ible-author">
-													&nbsp;by&nbsp;
+													&nbsp;by&nbsp;{tag5?.author?.username}
+													{/* &nbsp;by&nbsp;
 													<NavLink
 														to={`/users/${tag5?.author?.id}`}
 													>
@@ -452,16 +457,16 @@ const Homepage = () => {
 															tag5?.author
 																?.username
 														}
-													</NavLink>
+													</NavLink> */}
 												</span>
-												<span className="ible-channel">
+												{/* <span className="ible-channel">
 													&nbsp;in&nbsp;
 													<NavLink
 														to={`/recipes/${tag5?.tags[0]?.name?.toLowerCase()}`}
 													>
 														{tag5?.tags[0]?.name?.toLowerCase()}
 													</NavLink>
-												</span>
+												</span> */}
 											</div>
 										</div>
 									))}
