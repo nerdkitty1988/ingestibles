@@ -159,7 +159,7 @@ const SingleRecipePage = () => {
     )
   }
   // Code about Likes end here
-  console.log(currentRecipe)
+  // console.log(currentRecipe)
   return (
     <div id="main">
       <div id="recipe-info">
@@ -218,6 +218,8 @@ const SingleRecipePage = () => {
           <div id="author-image">
             <img className="profileCircleRecipe" src={(currentRecipe?.author?.profilePic) ? currentRecipe?.author?.profilePic : defaultPhoto} alt="profile" />
           </div>
+          <span id="by-prefix">{` By `}</span>
+          <span id="by-username">{(currentRecipe?.author?.username)}</span>
           <div id="more-by-author">
             <p id="more-by-author-text">More by <br />
               the author:</p>
