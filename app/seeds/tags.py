@@ -62,17 +62,17 @@ def seed_tags():
         name="dessert", recipeId=18)
 
     tag901 = Tag(
-        name="snack", recipeId=19)
+        name="snack", recipeId=29)
     tag902 = Tag(
-        name="beverage", recipeId=20)
+        name="beverage", recipeId=30)
     tag903 = Tag(
-        name="appetizer", recipeId=29)
+        name="appetizer", recipeId=31)
     tag904 = Tag(
-        name="entree", recipeId=30)
-    tag905 = Tag(
-        name="dessert", recipeId=31)
-    tag906 = Tag(
         name="entree", recipeId=32)
+    tag905 = Tag(
+        name="dessert", recipeId=33)
+    tag906 = Tag(
+        name="entree", recipeId=34)
 
     db.session.add(jamiTag1)
     db.session.add(jamiTag2)
