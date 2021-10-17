@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-
+import "./EditComment.css"
 const EditComment = ({currentRecipe, setCanEdit, setComments, commentId}) => {
   const user = useSelector(state => state.session.user);
   const [comment, setComment] = useState('');
@@ -42,23 +42,30 @@ const EditComment = ({currentRecipe, setCanEdit, setComments, commentId}) => {
 
   return (
     <>
+    <div id="outer-most-div">
       <div style={{ color:'#F27D21'}}>
                   {errors.map((error, ind) => (
                   <li style={{ marginLeft:'15%', textAlign:'start'}}
                           key={ind}>{error}</li>
                   ))}
       </div>
-      <form onSubmit={updateComment}>
+      <form id="edit-comment-form" onSubmit={updateComment}>
         <div>
-          <label>What do you think?</label>
-          <textarea
+          <textarea id="edit-comment-textarea"
             name='comment'
             onChange={(e) => setComment(e.target.value)}
             value={comment}
           ></textarea>
         </div>
-        <button type='submit'>Post Comment</button>
       </form>
+    </div>
+    <div id="bottom-of-the-white-box">
+      <p id="comment-note">If you ain't got nothin' nice to say, don't say nothin' at all.</p>
+      <div id="post-comment-button-div">
+        <button id="cancel-button" className="commentButtons" onClick={() => setCanEdit(false)}>Cancel</button>
+        <button id="little-post-comment-button" type='submit' form="edit-comment-form">Save</button>
+      </div>
+    </div>
     </>
   );
 };

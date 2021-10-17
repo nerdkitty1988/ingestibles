@@ -139,6 +139,12 @@ li#ingredient {
 	padding-bottom: 50px;
 }
 
+#centering-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 #comment-button {
 	border: none;
 	font-size: 16px;
@@ -208,33 +214,50 @@ li#ingredient {
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	height: 200px;
-	display: block;
-	max-width: 40%;
-	position: relative;
-	left: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+}
+
+#user-image {
+	width: 70px;
+	height: 70px;
 }
 
 #inner-white-box {
 	background-color: white;
-  width: 88%;
+  width: 80%;
 	height: 55%;
-	margin-top: 15px;
 	border: 1px solid #dedede;
 	display: flex;
 	justify-content: center;
 	border-radius: 5px;
-	position: relative;
-	top: -40%;
-	left: 10%;
+}
+
+#inner-white-box::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 17px solid #97C6E3;
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	top: -1px;
+	left: -17px;
+
+}
+#bottom-of-the-white-box {
+	display: flex;
+	width: 90%;
+	align-items: center;
+	justify-content: space-between;
 }
 
 #comment-note {
-	position: relative;
-	bottom: 25%;
-	left: 5%;
 	font-size: 12px;
 	color: #999
-
 }
 
 #post-comment-button {
@@ -268,11 +291,6 @@ li#ingredient {
 	bottom: 10%;
 }
 
-#post-comment-button-div {
-	position: relative;
-	bottom: 50%;
-	left: 90%;
-}
 #little-post-comment-button {
 	background-color: #faac18;
 	border: 1px solid #e5991e;
@@ -283,18 +301,12 @@ li#ingredient {
 	opacity: .65;
 }
 
-#inner-white-box::before {
-	border-color: rgba(221,221,221,0);
-  border-right-color: #ddd;
-  border-width: 11px;
-  margin-top: -11px;
-}
+
 
 #comment-profileCircle {
 	width: 50px;
 	height: 50px;
 	border-radius: 25px;
-	margin: 15px ;
 }
 
 #comments-section {
@@ -302,21 +314,22 @@ li#ingredient {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	max-width: 40%;
+	width: 50%;
 	position: relative;
-	left: 30%;
+	left: 25%;
 }
 
 #comments-section > h1 {
-	padding: 20px;
+	padding: 40px;
 	border-bottom: 0.5px solid #dedede;
 	width: 100%;
 	text-align: center;
+	font-size: 28px;
 }
 
 #comment {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	border-bottom: 0.5px solid #dedede;
 	width: 100%;
 	padding: 10px;
@@ -324,12 +337,18 @@ li#ingredient {
 	font-size: 16px;
 }
 
+#owner-name-and-buttons-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
 #comment-image-username-date {
 	display: flex;
 	align-items: center;
 	font-size: 16px;
   margin-bottom: 25px;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 #comment-date {
@@ -337,15 +356,15 @@ li#ingredient {
 	padding-left: 5px;
 }
 
+
 .commentButtons {
 	border: none;
-	background-color: rgba(211, 211, 211, 0.555);
+	background-color: #f6f6f6;
 	border-radius: 5px;
 	padding: 5px;
 	margin-left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: grey;
-  box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.623);
+  color: #333;
+	width: 60px;
 }
 
 
