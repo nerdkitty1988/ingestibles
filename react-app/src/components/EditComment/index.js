@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import "./EditComment.css"
-const EditComment = ({currentRecipe, setCanEdit, setComments, commentId}) => {
+const EditComment = ({currentRecipe, setCanEdit, setComments, comment}) => {
+  console.log(comment)
   const user = useSelector(state => state.session.user);
-  const [comment, setComment] = useState('');
+  const [commentBody, setComment] = useState(comment.comment);
   const [errors , setErrors] = useState([])
 
   const updateComment = async(e) => {
     e.preventDefault()
     const newComment = {
-      comment,
+      comment: commentBody,
       userId: user.id,
       recipeId: currentRecipe.id
     }
     currentRecipe?.comments?.push(newComment)
 
-    const commentData = await fetch(`/api/recipes/comments/${commentId}`, {
+    const commentData = await fetch(`/api/recipes/comments/${comment.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         ...newComment
@@ -54,7 +55,7 @@ const EditComment = ({currentRecipe, setCanEdit, setComments, commentId}) => {
           <textarea id="edit-comment-textarea"
             name='comment'
             onChange={(e) => setComment(e.target.value)}
-            value={comment}
+            value={commentBody}
           ></textarea>
         </div>
       </form>
