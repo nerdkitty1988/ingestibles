@@ -28,11 +28,11 @@ def seed_users():
         username='6', email='7@aa.io', password='password')
 
     user701 = User(
-        username='happyHug', email='happyhug@aa.io', password='password')
+        username='happyHug', email='happyhug@aa.io', password='password', biography='I love food!')
     user702 = User(
-        username='dreamTrue', email='dreamtrue@aa.io', password='password')
+        username='dreamTrue', email='dreamtrue@aa.io', password='password', biography='Cooking is my favorite!')
     user703 = User(
-        username='joyHealth', email='joyhealth@aa.io', password='password')
+        username='joyHealth', email='joyhealth@aa.io', password='password', profilePic='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeGZMvntM86MXW_ddi6psTHg9z0hAB4LVA_w&usqp=CAU')
 
     db.session.add(demo)
     db.session.add(marnie)
