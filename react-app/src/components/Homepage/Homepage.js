@@ -20,76 +20,63 @@ const Homepage = () => {
 	const [tagName5, setTagName5] = useState([]);
 
 	useEffect(() => {
-		async function random() {
-			const res = await fetch("/api/tags/");
+		async function randomFive() {
+			const res = await fetch("/api/tags/random");
 			const resData = await res.json();
-			setRandomRecipes(resData?.tags);
+
+			const newArr = [];
+
+			(resData?.random)?.forEach(ele => {
+				newArr.push(ele?.name)
+			})
+
+			const randomSet = new Set(newArr);
+			const randomArr2 = Array.from(randomSet);
+			const random5 = randomArr2.slice(0, 5);
+
+			setRandomRecipes(random5);
 		};
-		random();
+
+		randomFive();
+
 	}, []);
 
 
-	const randomArr1 = []
-	randomRecipes.forEach(recipe => {
-		randomArr1.push(recipe?.name)
-	})
-
-	const randomSet = new Set(randomArr1);
-	const randomArr2 = Array.from(randomSet);
-	//console.log('suffle before', randomArr2)
-	function shuffle(arr) {
-		let currIdx = arr.length
-		let randIdx;
-		while (currIdx !== 0) {
-			randIdx = Math.floor(Math.random() * currIdx);
-			currIdx--;
-			[arr[currIdx], arr[randIdx]] = [
-				arr[randIdx], arr[currIdx]];
-		}
-
-		return arr
-	}
-
-	shuffle(randomArr2)
-	//console.log('suffle after', randomArr2)
-
-	const random5 = randomArr2.slice(0, 5);
-	//console.log('after slice 5 random5 ', random5 )
 
 	useEffect(() => {
 		const one = async () => {
-			const res = await fetch(`/api/recipes/${random5[0]}`);
+			const res = await fetch(`/api/recipes/${randomRecipes[0]}`);
 			const resData = await res.json();
 			setTags1(resData?.tagged);
-			setTagName1(random5[0]?.toLowerCase())
+			setTagName1((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[0])?.name)
 		};
 
 		const two = async () => {
-			const res = await fetch(`/api/recipes/${random5[1]}`);
+			const res = await fetch(`/api/recipes/${randomRecipes[1]}`);
 			const resData = await res.json();
 			setTags2(resData?.tagged);
-			setTagName2(random5[1]?.toLowerCase())
+			setTagName2((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[1])?.name)
 		};
 
 		const three = async () => {
-			const res = await fetch(`/api/recipes/${random5[2]}`);
+			const res = await fetch(`/api/recipes/${randomRecipes[2]}`);
 			const resData = await res.json();
 			setTags3(resData?.tagged);
-			setTagName3(random5[2]?.toLowerCase())
+			setTagName3((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[2])?.name)
 		};
 
 		const four = async () => {
-			const res = await fetch(`/api/recipes/${random5[3]}`);
+			const res = await fetch(`/api/recipes/${randomRecipes[3]}`);
 			const resData = await res.json();
 			setTags4(resData?.tagged);
-			setTagName4(random5[3]?.toLowerCase())
+			setTagName4((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[3])?.name)
 		};
 
 		const five = async () => {
-			const res = await fetch(`/api/recipes/${random5[4]}`);
+			const res = await fetch(`/api/recipes/${randomRecipes[4]}`);
 			const resData = await res.json();
 			setTags5(resData?.tagged);
-			setTagName5(random5[4]?.toLowerCase())
+			setTagName5((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[4])?.name)
 		};
 
 		one();
@@ -99,18 +86,13 @@ const Homepage = () => {
 		five();
 	}, [randomRecipes]);
 
+
 	return (
 		<main>
 			<div
 				id="home-container"
 				className="home-wrapper-wrapper full-wrapper home-content clearfix"
 			>
-				<div
-					id="site-announcements-page"
-					className="site-announcements-page"
-				>
-					<div className="site-announcements-page-content"></div>
-				</div>
 				<div
 					id="home-content-rotator"
 					className="home-content-rotator carousel carousel-fade"
@@ -194,23 +176,23 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName1} clearfix`}>
+						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
-								<span className="anchor-text">{tagName1}</span>
+								<span className="anchor-text">{randomRecipes && tags1 && tagName1 && tagName1}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{tags1?.map((tag1) => (
-										<div key={tag1.id} className="home-content-explore-ible">
+									{randomRecipes && tags1 && tags1?.map((tag1) => (
+										<div key={tag1?.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag1?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={tag1?.medias[0].mediaUrl}
-													src={tag1?.medias[0].mediaUrl}
+													data-src={tag1?.medias[0]?.mediaUrl}
+													src={tag1?.medias[0]?.mediaUrl}
 													alt={tag1?.title}
 												/>
 											</NavLink>
@@ -225,24 +207,7 @@ const Homepage = () => {
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;{tag1?.author?.username}
-													{/* &nbsp;by&nbsp;
-													<NavLink
-														to={`/users/${tag1?.author?.id}`}
-													>
-														{
-															tag1?.author
-																?.username
-														}
-													</NavLink> */}
 												</span>
-												{/* <span className="ible-channel">
-													&nbsp;in&nbsp;
-													<NavLink
-														to={`/recipes/${tag1?.tags[0]?.name?.toLowerCase()}`}
-													>
-														{tag1?.tags[0]?.name?.toLowerCase()}
-													</NavLink>
-												</span> */}
 											</div>
 										</div>
 									))}
@@ -250,23 +215,23 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName2} clearfix`}>
+						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
-								<span className="anchor-text">{`${tagName2}`}</span>
+								<span className="anchor-text">{randomRecipes && tags2 && tagName2 && tagName2}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{tags2?.map((tag2) => (
-										<div key={tag2.id} className="home-content-explore-ible">
+									{randomRecipes && tags2 && tags2?.map((tag2) => (
+										<div key={tag2?.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag2?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={tag2?.medias[0].mediaUrl}
-													src={tag2?.medias[0].mediaUrl}
+													data-src={tag2?.medias[0]?.mediaUrl}
+													src={tag2?.medias[0]?.mediaUrl}
 													alt={tag2?.title}
 												/>
 											</NavLink>
@@ -281,24 +246,7 @@ const Homepage = () => {
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;{tag2?.author?.username}
-													{/* &nbsp;by&nbsp;
-													<NavLink
-														to={`/users/${tag2?.author?.id}`}
-													>
-														{
-															tag2?.author
-																?.username
-														}
-													</NavLink> */}
 												</span>
-												{/* <span className="ible-channel">
-													&nbsp;in&nbsp;
-													<NavLink
-														to={`/recipes/${tag2?.tags[0]?.name?.toLowerCase()}`}
-													>
-														{tag2?.tags[0]?.name?.toLowerCase()}
-													</NavLink>
-												</span> */}
 											</div>
 										</div>
 									))}
@@ -306,23 +254,23 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName3} clearfix`}>
+						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
-								<span className="anchor-text">{`${tagName3}`}</span>
+								<span className="anchor-text">{randomRecipes && tags3 && tagName3 && tagName3}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{tags3?.map((tag3) => (
-										<div key={tag3.id} className="home-content-explore-ible">
+									{randomRecipes && tags3 && tags3?.map((tag3) => (
+										<div key={tag3?.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag3?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={tag3?.medias[0].mediaUrl}
-													src={tag3?.medias[0].mediaUrl}
+													data-src={tag3?.medias[0]?.mediaUrl}
+													src={tag3?.medias[0]?.mediaUrl}
 													alt={tag3?.title}
 												/>
 											</NavLink>
@@ -337,24 +285,7 @@ const Homepage = () => {
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;{tag3?.author?.username}
-													{/* &nbsp;by&nbsp;
-													<NavLink
-														to={`/users/${tag3?.author?.id}`}
-													>
-														{
-															tag3?.author
-																?.username
-														}
-													</NavLink> */}
 												</span>
-												{/* <span className="ible-channel">
-													&nbsp;in&nbsp;
-													<NavLink
-														to={`/recipes/${tag3?.tags[0]?.name?.toLowerCase()}`}
-													>
-														{tag3?.tags[0]?.name?.toLowerCase()}
-													</NavLink>
-												</span> */}
 											</div>
 										</div>
 									))}
@@ -362,23 +293,23 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName4 && tagName4!=='Undefined'&& <div className={`home-content-explore-category home-content-explore-category-${tagName4} clearfix`}>
+						{tagName4&&tagName4!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
-								<span className="anchor-text">{`${tagName4}`}</span>
+								<span className="anchor-text">{randomRecipes && tags4 && tagName4 && tagName4}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{tags4?.map((tag4) => (
-										<div key={tag4.id} className="home-content-explore-ible">
+									{randomRecipes && tags4 && tags4?.map((tag4) => (
+										<div key={tag4?.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag4?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={tag4?.medias[0].mediaUrl}
-													src={tag4?.medias[0].mediaUrl}
+													data-src={tag4?.medias[0]?.mediaUrl}
+													src={tag4?.medias[0]?.mediaUrl}
 													alt={tag4?.title}
 												/>
 											</NavLink>
@@ -393,24 +324,7 @@ const Homepage = () => {
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;{tag4?.author?.username}
-													{/* &nbsp;by&nbsp;
-													<NavLink
-														to={`/users/${tag4?.author?.id}`}
-													>
-														{
-															tag4?.author
-																?.username
-														}
-													</NavLink> */}
 												</span>
-												{/* <span className="ible-channel">
-													&nbsp;in&nbsp;
-													<NavLink
-														to={`/recipes/${tag4?.tags[0]?.name?.toLowerCase()}`}
-													>
-														{tag4?.tags[0]?.name?.toLowerCase()}
-													</NavLink>
-												</span> */}
 											</div>
 										</div>
 									))}
@@ -418,23 +332,23 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName5 && tagName5 !== 'Undefined' && <div className={`home-content-explore-category home-content-explore-category-${tagName5} clearfix`}>
+						{tagName5&&tagName5!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
-								<span className="anchor-text">{`${tagName5}`}</span>
+								<span className="anchor-text">{randomRecipes && tags5 && tagName5 && tagName5}</span>
 								&nbsp;
 								<i className="fas fa-angle-right fa-2x"></i>
 							</h3>
 							<div className="home-content-explore-category-wrap ">
 								<div className="home-content-explore-ibles">
-									{tags5?.map((tag5) => (
-										<div key={tag5.id} className="home-content-explore-ible">
+									{randomRecipes && tags5 && tags5?.map((tag5) => (
+										<div key={tag5?.id} className="home-content-explore-ible">
 											<NavLink
 												to={`/recipes/${tag5?.id}`}
 											>
 												<img
 													className=" ls-is-cached lazyloaded"
-													data-src={tag5?.medias[0].mediaUrl}
-													src={tag5?.medias[0].mediaUrl}
+													data-src={tag5?.medias[0]?.mediaUrl}
+													src={tag5?.medias[0]?.mediaUrl}
 													alt={tag5?.title}
 												/>
 											</NavLink>
@@ -449,24 +363,7 @@ const Homepage = () => {
 												</strong>
 												<span className="ible-author">
 													&nbsp;by&nbsp;{tag5?.author?.username}
-													{/* &nbsp;by&nbsp;
-													<NavLink
-														to={`/users/${tag5?.author?.id}`}
-													>
-														{
-															tag5?.author
-																?.username
-														}
-													</NavLink> */}
 												</span>
-												{/* <span className="ible-channel">
-													&nbsp;in&nbsp;
-													<NavLink
-														to={`/recipes/${tag5?.tags[0]?.name?.toLowerCase()}`}
-													>
-														{tag5?.tags[0]?.name?.toLowerCase()}
-													</NavLink>
-												</span> */}
 											</div>
 										</div>
 									))}
