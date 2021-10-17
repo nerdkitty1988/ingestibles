@@ -7,6 +7,7 @@ import NewComment from "../NewComment"
 import "./SingleRecipePage.css"
 import ReactPlayer from 'react-player'
 import { useHistory } from 'react-router-dom';
+import defaultPhoto from "./profileDefaultPhoto.png";
 
 const SingleRecipePage = () => {
   const { recipeId } = useParams();
@@ -110,12 +111,15 @@ const SingleRecipePage = () => {
 // Codes about Likes start here:
   const [likeResponse, setLikeResponse] = useState('')
   useEffect(() => {
-    (async () => {
-      const response = await fetch(`/api/likes/${recipeId}/`);
-      const like = await response.json();
-      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
-    })();
-  }, [recipeId]);
+    if (sessionUser){
+      (async () => {
+        const response = await fetch(`/api/likes/${recipeId}/`);
+        const like = await response.json();
+        (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+      })();
+
+    }  
+  }, [recipeId,sessionUser]);
 
 
   const likeRecipe = async (e) => {
@@ -158,12 +162,13 @@ const SingleRecipePage = () => {
       </button>
     </div>
       <div
-      style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap'}}>
+      style={{display:'flex', justifyContent:'space-around', gap:'10px',alignItems:'end' ,flexWrap:'wrap', marginBottom:'1%'}}>
         {media1To5?.map( (el, i) => (
           <div key={`mediaDiv${i}`}
             >{
             !isVideo(el) && <img
-              style={{ width: '400px', height: '400px'}}
+                key={`recipePhoto${i}`}
+              style={{ width: '400px', height: '400px', borderRadius:'7px'}}
               src={el} alt='RecipePhoto' />}</div>))
         }
 
@@ -188,6 +193,7 @@ const SingleRecipePage = () => {
                 padding:'0',
                 width: "600px",
                 height: "600px",
+             
               }} />
 
             <button
@@ -206,7 +212,7 @@ const SingleRecipePage = () => {
     <div id="author-info">
       <div id="top-author-info">
         <div id="author-image">
-          <img className="profileCircleRecipe" src={currentRecipe?.author?.profilePic} alt="profile" />
+            <img className="profileCircleRecipe" src={(currentRecipe?.author?.profilePic) ? currentRecipe?.author?.profilePic : defaultPhoto} alt="profile" />
         </div>
         <div id="more-by-author">
           <p id="more-by-author-text">More by <br/>
@@ -220,7 +226,7 @@ const SingleRecipePage = () => {
       </div>
       <div id="author-bio-container">
         <div id="author-bio">
-          <p>About: {currentRecipe?.author?.biography}</p>
+          {currentRecipe?.author?.biography&&<p>About: {currentRecipe?.author?.biography}</p>}
         </div>
       </div>
     </div>
@@ -248,7 +254,7 @@ const SingleRecipePage = () => {
         return (
           <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
-              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic} alt="author"/>
+              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic ? comment.user.profilePic : defaultPhoto} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
               <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>
             </div>
