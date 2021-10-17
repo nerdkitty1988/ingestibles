@@ -244,11 +244,11 @@ def seed_media():
     db.session.add(media9051)
 
     db.session.add(media9061)
+    
     media701 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FPX/23L1/KTPSYXG9/FPX23L1KTPSYXG9.jpg?auto=webp&frame=1&width=563&height=1024&fit=bounds&md=619106ddb4dd497a0a2cff236eba5b69', recipeId=1)
     media702 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FK6/1EKB/KTPSYXH4/FK61EKBKTPSYXH4.jpg?auto=webp&frame=1&width=396&height=1024&fit=bounds&md=6355eec22ad47682d075aff4d45f5959', recipeId=1)
-
     media703 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FK2/SID1/KR4X94WT/FK2SID1KR4X94WT.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=4ff089b752e0d18edd34929c4e657e6f', recipeId=2)
 
@@ -262,7 +262,6 @@ def seed_media():
     media707 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FZK/W86V/KSONIGFZ/FZKW86VKSONIGFZ.png?auto=webp&frame=1&width=247&height=1024&fit=bounds&md=e27628b316d1f2e2e0112c537ddfa5e1', recipeId=4)
 
-
     media708 = Media(
         mediaUrl='https://content.instructables.com/ORIG/F2Y/3FF3/J1QP0HWD/F2Y3FF3J1QP0HWD.jpg?auto=webp&frame=1&width=700&height=1024&fit=bounds&md=fa27ecd9f7aa0ac4d42873309e1abe81', recipeId=5)
 
@@ -272,7 +271,6 @@ def seed_media():
         mediaUrl='https://content.instructables.com/ORIG/FED/DVP1/KNRGV0DF/FEDDVP1KNRGV0DF.jpg?auto=webp&frame=1&width=700&height=1024&fit=bounds&md=436c8eac45d9a98ba0f62d892127799b', recipeId=6)
     media710 = Media(
         mediaUrl='https://content.instructables.com/ORIG/F53/AEBM/KNRGUUUB/F53AEBMKNRGUUUB.jpg?auto=webp&frame=1&width=233&height=1024&fit=bounds&md=0dc1e53a1943eb6a7a48152b195d7ffb', recipeId=6)
-
 
 
     media711 = Media(
@@ -286,7 +284,6 @@ def seed_media():
 
     media714 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FVU/8OW3/KKWL8KF3/FVU8OW3KKWL8KF3.jpg?auto=webp&frame=1&width=526&height=1024&fit=bounds&md=fe3ba40124d51f1a3cb87b46b175c900', recipeId=8)
-
     media715 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FD3/A29G/GD2JKDVX/FD3A29GGD2JKDVX.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=473b941f1783a0156c26dd969c6ceb9c', recipeId=9)
 

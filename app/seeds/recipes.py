@@ -71,7 +71,6 @@ Only a few ingredients, about 30 minutes of your time
 and your taste buds will be thrilled! - that's a promise!""",
         authorId=5,
         ingredientPhoto='https://content.instructables.com/ORIG/F5Z/EL5C/KNRGTACH/F5ZEL5CKNRGTACH.jpg?auto=webp&frame=1&width=700&height=1024&fit=bounds&md=4812535626cf3fcdd6cd4e099bd9d907')
-
     recipe707 = Recipe(
         title='Grilled Ribeye With Mint Vinaigrette',
         description="""In this recipe you will be making a very good mint vinaigrette to enjoy with your grilled ribeye. I mean has mint, oil and vinegar ever been a bad combo? No! If you think that that is a great combo, start making this recipe right away and I know you will like it.""",

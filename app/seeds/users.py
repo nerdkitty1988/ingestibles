@@ -13,7 +13,27 @@ def seed_users():
         username='tim', email='tim@aa.io', password='password', biography='If it is healthy, I will try it.', profilePic='https://media.npr.org/assets/img/2018/04/17/npr_84364431_full_vert-ba5ff3e9efe3084b63ae9d7cafc5dd409a73bd51-s300-c85.jpg')
     angelina = User(
         username='angelina', email='angelina@aa.io', password='password', biography='Pumpkin spice time has arrived!', profilePic='https://southblueprint.com/wp-content/uploads/2020/10/ECC21D0A-778A-48B1-BF16-DF1B1C5199FA-53CE2E76-1575-42DA-94CA-17B4D54DC155-900x600.jpg')
+    
+    # dummy 6-11 to be replaced by other seed data of users
+    dummy6 = User(
+        username='1', email='1@aa.io', password='password')
+    dummy7 = User(
+        username='2', email='2@aa.io', password='password')
+    dummy8 = User(
+        username='3', email='3@aa.io', password='password')
+    dummy9 = User(
+        username='4', email='4@aa.io', password='password')
+    dummy10 = User(
+        username='5', email='5@aa.io', password='password')
+    dummy11 = User(
+        username='6', email='7@aa.io', password='password')
 
+    user701 = User(
+        username='happyHug', email='happyhug@aa.io', password='password', biography='I love food!')
+    user702 = User(
+        username='dreamTrue', email='dreamtrue@aa.io', password='password', biography='Cooking is my favorite!')
+    user703 = User(
+        username='joyHealth', email='joyhealth@aa.io', password='password', profilePic='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeGZMvntM86MXW_ddi6psTHg9z0hAB4LVA_w&usqp=CAU')
 
 
     #Jami
@@ -67,6 +87,16 @@ def seed_users():
     db.session.add(bobbie)
     db.session.add(tim)
     db.session.add(angelina)
+    db.session.add(dummy6)
+    db.session.add(dummy7)
+    db.session.add(dummy8)
+    db.session.add(dummy9)
+    db.session.add(dummy10)
+    db.session.add(dummy11)
+    db.session.add(user701)
+    db.session.add(user702)
+    db.session.add(user703)
+
 
     db.session.add(user301)
     db.session.add(user302)

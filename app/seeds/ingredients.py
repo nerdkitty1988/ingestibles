@@ -1032,7 +1032,6 @@ def seed_ingredients():
     ingredient770 = Ingredient(
         recipeId=9,
         info="14 ounces (400 g) bittersweet chocolate, coarsely chopped")
-
     ingredient771 = Ingredient(
         recipeId=10,
         info="Nabisco Chocolate wafer cookies")

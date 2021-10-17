@@ -127,7 +127,6 @@ def seed_tags():
         name="Lemonade", recipeId=2)
     tag708 = Tag(
         name="Slushies", recipeId=2)
-
     tag709 = Tag(
         name="cake", recipeId=3)
     tag710 = Tag(
@@ -139,7 +138,6 @@ def seed_tags():
         name="cake", recipeId=4)
     tag713 = Tag(
         name="dessert", recipeId=4)
-
     tag714 = Tag(
         name="appetizer", recipeId=5)
     tag715 = Tag(
@@ -153,7 +151,6 @@ def seed_tags():
         name="Olives", recipeId=6)
     tag719 = Tag(
         name="cheese", recipeId=6)
-
     tag720 = Tag(
         name="entree", recipeId=7)
     tag721 = Tag(
@@ -162,7 +159,6 @@ def seed_tags():
         name="beef", recipeId=7)
     tag723 = Tag(
         name="grill", recipeId=7)
-
     tag724 = Tag(
         name="entree", recipeId=8)
     tag725 = Tag(
