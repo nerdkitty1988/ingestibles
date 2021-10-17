@@ -15,6 +15,7 @@ def seed_users():
         username='angelina', email='angelina@aa.io', password='password', biography='Pumpkin spice time has arrived!', profilePic='https://southblueprint.com/wp-content/uploads/2020/10/ECC21D0A-778A-48B1-BF16-DF1B1C5199FA-53CE2E76-1575-42DA-94CA-17B4D54DC155-900x600.jpg')
 
 
+
     #Jami
     user301 = User(
         username='fake_Emeril', email='nottheemeril@aa.io', password='Password1!', biography='I like Emeril.  I am not Emeril.  But I love to throw spice on my food and say "WHAM!"', profilePic='https://food.fnr.sndimg.com/content/dam/images/food/editorial/talent/emeril-lagasse/emeril-lagasse.jpg.rend.hgtvcom.336.336.suffix/1371587262156.jpeg')
@@ -32,6 +33,12 @@ def seed_users():
         username='emotionalturtle', email='emotional@turtle.com', password='password', biography="Yertle was once a king of a pond that is on a far-away Island of Sala-ma-son. The pond he ruled over had everything the other turtles needed such as food, and warm water and the turtles were very happy until Yertle became ungrateful about the throne he sits due to it being low and he thought that if he could make it higher he would be a great ruler of all he can see so he called 9 of the turtles who serve him, to attention. ", profilePic="https://i1.sndcdn.com/artworks-000011487677-pdp5ep-t500x500.jpg")
 
     #Meitong
+    user701 = User(
+        username='happyHug', email='happyhug@aa.io', password='password')
+    user702 = User(
+        username='dreamTrue', email='dreamtrue@aa.io', password='password')
+    user703 = User(
+        username='joyHealth', email='joyhealth@aa.io', password='password')
 
 
     #Darren
@@ -42,22 +49,48 @@ def seed_users():
     user903 = User(
         username='rickroll', email='rick@roll.com', password='password', biography="We're no strangers to love. You know the rules and so do I. A full commitment's what I'm thinking of. You wouldn't get this from any other guy. I just wanna tell you how I'm feeling. Gotta make you understand. Never gonna give you up. Never gonna let you down. Never gonna run around and desert you. Never gonna make you cry. Never gonna say goodbye. Never gonna tell a lie and hurt you", profilePic='https://cdn.vox-cdn.com/thumbor/7BMHi-0CALa3odBFMD-MJK9Ye4Y=/0x44:1268x889/1200x800/filters:focal(0x44:1268x889)/cdn.vox-cdn.com/uploads/chorus_image/image/47684009/Screenshot_2014-07-19_15.24.57.0.png')
 
+    dummy6 = User(
+        username='1', email='1@aa.io', password='password')
+    dummy7 = User(
+        username='2', email='2@aa.io', password='password')
+    dummy8 = User(
+        username='3', email='3@aa.io', password='password')
+    dummy9 = User(
+        username='4', email='4@aa.io', password='password')
+    dummy10 = User(
+        username='5', email='5@aa.io', password='password')
+    dummy11 = User(
+        username='6', email='7@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.add(tim)
     db.session.add(angelina)
+
     db.session.add(user301)
     db.session.add(user302)
     db.session.add(user303)
+    
     db.session.add(user501)
     db.session.add(user502)
     db.session.add(user503)
 
+    db.session.add(user701)
+    db.session.add(user702)
+    db.session.add(user703)
+
     db.session.add(user901)
     db.session.add(user902)
     db.session.add(user903)
+
+    db.session.add(dummy6)
+    db.session.add(dummy7)
+    db.session.add(dummy8)
+    db.session.add(dummy9)
+    db.session.add(dummy10)
+    db.session.add(dummy11)
+
 
     db.session.commit()
 

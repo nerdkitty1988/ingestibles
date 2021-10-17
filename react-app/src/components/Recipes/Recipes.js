@@ -182,8 +182,8 @@ const Recipes = () => {
                         >
                           <img
                             className=" ls-is-cached lazyloaded"
-                            data-src={prevRecipes[0]?.medias[0]?.mediaUrl}
-                            src={prevRecipes[0]?.medias[0]?.mediaUrl}
+                            data-src={prevRecipe?.medias[0]?.mediaUrl}
+                            src={prevRecipe?.medias[0]?.mediaUrl}
                             alt={prevRecipe?.title}
                           />
                         </NavLink>
