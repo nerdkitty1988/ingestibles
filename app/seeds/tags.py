@@ -4,45 +4,45 @@ from app.models import db, Tag
 # Adds tags
 def seed_tags():
     jamiTag1 = Tag(
-    name="BEVERAGE", recipeId=19)
+    name="beverage", recipeId=19)
     jamiTag2 = Tag(
-        name="WINE", recipeId=19)
+        name="wine", recipeId=19)
     jamiTag3 = Tag(
-        name="BEVERAGE", recipeId=20)
+        name="beverage", recipeId=20)
     jamiTag4 = Tag(
-        name="CHOCOLATE", recipeId=20)
+        name="chocolate", recipeId=20)
     jamiTag5 = Tag(
-        name="DESSERT", recipeId=21)
+        name="dessert", recipeId=21)
     jamiTag6 = Tag(
-        name="ICE CREAM", recipeId=21)
+        name="ice cream", recipeId=21)
     jamiTag7 = Tag(
-        name="DESSERT", recipeId=22)
+        name="dessert", recipeId=22)
     jamiTag8 = Tag(
-        name="APPLE", recipeId=22)
+        name="apple", recipeId=22)
     jamiTag9 = Tag(
-        name="APPETIZER", recipeId=23)
+        name="appetizer", recipeId=23)
     jamiTag10 = Tag(
-        name="CHEESE", recipeId=23)
+        name="cheese", recipeId=23)
     jamiTag11 = Tag(
-        name="APPETIZER", recipeId=24)
+        name="appetizer", recipeId=24)
     jamiTag12 = Tag(
-        name="EGGS", recipeId=24)
+        name="eggs", recipeId=24)
     jamiTag13 = Tag(
-        name="ENTREE", recipeId=25)
+        name="entree", recipeId=25)
     jamiTag14 = Tag(
-        name="TUNA", recipeId=25)
+        name="tuna", recipeId=25)
     jamiTag15 = Tag(
-        name="ENTREE", recipeId=26)
+        name="entree", recipeId=26)
     jamiTag16 = Tag(
-        name="BURGER", recipeId=26)
+        name="burger", recipeId=26)
     jamiTag17 = Tag(
-        name="SNACK", recipeId=27)
+        name="snack", recipeId=27)
     jamiTag18 = Tag(
-        name="TOMATO", recipeId=27)
+        name="tomato", recipeId=27)
     jamiTag19 = Tag(
-        name="SNACK", recipeId=28)
+        name="snack", recipeId=28)
     jamiTag20 = Tag(
-        name="PLASTIC", recipeId=28)
+        name="plastic", recipeId=28)
 
     tag501 = Tag(
         name="appetizer", recipeId=11)
