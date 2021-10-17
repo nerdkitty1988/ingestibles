@@ -7,6 +7,10 @@
 }
 
 
-.home-content-explore-category-recent > .home-content-explore-link > h3 > span, .home-content-explore-category-previous > .home-content-explore-link > h3 > span:hover {
+.home-content-explore-category-recent > .home-content-explore-link > h3 > span:hover {
+  cursor: default !important;
+}
+
+.home-content-explore-category-previous > .home-content-explore-link > h3 > span:hover {
   cursor: default !important;
 }
