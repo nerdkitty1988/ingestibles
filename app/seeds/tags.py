@@ -4,45 +4,45 @@ from app.models import db, Tag
 # Adds tags
 def seed_tags():
     jamiTag1 = Tag(
-    name="BEVERAGE", recipeId=21)
+    name="beverage", recipeId=21)
     jamiTag2 = Tag(
-        name="WINE", recipeId=21)
+        name="wine", recipeId=21)
     jamiTag3 = Tag(
-        name="BEVERAGE", recipeId=22)
+        name="beverage", recipeId=22)
     jamiTag4 = Tag(
-        name="CHOCOLATE", recipeId=22)
+        name="chocolate", recipeId=22)
     jamiTag5 = Tag(
-        name="DESSERT", recipeId=23)
+        name="dessert", recipeId=23)
     jamiTag6 = Tag(
-        name="ICE CREAM", recipeId=23)
+        name="ice cream", recipeId=23)
     jamiTag7 = Tag(
-        name="DESSERT", recipeId=24)
+        name="dessert", recipeId=24)
     jamiTag8 = Tag(
-        name="APPLE", recipeId=24)
+        name="apple", recipeId=24)
     jamiTag9 = Tag(
-        name="APPETIZER", recipeId=25)
+        name="appetizer", recipeId=25)
     jamiTag10 = Tag(
-        name="CHEESE", recipeId=25)
+        name="cheese", recipeId=25)
     jamiTag11 = Tag(
-        name="APPETIZER", recipeId=26)
+        name="appetizer", recipeId=26)
     jamiTag12 = Tag(
-        name="EGGS", recipeId=26)
+        name="eggs", recipeId=26)
     jamiTag13 = Tag(
-        name="ENTREE", recipeId=27)
+        name="entree", recipeId=27)
     jamiTag14 = Tag(
-        name="TUNA", recipeId=27)
+        name="tuna", recipeId=27)
     jamiTag15 = Tag(
-        name="ENTREE", recipeId=28)
+        name="entree", recipeId=28)
     jamiTag16 = Tag(
-        name="BURGER", recipeId=28)
+        name="burger", recipeId=28)
     jamiTag17 = Tag(
-        name="SNACK", recipeId=29)
+        name="snack", recipeId=29)
     jamiTag18 = Tag(
-        name="TOMATO", recipeId=29)
+        name="tomato", recipeId=29)
     jamiTag19 = Tag(
-        name="SNACK", recipeId=30)
+        name="snack", recipeId=30)
     jamiTag20 = Tag(
-        name="PLASTIC", recipeId=30)
+        name="plastic", recipeId=30)
 
     tag501 = Tag(
         name="appetizer", recipeId=11)
@@ -111,22 +111,22 @@ def seed_tags():
     db.session.add(tag905)
     db.session.add(tag906)
     tag701 = Tag(
-        name="Beverage", recipeId=1)
+        name="beverage", recipeId=1)
     tag702 = Tag(
-        name="Vodka", recipeId=1)
+        name="vodka", recipeId=1)
     tag703 = Tag(
-        name="Ginger", recipeId=1)
+        name="ginger", recipeId=1)
     tag704 = Tag(
-        name="Alcoholic drink", recipeId=1)
+        name="alcoholic drink", recipeId=1)
 
     tag705 = Tag(
-        name="Beverage", recipeId=2)
+        name="beverage", recipeId=2)
     tag706 = Tag(
         name="strawberry", recipeId=2)
     tag707 = Tag(
-        name="Lemonade", recipeId=2)
+        name="lemonade", recipeId=2)
     tag708 = Tag(
-        name="Slushies", recipeId=2)
+        name="slushies", recipeId=2)
     tag709 = Tag(
         name="cake", recipeId=3)
     tag710 = Tag(
@@ -148,7 +148,7 @@ def seed_tags():
     tag717 = Tag(
         name="appetizer", recipeId=6)
     tag718 = Tag(
-        name="Olives", recipeId=6)
+        name="olives", recipeId=6)
     tag719 = Tag(
         name="cheese", recipeId=6)
     tag720 = Tag(
@@ -166,7 +166,7 @@ def seed_tags():
     tag726 = Tag(
         name="italian", recipeId=8)
     tag727 = Tag(
-        name="Sausage", recipeId=8)
+        name="sausage", recipeId=8)
 
     tag728 = Tag(
         name="snack", recipeId=9)
