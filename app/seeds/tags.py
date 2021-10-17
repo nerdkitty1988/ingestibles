@@ -111,22 +111,22 @@ def seed_tags():
     db.session.add(tag905)
     db.session.add(tag906)
     tag701 = Tag(
-        name="Beverage", recipeId=1)
+        name="beverage", recipeId=1)
     tag702 = Tag(
-        name="Vodka", recipeId=1)
+        name="vodka", recipeId=1)
     tag703 = Tag(
-        name="Ginger", recipeId=1)
+        name="ginger", recipeId=1)
     tag704 = Tag(
-        name="Alcoholic drink", recipeId=1)
+        name="alcoholic drink", recipeId=1)
 
     tag705 = Tag(
-        name="Beverage", recipeId=2)
+        name="beverage", recipeId=2)
     tag706 = Tag(
         name="strawberry", recipeId=2)
     tag707 = Tag(
-        name="Lemonade", recipeId=2)
+        name="lemonade", recipeId=2)
     tag708 = Tag(
-        name="Slushies", recipeId=2)
+        name="slushies", recipeId=2)
     tag709 = Tag(
         name="cake", recipeId=3)
     tag710 = Tag(
@@ -148,7 +148,7 @@ def seed_tags():
     tag717 = Tag(
         name="appetizer", recipeId=6)
     tag718 = Tag(
-        name="Olives", recipeId=6)
+        name="olives", recipeId=6)
     tag719 = Tag(
         name="cheese", recipeId=6)
     tag720 = Tag(
@@ -166,7 +166,7 @@ def seed_tags():
     tag726 = Tag(
         name="italian", recipeId=8)
     tag727 = Tag(
-        name="Sausage", recipeId=8)
+        name="sausage", recipeId=8)
 
     tag728 = Tag(
         name="snack", recipeId=9)
