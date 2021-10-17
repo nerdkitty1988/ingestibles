@@ -123,7 +123,7 @@ const SingleRecipePage = () => {
       history.push('/login')
     }else{
       const fetchData = () => {
-        const thisRecipe = fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) 
+        const thisRecipe = fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data)
         Promise.all([thisRecipe]).then((allData) => {
           setCurrentRecipe(allData[0].recipe[0])
         })
@@ -167,7 +167,7 @@ const SingleRecipePage = () => {
     )
   }
   // Code about Likes end here
-  //console.log(currentRecipe)
+  // console.log(currentRecipe)
   return (
     <div id="main">
       <div id="recipe-info">
@@ -226,6 +226,8 @@ const SingleRecipePage = () => {
           <div id="author-image">
             <img className="profileCircleRecipe" src={(currentRecipe?.author?.profilePic) ? currentRecipe?.author?.profilePic : defaultPhoto} alt="profile" />
           </div>
+          <span id="by-prefix">{` By `}</span>
+          <span id="by-username">{(currentRecipe?.author?.username)}</span>
           <div id="more-by-author">
             <p id="more-by-author-text">More by <br />
               the author:</p>
