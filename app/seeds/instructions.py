@@ -292,9 +292,9 @@ let me know when you tried this delicious snack!
         directions='''First, put salt and pepper on the meat. Then turn on the grill. When the grill reaches 500 degrees, scrape the grill. Then you will put the meat on the very hot grill and close the grill as fast as possible. Set a timer for three minutes. For the flip, make sure you are careful -- the fire Is going to rise a lot and get a lot hotter because ribeye is such a fatty cut. On the second side do another three minutes. when that is done you will turn off two of the burners and keep another two burners on then put the meat on the side that the burners are off and let it cook for another three minutes (on indirect heat). Remove the steak from the grill and let it rest for 5-10 minutes and you are done with the meat.''')
     instruction729 = Instruction(
         recipeId=7,
-        imageUrl="For the plating step, slice the meat off the bone and cut it into strips. Drizzle the the sauce on the meat and voila! bon appetit and I hope you enjoy it.",
+        imageUrl="https://content.instructables.com/ORIG/F28/WO4O/KQGMRENP/F28WO4OKQGMRENP.jpg?auto=webp&frame=1&width=447&height=1024&fit=bounds&md=5a46c01c23765f760d2546b0dc5d7937",
         stepTitle="Plating & Enjoy!",
-        directions='''https://content.instructables.com/ORIG/F28/WO4O/KQGMRENP/F28WO4OKQGMRENP.jpg?auto=webp&frame=1&width=447&height=1024&fit=bounds&md=5a46c01c23765f760d2546b0dc5d7937''')
+        directions='''For the plating step, slice the meat off the bone and cut it into strips. Drizzle the the sauce on the meat and voila! bon appetit and I hope you enjoy it.''')
 
 
 

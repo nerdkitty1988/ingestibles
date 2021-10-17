@@ -110,12 +110,15 @@ const SingleRecipePage = () => {
 // Codes about Likes start here:
   const [likeResponse, setLikeResponse] = useState('')
   useEffect(() => {
-    (async () => {
-      const response = await fetch(`/api/likes/${recipeId}/`);
-      const like = await response.json();
-      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
-    })();
-  }, [recipeId]);
+    if (sessionUser){
+      (async () => {
+        const response = await fetch(`/api/likes/${recipeId}/`);
+        const like = await response.json();
+        (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+      })();
+
+    }  
+  }, [recipeId,sessionUser]);
 
 
   const likeRecipe = async (e) => {
