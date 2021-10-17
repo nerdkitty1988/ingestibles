@@ -254,7 +254,7 @@ const SingleRecipePage = () => {
         return (
           <div id="comment" key={`comment${i}`}>
             <div id="comment-image-username-date">
-              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic} alt="author"/>
+              <img className="profileCircle" id="comment-owner-image" src={comment.user.profilePic ? comment.user.profilePic : defaultPhoto} alt="author"/>
               <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
               <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>
             </div>
