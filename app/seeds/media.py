@@ -117,16 +117,16 @@ def seed_media():
 
 
     media9011 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FFH/7FOZ/KNG1CRSF/FFH7FOZKNG1CRSF.jpg?auto=webp&frame=1&fit=bounds&md=b578a9659ac76d9f6f55880c7e5b913e', recipeId=29)
+        mediaUrl='https://content.instructables.com/ORIG/FFH/7FOZ/KNG1CRSF/FFH7FOZKNG1CRSF.jpg?auto=webp&frame=1&fit=bounds&md=b578a9659ac76d9f6f55880c7e5b913e', recipeId=19)
 
 
 
     media9021 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FY8/9ZG2/HIW8L896/FY89ZG2HIW8L896.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e97535e8f044adeb5b69b523533c680a', recipeId=30)
+        mediaUrl='https://content.instructables.com/ORIG/FY8/9ZG2/HIW8L896/FY89ZG2HIW8L896.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e97535e8f044adeb5b69b523533c680a', recipeId=20)
     media9022 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FU8/RGFO/HIXPVTQ8/FU8RGFOHIXPVTQ8.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e2e571fe971019e5635c2842457f1295', recipeId=30)
+        mediaUrl='https://content.instructables.com/ORIG/FU8/RGFO/HIXPVTQ8/FU8RGFOHIXPVTQ8.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=e2e571fe971019e5635c2842457f1295', recipeId=20)
     media9023 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FPJ/R33A/HIXPVTQE/FPJR33AHIXPVTQE.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=7e77b6630845483aab0ea21fedfa076e', recipeId=30)
+        mediaUrl='https://content.instructables.com/ORIG/FPJ/R33A/HIXPVTQE/FPJR33AHIXPVTQE.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=7e77b6630845483aab0ea21fedfa076e', recipeId=20)
 
 
 
@@ -211,8 +211,6 @@ def seed_media():
 
 
 
-
-
     media9051 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FPG/EA3J/HJKBZ7RW/FPGEA3JHJKBZ7RW.jpg?auto=webp&frame=1&fit=bounds&md=1b123a0c6eafa16afc5df82864365e2d', recipeId=33)
 
@@ -220,19 +218,6 @@ def seed_media():
 
     media9061 = Media(
         mediaUrl='https://content.instructables.com/ORIG/FVX/FIUT/KTPSX0S6/FVXFIUTKTPSX0S6.jpg?auto=webp&frame=1&fit=bounds&md=1c095448b5caafb6a4319f6885cfa71b', recipeId=34)
-
-
-
-    media718 = Media(
-        mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=1)
-    media719 = Media(
-        mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=4)
-    media701 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FPX/23L1/KTPSYXG9/FPX23L1KTPSYXG9.jpg?auto=webp&frame=1&width=563&height=1024&fit=bounds&md=619106ddb4dd497a0a2cff236eba5b69', recipeId=1)
-    media702 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FK6/1EKB/KTPSYXH4/FK61EKBKTPSYXH4.jpg?auto=webp&frame=1&width=396&height=1024&fit=bounds&md=6355eec22ad47682d075aff4d45f5959', recipeId=1)
-    media703 = Media(
-        mediaUrl='https://content.instructables.com/ORIG/FK2/SID1/KR4X94WT/FK2SID1KR4X94WT.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=4ff089b752e0d18edd34929c4e657e6f', recipeId=2)
 
 
 
