@@ -3,106 +3,42 @@ from app.models import db, Recipe
 
 # Adds recipes
 def seed_recipes():
-    recipe1 = Recipe(
-        title='No-Bake Chocolate Cheesecake With Kit Kats', description="In this Instructable, I will show you how to make a no-bake chocolate cheesecake with Kit Kats from scratch. This easy cheesecake recipe is so awesome and doesn't have any eggs in it. If you love chocolate and you love cheesecake you have got to try this. It has four amazing layers, oreo cookie bottom crust, chocolate cheesecake filling, chocolate ganache on top of that, and then whipped cream and mini-chocolate chips. All surrounded by a layer of Kit Kats. A chocolate lover's dream cake. If I can do it, you can do it. Let's get started!", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe2 = Recipe(
-        title="Spirited Away Cake: No Face's Feast", description="""Hello!
 
-If you've ever watched Hayao Miyazaki's award winning film "Spirited Away,' you might recall a certain food scene. In it, No-Face, a spirit, ravenously consumes pounds of delicious food in front of his hosts. Miyazaki is such a master with animated food I felt compelled to make a cake honoring such a fun scene.
+#Jami
 
-Be warned though, this is not an easy cake! It took me wayyy to long to finish inbetween work and school. If anyone wants to re-create this, I have suggestions on each step to make the process a little easier. :)
+    recipe21 = Recipe(
+            title='Tomato Wine (from Soup Production Waste)', description="Making wine is a hobby of mine. I've discovered over the years, that wine can be made out of almost anything.  In this Ingestible, I'll show you how I made a wonderful dry white wine out of tomato soup production waste.", authorId=8, ingredientPhoto='https://content.instructables.com/ORIG/FSA/3CUS/KN8W3OI0/FSA3CUSKN8W3OI0.jpg?auto=webp&frame=1&width=700&height=1024&fit=bounds&md=56a6ec8de5a7f05b68e33474d636d7b5')
+    recipe22 = Recipe(
+            title='Legend of Zelda Hot Chocolate', description="Put down your boring hot coco powdery hot chocolate and grab your Breath of the Wild Apron, cause we are going to make the best hot chocolate recipe ever! Well, at least the geekiest hot chocolate recipe ever!  This is a Breath of the Wild inspired hot chocolate recipe, full of flavor, savory, chocolaty, totally delicious.  Taste buds be warned. It's gonna be amazing", authorId=7, ingredientPhoto='https://content.instructables.com/ORIG/FI4/416E/KIKA4JZQ/FI4416EKIKA4JZQ.png?auto=webp&frame=1&width=800&fit=bounds&md=e559946e14301f301ec90b7a2da83cdf')
+    recipe23 = Recipe(
+            title='Rainbow Brownie Ice Cream Sandwiches', description="Rainbows........ Brownies........ Ice cream Sandwiches.......... Excuse me what?!?!?!?!?!  These ice cream sandwiches are so much fun to make and everyone will love them!!! The fudgy brownies are so delicious and rich with a creamy vanilla ice cream balances all the flavours perfectly. Also these are Gluten free!!!!  Plus the multicolour rainbow will brighten anyone's day and celebration. You have beautiful rainbow treats and you can make your own ice cream from scratch!!!  I hope you love these as much as we do!!! Also Happy pride month!!!", authorId=7, ingredientPhoto='https://content.instructables.com/ORIG/FGV/IOIA/KQ57CNYR/FGVIOIAKQ57CNYR.jpg?auto=webp&frame=1&width=525&height=1024&fit=bounds&md=5a1a6a2edd12045de17be38d4263b18b')
+    recipe24 = Recipe(
+            title='Mourning Buns', description="These flaky creepy confections are made up of apple and puff pasty. They are to die for.", authorId=7, ingredientPhoto='https://content.instructables.com/ORIG/F22/1JRC/KNG1B6DD/F221JRCKNG1B6DD.jpg?auto=webp&frame=1&crop=2:3&width=369&height=1024&fit=bounds&md=3ddeb9d50009eacd751199f4840a0329')
+    recipe25 = Recipe(
+            title='Creamy Cheese Nuggets', description="Hi everyone! Today we are making these delicious creamy cheese nuggets. If you love Mozzarella sticks or fried mac & cheese balls, this will be an new one to try! These breaded nuggets filled with a combination of stretchy and creamy cheeses.  Mozzarella sticks are great but the problem is that they kind of lack flavor. Mozzarella is such a mild tasting cheese that after it cools down, it is pretty much a tasteless piece of chewy 'meh' cheese...(think cold leftover pizza)  For this recipe, we are going to use multiple kind of cheeses so that it remains creamy even after it cools down to room temperature. The main ingredients of this recipe is cottage cheese. If you had Cheese Manicotti before, you know how creamy and milky the filling is inside those pasta shells. Besides cottage cheese, we also be adding some mozzarella and a little bit of cheddar for a nice yellow color. You could also use different type of stretchy cheeses of your liking, Muenster is highly recommended! We will also be using American cheese slices to make a lovely cheese sauce as the main base ingredients for the nugget to hold it's shape.", authorId=6, ingredientPhoto='https://content.instructables.com/ORIG/F0D/WL8G/KNYM0P7B/F0DWL8GKNYM0P7B.jpg?auto=webp&frame=1&crop=3:2&width=600&height=1024&fit=bounds&md=cba003e684a8166bdd4324bcba1b5d81')
+    recipe26 = Recipe(
+            title='To Dye for Boozy Deviled Eggs', description="This Easter I wanted to try my hand at Deviled Eggs. My Mom usually makes them, but since I was hosting, I wanted to do my own version  Finding inspiration online for the coloring, and also the varieties of filling, I came up with something of my own using ingredients I had on hand. You can certainly make substitutes depending on what's available to you  They look cute, and have an interesting and wonderful flavor  Nutrition, taste, and uniqueness are all wrapped up into one package with these crowd-pleasing appetizers!", authorId=7, ingredientPhoto='https://content.instructables.com/ORIG/FO2/BLQD/KN36CAG4/FO2BLQDKN36CAG4.jpg?auto=webp&frame=1&width=284&height=1024&fit=bounds&md=1860218b9983ea707694e089851b8e8a')
+    recipe27 = Recipe(
+            title='Fish-shaped Potato Mash With Tuna', description="Hi! Today we're gonna be making a potato and tuna based fake-fish! I think it is a delicious recipe for a family dinner and a great way to experiment with shapes and food 'sculpture'. No cooking needed, just a mixer and your ability! I hope you'll have fun making it as much as I did :)", authorId=8, ingredientPhoto='https://content.instructables.com/ORIG/FTV/CKP3/KFZEJGHL/FTVCKP3KFZEJGHL.png?auto=webp&frame=1&crop=3:2&width=653&fit=bounds&md=bbfe0506053448f661f25f908e3d562f')
+    recipe28 = Recipe(
+            title='Diner Style Burger, Fries & Shake at Home', description="Burgers are the absolute best thing on the planet, and what’s the only thing that makes them better? Eating one with a side of salty french fries and washing it down with a super thick milkshake. American diners do this meal combo so well, it's ridiculous! If I could, I'd go to one every week. However, there's just one slight problem. I live in Australia, where diners aren't really a thing. Popping over to America every week to go to a diner seems a little excessive, so I decided to replicate the meal, but also make it accessible for the at home cook  My version of the classic is amped up by baking homemade brioche buns, pickling red onion and mixing together a special burger sauce. I also chose to bake the french fries instead of deep frying them. I figured the mess, huge quantity of oil needed and high heat not worth the effort for something that can easily be achieved in an oven, which isn't as hands on  And finally, we get to the milkshake. My recipe for a chocolate milkshake is so simple but SO good, and the best part is you can make variations of it with other flavours by using vanilla ice-cream and including different flavoured syrups or fruits. I also decided to go one step further and added the can of whipped cream and a maraschino cherry as toppings. Totally indulgent, but completely necessary. We are going for the full diner experience after all!", authorId=6, ingredientPhoto='https://content.instructables.com/ORIG/FHV/WCVP/KAB2MKY8/FHVWCVPKAB2MKY8.png?auto=webp&frame=1&fit=bounds&md=6c2a8ac7f32fcfca87b6d08aba39bbc9')
+    recipe29 = Recipe(
+            title='Stuffed Red Cherry Tomatoes', description="Stuffed tomatoes are a standard classic French pre-takeaway takeaway and interestingly are slow rather than fast food. Every traiteur and charcuterie has them in season as a ready-made dish to take home and warm up or to be heated up in the shop and eaten as a picnic. Most butchers' shops in France offer a daily, cooked hot dish and stuffed tomatoes à la bonne femme is a a seasonal favourite. I've always thought how interesting it is that many countries, France is just one, maintain this old tradition and link with the past, when people didn't necessarily have ovens in their homes or alternatively wanted a ready-cooked meal without going to a restaurant  Here I'm using cherry tomatoes and these make great hot savouries in a bite sized edition so I guess they should be called 'bon enfant'...maybe  Cherry tomatoes are very easy to grow in a small space in a container or hanging basket. If you have a greenhouse or a window sill you can keep them producing right up to the first frosts. Tomatoes are perennials, so with care you can keep the plants from year to year.", authorId=6, ingredientPhoto='https://content.instructables.com/ORIG/FBO/W3W8/KQQMU174/FBOW3W8KQQMU174.jpg?auto=webp&frame=1&width=799&height=1024&fit=bounds&md=1d1389601c231fbfb3a4ca92f252d1d5')
+    recipe30 = Recipe(
+            title='Edible Plastic Pouches', description="I have the most amazing life hack for you guys!  Have you ever tried being on a hike and trying to stuff a handful of trail mix into your mouth, hands dirty and all, while dropping way too much of the precious nibbles along the way? Or have you tried letting the kids eat snacks in the car and then found half of it scattered all over the back seat afterwards?  I have the perfect solution! Welcome: edible plastic pouches containing trail mix (or whatever else you like)! They are perfectly pocket-sized and spill-free.  Gone are the days when edible plastic was only a fun and tasteless decorating addition on fancy cakes. Now, this science hack can actually be used for something useful.  The idea behind this edible plastic is actually quite simple. First, we gel water using agar or gelatine, and then, this gel is dehydrated to create an edible, plastic-like sheet that can be used for a variety of purposes.  Sounds good? If you don't care about the nerdy science behind this, go straight to the next step. Otherwise, keep reading.  Agar and gelatine can both be used to solidify a liquid, but they are structurally quite different. Agar is a carbohydrate, and gelatin is a protein. While gelatin is derived from animal collagen, agar comes from algae and is thus plant based (and vegan). Agar melts around 85 degrees C (185 F) whereas gelatin melts at 35 degrees C (95 F), making it less stable. This also means that gelatin will melt in your mouth while agar will not.", authorId=8, ingredientPhoto='https://content.instructables.com/ORIG/F8P/BFEJ/JGGTFZST/F8PBFEJJGGTFZST.jpg?auto=webp&frame=1&width=600&height=1024&fit=bounds&md=f197835c8db3be396cd024837dc19cdb')
 
-Enough rambling, onto the cake!
 
-(no-face drawing by Valentina Hramov)""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe3 = Recipe(
-        title='HEALTHY VEGAN CREAMY MANGO TART NO-BAKE', description="""
-        If you’re looking for a healthy dessert✨that tastes delicious😋, is easy to make, and will appeal to all eaters at the table, then this 🌱Vegan & Gluten Free Creamy Mango tart is for you!
+    db.session.add(recipe21)
+    db.session.add(recipe22)
+    db.session.add(recipe23)
+    db.session.add(recipe24)
+    db.session.add(recipe25)
+    db.session.add(recipe26)
+    db.session.add(recipe27)
+    db.session.add(recipe28)
+    db.session.add(recipe29)
+    db.session.add(recipe30)
 
-This tart has a creamy 🥭mango-cashews filling with a 🥥coconut-almond crust.
-
-Mango is:
-
-A low-calorie fruit that is high in fibre 😀.
-A good source of immune-boosting nutrients like Vitamins A and C.
-A good source of antioxidants.
-It’s a no-bake tart that anybody can master, and I’ll show you all the steps below.""", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe4 = Recipe(
-        title="3 Cheese ‘N Bacon Breakfast Cupcakes", description="I made a recipe similar to these unusual cupcakes years ago for a brunch. Everyone loved them and I decided that they would be perfect for the Instructables Cheese Speed Challenge! They feature 3 kinds of cheese....shredded cheddar, ricotta and cream cheese. These cheesy sweet and savory breakfast cupcakes are fun to make, fun to serve, fun to look at and fun to eat!", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe5 = Recipe(
-        title='Tom Yum Vodka', description="""I think by now, Thailand's famous Tom Yum Goong (hot and sour prawn soup) is a household name around the world. But this is more than just a soup. Tom yum's hot, spicy, sour, packed-with-herbs flavour is used in everything from potato chips to instant noodles.
-
-So I had a stroke of genius.
-
-Why not use this flavour to turn plain old vodka into a masterpiece?
-
-The delicious, aromatic herbs give this drink a unique scent that you just can't find anywhere else, and chili and garlic a little some fire.
-
-The best part?
-
-It's so easy to make, you can have this recipe done in just 5 minutes today. And tomorrow, you can reap the reward of a delicious, sophisticated little beverage.""", authorId=1, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe6 = Recipe(
-        title='Halloween/ Harvest Chocolate Bark', description="""What did the dog say to make the squirrel run up the tree?... " Bark! Bark! Bark! "
-
-Okay, I know that was pretty bad, but I promise you these are really, really good! They also make a great midday snack, or a nice little treat for family, friends, and co-workers.
-
-Prep time: 30- 35 minutes""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe7 = Recipe(
-        title='Homemade Twix Bars', description="""In this Instructable, I will show you how to make copycat Twix Bars at home. This homemade Twix candy bars recipe is so awesome and really easy to make. If you are a fan of Twix cookie bars you will love these homemade Twix. I love copycat recipes, and this is one of my favorites. If I can do it, you can do it. Let's get started!
-
-Don't forget to follow me and check out my other Instructables.
-
-Follow the easy steps below or watch the video tutorial or do both! :)""", authorId=2, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe8 = Recipe(
-        title='Rigatoni With Sausage, Spinach, & Goat Cheese', description='This creamy, tangy, and delicious Rigatoni with Sausage, Spinach, and Goat Cheese dish will quickly become a family favorite. This recipe has basic ingredients, but it turns into magic when the melted goat cheese brings them together. The whole meal can come together very quickly, so it’s great for a last-minute dinner.', authorId=3, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe9 = Recipe(
-        title='Skillet Ravioli Lasagna', description="""This one pot meal is the perfect dinner for a busy weeknight. It comes together easily, is extra tasty, and best of all the clean-up is super quick!
-
-I love a good lasagna, but sometimes the effort seems like too much – this Skillet Ravioli Lasagna is a great alternative and really packs in the flavour of a traditional lasagna.
-
-Note: This meal serves 6, so feel free to divide the recipe in half for a smaller portion or if you are concerned it won’t fit in your pan. It does require a large pan with high sides.""", authorId=3, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe10 = Recipe(
-        title='Five Bean Salad', description="""Who wants to cook in the summer, right? So what can we eat? Oh! Legumes!
-
-Protein, fiber, vitamins and minerals!
-
-Very healthy stuff! Combine a few of them and they are very colorful too.
-
-This is a great salad for a summer barbecue. Or just eaten by itself because its packed with flavor. Also this salad is easy peasy especially if your just buying all the beans precooked in jars or cans. If you live in the Americas you will be extremely lucky to have at your disposal a limitless variety of beans or, as they are called in some parts, frijoles So go ahead and find a nice variety of beans to put in your salad, Hey! you might even make a Six Bean Salad but that would be an entirely different instructable""", authorId=4, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe11 = Recipe(
-        title='RECIPE |MANDARIN AVOCADO SALAD', description="""Spring is finally here! With 15 degree weather, I am forcing myself to believe that spring is here to stay even after that random snow storm we had last week. With Spring, comes warmer weather and cooler dishes like this Mandarin Avocado Salad. I've been trying to get back into my salad routine to cure my skin issues. After all, you are what you eat.
-
-In the past year, my skin has rewound back to my teenage years when acne haunted me. I had awful cystic acne where I would get nasty volcano-like zits on my forehead, nose or chin. I was lucky in the fact that I didn't get a zillion red blemishes all over my face but life decided to be fair by giving me exactly that all over forehead along with little white bumps. At first I thought I wasn't cleaning off my makeup as well as I should, even though I would triple cleanse! (Yes triple cleanse with 3 different types of cleanser. Don't worry I've reduced that down to 2 cleansers now so I don't dry out my skin). Then I thought maybe there is too much oil in my diet but that wasn't it either. I swapped up my skin regime multiple times to figure out what was going wrong. I searched high and low for the answer and I finally figured it out. I found this YouTuber who explained that it was an fungal infection underneath my skin, hence the numerous white bumps that would turn into red little blemishes. The cause for the infection was an influx of yeast and sugars from white carbohydrates in my diet. It makes sense as I've been eating a lot more white carbs to replace my meat intake. Now don't get me wrong, not everyone will experience these same symptoms because every one is different. So please don't be convinced that you need to lower your carb intake and increase your meat intake. But I really needed to force myself to eat more whole grains not just white breads/pastas which is common sense. I am not just a fan of the taste in whole grains? Long story, short: I've returned back to eating more greens, fruits, and replacing white carbs with whole grain ones. So far, so good. My skin is clearing day by day!
-
-So if you're also experiencing some skin issues, first think about what you eat. Do some research and try to understand what the cause is. I would say that 80% of our skin issues are based on our diet. Then to assist with the healing, look into active oils or serums that will speed up the healing process. But just remember you can apply all the serums in the world but if you eat garbage, it will still reflect on your skin. As they say, "Beauty comes from within."
-Anyway I hope you guys give this salad a shot. It's one of my favourites and I used to eat it daily before my wedding and I remember having glowing clear skin! It's filled with Vitamin C, Folate, and antioxidants which fight the skin-villains. Easy, quick to make and wonderful for the new Spring season. In this recipe, I'm using the Super Greens salad box by Organic Girl which you can find at major Canadian grocers. If you do end up making this recipe, take a picture of it, tag @christieathome on Instagram and it may be featured. If you're not on Instagram please share this recipe with your family and friends!
-
-Disclaimer: I am not sponsored by the companies listed in this post.""", authorId=5, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-    recipe12 = Recipe(
-        title='Sous Vide Smoked Brisket', description="""I love a well prepared smoked brisket, Southwestern-style. But, this is not your normal low and slow brisket. This brisket take around 52 hours to prepare and it is absolutely 100% worth the time.
-
-It is juicy, soft, has a perfect smoke ring, brown/black crust and is really tasty.
-
-And yes, I know my American friends, you are most probably laughing at this, but try it, you might just never look back again!!
-
-You see, I do not have a proper smoke house to do this low and slow. What I do have is a Sous Vide stick. And boy, that Sous Vide works well.
-
-If you do not know what a Sous Vide stick is, it is simply an immersion cooker. Google it and you will see what it looks like.
-
-The basic idea is you vacuum seal your meat, place it in a water bath and set the Sous Vide stick to a very specific temperature for the cut of meat you are preparing and walla, perfect meat!!!""", authorId=5, ingredientPhoto='https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-1024x783.jpeg')
-
-    db.session.add(recipe1)
-    db.session.add(recipe2)
-    db.session.add(recipe3)
-    db.session.add(recipe4)
-    db.session.add(recipe5)
-    db.session.add(recipe6)
-    db.session.add(recipe7)
-    db.session.add(recipe8)
-    db.session.add(recipe9)
-    db.session.add(recipe10)
-    db.session.add(recipe11)
-    db.session.add(recipe12)
 
     db.session.commit()
 
