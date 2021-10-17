@@ -264,7 +264,7 @@ const SingleRecipePage = () => {
       <div id="centering-div">
         <div id="add-comment-box">
           <div id="user-image">
-            <img id="comment-profileCircle" className="profileCircle" src={sessionUser?.profilePic} alt="profile" />
+            <img id="comment-profileCircle" className="profileCircle" src={sessionUser?.profilePic? sessionUser.profilePic : 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'} alt="profile" />
           </div>
           <div id="inner-white-box">
             {innerWhiteBox}
