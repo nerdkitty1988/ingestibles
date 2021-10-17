@@ -24,3 +24,18 @@
 #icon {
   padding-right: 6px;
 }
+
+#step-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#step-directions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50%;
+}

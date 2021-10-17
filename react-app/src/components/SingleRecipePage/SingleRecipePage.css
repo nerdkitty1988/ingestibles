@@ -6,6 +6,14 @@
 	color: #555;
 }
 
+#recipe-title {
+	font-size: 28px;
+}
+
+#author-and-tags {
+	font-size: 14px;
+}
+
 #recipe-info {
 	display: flex;
 	flex-direction: column;
@@ -18,12 +26,21 @@
 	padding: 0px 10px 10px;
 }
 
+#like-button-and-photo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
 #like-license-buttons {
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
+	width: 60%;
 }
 
 #like-button {
@@ -43,6 +60,10 @@
 	color: orange;
 }
 
+#likes-display {
+	font-size: 16px;
+}
+
 #fasComments {
 	color: #dedede;
 	padding-right: 6px;
@@ -57,12 +78,15 @@
 #author-info {
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
+	max-width: 50%;
 	height: 180px;
 	border: 1px solid lightgrey;
 	border-radius: 6px;
 	background-color: #f6f6f6;
 	font-size: 14px;
+	margin: 20px;
+	position: relative;
+	left: 25%;
 }
 
 #top-author-info {
@@ -100,29 +124,48 @@
 
 #recipe-description {
 	padding: 20px;
+	width: 48%;
+	position: relative;
+	left: 25%;
+}
+li#ingredient {
+	margin-bottom: 30px;
 }
 
 #comment-button-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 50px;
+}
+
+#centering-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #comment-button {
 	border: none;
 	font-size: 16px;
 	background-color: white;
-	padding-bottom: 40px;
+	color: #333;
+	position: relative;
+
 }
 
-#comment-button-container:after {
+#comment-button:after {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	content: "";
-	width: 12%;
+	width: 100%;
 	padding-top: 20px;
-	border-bottom: 0.5px solid #dedede;
+	border-bottom: 2px solid #dedede;
+}
+
+#comment-button > .fas {
+	color: #bbb;
 }
 
 #comment-button:hover {
@@ -143,23 +186,150 @@
 	padding-right: 6px;
 }
 
-#comments-section {
+#ingredients-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 
+#ingredients-title {
+	font-size: 30px;
+	padding-bottom: 50px;
+}
+
+#ingredients-title:after {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	content: "";
+	width: 100%;
+	padding-top: 20px;
+	border-bottom: 2px solid #dedede;
+}
+
+
+#add-comment-box {
+	background-color: #f6f6f6;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 200px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+}
+
+#user-image {
+	width: 70px;
+	height: 70px;
+}
+
+#inner-white-box {
+	background-color: white;
+  width: 80%;
+	height: 55%;
+	border: 1px solid #dedede;
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+}
+
+#inner-white-box::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 17px solid #97C6E3;
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	top: -1px;
+	left: -17px;
+
+}
+#bottom-of-the-white-box {
+	display: flex;
+	width: 90%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#comment-note {
+	font-size: 12px;
+	color: #999
+}
+
+#post-comment-button {
+	background-color: white;
+	border: 1px solid #dedede;
+	border-radius: 5px;
+	height: 78%;
+	width: 30%;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #999;
+	font-size: 14px;
+}
+
+#post-comment-button:hover {
+	cursor: pointer;
+	border: .1px solid #999;
+	color: #555;
+}
+
+#post-comment-button:hover #fasComments {
+	color: orange;
+}
+
+#fasComments {
+	font-size: 22px;
+	position: relative;
+	bottom: 10%;
+}
+
+#little-post-comment-button {
+	background-color: #faac18;
+	border: 1px solid #e5991e;
+	border-radius: 5px;
+	height: 40px;
+	width: 50px;
+	color: white;
+	opacity: .65;
+}
+
+
+
+#comment-profileCircle {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+#comments-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	position: relative;
+	left: 25%;
+}
+
 #comments-section > h1 {
-	padding: 20px;
+	padding: 40px;
 	border-bottom: 0.5px solid #dedede;
 	width: 100%;
 	text-align: center;
+	font-size: 28px;
 }
 
 #comment {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	border-bottom: 0.5px solid #dedede;
 	width: 100%;
 	padding: 10px;
@@ -167,12 +337,18 @@
 	font-size: 16px;
 }
 
+#owner-name-and-buttons-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
 #comment-image-username-date {
 	display: flex;
 	align-items: center;
 	font-size: 16px;
-    margin-bottom: 25px;
-    justify-content: space-between;
+  margin-bottom: 25px;
+  justify-content: flex-start;
 }
 
 #comment-date {
@@ -180,15 +356,15 @@
 	padding-left: 5px;
 }
 
+
 .commentButtons {
 	border: none;
-	background-color: rgba(211, 211, 211, 0.555);
+	background-color: #f6f6f6;
 	border-radius: 5px;
 	padding: 5px;
 	margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: grey;
-    box-shadow: 0px 0px 2px 1px rgba(211, 211, 211, 0.623);
+  color: #333;
+	width: 60px;
 }
 
 

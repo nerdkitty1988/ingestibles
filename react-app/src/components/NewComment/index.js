@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
+import "./NewComment.css"
 
-const NewComment = ({currentRecipe, setCanComment, setComments}) => {
+const NewComment = ({currentRecipe, setCanComment, setComments, setCommenting}) => {
   const user = useSelector(state => state.session.user);
   const [comment, setComment] = useState('');
   const [errors , setErrors] = useState([])
@@ -37,6 +38,7 @@ const NewComment = ({currentRecipe, setCanComment, setComments}) => {
       const newComments = await (await fetch('/api/recipes/comments')).json()
       //console.log("NEW COMMENTS .JSON ======>>>>", newComments)
       setComments(newComments.comments)
+      setCommenting(false)
 
     return data
   }
@@ -50,16 +52,12 @@ const NewComment = ({currentRecipe, setCanComment, setComments}) => {
                             key={'newCommentErr'+ind}>{error}</li>
                     ))}
                 </div>
-    <form onSubmit={createComment}>
-      <div>
-        <label>What do you think?</label>
-        <textarea
-          name='comment'
-          onChange={(e) => setComment(e.target.value)}
-          value={comment}
-        ></textarea>
-      </div>
-      <button type='submit'>Post Comment</button>
+    <form id="comment-form" onSubmit={createComment}>
+      <textarea id="comment-textarea"
+        name='comment'
+        onChange={(e) => setComment(e.target.value)}
+        value={comment}
+      ></textarea>
     </form>
   </>
   );
