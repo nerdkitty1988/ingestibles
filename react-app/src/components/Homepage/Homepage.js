@@ -215,7 +215,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
+						{tagName2&&tagName2!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{randomRecipes && tags2 && tagName2 && tagName2}</span>
 								&nbsp;
@@ -254,7 +254,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
+						{tagName3&&tagName3!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{randomRecipes && tags3 && tagName3 && tagName3}</span>
 								&nbsp;
@@ -293,7 +293,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
+						{tagName4&&tagName4!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{randomRecipes && tags4 && tagName4 && tagName4}</span>
 								&nbsp;
@@ -332,7 +332,7 @@ const Homepage = () => {
 							</div>
 						</div>}
 
-						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
+						{tagName5&&tagName5!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{randomRecipes && tags5 && tagName5 && tagName5}</span>
 								&nbsp;
