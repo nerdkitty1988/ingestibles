@@ -13,5 +13,5 @@ def tags():
 
 @tag_routes.route('/random')
 def random_tags():
-    tags = Tag.query.order_by(func.random()).limit(5)
+    tags = Tag.query.order_by(func.random())
     return {"random": [tag.to_dict() for tag in tags]}

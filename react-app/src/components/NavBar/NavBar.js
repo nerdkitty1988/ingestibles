@@ -106,9 +106,9 @@ const NavBar = ({ loaded }) => {
 					>
 						<ul className="category-nav-link">
 							<li>
-								<NavLink to="/">
+								<a href="/">
 									<i className="fas fa-home"></i>
-								</NavLink>
+								</a>
 							</li>
 							<button
 								onClick={clickToSearch}
@@ -167,12 +167,12 @@ const NavBar = ({ loaded }) => {
 			</div>
 			<div className="site-header-bottom">
 				<div className="left-col">
-					<NavLink to="/">
- 						<img alt = 'logo' className="ingestibles-logo" src="https://raw.githubusercontent.com/nerdkitty1988/ingestibles/main/react-app/src/components/NavBar/logo.png"/>
-					</NavLink>
-					<NavLink className="site-logo " to="/">
+					<a href="/">
+ 						<img alt='logo' className="ingestibles-logo" src="https://raw.githubusercontent.com/nerdkitty1988/ingestibles/main/react-app/src/components/NavBar/logo.png"/>
+					</a>
+					<a className="site-logo" href="/">
 						<span id="site-header-category-brand">ingestibles</span>
-					</NavLink>
+					</a>
 					<NavLink to="/recipes" className="btn btn-category-header">
 						Recipes
 					</NavLink>
