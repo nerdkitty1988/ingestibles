@@ -218,19 +218,19 @@ const SingleRecipePage = () => {
           <div id="author-image">
             <img className="profileCircleRecipe" src={(currentRecipe?.author?.profilePic) ? currentRecipe?.author?.profilePic : defaultPhoto} alt="profile" />
           </div>
-          <div id="author-bio-container">
-            <div id="author-bio">
-              <p>About: {currentRecipe?.author?.biography}</p>
-            </div>
-          </div>
           <div id="more-by-author">
             <p id="more-by-author-text">More by <br />
               the author:</p>
-          </div>
           <div id="other-recipes-by-author">
             {whatIWant && whatIWant.map((recipe, i) => {
               return (<><a key={`linktoRecipe${i}`} href={`/recipes/${recipe.id}`}>{recipe.title}</a> <br key={`linktoRecipeBr${i}`} /></>)
             })}
+          </div>
+          </div>
+          <div id="author-bio-container">
+            <div id="author-bio">
+              <p>About: {currentRecipe?.author?.biography}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -285,7 +285,7 @@ const SingleRecipePage = () => {
             <div id="comment" key={`comment${i}`} style={{ backgroundColor: canEdit ? "#f6f6f6" : "white", border: canEdit ? "1px solid #dedede" : "none", borderRadius: canEdit ? "5px" : "none" }}>
               <div id="owner-name-and-buttons-container" style={{ width: !canEdit ? "100%" : "30%" }}>
                 <div id="comment-image-username-date">
-                  <img className="profileCircle" id="comment-profileCircle" src={comment.user.profilePic} alt="author" />
+                  <img className="profileCircle" id="comment-profileCircle" src={comment.user.profilePic? comment.user.profilePic : 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'} alt="author" />
                   <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
                   {!canEdit && <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>}
                 </div>

@@ -79,7 +79,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 50%;
-	height: 180px;
+	height: 210px;
 	border: 1px solid lightgrey;
 	border-radius: 6px;
 	background-color: #f6f6f6;
@@ -91,6 +91,7 @@
 
 #top-author-info {
 	display: flex;
+	flex-wrap: wrap;
 	width: 90%;
 	justify-content: space-between;
 	align-items: center;
@@ -106,7 +107,7 @@
 	height: 80px;
 	object-fit: cover;
 	border-radius: 100%;
-	padding: 0px 15px;
+	padding: 5px 15px;
 }
 
 #more-by-author {
@@ -117,9 +118,9 @@
 	padding-left: 10px;
 }
 
-#author-bio {
-	display: block;
-	padding-left: 15px;
+#author-bio-container {
+	width: 110%;
+	padding: 0px 0px 5px 55px;
 }
 
 #recipe-description {
