@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import "./EditComment.css"
 const EditComment = ({currentRecipe, setCanEdit, setComments, comment}) => {
-  console.log(comment)
+  // console.log(comment)
   const user = useSelector(state => state.session.user);
   const [commentBody, setComment] = useState(comment.comment);
   const [errors , setErrors] = useState([])
