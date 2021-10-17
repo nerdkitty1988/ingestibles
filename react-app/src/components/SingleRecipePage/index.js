@@ -121,6 +121,14 @@ const SingleRecipePage = () => {
     (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
     if (like.errors) {
       history.push('/login')
+    }else{
+      const fetchData = () => {
+        const thisRecipe = fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data) 
+        Promise.all([thisRecipe]).then((allData) => {
+          setCurrentRecipe(allData[0].recipe[0])
+        })
+      }
+      fetchData()
     }
 
   }
@@ -159,7 +167,7 @@ const SingleRecipePage = () => {
     )
   }
   // Code about Likes end here
-  console.log(currentRecipe)
+  //console.log(currentRecipe)
   return (
     <div id="main">
       <div id="recipe-info">
@@ -286,7 +294,9 @@ const SingleRecipePage = () => {
               <div id="owner-name-and-buttons-container" style={{ width: !canEdit ? "100%" : "30%" }}>
                 <div id="comment-image-username-date">
                   <img className="profileCircle" id="comment-profileCircle" src={comment.user.profilePic? comment.user.profilePic : 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'} alt="author" />
-                  <a id="comment-owner-username" href={`/users/${comment.userId}`}>{comment.user.username}</a>
+                  {/* <a id="comment-owner-username" href={`/users/${comment.userId}`}> */}
+                    {comment.user.username}
+                    {/* </a> */}
                   {!canEdit && <p id="comment-date">{new Date(comment.time_created).toLocaleDateString("en-US")}</p>}
                 </div>
                 {thisIsMyComment && !canEdit &&
