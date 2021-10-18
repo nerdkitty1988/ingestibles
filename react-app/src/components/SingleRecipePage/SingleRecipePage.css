@@ -307,6 +307,11 @@ li#ingredient {
 }
 
 
+#little-post-comment-button:hover {
+	cursor: pointer;
+	background-color: rgb(236, 153, 0);
+}
+
 
 #comment-profileCircle {
 	width: 50px;
