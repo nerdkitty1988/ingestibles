@@ -19,6 +19,11 @@ const Homepage = () => {
 	const [tagName4, setTagName4] = useState([]);
 	const [tagName5, setTagName5] = useState([]);
 
+	const [appetizers, setAppetizers] = useState([]);
+	const [entrees, setEntrees] = useState([]);
+	const [desserts, setDesserts] = useState([]);
+
+
 	useEffect(() => {
 		async function randomFive() {
 			const res = await fetch("/api/tags/random");
@@ -27,7 +32,7 @@ const Homepage = () => {
 			const newArr = [];
 
 			(resData?.random)?.forEach(ele => {
-				newArr.push(ele?.name)
+				(ele?.name !== "appetizer") && (ele?.name !== "entree") && (ele?.name !== "dessert") && newArr.push(ele?.name)
 			})
 
 			const randomSet = new Set(newArr);
@@ -44,6 +49,29 @@ const Homepage = () => {
 
 
 	useEffect(() => {
+
+///////////////////// THESE THREE ARE NOT RANDOMIZED//////////////////////////////
+		const appetizers = async () => {
+			const res = await fetch('/api/recipes/appetizer');
+			const resData = await res.json();
+			setAppetizers(resData?.tagged);
+		};
+
+		const entrees = async () => {
+			const res = await fetch('/api/recipes/entree');
+			const resData = await res.json();
+			setEntrees(resData?.tagged);
+		};
+
+		const desserts = async () => {
+			const res = await fetch('/api/recipes/dessert');
+			const resData = await res.json();
+			setDesserts(resData?.tagged);
+		};
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
 		const one = async () => {
 			const res = await fetch(`/api/recipes/${randomRecipes[0]}`);
 			const resData = await res.json();
@@ -78,6 +106,12 @@ const Homepage = () => {
 			setTags5(resData?.tagged);
 			setTagName5((resData?.tagged)[0]?.tags?.find(ele => ele?.name === randomRecipes[4])?.name)
 		};
+
+
+
+		appetizers();
+		entrees();
+		desserts();
 
 		one();
 		two();
@@ -176,6 +210,136 @@ const Homepage = () => {
 				<div className="home-content-explore">
 					<div className="home-content-explore-wrap">
 						<h2>Explore Recipes</h2>
+
+
+
+{/* ///////////////////////////////////////////////////////////////////
+////////////////////HARD CODED TAGS BEGIN//////////////////////////////
+/////////////////////////////////////////////////////////////////// */}
+
+
+
+<div className={`home-content-explore-category clearfix`}>
+							<h3>
+								<span className="anchor-text">Appetizer</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
+							<div className="home-content-explore-category-wrap ">
+								<div className="home-content-explore-ibles">
+									{appetizers?.map((appetizer) => (
+										<div key={appetizer?.id} className="home-content-explore-ible">
+											<NavLink
+												to={`/recipes/${appetizer?.id}`}
+											>
+												<img
+													className=" ls-is-cached lazyloaded"
+													data-src={appetizer?.medias[0]?.mediaUrl}
+													src={appetizer?.medias[0]?.mediaUrl}
+													alt={appetizer?.title}
+												/>
+											</NavLink>
+											<div className="home-content-explore-ible-info">
+												<strong>
+													<NavLink
+														className="ible-title"
+														to={`/recipes/${appetizer?.id}`}
+													>
+														{appetizer?.title}
+													</NavLink>
+												</strong>
+												<span className="ible-author">
+													&nbsp;by&nbsp;{appetizer?.author?.username}
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+
+						<div className={`home-content-explore-category clearfix`}>
+							<h3>
+								<span className="anchor-text">Entree</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
+							<div className="home-content-explore-category-wrap ">
+								<div className="home-content-explore-ibles">
+									{entrees.map((entree) => (
+										<div key={entree?.id} className="home-content-explore-ible">
+											<NavLink
+												to={`/recipes/${entree?.id}`}
+											>
+												<img
+													className=" ls-is-cached lazyloaded"
+													data-src={entree?.medias[0]?.mediaUrl}
+													src={entree?.medias[0]?.mediaUrl}
+													alt={entree?.title}
+												/>
+											</NavLink>
+											<div className="home-content-explore-ible-info">
+												<strong>
+													<NavLink
+														className="ible-title"
+														to={`/recipes/${entree?.id}`}
+													>
+														{entree?.title}
+													</NavLink>
+												</strong>
+												<span className="ible-author">
+													&nbsp;by&nbsp;{entree?.author?.username}
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+
+						<div className={`home-content-explore-category clearfix`}>
+							<h3>
+								<span className="anchor-text">Dessert</span>
+								&nbsp;
+								<i className="fas fa-angle-right fa-2x"></i>
+							</h3>
+							<div className="home-content-explore-category-wrap ">
+								<div className="home-content-explore-ibles">
+									{desserts?.map((dessert) => (
+										<div key={dessert?.id} className="home-content-explore-ible">
+											<NavLink
+												to={`/recipes/${dessert?.id}`}
+											>
+												<img
+													className=" ls-is-cached lazyloaded"
+													data-src={dessert?.medias[0]?.mediaUrl}
+													src={dessert?.medias[0]?.mediaUrl}
+													alt={dessert?.title}
+												/>
+											</NavLink>
+											<div className="home-content-explore-ible-info">
+												<strong>
+													<NavLink
+														className="ible-title"
+														to={`/recipes/${dessert?.id}`}
+													>
+														{dessert?.title}
+													</NavLink>
+												</strong>
+												<span className="ible-author">
+													&nbsp;by&nbsp;{dessert?.author?.username}
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+
+{/* ///////////////////////////////////////////////////////////////////
+////////////////////HARD CODED TAGS END////////////////////////////////
+/////////////////////////////////////////////////////////////////// */}
+
 						{tagName1&&tagName1!=='Undefined'&& <div className={`home-content-explore-category clearfix`}>
 							<h3>
 								<span className="anchor-text">{randomRecipes && tags1 && tagName1 && tagName1}</span>
