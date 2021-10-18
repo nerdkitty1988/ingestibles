@@ -114,22 +114,28 @@ const SingleRecipePage = () => {
 
   const likeRecipe = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/api/likes/${recipeId}`, {
-      method: 'POST'
-    })
-    const like = await response.json();
-    (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
-    if (like.errors) {
-      history.push('/login')
-    }else{
-      const fetchData = () => {
-        const thisRecipe = fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data)
-        Promise.all([thisRecipe]).then((allData) => {
-          setCurrentRecipe(allData[0].recipe[0])
-        })
+    if (sessionUser) {
+      const response = await fetch(`/api/likes/${recipeId}`, {
+        method: 'POST'
+      })
+      const like = await response.json();
+      (like.like) ? setLikeResponse(like.like) : setLikeResponse('')
+      if (like.errors) {
+        history.push('/login')
+      } else {
+        const fetchData = () => {
+          const thisRecipe = fetch(`/api/recipes/${recipeId}`).then((res) => res.json())//.then((data)
+          Promise.all([thisRecipe]).then((allData) => {
+            setCurrentRecipe(allData[0].recipe[0])
+          })
+        }
+        fetchData()
       }
-      fetchData()
+      
+    }else{
+      history.push('/login')
     }
+   
 
   }
 
