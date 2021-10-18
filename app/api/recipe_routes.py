@@ -5,6 +5,7 @@ from app.models import Recipe, User, Like, db, Tag, Ingredient, Instruction, Med
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import createRecipeForm, editRecipeForm, createCommentForm
+from  sqlalchemy.sql.expression import func
 
 # setup AWS
 from app.s3_helpers import (
@@ -100,7 +101,7 @@ def user_recipes(id):
 #Fetch recipe by tagId
 @recipe_routes.route('/<tag>')
 def recipes_by_tag(tag):
-    tagged_recipes = Recipe.query.join(Tag).filter(Tag.name == tag).all()
+    tagged_recipes = Recipe.query.order_by(func.random()).join(Tag).filter(Tag.name == tag).all()
     return {'tagged': [tagged_recipe.to_dict() for tagged_recipe in tagged_recipes]}
 
 
