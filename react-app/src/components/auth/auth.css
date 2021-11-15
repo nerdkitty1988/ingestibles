@@ -72,3 +72,8 @@
 #signupButton, #demoButton {
     width: 105.874%;
 }
+
+
+.errorList {
+    color: #faac18;
+}
