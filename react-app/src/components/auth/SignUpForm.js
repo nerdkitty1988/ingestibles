@@ -71,7 +71,7 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
-              <li key={ind} sytle={{ color: '#F27D21' }}>{error}</li>
+              <li key={ind} className='errorList'>{error}</li>
             ))}
           </div>
           <div>
