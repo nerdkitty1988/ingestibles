@@ -143,10 +143,11 @@
 }
 
 
-.fa-linkedin {
+.fa-linkedin, .fa-address-card, .fa-github-square {
   font-size: 1.4rem;
   padding-right: 7px;
   padding-left: 3px;
+  color: lightgray;
 }
 
 .fa-github-square {

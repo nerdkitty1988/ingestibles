@@ -26,6 +26,9 @@ const Footer = () => {
               <a href="https://github.com/gobugi" target="_blank" rel="noreferrer">
                 <i className="fab fa-github-square"></i>
               </a>
+              <a href="https://gobugi.github.io/" rel="noreferrer" target="_blank">
+                <i className="fas fa-address-card"></i>
+              </a>
             </li>
 
             <li className='group-name'>
@@ -38,6 +41,9 @@ const Footer = () => {
               <a href="https://github.com/MayUWish" rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
+              <a href="https://mayuwish.github.io/" rel="noreferrer" target="_blank">
+                <i className="fas fa-address-card"></i>
+              </a>
             </li>
 
             <li className='group-name'>
@@ -48,6 +54,9 @@ const Footer = () => {
               <a href="https://github.com/nerdkitty1988" rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
               </a>
+              <a href="https://jamitravers.online/" rel="noreferrer" target="_blank">
+                <i className="fas fa-address-card"></i>
+              </a>
             </li>
 
             <li className='group-name'>
@@ -57,6 +66,9 @@ const Footer = () => {
               </a>
               <a href="https://github.com/aivnerrad " rel="noreferrer" target="_blank">
                 <i className="fab fa-github-square"></i>
+              </a>
+              <a href="https://aivnerrad.github.io/" rel="noreferrer" target="_blank">
+                <i className="fas fa-address-card"></i>
               </a>
             </li>
 
