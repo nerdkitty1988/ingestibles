@@ -7,8 +7,18 @@ Live Link: [Ingestibles](https://ingestibles-app.herokuapp.com/)
 
 ## Ingestibles at a Glance
 
-### Splash, All Recipes Page, Profile dropdown....
-User can ..........
+### Homepage
+User can peruse through different recipes, which are grouped by tags/categories
+
+![homepage](https://user-images.githubusercontent.com/80723197/142085539-33f56690-9789-4c0c-9d05-a93011239834.gif)
+
+### All Recipes Page
+User can view all recipes by either clicking on the "Recipes" button in the nav bar or clicking on the user profile dropdown and clicking "All Recipes."  Once on this page, user can see all the recipes ordered by date of post starting with the most recent.
+
+![all_recipes](https://user-images.githubusercontent.com/80723197/142085555-256247bd-940a-413f-8fde-2f40d6429420.gif)
+
+### Profile dropdown
+Once logged in, user can click on the profile pic to access the dropdown links and navigate to one's own profile page, All Recipes page, recipes created by logged in user, user's favorite recipes, and form to create a new recipe.
 
 ### Single Recipe Page, comments, likes....
 User can .......
