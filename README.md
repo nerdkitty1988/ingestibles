@@ -19,12 +19,12 @@ Once logged in, user can click on the profile pic to access the dropdown links a
 
 ![profileAndMyPlate at a glance](/react-app/src/static/readMe/profileAndMyPlate.gif) 
 
-### Single Recipe Page, comments, likes....
+### Single Recipe Page, Comments & Likes
 Users can explore single recipe page and logged-in users can like and comment on all recipes.
 
 ![singleRecipe at a glance](/react-app/src/static/readMe/singleRecipe.gif)
 
-###  search
+### Search
 Users can search recipes by their titles, ingredients, tags on any page through nav bar.
 
 ![search at a glance](/react-app/src/static/readMe/search.gif)
